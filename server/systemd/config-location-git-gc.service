@@ -1,0 +1,8 @@
+[Unit]
+Description=Config Location Mirror Git Maintenance
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/root/config-location-live-git
+ExecStart=/usr/bin/git gc --auto
