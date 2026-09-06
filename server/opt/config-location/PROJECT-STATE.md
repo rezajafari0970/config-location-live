@@ -1,6 +1,6 @@
 # Config Location — Project State
 
-Updated: 2026-09-06T01:49:09+00:00
+Updated: 2026-09-06T01:52:49+00:00
 
 ## Release
 
@@ -9,8 +9,8 @@ Updated: 2026-09-06T01:49:09+00:00
 
 ## Git
 
-- Commit: `e1074ce55569625f53042e40b2137f6bcbf5be88`
-- Short: `e1074ce`
+- Commit: `018e753a3e4abc6942c3936887e79d7ca61e6ad9`
+- Short: `018e753`
 - Mirror dirty files: 0
 
 ## Services
@@ -29,8 +29,8 @@ Updated: 2026-09-06T01:49:09+00:00
 
 ## Runtime
 
-- Countries: 53
-- Publishable configs: 1308
+- Countries: 52
+- Publishable configs: 1282
 
 ## Active development scripts
 
@@ -40,4 +40,5 @@ observability-self-test.sh
 phase6-pass1b-public-country-catalog-fix.sh
 phase6-pass1b-recovery-diagnostic.sh
 phase6-pass1-canonical-country-catalog-api.sh
+phase6-pass1c-repair-catalog-contract.sh
 ```
