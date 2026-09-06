@@ -1,6 +1,6 @@
 # Config Location — Project State
 
-Updated: 2026-09-06T01:23:02+00:00
+Updated: 2026-09-06T01:23:14+00:00
 
 ## Release
 
@@ -9,8 +9,8 @@ Updated: 2026-09-06T01:23:02+00:00
 
 ## Git
 
-- Commit: `cab274157a742cecf0089d4bce4b2e01bc806d80`
-- Short: `cab2741`
+- Commit: `33cc3d4ab1d880d9ec768bac4586c63b4652d786`
+- Short: `33cc3d4`
 - Mirror dirty files: 0
 
 ## Services
@@ -30,7 +30,7 @@ Updated: 2026-09-06T01:23:02+00:00
 ## Runtime
 
 - Countries: 53
-- Publishable configs: 1302
+- Publishable configs: 1300
 
 ## Active development scripts
 
