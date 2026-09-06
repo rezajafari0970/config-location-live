@@ -1,3 +1,4 @@
+de46fc3b63f6a398b5a526a195a77dc8f4e4d42972f88ab15fbb7e7661df6804  server/opt/config-location/302
 83094babfbd79d5083460d06d5ca4c2c745db7564a7bfdc3f13abfdad733e260  server/opt/config-location/app/control/api.py
 4643fd9033cb32d628946005fc67777ebb92355605870cc8a8e82709bf13cd5a  server/opt/config-location/app/control/audit.py
 de80b361b0bb21909d69b0dfb60fbeef08cf4060a50e04d3e402987a71fd974d  server/opt/config-location/app/control/executor.py
@@ -173,7 +174,7 @@ a7f1fddbe433d801f108f39cd8e303eb1495e46450b5d8027815c27c3838b3c2  server/opt/con
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  server/opt/config-location/app/parser/__init__.py
 db1b8e37a373d328bf8f2b79f6f4f05dbcb08c65c1e59833bb94d645f788e947  server/opt/config-location/app/parser/universal_json.py
 060507dd06483d79ccbac12bbc9912c0fb40d84a4028e76425a0e7e1696c1aa4  server/opt/config-location/app/publish/filter.py
-de46fc3b63f6a398b5a526a195a77dc8f4e4d42972f88ab15fbb7e7661df6804  server/opt/config-location/app/publish/http.py
+eccb0024b82153ddaaa801398d9a15c7132ed47c11410d93fa84971f4d68a1ae  server/opt/config-location/app/publish/http.py
 c8b03a25c5b6d03a183e2ab6b4145a786208a84e70f73016cc5cbc4ebfd1536a  server/opt/config-location/app/publish/__init__.py
 06d5f5008fc12e26cbd72cc7bb1548f919c51f5e09585bfa9b24bbfcb16a3b4a  server/opt/config-location/app/publish/selftest.py
 53fe4d479579329a8ec055dce5e29a24b7a07bc44e4a982184c4df8a053bfd3b  server/opt/config-location/app/settings/engine.py
@@ -15570,7 +15571,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
 a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
 da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
-7e222e8a82bce4883076b92b1e8b97cae09ab4c94ae6763da9d40e233d66b446  server/opt/config-location/PROJECT-STATE.md
+f07bbf623cb6d50615f59f5e56d0784896bb07815f1c421269718534cc0b9df4  server/opt/config-location/PROJECT-STATE.md
 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
 0e63c7cea5c2b60eab9f70ac997137377fdec436cd7d88c4d8b37577a0da6ed3  server/opt/config-location/scripts/detector-test.py
