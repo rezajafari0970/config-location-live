@@ -157,7 +157,7 @@ e72d1882b636cff2d7d596f6ce3e6cc7d7763821d35ea26218412a13e9504859  server/opt/con
 86ffc11d90f938370020502d5f153c6e332b210d8a8bb8885153996f1ab5c4cb  server/opt/config-location/app/panel/publish_read_model.py
 01907f4f731849c8f74b68d63af81fa952e7ecfebfb822dd284bcb12c1314e98  server/opt/config-location/app/panel/publish_ui.py
 1caad6c9d82eaa970c76a61884c0d5616965eadb1e931a0eafdce55caaa16f34  server/opt/config-location/app/panel/read_model.py
-b52b258a52dd095c275c781f354282df947ac24c178c4cc9f3ccf3136582d32b  server/opt/config-location/app/panel/server.py
+01d5682be5aef6ea1c41c8271152191bd83e27c933e53ba50c139b8711012ea8  server/opt/config-location/app/panel/server.py
 b0e47a945078de2f7442df9b24ea27a32e19923234cf6583e52b26cbafbfd71b  server/opt/config-location/app/panel/server.py.bak.20260829-005109
 f1a9b8d281e52f0829198fc71336eac48ae82509704921a8fdc2db607b7f5300  server/opt/config-location/app/panel/server.py.bak.20260829-005549
 111a844c5792d23a79870f60f283e97c8fcdceb3726f0edcd2deb01641091942  server/opt/config-location/app/panel/server.py.bak.20260829-010005
