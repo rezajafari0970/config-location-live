@@ -10,6 +10,10 @@ from app.country.production_publish_projection import (
     get_country_projection,
 )
 
+from app.country.catalog import (
+    build_country_catalog,
+)
+
 
 def _subscription_text(
     config_type: str | None = None,
@@ -169,6 +173,57 @@ async def subscription_type(
                 str(
                     metadata[
                         "corrupt_configs"
+                    ]
+                ),
+        },
+    )
+
+
+async def country_catalog(
+    request: web.Request,
+):
+
+    try:
+
+        catalog = (
+            build_country_catalog()
+        )
+
+    except Exception:
+
+        raise web.HTTPServiceUnavailable(
+            headers={
+                "Cache-Control":
+                    "no-store",
+
+                "Retry-After":
+                    "5",
+
+                "X-Country-Source":
+                    "canonical-projection-v2",
+
+                "X-Country-Catalog-Contract":
+                    "unavailable",
+            }
+        )
+
+
+    return web.json_response(
+        catalog,
+        headers={
+            "Cache-Control":
+                "no-store",
+
+            "X-Country-Source":
+                "canonical-projection-v2",
+
+            "X-Country-Catalog-Contract":
+                "healthy",
+
+            "X-Country-Count":
+                str(
+                    catalog[
+                        "country_count"
                     ]
                 ),
         },
@@ -592,6 +647,11 @@ def install_publish_routes(
     app.router.add_get(
         "/sub/{config_type}",
         subscription_type,
+    )
+
+    app.router.add_get(
+        "/api/countries",
+        country_catalog,
     )
 
     app.router.add_get(
