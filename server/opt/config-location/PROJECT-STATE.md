@@ -1,6 +1,6 @@
 # Config Location — Project State
 
-Updated: 2026-09-06T01:43:55+00:00
+Updated: 2026-09-06T01:44:16+00:00
 
 ## Release
 
@@ -9,13 +9,13 @@ Updated: 2026-09-06T01:43:55+00:00
 
 ## Git
 
-- Commit: `6f2f0761aedb7fb8605d17a26e2bd8afbcc2975f`
-- Short: `6f2f076`
+- Commit: `818a3792e850720b27b8bfc94721e7d18e2e77bf`
+- Short: `818a379`
 - Mirror dirty files: 0
 
 ## Services
 
-- Panel: active
+- Panel: activating
 - Country worker: active
 - Country event consumer: active
 - Live Git watcher: active
@@ -23,14 +23,14 @@ Updated: 2026-09-06T01:43:55+00:00
 
 ## Endpoints
 
-- /sub/all: 200
-- /sub/country/UNKNOWN: 200
-- /sub/country/CONFLICT: 200
+- /sub/all: 000000
+- /sub/country/UNKNOWN: 000000
+- /sub/country/CONFLICT: 000000
 
 ## Runtime
 
 - Countries: 53
-- Publishable configs: 1306
+- Publishable configs: 1298
 
 ## Active development scripts
 
