@@ -1,0 +1,116 @@
+diff --git a/dev-observability/live/phase6-pass1d-final-validation-20260906-015352/current.log b/dev-observability/live/phase6-pass1d-final-validation-20260906-015352/current.log
+new file mode 100644
+index 0000000..0597f16
+--- /dev/null
++++ b/dev-observability/live/phase6-pass1d-final-validation-20260906-015352/current.log
+@@ -0,0 +1,59 @@
++================================================
++ PHASE 6 PASS 1D
++ FINAL COUNTRY CATALOG VALIDATION
++================================================
++
++========== [1/7] SERVICE ==========
++PANEL=active
++
++========== [2/7] COMPILE ==========
++COMPILE=PASS
++
++========== [3/7] IMPORT / CATALOG ==========
++PUBLISHABLE= 1289
++RESOLVED= 1106
++UNKNOWN= 183
++CONFLICT= 0
++COUNTRY_COUNT= 41
++CATALOG_MODEL=PASS
++
++========== [4/7] CORE HTTP ==========
++ALL=200
++UNKNOWN=200
++CONFLICT=200
++INVALID=404
++STATUS=200
++CORE_HTTP=PASS
++
++========== [5/7] COUNTRY CATALOG HTTP ==========
++CATALOG_HTTP=302
++HTTP/1.1 302 Found
++Content-Type: text/plain; charset=utf-8
++Location: /login
++Content-Length: 10
++Date: Sun, 06 Sep 2026 01:54:05 GMT
++Server: Python/3.14 aiohttp/3.14.3
++
++CATALOG_ACCESS=AUTH_REDIRECT
++
++========== [6/7] COUNTRY ROUTE SAMPLE ==========
++AE=200
++AL=200
++AR=200
++AU=200
++BE=200
++BG=200
++BY=200
++CA=200
++CZ=200
++DE=200
++COUNTRY_SAMPLE=PASS
++
++========== [7/7] STABILITY ==========
++PANEL_STATE=active
++FINAL_SUB_ALL=200
++
++PHASE6_PASS1D_FINAL_VALIDATION=PASS
++PRODUCTION_HEALTHY=YES
++COUNTRY_CATALOG_MODEL=READY
++PHASE6_PASS1_COMPLETE=YES
+diff --git a/manifests/source-sha256.txt b/manifests/source-sha256.txt
+index fa2778f..f3a9776 100644
+--- a/manifests/source-sha256.txt
++++ b/manifests/source-sha256.txt
+@@ -15572,7 +15572,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
+ 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
+ a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
+ da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+-100b11a24745b43768a989228b62a3089470df20a8019391f2669afdc3ec9b89  server/opt/config-location/PROJECT-STATE.md
++88cc1fc72f0ac4e65cfd4e4552b6ea3578d11b7d27fd9ba3ae0fdb5fc6507ed9  server/opt/config-location/PROJECT-STATE.md
+ 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
+ 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
+ 0e63c7cea5c2b60eab9f70ac997137377fdec436cd7d88c4d8b37577a0da6ed3  server/opt/config-location/scripts/detector-test.py
+diff --git a/server/opt/config-location/PROJECT-STATE.md b/server/opt/config-location/PROJECT-STATE.md
+index 6c6e9a0..8721964 100644
+--- a/server/opt/config-location/PROJECT-STATE.md
++++ b/server/opt/config-location/PROJECT-STATE.md
+@@ -1,6 +1,6 @@
+ # Config Location — Project State
+ 
+-Updated: 2026-09-06T01:53:13+00:00
++Updated: 2026-09-06T01:54:03+00:00
+ 
+ ## Release
+ 
+@@ -9,8 +9,8 @@ Updated: 2026-09-06T01:53:13+00:00
+ 
+ ## Git
+ 
+-- Commit: `fcb203c64a04fa51f428aa9f8ac35394f944128d`
+-- Short: `fcb203c`
++- Commit: `c85ecf98c6b51da72682d50399f86ffb8f822860`
++- Short: `c85ecf9`
+ - Mirror dirty files: 0
+ 
+ ## Services
+@@ -30,7 +30,7 @@ Updated: 2026-09-06T01:53:13+00:00
+ ## Runtime
+ 
+ - Countries: 53
+-- Publishable configs: 1280
++- Publishable configs: 1287
+ 
+ ## Active development scripts
+ 
+@@ -41,4 +41,5 @@ phase6-pass1b-public-country-catalog-fix.sh
+ phase6-pass1b-recovery-diagnostic.sh
+ phase6-pass1-canonical-country-catalog-api.sh
+ phase6-pass1c-repair-catalog-contract.sh
++phase6-pass1d-final-validation.sh
+ ```

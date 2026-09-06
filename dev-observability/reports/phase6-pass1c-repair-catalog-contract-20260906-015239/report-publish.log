@@ -1,0 +1,25 @@
+[main d9fce3a] dev-evidence: 20 report files
+ 20 files changed, 951 insertions(+)
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/changed-files-stat.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/changed-files.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/checkpoint.log
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/full-diff.patch
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/git-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/git-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/git-status-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/git-status-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/live-run-id.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/live-sync.log
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/quick-check-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/quick-check.log
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/report-publish.log
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/result.json
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/script-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/script-output.log
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/services-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/services-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/status-after.json
+ create mode 100644 dev-observability/reports/phase6-pass1c-repair-catalog-contract-20260906-015239/status-before.json
+To github.com:rezajafari0970/config-location-live.git
+   fcb203c..d9fce3a  main -> main
+REPORT_PUBLISH=PASS
