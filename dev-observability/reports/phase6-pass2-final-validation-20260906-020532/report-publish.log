@@ -1,0 +1,25 @@
+[main df54c64] dev-evidence: 21 report files
+ 21 files changed, 850 insertions(+)
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/changed-files-stat.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/changed-files.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/checkpoint.log
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/full-diff.patch
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/git-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/git-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/git-status-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/git-status-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/live-run-id.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/live-sync.log
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/quick-check-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/quick-check.log
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/report-publish.log
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/result.json
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/script-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/script-output.log
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/services-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/services-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/status-after.json
+ create mode 100644 dev-observability/reports/phase6-pass2-final-validation-20260906-020532/status-before.json
+To github.com:rezajafari0970/config-location-live.git
+   e38f27e..df54c64  main -> main
+REPORT_PUBLISH=PASS
