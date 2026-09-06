@@ -1,0 +1,272 @@
+{
+  "conflict": 0,
+  "countries": [
+    {
+      "code": "AL",
+      "count": 1,
+      "country_code": "AL",
+      "country_name": "Albania",
+      "flag": "🇦🇱",
+      "subscription": "/sub/country/AL"
+    },
+    {
+      "code": "AR",
+      "count": 1,
+      "country_code": "AR",
+      "country_name": "Argentina",
+      "flag": "🇦🇷",
+      "subscription": "/sub/country/AR"
+    },
+    {
+      "code": "AU",
+      "count": 81,
+      "country_code": "AU",
+      "country_name": "Australia",
+      "flag": "🇦🇺",
+      "subscription": "/sub/country/AU"
+    },
+    {
+      "code": "BG",
+      "count": 33,
+      "country_code": "BG",
+      "country_name": "Bulgaria",
+      "flag": "🇧🇬",
+      "subscription": "/sub/country/BG"
+    },
+    {
+      "code": "BY",
+      "count": 1,
+      "country_code": "BY",
+      "country_name": "Belarus",
+      "flag": "🇧🇾",
+      "subscription": "/sub/country/BY"
+    },
+    {
+      "code": "CA",
+      "count": 13,
+      "country_code": "CA",
+      "country_name": "Canada",
+      "flag": "🇨🇦",
+      "subscription": "/sub/country/CA"
+    },
+    {
+      "code": "CZ",
+      "count": 2,
+      "country_code": "CZ",
+      "country_name": "Czechia",
+      "flag": "🇨🇿",
+      "subscription": "/sub/country/CZ"
+    },
+    {
+      "code": "DE",
+      "count": 334,
+      "country_code": "DE",
+      "country_name": "Germany",
+      "flag": "🇩🇪",
+      "subscription": "/sub/country/DE"
+    },
+    {
+      "code": "EE",
+      "count": 2,
+      "country_code": "EE",
+      "country_name": "Estonia",
+      "flag": "🇪🇪",
+      "subscription": "/sub/country/EE"
+    },
+    {
+      "code": "ES",
+      "count": 22,
+      "country_code": "ES",
+      "country_name": "Spain",
+      "flag": "🇪🇸",
+      "subscription": "/sub/country/ES"
+    },
+    {
+      "code": "FI",
+      "count": 36,
+      "country_code": "FI",
+      "country_name": "Finland",
+      "flag": "🇫🇮",
+      "subscription": "/sub/country/FI"
+    },
+    {
+      "code": "FR",
+      "count": 17,
+      "country_code": "FR",
+      "country_name": "France",
+      "flag": "🇫🇷",
+      "subscription": "/sub/country/FR"
+    },
+    {
+      "code": "GB",
+      "count": 124,
+      "country_code": "GB",
+      "country_name": "United Kingdom",
+      "flag": "🇬🇧",
+      "subscription": "/sub/country/GB"
+    },
+    {
+      "code": "GR",
+      "count": 1,
+      "country_code": "GR",
+      "country_name": "Greece",
+      "flag": "🇬🇷",
+      "subscription": "/sub/country/GR"
+    },
+    {
+      "code": "HK",
+      "count": 4,
+      "country_code": "HK",
+      "country_name": "Hong Kong",
+      "flag": "🇭🇰",
+      "subscription": "/sub/country/HK"
+    },
+    {
+      "code": "IL",
+      "count": 1,
+      "country_code": "IL",
+      "country_name": "United States",
+      "flag": "🇮🇱",
+      "subscription": "/sub/country/IL"
+    },
+    {
+      "code": "IN",
+      "count": 4,
+      "country_code": "IN",
+      "country_name": "Cyprus",
+      "flag": "🇮🇳",
+      "subscription": "/sub/country/IN"
+    },
+    {
+      "code": "IT",
+      "count": 5,
+      "country_code": "IT",
+      "country_name": "Italy",
+      "flag": "🇮🇹",
+      "subscription": "/sub/country/IT"
+    },
+    {
+      "code": "JP",
+      "count": 10,
+      "country_code": "JP",
+      "country_name": "Japan",
+      "flag": "🇯🇵",
+      "subscription": "/sub/country/JP"
+    },
+    {
+      "code": "LV",
+      "count": 2,
+      "country_code": "LV",
+      "country_name": "Latvia",
+      "flag": "🇱🇻",
+      "subscription": "/sub/country/LV"
+    },
+    {
+      "code": "MD",
+      "count": 2,
+      "country_code": "MD",
+      "country_name": "Moldova",
+      "flag": "🇲🇩",
+      "subscription": "/sub/country/MD"
+    },
+    {
+      "code": "MY",
+      "count": 1,
+      "country_code": "MY",
+      "country_name": "Malaysia",
+      "flag": "🇲🇾",
+      "subscription": "/sub/country/MY"
+    },
+    {
+      "code": "NL",
+      "count": 233,
+      "country_code": "NL",
+      "country_name": "Netherlands",
+      "flag": "🇳🇱",
+      "subscription": "/sub/country/NL"
+    },
+    {
+      "code": "NO",
+      "count": 4,
+      "country_code": "NO",
+      "country_name": "Norway",
+      "flag": "🇳🇴",
+      "subscription": "/sub/country/NO"
+    },
+    {
+      "code": "PL",
+      "count": 14,
+      "country_code": "PL",
+      "country_name": "Poland",
+      "flag": "🇵🇱",
+      "subscription": "/sub/country/PL"
+    },
+    {
+      "code": "RO",
+      "count": 1,
+      "country_code": "RO",
+      "country_name": "Romania",
+      "flag": "🇷🇴",
+      "subscription": "/sub/country/RO"
+    },
+    {
+      "code": "RS",
+      "count": 42,
+      "country_code": "RS",
+      "country_name": "Serbia",
+      "flag": "🇷🇸",
+      "subscription": "/sub/country/RS"
+    },
+    {
+      "code": "SE",
+      "count": 29,
+      "country_code": "SE",
+      "country_name": "Sweden",
+      "flag": "🇸🇪",
+      "subscription": "/sub/country/SE"
+    },
+    {
+      "code": "SG",
+      "count": 9,
+      "country_code": "SG",
+      "country_name": "Singapore",
+      "flag": "🇸🇬",
+      "subscription": "/sub/country/SG"
+    },
+    {
+      "code": "TR",
+      "count": 1,
+      "country_code": "TR",
+      "country_name": "Türkiye",
+      "flag": "🇹🇷",
+      "subscription": "/sub/country/TR"
+    },
+    {
+      "code": "TW",
+      "count": 1,
+      "country_code": "TW",
+      "country_name": "Taiwan",
+      "flag": "🇹🇼",
+      "subscription": "/sub/country/TW"
+    },
+    {
+      "code": "US",
+      "count": 64,
+      "country_code": "US",
+      "country_name": "United States",
+      "flag": "🇺🇸",
+      "subscription": "/sub/country/US"
+    }
+  ],
+  "country_count": 32,
+  "mode": "production",
+  "publishable": 1249,
+  "resolved": 1095,
+  "schema": 1,
+  "source": "canonical-projection-v2",
+  "special_routes": {
+    "conflict": "/sub/country/CONFLICT",
+    "unknown": "/sub/country/UNKNOWN"
+  },
+  "unknown": 154
+}

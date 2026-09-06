@@ -1,0 +1,7 @@
+{
+  "component": "panel",
+  "port": 4040,
+  "project": "config-location",
+  "source_actions": "fixed",
+  "status": "ok"
+}

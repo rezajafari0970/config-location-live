@@ -1,0 +1,4 @@
+name=publish_status
+url=http://127.0.0.1:4040/api/publish/status
+http_code=200
+body_bytes=275

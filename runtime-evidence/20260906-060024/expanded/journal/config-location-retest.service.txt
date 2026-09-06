@@ -1,0 +1,31 @@
+2026-09-04T22:36:34+00:00 serverprojects.ptr.network systemd[1]: Started config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-04T22:41:08+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-retest.service - Config Location Permanent Health Retest Scheduler...
+2026-09-04T22:41:09+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Deactivated successfully.
+2026-09-04T22:41:09+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-04T22:41:09+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Consumed 4.808s CPU time over 4min 35.181s wall clock time, 35.3M memory peak.
+2026-09-04T22:41:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-04T22:46:00+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-retest.service - Config Location Permanent Health Retest Scheduler...
+2026-09-04T22:46:30+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: State 'stop-sigterm' timed out. Killing.
+2026-09-04T22:46:30+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Killing process 1936226 (python) with signal SIGKILL.
+2026-09-04T22:46:30+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Killing process 1940104 (xray) with signal SIGKILL.
+2026-09-04T22:46:30+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Killing process 1940297 (curl) with signal SIGKILL.
+2026-09-04T22:46:30+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Main process exited, code=killed, status=9/KILL
+2026-09-04T22:46:30+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Failed with result 'timeout'.
+2026-09-04T22:46:30+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-04T22:46:30+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Consumed 6.520s CPU time over 5min 20.973s wall clock time, 36.3M memory peak.
+2026-09-04T22:46:30+00:00 serverprojects.ptr.network systemd[1]: Started config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-04T22:48:55+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-retest.service - Config Location Permanent Health Retest Scheduler...
+2026-09-04T22:48:57+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Deactivated successfully.
+2026-09-04T22:48:57+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-04T22:48:57+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Consumed 15.911s CPU time over 2min 26.993s wall clock time, 61M memory peak.
+2026-09-04T22:48:57+00:00 serverprojects.ptr.network systemd[1]: Started config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-04T22:51:34+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-retest.service - Config Location Permanent Health Retest Scheduler...
+2026-09-04T22:51:34+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Deactivated successfully.
+2026-09-04T22:51:34+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-04T22:51:34+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Consumed 7.738s CPU time over 2min 36.989s wall clock time, 62.9M memory peak.
+2026-09-04T22:51:34+00:00 serverprojects.ptr.network systemd[1]: Started config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-05T06:55:10+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-retest.service - Config Location Permanent Health Retest Scheduler...
+2026-09-05T06:55:11+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Deactivated successfully.
+2026-09-05T06:55:11+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-retest.service - Config Location Permanent Health Retest Scheduler.
+2026-09-05T06:55:11+00:00 serverprojects.ptr.network systemd[1]: config-location-retest.service: Consumed 46min 42.969s CPU time over 8h 3min 36.960s wall clock time, 168.9M memory peak.
+2026-09-05T06:55:11+00:00 serverprojects.ptr.network systemd[1]: Started config-location-retest.service - Config Location Permanent Health Retest Scheduler.

@@ -1,0 +1,22 @@
+UNIT=config-location-code-scanner.timer
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-code-scanner.timer
+Description=Config Location Code Scanner Timer
+ActiveState=active
+SubState=waiting
+UnitFileState=enabled
+
+===== CAT =====
+# /etc/systemd/system/config-location-code-scanner.timer
+[Unit]
+Description=Config Location Code Scanner Timer
+
+[Timer]
+OnBootSec=20
+OnUnitActiveSec=30
+
+[Install]
+WantedBy=timers.target

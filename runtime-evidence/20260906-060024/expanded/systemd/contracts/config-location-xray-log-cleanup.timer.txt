@@ -1,0 +1,23 @@
+UNIT=config-location-xray-log-cleanup.timer
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-xray-log-cleanup.timer
+Description=Daily cleanup of Config Location Xray forensic logs
+ActiveState=active
+SubState=waiting
+UnitFileState=enabled
+
+===== CAT =====
+# /etc/systemd/system/config-location-xray-log-cleanup.timer
+[Unit]
+Description=Daily cleanup of Config Location Xray forensic logs
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=20m
+
+[Install]
+WantedBy=timers.target

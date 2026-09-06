@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Cache-Control: no-store
+X-Country-Source: canonical-projection-v2
+X-Country-Catalog-Contract: healthy
+X-Country-Count: 32
+Content-Type: application/json; charset=utf-8
+Content-Length: 5045
+Date: Sun, 06 Sep 2026 06:01:26 GMT
+Server: Python/3.14 aiohttp/3.14.3
+

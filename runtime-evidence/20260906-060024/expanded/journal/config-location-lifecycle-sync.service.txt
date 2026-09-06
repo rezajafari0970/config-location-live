@@ -1,0 +1,203 @@
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824093]:     fd = _os.open(file, flags, 0o600)
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824093]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-lifecycle/.sync-status.json.0a2bsmca.tmp'
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Failed with result 'exit-code'.
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Scheduled restart job, restart counter is at 3.
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]: Traceback (most recent call last):
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:   File "/opt/config-location/app/health/lifecycle/sync_daemon.py", line 448, in <module>
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     main()
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ~~~~^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:   File "/opt/config-location/app/health/lifecycle/sync_daemon.py", line 248, in main
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     write_status(
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         state="starting",
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ...<4 lines>...
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:             sleep_seconds,
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:             ^^^^^^^^^^^^^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     )
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:   File "/opt/config-location/app/health/lifecycle/sync_daemon.py", line 207, in write_status
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     atomic_json_if_changed(
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ~~~~~~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         STATUS_PATH,
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         ^^^^^^^^^^^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         base,
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         ^^^^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     )
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 236, in atomic_json_if_changed
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     atomic_json_write(
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         path,
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         ^^^^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         value,
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         ^^^^^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         mode=mode,
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         ^^^^^^^^^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     )
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 149, in atomic_json_write
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     fd, tmp = tempfile.mkstemp(
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:               ~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         dir=str(
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         ^^^^^^^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ...<5 lines>...
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         suffix=".tmp",
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:         ^^^^^^^^^^^^^^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     )
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     ^
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:   File "/usr/lib/python3.14/tempfile.py", line 354, in mkstemp
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     return _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:   File "/usr/lib/python3.14/tempfile.py", line 255, in _mkstemp_inner
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]:     fd = _os.open(file, flags, 0o600)
+2026-09-04T03:29:12+00:00 serverprojects.ptr.network python[2824193]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-lifecycle/.sync-status.json.12ayc12n.tmp'
+2026-09-04T03:29:13+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:13+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Failed with result 'exit-code'.
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Scheduled restart job immediately on client request, restart counter is at 4.
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]: Traceback (most recent call last):
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:   File "/opt/config-location/app/health/lifecycle/sync_daemon.py", line 448, in <module>
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     main()
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ~~~~^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:   File "/opt/config-location/app/health/lifecycle/sync_daemon.py", line 248, in main
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     write_status(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         state="starting",
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ...<4 lines>...
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:             sleep_seconds,
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:             ^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:   File "/opt/config-location/app/health/lifecycle/sync_daemon.py", line 207, in write_status
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     atomic_json_if_changed(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ~~~~~~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         STATUS_PATH,
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         ^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         base,
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         ^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 236, in atomic_json_if_changed
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     atomic_json_write(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         path,
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         ^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         value,
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         ^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         mode=mode,
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         ^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 149, in atomic_json_write
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     fd, tmp = tempfile.mkstemp(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:               ~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         dir=str(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         ^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ...<5 lines>...
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         suffix=".tmp",
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:         ^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:   File "/usr/lib/python3.14/tempfile.py", line 354, in mkstemp
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     return _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:   File "/usr/lib/python3.14/tempfile.py", line 255, in _mkstemp_inner
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]:     fd = _os.open(file, flags, 0o600)
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824209]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-lifecycle/.sync-status.json.1alzjbeu.tmp'
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Failed with result 'exit-code'.
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]: Traceback (most recent call last):
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:   File "/opt/config-location/app/health/lifecycle/sync_daemon.py", line 448, in <module>
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     main()
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ~~~~^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:   File "/opt/config-location/app/health/lifecycle/sync_daemon.py", line 248, in main
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     write_status(
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         state="starting",
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ...<4 lines>...
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:             sleep_seconds,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:             ^^^^^^^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     )
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:   File "/opt/config-location/app/health/lifecycle/sync_daemon.py", line 207, in write_status
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     atomic_json_if_changed(
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ~~~~~~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         STATUS_PATH,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         ^^^^^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         base,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         ^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     )
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 236, in atomic_json_if_changed
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     atomic_json_write(
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         path,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         ^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         value,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         ^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         mode=mode,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         ^^^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     )
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 149, in atomic_json_write
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     fd, tmp = tempfile.mkstemp(
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:               ~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         dir=str(
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         ^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ...<5 lines>...
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         suffix=".tmp",
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:         ^^^^^^^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     )
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     ^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:   File "/usr/lib/python3.14/tempfile.py", line 354, in mkstemp
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     return _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:   File "/usr/lib/python3.14/tempfile.py", line 255, in _mkstemp_inner
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]:     fd = _os.open(file, flags, 0o600)
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824215]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-lifecycle/.sync-status.json.8l7iwmdu.tmp'
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Failed with result 'exit-code'.
+2026-09-04T03:29:18+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Scheduled restart job, restart counter is at 1.
+2026-09-04T03:29:18+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T04:15:49+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-sync.service - Config Location Lifecycle Sync...
+2026-09-04T04:15:49+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Deactivated successfully.
+2026-09-04T04:15:49+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T04:15:49+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Consumed 43.026s CPU time over 46min 34.480s wall clock time, 57.9M memory peak.
+2026-09-04T04:58:49+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-sync.service - Config Location Lifecycle Sync...
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Deactivated successfully.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+-- Boot bcb9d6788c764b2c95278c64275a70fb --
+2026-09-04T05:05:52+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T05:06:18+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-sync.service - Config Location Lifecycle Sync...
+2026-09-04T05:06:19+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Deactivated successfully.
+2026-09-04T05:06:19+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T05:06:19+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Consumed 851ms CPU time over 26.431s wall clock time, 69.3M memory peak.
+2026-09-04T05:06:19+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T05:07:58+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-sync.service - Config Location Lifecycle Sync...
+2026-09-04T05:07:58+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Deactivated successfully.
+2026-09-04T05:07:58+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T05:07:58+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Consumed 8.082s CPU time over 1min 39.852s wall clock time, 45.6M memory peak.
+-- Boot f3fa9875c78246aa9993fbfc333329cf --
+2026-09-04T05:09:38+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-sync.service - Config Location Lifecycle Sync...
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Deactivated successfully.
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Consumed 5.191s CPU time over 47.768s wall clock time, 67.3M memory peak.
+-- Boot f264121c6bed46ce850fe07638a9aee5 --
+2026-09-04T05:11:34+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T05:33:18+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-sync.service - Config Location Lifecycle Sync...
+2026-09-04T05:33:18+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Deactivated successfully.
+2026-09-04T05:33:18+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-sync.service - Config Location Lifecycle Sync.
+2026-09-04T05:33:18+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-sync.service: Consumed 2min 1.180s CPU time over 21min 43.457s wall clock time, 72.1M memory peak.
+2026-09-04T05:33:18+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-sync.service - Config Location Lifecycle Sync.

@@ -1,0 +1,40 @@
+UNIT=config-location-live-reconcile.service
+ACTIVE=inactive
+ENABLED=static
+
+===== SHOW =====
+Id=config-location-live-reconcile.service
+Description=Config Location GitHub Mirror Reconcile
+ActiveState=inactive
+SubState=dead
+UnitFileState=static
+Type=oneshot
+Restart=no
+MainPID=0
+NRestarts=0
+ExecStart={ path=/usr/local/sbin/config-location-live-sync ; argv[]=/usr/local/sbin/config-location-live-sync ; ignore_errors=no ; start_time=[Sun 2026-09-06 05:59:53 UTC] ; stop_time=[Sun 2026-09-06 06:00:04 UTC] ; pid=107845 ; code=exited ; status=0 }
+WorkingDirectory=
+User=root
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=no
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=no
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-live-reconcile.service
+[Unit]
+Description=Config Location GitHub Mirror Reconcile
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/local/sbin/config-location-live-sync
+
+Nice=10

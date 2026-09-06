@@ -1,0 +1,36 @@
+UNIT=config-location-code-scanner.service
+ACTIVE=inactive
+ENABLED=static
+
+===== SHOW =====
+Id=config-location-code-scanner.service
+Description=Config Location Code Scanner
+ActiveState=inactive
+SubState=dead
+UnitFileState=static
+Type=oneshot
+Restart=no
+MainPID=0
+NRestarts=0
+ExecStart={ path=/usr/local/bin/config-location-code-scanner ; argv[]=/usr/local/bin/config-location-code-scanner ; ignore_errors=no ; start_time=[Sun 2026-09-06 06:00:01 UTC] ; stop_time=[Sun 2026-09-06 06:00:02 UTC] ; pid=109369 ; code=exited ; status=0 }
+WorkingDirectory=
+User=
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=no
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=no
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-code-scanner.service
+[Unit]
+Description=Config Location Code Scanner
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/config-location-code-scanner

@@ -1,0 +1,37 @@
+UNIT=config-location-dev-cleanup.service
+ACTIVE=inactive
+ENABLED=static
+
+===== SHOW =====
+Id=config-location-dev-cleanup.service
+Description=Config Location Development Cleanup
+ActiveState=inactive
+SubState=dead
+UnitFileState=static
+Type=oneshot
+Restart=no
+MainPID=0
+NRestarts=0
+ExecStart={ path=/usr/local/sbin/config-location-dev-cleanup ; argv[]=/usr/local/sbin/config-location-dev-cleanup ; ignore_errors=no ; start_time=[Sun 2026-09-06 05:34:14 UTC] ; stop_time=[Sun 2026-09-06 05:34:18 UTC] ; pid=44990 ; code=exited ; status=0 }
+WorkingDirectory=
+User=root
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=no
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=no
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-dev-cleanup.service
+[Unit]
+Description=Config Location Development Cleanup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/config-location-dev-cleanup
+User=root

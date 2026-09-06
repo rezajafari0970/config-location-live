@@ -1,0 +1,12 @@
+NEXT                            LEFT LAST                              PASSED UNIT                                           ACTIVATES
+Sun 2026-09-06 06:01:31 UTC       6s Sun 2026-09-06 06:01:01 UTC      23s ago config-location-code-scanner.timer             config-location-code-scanner.service
+Sun 2026-09-06 06:01:53 UTC      27s Sun 2026-09-06 06:00:53 UTC      32s ago config-location-integrity-guard.timer          config-location-integrity-guard.service
+Sun 2026-09-06 06:01:53 UTC      27s Sun 2026-09-06 06:00:53 UTC      32s ago config-location-country-publish-contract.timer config-location-country-publish-contract.service
+Sun 2026-09-06 06:01:53 UTC      27s Sun 2026-09-06 06:00:53 UTC      32s ago config-location-live-reconcile.timer           config-location-live-reconcile.service
+Sun 2026-09-06 06:34:14 UTC    32min Sun 2026-09-06 05:34:14 UTC    27min ago config-location-dev-cleanup.timer              config-location-dev-cleanup.service
+Sun 2026-09-06 11:21:30 UTC 5h 20min Sun 2026-09-06 05:21:30 UTC    39min ago config-location-health-history-gc.timer        config-location-health-history-gc.service
+Sun 2026-09-06 11:26:28 UTC 5h 25min Sun 2026-09-06 05:26:28 UTC    34min ago config-location-lock-gc.timer                  config-location-lock-gc.service
+Mon 2026-09-07 00:00:00 UTC      17h -                                      - config-location-git-gc.timer                   config-location-git-gc.service
+Mon 2026-09-07 00:09:16 UTC      18h Sun 2026-09-06 00:11:36 UTC 5h 49min ago config-location-xray-log-cleanup.timer         config-location-xray-log-cleanup.service
+
+9 timers listed.

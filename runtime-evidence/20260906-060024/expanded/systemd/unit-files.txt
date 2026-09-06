@@ -1,0 +1,37 @@
+UNIT FILE                                                STATE     PRESET
+config-location-dev-script-sync.path                     enabled   enabled
+config-location-canary-readiness.service                 enabled   enabled
+config-location-code-scanner.service                     static    -
+config-location-country-event-consumer.service           enabled   enabled
+config-location-country-publish-contract.service         disabled  enabled
+config-location-country-worker.service                   enabled   enabled
+config-location-dev-cleanup.service                      static    -
+config-location-dev-context-watcher.service              enabled   enabled
+config-location-dev-script-sync.service                  static    -
+config-location-devlog-collector.service                 disabled  enabled
+config-location-fetcher.service                          enabled   enabled
+config-location-git-gc.service                           static    -
+config-location-health-adaptive.service                  enabled   enabled
+config-location-health-history-gc.service                disabled  enabled
+config-location-integrity-guard.service                  disabled  enabled
+config-location-lifecycle-sync.service                   enabled   enabled
+config-location-lifecycle-watchdog.service               enabled   enabled
+config-location-live-reconcile.service                   static    -
+config-location-live-watch.service                       enabled   enabled
+config-location-lock-gc.service                          static    -
+config-location-panel.service                            enabled   enabled
+config-location-removal-wait.service                     enabled   enabled
+config-location-retest.service                           enabled   enabled
+config-location-runtime-evidence-20260906-060024.service transient -
+config-location-xray-log-cleanup.service                 static    -
+config-location-code-scanner.timer                       enabled   enabled
+config-location-country-publish-contract.timer           enabled   enabled
+config-location-dev-cleanup.timer                        enabled   enabled
+config-location-git-gc.timer                             enabled   enabled
+config-location-health-history-gc.timer                  enabled   enabled
+config-location-integrity-guard.timer                    enabled   enabled
+config-location-live-reconcile.timer                     enabled   enabled
+config-location-lock-gc.timer                            enabled   enabled
+config-location-xray-log-cleanup.timer                   enabled   enabled
+
+34 unit files listed.

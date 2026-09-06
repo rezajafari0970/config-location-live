@@ -1,0 +1,42 @@
+UNIT=config-location-dev-context-watcher.service
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-dev-context-watcher.service
+Description=Config Location Dev Context Watcher
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+Type=simple
+Restart=always
+MainPID=917
+NRestarts=0
+ExecStart={ path=/usr/local/bin/dev-context-watch ; argv[]=/usr/local/bin/dev-context-watch ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=
+User=
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=no
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=no
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-dev-context-watcher.service
+[Unit]
+Description=Config Location Dev Context Watcher
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/dev-context-watch
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+===== SERVICE USERS =====
+config-location-panel.service user=configloc group=configloc
+config-location-fetcher.service user=configloc group=configloc
+config-location-country-worker.service user=root group=default
+config-location-country-event-consumer.service user=root group=default
+
+===== PANEL USER READABILITY =====
+READ=YES user=configloc path=/var/lib/config-location
+READ=NO user=configloc path=/var/lib/config-location/health-results
+READ=NO user=configloc path=/var/lib/config-location/health-results/latest
+READ=YES user=configloc path=/var/lib/config-location/country
+READ=YES user=configloc path=/var/lib/config-location/country/country-identity

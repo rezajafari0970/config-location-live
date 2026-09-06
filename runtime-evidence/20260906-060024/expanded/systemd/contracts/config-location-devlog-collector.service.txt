@@ -1,0 +1,42 @@
+UNIT=config-location-devlog-collector.service
+ACTIVE=inactive
+ENABLED=disabled
+
+===== SHOW =====
+Id=config-location-devlog-collector.service
+Description=Config Location DevLog Live Collector
+ActiveState=inactive
+SubState=dead
+UnitFileState=disabled
+Type=simple
+Restart=always
+MainPID=0
+NRestarts=0
+ExecStart={ path=/usr/local/bin/config-location-devlog-collector ; argv[]=/usr/local/bin/config-location-devlog-collector ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=
+User=
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=no
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=no
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-devlog-collector.service
+[Unit]
+Description=Config Location DevLog Live Collector
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/config-location-devlog-collector
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

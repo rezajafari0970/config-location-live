@@ -1,0 +1,203 @@
+2026-09-04T03:28:54+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Failed with result 'exit-code'.
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Scheduled restart job, restart counter is at 22.
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]: Traceback (most recent call last):
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:   File "/opt/config-location/app/health/lifecycle/stale_watchdog.py", line 660, in <module>
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     main()
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     ~~~~^^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:   File "/opt/config-location/app/health/lifecycle/stale_watchdog.py", line 628, in main
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     atomic_json_if_changed(
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     ~~~~~~~~~~~~~~~~~~~~~~^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         WATCHDOG_STATUS_PATH,
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         ^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         payload,
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         ^^^^^^^^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     )
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     ^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 236, in atomic_json_if_changed
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     atomic_json_write(
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     ~~~~~~~~~~~~~~~~~^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         path,
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         ^^^^^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         value,
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         ^^^^^^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         mode=mode,
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         ^^^^^^^^^^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     )
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     ^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 149, in atomic_json_write
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     fd, tmp = tempfile.mkstemp(
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:               ~~~~~~~~~~~~~~~~^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         dir=str(
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         ^^^^^^^^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     ...<5 lines>...
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         suffix=".tmp",
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:         ^^^^^^^^^^^^^^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     )
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     ^
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:   File "/usr/lib/python3.14/tempfile.py", line 354, in mkstemp
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     return _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:   File "/usr/lib/python3.14/tempfile.py", line 255, in _mkstemp_inner
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]:     fd = _os.open(file, flags, 0o600)
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network python[2824042]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-lifecycle/.watchdog-status.json.kos0hi_7.tmp'
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:28:59+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Failed with result 'exit-code'.
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Scheduled restart job, restart counter is at 23.
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]: Traceback (most recent call last):
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:   File "/opt/config-location/app/health/lifecycle/stale_watchdog.py", line 660, in <module>
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     main()
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     ~~~~^^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:   File "/opt/config-location/app/health/lifecycle/stale_watchdog.py", line 628, in main
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     atomic_json_if_changed(
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     ~~~~~~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         WATCHDOG_STATUS_PATH,
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         ^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         payload,
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         ^^^^^^^^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     )
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     ^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 236, in atomic_json_if_changed
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     atomic_json_write(
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     ~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         path,
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         ^^^^^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         value,
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         ^^^^^^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         mode=mode,
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         ^^^^^^^^^^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     )
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     ^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 149, in atomic_json_write
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     fd, tmp = tempfile.mkstemp(
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:               ~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         dir=str(
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         ^^^^^^^^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     ...<5 lines>...
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         suffix=".tmp",
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:         ^^^^^^^^^^^^^^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     )
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     ^
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:   File "/usr/lib/python3.14/tempfile.py", line 354, in mkstemp
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     return _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:   File "/usr/lib/python3.14/tempfile.py", line 255, in _mkstemp_inner
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]:     fd = _os.open(file, flags, 0o600)
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network python[2824068]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-lifecycle/.watchdog-status.json.e6u2buhq.tmp'
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:04+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Failed with result 'exit-code'.
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Scheduled restart job, restart counter is at 24.
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]: Traceback (most recent call last):
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:   File "/opt/config-location/app/health/lifecycle/stale_watchdog.py", line 660, in <module>
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     main()
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     ~~~~^^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:   File "/opt/config-location/app/health/lifecycle/stale_watchdog.py", line 628, in main
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     atomic_json_if_changed(
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     ~~~~~~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         WATCHDOG_STATUS_PATH,
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         ^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         payload,
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         ^^^^^^^^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     )
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     ^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 236, in atomic_json_if_changed
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     atomic_json_write(
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     ~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         path,
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         ^^^^^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         value,
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         ^^^^^^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         mode=mode,
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         ^^^^^^^^^^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     )
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     ^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 149, in atomic_json_write
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     fd, tmp = tempfile.mkstemp(
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:               ~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         dir=str(
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         ^^^^^^^^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     ...<5 lines>...
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         suffix=".tmp",
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:         ^^^^^^^^^^^^^^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     )
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     ^
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:   File "/usr/lib/python3.14/tempfile.py", line 354, in mkstemp
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     return _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:   File "/usr/lib/python3.14/tempfile.py", line 255, in _mkstemp_inner
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]:     fd = _os.open(file, flags, 0o600)
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network python[2824094]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-lifecycle/.watchdog-status.json.5oezxb3i.tmp'
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:09+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Failed with result 'exit-code'.
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Scheduled restart job, restart counter is at 25.
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]: Traceback (most recent call last):
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:   File "/opt/config-location/app/health/lifecycle/stale_watchdog.py", line 660, in <module>
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     main()
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     ~~~~^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:   File "/opt/config-location/app/health/lifecycle/stale_watchdog.py", line 628, in main
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     atomic_json_if_changed(
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     ~~~~~~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         WATCHDOG_STATUS_PATH,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         ^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         payload,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         ^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     )
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     ^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 236, in atomic_json_if_changed
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     atomic_json_write(
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     ~~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         path,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         ^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         value,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         ^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         mode=mode,
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         ^^^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     )
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     ^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:   File "/opt/config-location/app/health/lifecycle/write_control.py", line 149, in atomic_json_write
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     fd, tmp = tempfile.mkstemp(
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:               ~~~~~~~~~~~~~~~~^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         dir=str(
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         ^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     ...<5 lines>...
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         suffix=".tmp",
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:         ^^^^^^^^^^^^^^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     )
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     ^
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:   File "/usr/lib/python3.14/tempfile.py", line 354, in mkstemp
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     return _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:   File "/usr/lib/python3.14/tempfile.py", line 255, in _mkstemp_inner
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]:     fd = _os.open(file, flags, 0o600)
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network python[2824210]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-lifecycle/.watchdog-status.json.xl3gxi99.tmp'
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:15+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Failed with result 'exit-code'.
+2026-09-04T03:29:20+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Scheduled restart job, restart counter is at 26.
+2026-09-04T03:29:20+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+2026-09-04T04:15:49+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog...
+2026-09-04T04:15:50+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Deactivated successfully.
+2026-09-04T04:15:50+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+2026-09-04T04:15:50+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Consumed 41.766s CPU time over 46min 35.239s wall clock time, 16.5M memory peak.
+2026-09-04T04:58:49+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+2026-09-04T04:58:51+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog...
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Deactivated successfully.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+-- Boot bcb9d6788c764b2c95278c64275a70fb --
+2026-09-04T05:05:52+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+2026-09-04T05:07:58+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog...
+2026-09-04T05:07:58+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Deactivated successfully.
+2026-09-04T05:07:58+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+-- Boot f3fa9875c78246aa9993fbfc333329cf --
+2026-09-04T05:09:38+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+2026-09-04T05:10:25+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog...
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: config-location-lifecycle-watchdog.service: Deactivated successfully.
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.
+-- Boot f264121c6bed46ce850fe07638a9aee5 --
+2026-09-04T05:11:34+00:00 serverprojects.ptr.network systemd[1]: Started config-location-lifecycle-watchdog.service - Config Location Lifecycle Stale State Watchdog.

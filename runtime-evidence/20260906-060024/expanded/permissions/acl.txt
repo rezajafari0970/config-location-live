@@ -1,0 +1,42 @@
+
+===== /opt/config-location =====
+# file: /opt/config-location
+# owner: configloc
+# group: configloc
+user::rwx
+group::r-x
+other::r-x
+
+
+===== /var/lib/config-location =====
+# file: /var/lib/config-location
+# owner: configloc
+# group: configloc
+user::rwx
+user:configloc:--x
+group::r-x
+mask::r-x
+other::---
+
+
+===== /var/lib/config-location/health-results =====
+# file: /var/lib/config-location/health-results
+# owner: root
+# group: root
+user::rwx
+user:configloc:r-x	#effective:---
+group::---
+mask::---
+other::---
+
+
+===== /var/lib/config-location/country =====
+# file: /var/lib/config-location/country
+# owner: root
+# group: root
+user::rwx
+user:configloc:r-x
+group::r-x
+mask::r-x
+other::r-x
+

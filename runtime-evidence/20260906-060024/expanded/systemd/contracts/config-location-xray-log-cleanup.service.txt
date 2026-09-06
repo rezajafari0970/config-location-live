@@ -1,0 +1,42 @@
+UNIT=config-location-xray-log-cleanup.service
+ACTIVE=inactive
+ENABLED=static
+
+===== SHOW =====
+Id=config-location-xray-log-cleanup.service
+Description=Config Location Xray forensic log cleanup
+ActiveState=inactive
+SubState=dead
+UnitFileState=static
+Type=oneshot
+Restart=no
+MainPID=0
+NRestarts=0
+ExecStart={ path=/usr/local/sbin/config-location-xray-log-cleanup ; argv[]=/usr/local/sbin/config-location-xray-log-cleanup ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=
+User=
+Group=
+ReadWritePaths=/var/log/config-location/xray
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=no
+ProtectSystem=strict
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-xray-log-cleanup.service
+[Unit]
+Description=Config Location Xray forensic log cleanup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/config-location-xray-log-cleanup
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/log/config-location/xray

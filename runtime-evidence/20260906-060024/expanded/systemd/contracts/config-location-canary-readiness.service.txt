@@ -1,0 +1,62 @@
+UNIT=config-location-canary-readiness.service
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-canary-readiness.service
+Description=Config Location Permanent Canary Readiness Controller
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+Type=simple
+Restart=always
+MainPID=1985043
+NRestarts=0
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.health.lifecycle.canary_readiness_controller ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=/opt/config-location
+User=root
+Group=root
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-canary-readiness.service
+[Unit]
+Description=Config Location Permanent Canary Readiness Controller
+After=network-online.target config-location-removal-wait.service
+Wants=network-online.target
+Requires=config-location-removal-wait.service
+
+[Service]
+Type=simple
+
+User=root
+Group=root
+
+WorkingDirectory=/opt/config-location
+
+Environment=PYTHONPATH=/opt/config-location
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/opt/config-location/venv/bin/python -m app.health.lifecycle.canary_readiness_controller
+
+Restart=always
+RestartSec=5
+
+TimeoutStopSec=20
+KillSignal=SIGTERM
+
+Nice=9
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

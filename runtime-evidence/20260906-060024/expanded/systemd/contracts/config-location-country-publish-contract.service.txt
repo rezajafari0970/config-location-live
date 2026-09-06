@@ -1,0 +1,48 @@
+UNIT=config-location-country-publish-contract.service
+ACTIVE=inactive
+ENABLED=disabled
+
+===== SHOW =====
+Id=config-location-country-publish-contract.service
+Description=Config Location Country Publish Permanent Contract Guard
+ActiveState=inactive
+SubState=dead
+UnitFileState=disabled
+Type=oneshot
+Restart=no
+MainPID=0
+NRestarts=0
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.country.publish_contract_guard ; ignore_errors=no ; start_time=[Sun 2026-09-06 05:59:53 UTC] ; stop_time=[Sun 2026-09-06 05:59:57 UTC] ; pid=107844 ; code=exited ; status=0 }
+WorkingDirectory=/opt/config-location
+User=root
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-country-publish-contract.service
+[Unit]
+Description=Config Location Country Publish Permanent Contract Guard
+After=network-online.target config-location-panel.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/config-location
+Environment=PYTHONPATH=/opt/config-location
+ExecStart=/opt/config-location/venv/bin/python -m app.country.publish_contract_guard
+TimeoutStartSec=45
+Nice=10
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

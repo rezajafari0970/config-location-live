@@ -1,0 +1,178 @@
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]: Exception in thread country-event-0:
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]: Exception in thread country-event-1:
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]: Traceback (most recent call last):
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:   File "/usr/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     self._context.run(self.run)
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:   File "/usr/lib/python3.14/threading.py", line 1024, in run
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     self._target(*self._args, **self._kwargs)
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:   File "/opt/config-location/app/country/event_consumer.py", line 245, in worker_loop
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     item=lease()
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]: TypeError: lease() missing 1 required positional argument: 'owner'
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]: Traceback (most recent call last):
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:   File "/usr/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     self._context.run(self.run)
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:   File "/usr/lib/python3.14/threading.py", line 1024, in run
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     self._target(*self._args, **self._kwargs)
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:   File "/opt/config-location/app/country/event_consumer.py", line 245, in worker_loop
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]:     item=lease()
+2026-09-01T12:49:33+00:00 serverprojects.ptr.network country-event-consumer[1731812]: TypeError: lease() missing 1 required positional argument: 'owner'
+2026-09-01T12:53:12+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T12:53:12+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T12:53:12+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T12:56:17+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T13:01:48+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T13:01:49+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T13:01:49+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T13:01:49+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 3min 46.396s CPU time over 5min 31.684s wall clock time, 49.8M memory peak.
+2026-09-01T13:01:49+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T13:07:23+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T13:07:23+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T13:07:23+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T13:07:23+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 4min 20.894s CPU time over 5min 33.804s wall clock time, 49.5M memory peak.
+2026-09-01T13:30:41+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T13:34:44+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T13:34:45+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T13:34:45+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T13:34:45+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 3min 46.526s CPU time over 4min 3.577s wall clock time, 62.9M memory peak.
+2026-09-01T13:34:45+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:20:11+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T16:20:12+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T16:20:12+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:20:12+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 2h 14min 18.231s CPU time over 2h 45min 26.373s wall clock time, 128.2M memory peak.
+2026-09-01T16:20:12+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:27:44+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T16:27:45+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T16:27:45+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:27:45+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 5min 11.940s CPU time over 7min 32.943s wall clock time, 39.9M memory peak.
+2026-09-01T16:27:45+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:32:15+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T16:32:15+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T16:32:15+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:32:15+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 3min 8.281s CPU time over 4min 30.437s wall clock time, 41M memory peak.
+2026-09-01T16:32:16+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:48:10+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T16:48:11+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T16:48:11+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:48:11+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 12min 3.739s CPU time over 15min 54.925s wall clock time, 45.7M memory peak.
+2026-09-01T16:48:12+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:53:08+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T16:53:08+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T16:53:08+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T16:53:08+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 3min 22.198s CPU time over 4min 55.678s wall clock time, 32.7M memory peak.
+2026-09-01T16:53:29+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:02:25+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T17:02:25+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T17:02:25+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:02:25+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 6min 17.442s CPU time over 8min 55.395s wall clock time, 35.1M memory peak.
+2026-09-01T17:04:05+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:11:58+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T17:11:59+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T17:11:59+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:11:59+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 5min 26.993s CPU time over 7min 53.810s wall clock time, 39.1M memory peak.
+2026-09-01T17:14:11+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:16:26+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T17:16:26+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T17:16:26+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:16:26+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 1min 21.426s CPU time over 2min 14.817s wall clock time, 34.8M memory peak.
+2026-09-01T17:16:34+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:21:15+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T17:21:15+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T17:21:15+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:21:15+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 3min 5.787s CPU time over 4min 40.697s wall clock time, 29.9M memory peak.
+2026-09-01T17:21:17+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:30:46+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T17:30:46+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T17:30:46+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:30:46+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 6min 42.924s CPU time over 9min 29.172s wall clock time, 33M memory peak.
+2026-09-01T17:30:46+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:38:55+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T17:38:56+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T17:38:56+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:38:56+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 5min 38.679s CPU time over 8min 9.602s wall clock time, 34M memory peak.
+2026-09-01T17:38:56+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:41:05+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T17:41:05+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T17:41:05+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:41:05+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 46.328s CPU time over 2min 9.393s wall clock time, 31.2M memory peak.
+2026-09-01T17:41:05+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:44:24+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T17:44:25+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T17:44:25+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:44:25+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 2min 3.305s CPU time over 3min 19.621s wall clock time, 30M memory peak.
+2026-09-01T17:44:25+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:52:19+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T17:52:20+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T17:52:20+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T17:52:20+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 3min 14.312s CPU time over 7min 55.539s wall clock time, 33M memory peak.
+2026-09-01T17:52:20+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T18:02:18+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-01T18:02:18+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-01T18:02:18+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-01T18:02:18+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 5min 8.071s CPU time over 9min 58.042s wall clock time, 40.5M memory peak.
+2026-09-01T18:02:18+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-02T05:05:31+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-02T05:05:31+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-02T05:05:31+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-02T05:05:31+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 5h 32min 24.856s CPU time over 11h 3min 12.755s wall clock time, 257.6M memory peak.
+2026-09-02T05:05:31+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-02T05:14:49+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-02T05:14:50+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-02T05:14:50+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-02T05:14:50+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 4min 51.725s CPU time over 9min 18.576s wall clock time, 51.5M memory peak.
+2026-09-02T05:14:51+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-02T05:18:50+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-02T05:18:50+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-02T05:18:50+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-02T05:18:50+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 1min 50.374s CPU time over 3min 59.254s wall clock time, 40.6M memory peak.
+2026-09-02T05:18:50+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-02T05:23:29+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-02T05:23:29+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-02T05:23:29+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-02T05:23:29+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 2min 1.719s CPU time over 4min 39.086s wall clock time, 39.5M memory peak.
+2026-09-02T05:23:29+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-04T04:15:36+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-04T04:15:39+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-04T04:15:39+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-04T04:15:39+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 1d 8h 20min 35.141s CPU time over 1d 22h 52min 9.688s wall clock time, 514.2M memory peak.
+2026-09-04T04:55:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-04T04:58:51+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-04T04:58:53+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-04T04:58:53+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-04T04:58:53+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 3min 28.151s CPU time over 3min 43.286s wall clock time, 512.7M memory peak.
+-- Boot bcb9d6788c764b2c95278c64275a70fb --
+2026-09-04T05:05:52+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-04T05:07:58+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-04T05:08:01+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-04T05:08:01+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-04T05:08:01+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 1min 45.022s CPU time over 2min 8.604s wall clock time, 514.2M memory peak.
+-- Boot f3fa9875c78246aa9993fbfc333329cf --
+2026-09-04T05:09:38+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-04T05:10:25+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 39.273s CPU time over 48.086s wall clock time, 514M memory peak.
+-- Boot f264121c6bed46ce850fe07638a9aee5 --
+2026-09-04T05:11:34+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-05T22:29:08+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-05T22:30:38+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: State 'stop-sigterm' timed out. Killing.
+2026-09-05T22:30:38+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Killing process 1061 (python) with signal SIGKILL.
+2026-09-05T22:30:38+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Main process exited, code=killed, status=9/KILL
+2026-09-05T22:30:38+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Failed with result 'timeout'.
+2026-09-05T22:30:38+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-05T22:30:38+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 15h 47min 7.080s CPU time over 1d 17h 19min 4.025s wall clock time, 596.8M memory peak.
+2026-09-05T22:30:38+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-05T22:41:37+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-05T22:42:19+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-05T22:42:19+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-05T22:42:19+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 6min 51.338s CPU time over 11min 41.137s wall clock time, 559.7M memory peak.
+2026-09-05T22:42:19+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-06T00:31:44+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-country-event-consumer.service - Config Location Country Event Consumer...
+2026-09-06T00:32:05+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Deactivated successfully.
+2026-09-06T00:32:05+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-country-event-consumer.service - Config Location Country Event Consumer.
+2026-09-06T00:32:05+00:00 serverprojects.ptr.network systemd[1]: config-location-country-event-consumer.service: Consumed 43min 16.984s CPU time over 1h 49min 45.749s wall clock time, 571.9M memory peak.
+2026-09-06T00:32:05+00:00 serverprojects.ptr.network systemd[1]: Started config-location-country-event-consumer.service - Config Location Country Event Consumer.

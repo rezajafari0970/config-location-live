@@ -1,0 +1,25 @@
+UNIT=config-location-health-history-gc.timer
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-health-history-gc.timer
+Description=Run Config Location Health History GC
+ActiveState=active
+SubState=waiting
+UnitFileState=enabled
+
+===== CAT =====
+# /etc/systemd/system/config-location-health-history-gc.timer
+[Unit]
+Description=Run Config Location Health History GC
+
+[Timer]
+OnBootSec=10m
+OnUnitActiveSec=6h
+AccuracySec=5m
+Persistent=true
+Unit=config-location-health-history-gc.service
+
+[Install]
+WantedBy=timers.target

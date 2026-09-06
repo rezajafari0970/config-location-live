@@ -1,0 +1,49 @@
+UNIT=config-location-lock-gc.service
+ACTIVE=inactive
+ENABLED=static
+
+===== SHOW =====
+Id=config-location-lock-gc.service
+Description=Config Location Real Schema Lock Garbage Collection
+ActiveState=inactive
+SubState=dead
+UnitFileState=static
+Type=oneshot
+Restart=no
+MainPID=0
+NRestarts=0
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.integrity.lock_gc ; ignore_errors=no ; start_time=[Sun 2026-09-06 05:26:28 UTC] ; stop_time=[Sun 2026-09-06 05:26:32 UTC] ; pid=24558 ; code=exited ; status=0 }
+WorkingDirectory=/opt/config-location
+User=root
+Group=root
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-lock-gc.service
+[Unit]
+Description=Config Location Real Schema Lock Garbage Collection
+After=local-fs.target
+ConditionPathIsDirectory=/var/lib/config-location/locks
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/opt/config-location
+
+Environment=PYTHONPATH=/opt/config-location
+Environment=CONFIG_LOCATION_LOCK_GC_MIN_AGE_HOURS=24
+Environment=CONFIG_LOCATION_LOCK_GC_MAX=5000
+
+ExecStart=/opt/config-location/venv/bin/python -m app.integrity.lock_gc
+
+NoNewPrivileges=true
+PrivateTmp=true

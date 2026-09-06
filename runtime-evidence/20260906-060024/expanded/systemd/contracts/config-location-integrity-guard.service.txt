@@ -1,0 +1,48 @@
+UNIT=config-location-integrity-guard.service
+ACTIVE=inactive
+ENABLED=disabled
+
+===== SHOW =====
+Id=config-location-integrity-guard.service
+Description=Config Location Referential Integrity Guard
+ActiveState=inactive
+SubState=dead
+UnitFileState=disabled
+Type=oneshot
+Restart=no
+MainPID=0
+NRestarts=0
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.integrity.referential_guard ; ignore_errors=no ; start_time=[Sun 2026-09-06 05:59:53 UTC] ; stop_time=[Sun 2026-09-06 05:59:53 UTC] ; pid=107843 ; code=exited ; status=0 }
+WorkingDirectory=/opt/config-location
+User=root
+Group=root
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-integrity-guard.service
+[Unit]
+Description=Config Location Referential Integrity Guard
+After=local-fs.target
+ConditionPathIsDirectory=/var/lib/config-location
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/opt/config-location
+Environment=PYTHONPATH=/opt/config-location
+ExecStart=/opt/config-location/venv/bin/python -m app.integrity.referential_guard
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

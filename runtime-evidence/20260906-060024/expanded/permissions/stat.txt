@@ -1,0 +1,8 @@
+drwxr-xr-x mode=755 owner=configloc group=configloc uid=999 gid=983 path=/opt/config-location
+drwxr-xr-x mode=755 owner=configloc group=configloc uid=999 gid=983 path=/opt/config-location/app
+drwxrwx--- mode=770 owner=root group=configloc uid=0 gid=983 path=/etc/config-location
+drwxr-x--- mode=750 owner=configloc group=configloc uid=999 gid=983 path=/var/lib/config-location
+drwx------ mode=700 owner=root group=root uid=0 gid=0 path=/var/lib/config-location/health-results
+drwxr-xr-x mode=755 owner=root group=root uid=0 gid=0 path=/var/lib/config-location/country
+drwxr-x--- mode=750 owner=configloc group=configloc uid=999 gid=983 path=/var/lib/config-location/configs
+drwxr-x--- mode=750 owner=configloc group=configloc uid=999 gid=983 path=/var/log/config-location

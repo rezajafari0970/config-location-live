@@ -1,0 +1,60 @@
+UNIT=config-location-retest.service
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-retest.service
+Description=Config Location Permanent Health Retest Scheduler
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+Type=simple
+Restart=always
+MainPID=2482219
+NRestarts=0
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.health.retest.worker ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=/opt/config-location
+User=root
+Group=root
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-retest.service
+[Unit]
+Description=Config Location Permanent Health Retest Scheduler
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+
+WorkingDirectory=/opt/config-location
+
+Environment=PYTHONPATH=/opt/config-location
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/opt/config-location/venv/bin/python -m app.health.retest.worker
+
+Restart=always
+RestartSec=5
+
+TimeoutStopSec=30
+KillSignal=SIGTERM
+
+Nice=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

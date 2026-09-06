@@ -1,0 +1,203 @@
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     return future.result()
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:            ~~~~~~~~~~~~~^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/opt/config-location/app/fetcher/engine.py", line 1713, in main
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     write_status(
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         status="starting",
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         ^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ...<6 lines>...
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         error=None,
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         ^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     )
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/opt/config-location/app/fetcher/engine.py", line 200, in write_status
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     tmp.write_text(
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ~~~~~~~~~~~~~~^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         json.dumps(
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         ^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ...<4 lines>...
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         encoding="utf-8",
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     )
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/state/fetcher-status.tmp'
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Failed with result 'exit-code'.
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Scheduled restart job, restart counter is at 33.
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]: Traceback (most recent call last):
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/opt/config-location/app/fetcher/engine.py", line 1770, in <module>
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     asyncio.run(
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ~~~~~~~~~~~^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         main()
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     )
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/asyncio/runners.py", line 204, in run
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     return runner.run(main)
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:            ~~~~~~~~~~^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     return self._loop.run_until_complete(task)
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     return future.result()
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:            ~~~~~~~~~~~~~^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/opt/config-location/app/fetcher/engine.py", line 1713, in main
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     write_status(
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         status="starting",
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ...<6 lines>...
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         error=None,
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     )
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/opt/config-location/app/fetcher/engine.py", line 200, in write_status
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     tmp.write_text(
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ~~~~~~~~~~~~~~^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         json.dumps(
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ...<4 lines>...
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         encoding="utf-8",
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     )
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/state/fetcher-status.tmp'
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Failed with result 'exit-code'.
+2026-09-04T03:29:13+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Scheduled restart job, restart counter is at 34.
+2026-09-04T03:29:13+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]: Traceback (most recent call last):
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/opt/config-location/app/fetcher/engine.py", line 1770, in <module>
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     asyncio.run(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         main()
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/asyncio/runners.py", line 204, in run
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     return runner.run(main)
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:            ~~~~~~~~~~^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     return self._loop.run_until_complete(task)
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     return future.result()
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:            ~~~~~~~~~~~~~^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/opt/config-location/app/fetcher/engine.py", line 1713, in main
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     write_status(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         status="starting",
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ...<6 lines>...
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         error=None,
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/opt/config-location/app/fetcher/engine.py", line 200, in write_status
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     tmp.write_text(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ~~~~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         json.dumps(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ...<4 lines>...
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         encoding="utf-8",
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/state/fetcher-status.tmp'
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Failed with result 'exit-code'.
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Scheduled restart job, restart counter is at 35.
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]: Traceback (most recent call last):
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/opt/config-location/app/fetcher/engine.py", line 1770, in <module>
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     asyncio.run(
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ~~~~~~~~~~~^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         main()
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     )
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/asyncio/runners.py", line 204, in run
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     return runner.run(main)
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:            ~~~~~~~~~~^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     return self._loop.run_until_complete(task)
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     return future.result()
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:            ~~~~~~~~~~~~~^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/opt/config-location/app/fetcher/engine.py", line 1713, in main
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     write_status(
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         status="starting",
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ...<6 lines>...
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         error=None,
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     )
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/opt/config-location/app/fetcher/engine.py", line 200, in write_status
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     tmp.write_text(
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ~~~~~~~~~~~~~~^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         json.dumps(
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ...<4 lines>...
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         encoding="utf-8",
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     )
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/state/fetcher-status.tmp'
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Failed with result 'exit-code'.
+2026-09-04T03:29:20+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Scheduled restart job, restart counter is at 36.
+2026-09-04T03:29:20+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T04:15:39+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-04T04:15:48+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-04T04:15:48+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T04:15:48+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 16min 10.088s CPU time over 46min 30.997s wall clock time, 118.5M memory peak.
+2026-09-04T04:55:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 1min 16.721s CPU time over 3min 42.773s wall clock time, 73M memory peak.
+-- Boot bcb9d6788c764b2c95278c64275a70fb --
+2026-09-04T05:05:52+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T05:09:28+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-04T05:09:29+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-04T05:09:29+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T05:09:29+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 1min 6.508s CPU time over 3min 37.204s wall clock time, 101.4M memory peak.
+-- Boot f3fa9875c78246aa9993fbfc333329cf --
+2026-09-04T05:09:38+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+-- Boot f264121c6bed46ce850fe07638a9aee5 --
+2026-09-04T05:11:34+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.

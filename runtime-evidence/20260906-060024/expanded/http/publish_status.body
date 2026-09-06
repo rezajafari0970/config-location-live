@@ -1,0 +1,15 @@
+{
+  "allowed_states": [
+    "healthy",
+    "recovered"
+  ],
+  "corrupt_configs": 0,
+  "missing_policy_record": 1346,
+  "mode": "production-output-filter",
+  "policy_available": true,
+  "policy_tracked": 6250,
+  "production_delete": false,
+  "publishable": 1249,
+  "suppressed": 6347,
+  "total_configs": 7596
+}

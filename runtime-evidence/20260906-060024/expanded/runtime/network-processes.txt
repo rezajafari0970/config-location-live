@@ -1,0 +1,21 @@
+===== LISTEN SOCKETS =====
+tcp   LISTEN 0      128          0.0.0.0:4040      0.0.0.0:*    users:(("python",pid=3679246,fd=6))                                                                                                 
+
+===== PROJECT PROCESSES =====
+   1063       1 configl+ configl+  175790 41.4  0.9 /opt/config-location/venv/bin/python -m app.fetcher.engine
+   1083       1 root     root      175790  0.7  0.3 /opt/config-location/venv/bin/python -m app.health.lifecycle.stale_watchdog
+  82269       1 root     root      174487  9.5  1.3 /opt/config-location/venv/bin/python -m app.health.lifecycle.sync_daemon
+ 109748  106983 root     root          60  0.0  0.0 systemd-run --unit=config-location-runtime-evidence-20260906-060024 --collect --property=Type=oneshot /bin/bash /root/run-runtime-evidence-and-push.sh
+ 109797  109770 root     root          60  1.0  0.0 bash /root/make-config-location-runtime-evidence.sh
+ 113929  109797 root     root           0  0.0  0.0 bash /root/make-config-location-runtime-evidence.sh
+ 113930  109797 root     root           0  0.0  0.0 bash /root/make-config-location-runtime-evidence.sh
+ 113935  113929 root     root           0  0.0  0.0 grep -E [c]onfig-location|/opt/config-location|[x]ray
+1973229       1 root     root      110631  0.4  2.2 /opt/config-location/venv/bin/python -m app.health.lifecycle.removal_wait_worker
+1985043       1 root     root      110038 14.8  0.4 /opt/config-location/venv/bin/python -m app.health.lifecycle.canary_readiness_controller
+2482219       1 root     root       83174  2.3  0.5 /opt/config-location/venv/bin/python -m app.health.retest.worker
+3419238       1 root     root       19780  1.4  0.4 /opt/config-location/venv/bin/python -m app.country.daemon
+3419608       1 root     root       19759 22.1  7.1 /opt/config-location/venv/bin/python -m app.country.event_consumer
+3501394       1 root     root       17422  0.0  0.0 bash /usr/local/sbin/config-location-live-watch
+3501409 3501394 root     root       17422  0.0  0.0 inotifywait -m -r -q -e close_write,moved_to,moved_from,create,delete --format %w%f --exclude (/venv/|/.venv/|/__pycache__/|\.pyc$|\.log$|/\.cache/) /opt/config-location
+3501414 3501394 root     root       17422  0.0  0.0 bash /usr/local/sbin/config-location-live-watch
+3679246       1 configl+ configl+   14442  4.5  1.3 /opt/config-location/venv/bin/python -m app.panel.server

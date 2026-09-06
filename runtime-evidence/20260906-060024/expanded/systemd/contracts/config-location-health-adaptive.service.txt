@@ -1,0 +1,77 @@
+UNIT=config-location-health-adaptive.service
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-health-adaptive.service
+Description=Config Location Always-On Adaptive Health Controller
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+Type=simple
+Restart=always
+MainPID=1077
+NRestarts=0
+ExecStart={ path=/opt/config-location/bin/health-adaptive-daemon ; argv[]=/opt/config-location/bin/health-adaptive-daemon ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=
+User=
+Group=
+ReadWritePaths=/var/lib/config-location /var/log/config-location /run /etc/config-location
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=full
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-health-adaptive.service
+[Unit]
+Description=Config Location Always-On Adaptive Health Controller
+After=network-online.target config-location-fetcher.service config-location-panel.service
+Wants=network-online.target
+Requires=config-location-fetcher.service
+
+[Service]
+Type=simple
+
+ExecStart=/opt/config-location/bin/health-adaptive-daemon
+
+Restart=always
+RestartSec=3
+
+TimeoutStopSec=90
+KillMode=control-group
+
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=6
+
+CPUAccounting=true
+MemoryAccounting=true
+TasksAccounting=true
+
+LimitNOFILE=65535
+TasksMax=4096
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+ProtectSystem=full
+ProtectHome=true
+
+ReadWritePaths=/var/lib/config-location
+ReadWritePaths=/var/log/config-location
+ReadWritePaths=/run
+ReadWritePaths=/etc/config-location
+
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/opt/config-location
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

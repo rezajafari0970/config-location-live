@@ -1,0 +1,200 @@
+2026-09-06T01:52:02+00:00 serverprojects.ptr.network python[3642667]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:03+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:03+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 142.
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]: Traceback (most recent call last):
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:     from app.country.catalog import (
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:         build_country_catalog,
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:     )
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 143.
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]: Traceback (most recent call last):
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:     from app.country.catalog import (
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:         build_country_catalog,
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:     )
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:12+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 144.
+2026-09-06T01:52:12+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]: Traceback (most recent call last):
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:     from app.country.catalog import (
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:         build_country_catalog,
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:     )
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 145.
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]: Traceback (most recent call last):
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:     from app.country.catalog import (
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:         build_country_catalog,
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:     )
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 146.
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]: Traceback (most recent call last):
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:     from app.country.catalog import (
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:         build_country_catalog,
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:     )
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 147.
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]: Traceback (most recent call last):
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:     from app.country.catalog import (
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:         build_country_catalog,
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:     )
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 148.
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]: Traceback (most recent call last):
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:     from app.country.catalog import (
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:         build_country_catalog,
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:     )
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 149.
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]: Traceback (most recent call last):
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:     from app.country.catalog import (
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:         build_country_catalog,
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:     )
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:33+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 150.
+2026-09-06T01:52:33+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]: Traceback (most recent call last):
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:     from app.country.catalog import (
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:         build_country_catalog,
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:     )
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 151.
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]: Traceback (most recent call last):
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:     from app.country.catalog import (
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:         build_country_catalog,
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:     )
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 152.
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]: Traceback (most recent call last):
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:     from app.country.catalog import (
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:         build_country_catalog,
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:     )
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:43+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 153.
+2026-09-06T01:52:43+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]: Traceback (most recent call last):
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:     from app.country.catalog import (
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:         build_country_catalog,
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:     )
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 154.
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]: Traceback (most recent call last):
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:     from app.country.catalog import (
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:         build_country_catalog,
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:     )
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:50+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 155.
+2026-09-06T01:52:50+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network python[3647288]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network python[3647288]: (Press CTRL+C to quit)
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network python[3647394]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network python[3647394]: (Press CTRL+C to quit)
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Consumed 33.034s CPU time over 7min 51.519s wall clock time, 107.2M memory peak.
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.

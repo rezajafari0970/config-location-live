@@ -1,0 +1,203 @@
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     atomic_json(
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     ~~~~~~~~~~~^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:         STATUS_FILE,
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:         ^^^^^^^^^^^^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:         status,
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:         ^^^^^^^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     )
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     ^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 76, in atomic_json
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     tmp.write_text(
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     ~~~~~~~~~~~~~~^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:         json.dumps(
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:         ^^^^^^^^^^^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     ...<6 lines>...
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:         encoding="utf-8",
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     )
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     ^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network health-adaptive-daemon[2709333]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-adaptive/.daemon-status.json.tmp'
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T02:47:07+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Failed with result 'exit-code'.
+2026-09-04T02:47:10+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T02:47:10+00:00 serverprojects.ptr.network systemd[1]: Started config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]: Traceback (most recent call last):
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 560, in main
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     atomic_json(
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ~~~~~~~~~~~^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         EFFECTIVE_FILE,
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         ^^^^^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         runtime,
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         ^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     )
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 76, in atomic_json
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     tmp.write_text(
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ~~~~~~~~~~~~~~^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         json.dumps(
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         ^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ...<6 lines>...
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         encoding="utf-8",
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     )
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-adaptive/.effective-runtime.json.tmp'
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]: During handling of the above exception, another exception occurred:
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]: Traceback (most recent call last):
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 832, in <module>
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     main()
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ~~~~^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 783, in main
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     atomic_json(
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ~~~~~~~~~~~^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         STATUS_FILE,
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         ^^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         status,
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         ^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     )
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 76, in atomic_json
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     tmp.write_text(
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ~~~~~~~~~~~~~~^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         json.dumps(
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         ^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ...<6 lines>...
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         encoding="utf-8",
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     )
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     ^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network health-adaptive-daemon[2709372]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-adaptive/.daemon-status.json.tmp'
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T02:47:11+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Failed with result 'exit-code'.
+2026-09-04T02:47:14+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T02:47:14+00:00 serverprojects.ptr.network systemd[1]: Started config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]: Traceback (most recent call last):
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 560, in main
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     atomic_json(
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ~~~~~~~~~~~^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         EFFECTIVE_FILE,
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         ^^^^^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         runtime,
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         ^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     )
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 76, in atomic_json
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     tmp.write_text(
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ~~~~~~~~~~~~~~^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         json.dumps(
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         ^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ...<6 lines>...
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         encoding="utf-8",
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     )
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-adaptive/.effective-runtime.json.tmp'
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]: During handling of the above exception, another exception occurred:
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]: Traceback (most recent call last):
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 832, in <module>
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     main()
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ~~~~^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 783, in main
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     atomic_json(
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ~~~~~~~~~~~^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         STATUS_FILE,
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         ^^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         status,
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         ^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     )
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "/opt/config-location/app/health/core/always_on_adaptive.py", line 76, in atomic_json
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     tmp.write_text(
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ~~~~~~~~~~~~~~^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         json.dumps(
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         ^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ...<6 lines>...
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         encoding="utf-8",
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     )
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     ^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network health-adaptive-daemon[2709490]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/health-adaptive/.daemon-status.json.tmp'
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T02:47:15+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Failed with result 'exit-code'.
+2026-09-04T02:47:18+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T02:47:18+00:00 serverprojects.ptr.network systemd[1]: Dependency failed for config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T02:47:18+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Job config-location-health-adaptive.service/start failed with result 'dependency'.
+2026-09-04T04:55:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller...
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Deactivated successfully.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Consumed 3.412s CPU time over 3min 42.490s wall clock time, 30M memory peak.
+-- Boot bcb9d6788c764b2c95278c64275a70fb --
+2026-09-04T05:05:52+00:00 serverprojects.ptr.network systemd[1]: Started config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T05:07:58+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller...
+2026-09-04T05:09:28+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: State 'stop-sigterm' timed out. Killing.
+2026-09-04T05:09:28+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Killing process 1149 (python3) with signal SIGKILL.
+2026-09-04T05:09:28+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Main process exited, code=killed, status=9/KILL
+2026-09-04T05:09:28+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Failed with result 'timeout'.
+2026-09-04T05:09:28+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T05:09:28+00:00 serverprojects.ptr.network systemd[1]: config-location-health-adaptive.service: Consumed 29.424s CPU time over 3min 36.240s wall clock time, 340.2M memory peak.
+-- Boot f3fa9875c78246aa9993fbfc333329cf --
+2026-09-04T05:09:38+00:00 serverprojects.ptr.network systemd[1]: Started config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T05:10:26+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller...
+-- Boot f264121c6bed46ce850fe07638a9aee5 --
+2026-09-04T05:11:34+00:00 serverprojects.ptr.network systemd[1]: Started config-location-health-adaptive.service - Config Location Always-On Adaptive Health Controller.
+2026-09-04T22:36:33+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-04T22:36:33+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-04T23:17:32+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-04T23:17:33+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-04T23:27:25+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-04T23:27:26+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-05T06:52:50+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-05T06:52:52+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-05T06:52:53+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-05T14:55:50+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-05T14:55:55+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-05T22:12:31+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T00:51:25+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T00:51:25+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T00:51:25+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:06:08+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:11:20+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:15:32+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:15:33+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:18:08+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:18:08+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:18:12+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:34:13+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:34:13+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:34:14+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored
+2026-09-06T01:34:14+00:00 serverprojects.ptr.network systemd[1]: /etc/systemd/system/config-location-health-adaptive.service:22: Support for option CPUAccounting= has been removed and it is ignored

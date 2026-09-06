@@ -1,0 +1,38 @@
+UNIT=config-location-git-gc.service
+ACTIVE=inactive
+ENABLED=static
+
+===== SHOW =====
+Id=config-location-git-gc.service
+Description=Config Location Mirror Git Maintenance
+ActiveState=inactive
+SubState=dead
+UnitFileState=static
+Type=oneshot
+Restart=no
+MainPID=0
+NRestarts=0
+ExecStart={ path=/usr/bin/git ; argv[]=/usr/bin/git gc --auto ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=/root/config-location-live-git
+User=root
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=no
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=no
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-git-gc.service
+[Unit]
+Description=Config Location Mirror Git Maintenance
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/root/config-location-live-git
+ExecStart=/usr/bin/git gc --auto

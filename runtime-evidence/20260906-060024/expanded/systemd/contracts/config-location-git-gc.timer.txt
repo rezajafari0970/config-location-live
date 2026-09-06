@@ -1,0 +1,22 @@
+UNIT=config-location-git-gc.timer
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-git-gc.timer
+Description=Weekly Config Location Git Maintenance
+ActiveState=active
+SubState=waiting
+UnitFileState=enabled
+
+===== CAT =====
+# /etc/systemd/system/config-location-git-gc.timer
+[Unit]
+Description=Weekly Config Location Git Maintenance
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

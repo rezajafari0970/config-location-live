@@ -1,0 +1,73 @@
+UNIT=config-location-fetcher.service
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-fetcher.service
+Description=Config Location Fetch Engine
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+Type=simple
+Restart=always
+MainPID=1063
+NRestarts=0
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.fetcher.engine ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=/opt/config-location
+User=configloc
+Group=configloc
+ReadWritePaths=/var/lib/config-location /var/log/config-location
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=full
+NoNewPrivileges=yes
+RuntimeDirectory=config-location
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-fetcher.service
+[Unit]
+Description=Config Location Fetch Engine
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+User=configloc
+Group=configloc
+
+WorkingDirectory=/opt/config-location
+
+ExecStart=/opt/config-location/venv/bin/python -m app.fetcher.engine
+
+Restart=always
+RestartSec=3
+
+TimeoutStartSec=30
+TimeoutStopSec=20
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+
+ReadWritePaths=/var/lib/config-location
+ReadWritePaths=/var/log/config-location
+
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/config-location-fetcher.service.d/99-final.conf
+[Service]
+ExecStart=
+ExecStart=/opt/config-location/venv/bin/python -m app.fetcher.engine
+WorkingDirectory=/opt/config-location
+
+RuntimeDirectory=config-location
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=yes

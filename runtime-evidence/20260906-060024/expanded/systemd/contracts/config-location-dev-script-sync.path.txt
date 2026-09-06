@@ -1,0 +1,22 @@
+UNIT=config-location-dev-script-sync.path
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-dev-script-sync.path
+Description=Watch Config Location Development Scripts
+ActiveState=active
+SubState=waiting
+UnitFileState=enabled
+
+===== CAT =====
+# /etc/systemd/system/config-location-dev-script-sync.path
+[Unit]
+Description=Watch Config Location Development Scripts
+
+[Path]
+PathChanged=/root/dev-scripts/in-progress
+PathModified=/root/dev-scripts/in-progress
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,39 @@
+UNIT=config-location-runtime-evidence-20260906-060024.service
+ACTIVE=activating
+ENABLED=transient
+
+===== SHOW =====
+Id=config-location-runtime-evidence-20260906-060024.service
+Description=[systemd-run] /bin/bash /root/run-runtime-evidence-and-push.sh
+ActiveState=activating
+SubState=start
+UnitFileState=transient
+Type=oneshot
+Restart=no
+MainPID=109770
+NRestarts=0
+ExecStart={ path=/bin/bash ; argv[]=/bin/bash /root/run-runtime-evidence-and-push.sh ; ignore_errors=no ; start_time=[Sun 2026-09-06 06:00:24 UTC] ; stop_time=[n/a] ; pid=109770 ; code=(null) ; status=0/0 }
+WorkingDirectory=
+User=
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=no
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=no
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /run/systemd/transient/config-location-runtime-evidence-20260906-060024.service
+# This is a transient unit file, created programmatically via the systemd API. Do not edit.
+[Unit]
+Description=[systemd-run] /bin/bash /root/run-runtime-evidence-and-push.sh
+CollectMode=inactive-or-failed
+
+[Service]
+Type=oneshot
+ExecStart=
+ExecStart="/bin/bash" "/root/run-runtime-evidence-and-push.sh"

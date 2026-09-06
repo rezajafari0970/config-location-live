@@ -1,0 +1,24 @@
+UNIT=config-location-dev-cleanup.timer
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-dev-cleanup.timer
+Description=Config Location Development Cleanup Timer
+ActiveState=active
+SubState=waiting
+UnitFileState=enabled
+
+===== CAT =====
+# /etc/systemd/system/config-location-dev-cleanup.timer
+[Unit]
+Description=Config Location Development Cleanup Timer
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=1h
+AccuracySec=2min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

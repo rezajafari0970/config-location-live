@@ -1,0 +1,106 @@
+{
+  "binary": "/usr/local/bin/xray",
+  "engine": "xray",
+  "generated_at": "2026-08-31T15:07:11.217162+00:00",
+  "policy": {
+    "capability_driven": true,
+    "fallback_engine": false,
+    "legacy_http_h2_requires_pass": false,
+    "legacy_kcp_requires_pass": false,
+    "sing_box": false,
+    "ssh_runtime": false
+  },
+  "protocols": {
+    "shadowsocks": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:10.864786 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-bb0eyln7/config.json Format:json}\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "socks": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "trojan": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:10.644616 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-9ty82s5m/config.json Format:json}\n2026/08/31 15:07:10.707361 [Warning] common/errors: The feature Trojan (with no Flow, etc.) is deprecated, not recommended for using and might be removed. Please migrate to VLESS with Flow & Seed as soon as possible.\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "vless": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "vmess": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "wireguard": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:10.969469 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-io65dtjn/config.json Format:json}\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    }
+  },
+  "schema_version": 2,
+  "security": {
+    "none": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.139206 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-suh519vp/config.json Format:json}\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "reality": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.188272 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-ark2846w/config.json Format:json}\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "tls": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.164644 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-uid80pj_/config.json Format:json}\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "vision_reality": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.211787 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-hbhptjoj/config.json Format:json}\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    }
+  },
+  "stage": "FIX20.7C",
+  "transports": {
+    "grpc": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.028044 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-42wz92s7/config.json Format:json}\n2026/08/31 15:07:11.029867 [Warning] common/errors: The feature gRPC transport (with unnecessary costs, etc.) is deprecated, not recommended for using and might be removed. Please migrate to XHTTP stream-up H2 as soon as possible.\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "http_h2_legacy": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.120967 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-asgxo4ks/config.json Format:json}\nFailed to start: main: failed to load config files: [/tmp/xray-capability-asgxo4ks/config.json] > infra/conf: failed to build outbound config with tag proxy > infra/conf: failed to build stream settings for outbound detour > common/errors: The feature HTTP transport (without header padding, etc.) has been removed and migrated to XHTTP stream-one H2 & H3. Please update your config(s) according to release note and documentation.\n",
+      "returncode": 23,
+      "supported": false
+    },
+    "httpupgrade": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.060258 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-ri7k7ohi/config.json Format:json}\n2026/08/31 15:07:11.061716 [Warning] common/errors: The feature HTTPUpgrade transport (with ALPN http/1.1, etc.) is deprecated, not recommended for using and might be removed. Please migrate to XHTTP H2 & H3 as soon as possible.\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "kcp_legacy": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.104989 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-52ryn_5x/config.json Format:json}\nFailed to start: main: failed to load config files: [/tmp/xray-capability-52ryn_5x/config.json] > infra/conf: failed to build outbound config with tag proxy > infra/conf: failed to build stream settings for outbound detour > infra/conf: Failed to build mKCP config. > common/errors: The feature mkcp header & seed has been removed and migrated to finalmask/udp header-* & mkcp-original & mkcp-aes128gcm. Please update your config(s) according to release note and documentation.\n",
+      "returncode": 23,
+      "supported": false
+    },
+    "tcp": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "ws": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.003349 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-50nroqnd/config.json Format:json}\n2026/08/31 15:07:11.004739 [Warning] common/errors: The feature WebSocket transport (with ALPN http/1.1, etc.) is deprecated, not recommended for using and might be removed. Please migrate to XHTTP H2 & H3 as soon as possible.\n2026/08/31 15:07:11.005442 [Warning] common/errors: This feature \"host\" in \"headers\" is deprecated, will be removed soon and being migrated to independent \"host\". Please update your config(s) according to release note and documentation before removal.\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    },
+    "xhttp": {
+      "message": "Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)\nA unified platform for anti-censorship.\n2026/08/31 15:07:11.084641 [Info] infra/conf/serial: Reading config: &{Name:/tmp/xray-capability-w9w0_9i0/config.json Format:json}\nConfiguration OK.\n",
+      "returncode": 0,
+      "supported": true
+    }
+  }
+}

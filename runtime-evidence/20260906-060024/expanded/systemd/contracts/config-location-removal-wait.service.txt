@@ -1,0 +1,61 @@
+UNIT=config-location-removal-wait.service
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-removal-wait.service
+Description=Config Location Permanent Safety Removal Waiting Worker
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+Type=simple
+Restart=always
+MainPID=1973229
+NRestarts=0
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.health.lifecycle.removal_wait_worker ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=/opt/config-location
+User=root
+Group=root
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-removal-wait.service
+[Unit]
+Description=Config Location Permanent Safety Removal Waiting Worker
+After=network-online.target config-location-retest.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+User=root
+Group=root
+
+WorkingDirectory=/opt/config-location
+
+Environment=PYTHONPATH=/opt/config-location
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/opt/config-location/venv/bin/python -m app.health.lifecycle.removal_wait_worker
+
+Restart=always
+RestartSec=5
+
+TimeoutStopSec=20
+KillSignal=SIGTERM
+
+Nice=8
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

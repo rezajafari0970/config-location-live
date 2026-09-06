@@ -1,0 +1,24 @@
+UNIT=config-location-live-reconcile.timer
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-live-reconcile.timer
+Description=Config Location GitHub Mirror Reconcile Timer
+ActiveState=active
+SubState=waiting
+UnitFileState=enabled
+
+===== CAT =====
+# /etc/systemd/system/config-location-live-reconcile.timer
+[Unit]
+Description=Config Location GitHub Mirror Reconcile Timer
+
+[Timer]
+OnBootSec=20
+OnUnitActiveSec=60
+AccuracySec=2
+Persistent=true
+
+[Install]
+WantedBy=timers.target

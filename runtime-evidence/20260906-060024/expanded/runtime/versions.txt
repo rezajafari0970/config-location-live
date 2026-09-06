@@ -1,0 +1,33 @@
+===== OS =====
+PRETTY_NAME="Ubuntu 26.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="26.04"
+VERSION="26.04.1 LTS (Resolute Raccoon)"
+VERSION_CODENAME=resolute
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=resolute
+LOGO=ubuntu-logo
+
+===== KERNEL =====
+Linux serverprojects.ptr.network 7.0.0-30-generic #30-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 31 18:22:54 UTC 2026 x86_64 GNU/Linux
+
+===== PYTHON SYSTEM =====
+Python 3.14.4
+
+===== PYTHON PROJECT =====
+Python 3.14.4
+
+===== XRAY =====
+Xray 26.3.27 (Xray, Penetrates Everything.) d2758a0 (go1.26.1 linux/amd64)
+A unified platform for anti-censorship.
+
+===== NGINX =====
+nginx version: nginx/1.28.3 (Ubuntu)
+
+===== GIT =====
+git version 2.53.0

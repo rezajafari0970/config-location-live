@@ -1,0 +1,53 @@
+UNIT=config-location-health-history-gc.service
+ACTIVE=inactive
+ENABLED=disabled
+
+===== SHOW =====
+Id=config-location-health-history-gc.service
+Description=Config Location Health History Retention GC
+ActiveState=inactive
+SubState=dead
+UnitFileState=disabled
+Type=oneshot
+Restart=no
+MainPID=0
+NRestarts=0
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.integrity.health_history_gc ; ignore_errors=no ; start_time=[Sun 2026-09-06 05:21:30 UTC] ; stop_time=[Sun 2026-09-06 05:26:29 UTC] ; pid=10548 ; code=exited ; status=0 }
+WorkingDirectory=/opt/config-location
+User=root
+Group=root
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-health-history-gc.service
+[Unit]
+Description=Config Location Health History Retention GC
+After=local-fs.target
+ConditionPathIsDirectory=/var/lib/config-location/health-results/history
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/opt/config-location
+
+Environment=PYTHONPATH=/opt/config-location
+Environment=CONFIG_LOCATION_HISTORY_RETENTION_HOURS=72
+Environment=CONFIG_LOCATION_HISTORY_MIN_KEEP=20
+Environment=CONFIG_LOCATION_HISTORY_GC_MAX=10000
+
+ExecStart=/opt/config-location/venv/bin/python -m app.integrity.health_history_gc
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

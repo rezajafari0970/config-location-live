@@ -1,0 +1,72 @@
+UNIT=config-location-country-event-consumer.service
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-country-event-consumer.service
+Description=Config Location Country Event Consumer
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+Type=simple
+Restart=always
+MainPID=3419608
+NRestarts=0
+ExecStart={ path=/opt/config-location/bin/country-event-consumer ; argv[]=/opt/config-location/bin/country-event-consumer ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=/opt/config-location
+User=root
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=yes
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-country-event-consumer.service
+[Unit]
+Description=Config Location Country Event Consumer
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/config-location
+Environment=PYTHONPATH=/opt/config-location
+Environment=COUNTRY_EVENT_CONSUMER_MIN_WORKERS=2
+Environment=COUNTRY_EVENT_CONSUMER_MAX_WORKERS=12
+Environment=COUNTRY_EVENT_CONSUMER_CONTROL_SECONDS=15
+ExecStart=/opt/config-location/bin/country-event-consumer
+Restart=always
+RestartSec=2
+User=root
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/config-location-country-event-consumer.service.d/80-resource-hardening.conf
+[Service]
+
+# Consumer normally uses ~30 MB RAM.
+# These limits are deliberately generous and exist
+# to isolate runaway behavior, not throttle normal work.
+MemoryHigh=512M
+MemoryMax=768M
+
+# 4 CPU host. Allow up to 2.5 cores if necessary,
+# while preventing this service from consuming the
+# entire host during an abnormal condition.
+CPUQuota=250%
+
+# Current service uses fewer than 15 tasks.
+TasksMax=128
+
+# Keep restart/recovery behavior explicit.
+OOMPolicy=stop

@@ -1,0 +1,25 @@
+UNIT=config-location-lock-gc.timer
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-lock-gc.timer
+Description=Run Config Location Lock Garbage Collection
+ActiveState=active
+SubState=waiting
+UnitFileState=enabled
+
+===== CAT =====
+# /etc/systemd/system/config-location-lock-gc.timer
+[Unit]
+Description=Run Config Location Lock Garbage Collection
+
+[Timer]
+OnBootSec=15m
+OnUnitActiveSec=6h
+AccuracySec=5m
+Persistent=true
+Unit=config-location-lock-gc.service
+
+[Install]
+WantedBy=timers.target

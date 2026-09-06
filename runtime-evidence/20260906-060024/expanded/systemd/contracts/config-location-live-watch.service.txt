@@ -1,0 +1,46 @@
+UNIT=config-location-live-watch.service
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-live-watch.service
+Description=Config Location Real-Time GitHub Mirror
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+Type=simple
+Restart=always
+MainPID=3501394
+NRestarts=0
+ExecStart={ path=/usr/local/sbin/config-location-live-watch ; argv[]=/usr/local/sbin/config-location-live-watch ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=
+User=root
+Group=
+ReadWritePaths=
+ReadOnlyPaths=
+PrivateTmp=no
+ProtectHome=no
+ProtectSystem=no
+NoNewPrivileges=no
+RuntimeDirectory=
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-live-watch.service
+[Unit]
+Description=Config Location Real-Time GitHub Mirror
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/sbin/config-location-live-watch
+Restart=always
+RestartSec=2
+
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

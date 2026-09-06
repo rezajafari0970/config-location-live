@@ -1,0 +1,85 @@
+UNIT=config-location-panel.service
+ACTIVE=active
+ENABLED=enabled
+
+===== SHOW =====
+Id=config-location-panel.service
+Description=Config Location Management Panel
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+Type=simple
+Restart=always
+MainPID=3679246
+NRestarts=0
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.panel.server ; ignore_errors=no ; start_time=[Sun 2026-09-06 02:00:42 UTC] ; stop_time=[n/a] ; pid=3679246 ; code=(null) ; status=0/0 }
+EnvironmentFiles=/etc/config-location/panel.env (ignore_errors=no)
+WorkingDirectory=/opt/config-location
+User=configloc
+Group=configloc
+ReadWritePaths=/var/lib/config-location /var/log/config-location /run/config-location
+ReadOnlyPaths=
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=full
+NoNewPrivileges=yes
+RuntimeDirectory=config-location
+StateDirectory=
+LogsDirectory=
+
+===== CAT =====
+# /etc/systemd/system/config-location-panel.service
+[Unit]
+Description=Config Location Management Panel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+User=configloc
+Group=configloc
+
+WorkingDirectory=/opt/config-location
+
+EnvironmentFile=/etc/config-location/panel.env
+
+ExecStart=/opt/config-location/venv/bin/python -m app.panel.server
+
+Restart=always
+RestartSec=3
+
+TimeoutStartSec=30
+TimeoutStopSec=15
+
+KillSignal=SIGTERM
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+ProtectSystem=full
+ProtectHome=true
+
+ReadWritePaths=/var/lib/config-location
+ReadWritePaths=/var/log/config-location
+ReadWritePaths=/run/config-location
+
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+RestrictSUIDSGID=true
+
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/config-location-panel.service.d/99-final.conf
+[Service]
+ExecStart=
+ExecStart=/opt/config-location/venv/bin/python -m app.panel.server
+WorkingDirectory=/opt/config-location
+
+RuntimeDirectory=config-location
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=yes
