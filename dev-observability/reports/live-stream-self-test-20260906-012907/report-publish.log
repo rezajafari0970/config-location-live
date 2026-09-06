@@ -1,0 +1,25 @@
+[main f63a411] dev-evidence: 20 report files
+ 20 files changed, 275 insertions(+)
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/changed-files-stat.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/changed-files.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/checkpoint.log
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/full-diff.patch
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/git-after.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/git-before.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/git-status-after.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/git-status-before.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/live-run-id.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/live-sync.log
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/quick-check-exit-code.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/quick-check.log
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/report-publish.log
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/result.json
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/script-exit-code.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/script-output.log
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/services-after.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/services-before.txt
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/status-after.json
+ create mode 100644 dev-observability/reports/live-stream-self-test-20260906-012907/status-before.json
+To github.com:rezajafari0970/config-location-live.git
+   d4398a1..f63a411  main -> main
+REPORT_PUBLISH=PASS

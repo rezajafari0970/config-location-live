@@ -1,0 +1,484 @@
+diff --git a/dev-observability/live/phase6-pass0-country-catalog-discovery-20260906-013726/current.log b/dev-observability/live/phase6-pass0-country-catalog-discovery-20260906-013726/current.log
+new file mode 100644
+index 0000000..709209a
+--- /dev/null
++++ b/dev-observability/live/phase6-pass0-country-catalog-discovery-20260906-013726/current.log
+@@ -0,0 +1,426 @@
++================================================
++ PHASE 6 PASS 0
++ COUNTRY CATALOG / PANEL / PUBLIC API DISCOVERY
++================================================
++
++========== [1/9] CURRENT PROJECTION ==========
++PROJECTION_MODE= production
++RECORDS= 6364
++STATES= {'unknown': 3450, 'resolved': 2914}
++COUNTRY_COUNT= 52
++COUNTRIES=
++{
++  "AE": 3,
++  "AL": 3,
++  "AR": 1,
++  "AU": 126,
++  "BE": 1,
++  "BG": 23,
++  "BR": 2,
++  "BY": 1,
++  "CA": 25,
++  "CH": 2,
++  "CL": 2,
++  "CO": 3,
++  "CZ": 5,
++  "DE": 1045,
++  "DK": 2,
++  "EE": 6,
++  "EG": 1,
++  "ES": 23,
++  "FI": 47,
++  "FR": 63,
++  "GB": 393,
++  "GE": 1,
++  "GR": 5,
++  "GT": 2,
++  "HK": 18,
++  "IE": 1,
++  "IL": 3,
++  "IN": 9,
++  "IR": 1,
++  "IT": 8,
++  "JP": 17,
++  "KR": 3,
++  "KZ": 1,
++  "LT": 1,
++  "LV": 4,
++  "MD": 1,
++  "MX": 2,
++  "MY": 2,
++  "NL": 496,
++  "NO": 5,
++  "PL": 210,
++  "PT": 2,
++  "RO": 3,
++  "RS": 28,
++  "RU": 1,
++  "SA": 1,
++  "SE": 189,
++  "SG": 17,
++  "TR": 4,
++  "TW": 3,
++  "US": 96,
++  "ZA": 3
++}
++
++========== [2/9] PUBLISHABLE COUNTRY VIEW ==========
++PUBLISHABLE= 1298
++RESOLVED= 962
++UNKNOWN= 336
++CONFLICT= 0
++CATALOG_COUNTRY_COUNT= 43
++{
++  "AE": 1,
++  "AL": 2,
++  "AR": 1,
++  "AU": 34,
++  "BE": 1,
++  "BG": 5,
++  "BR": 1,
++  "BY": 1,
++  "CA": 18,
++  "CL": 1,
++  "CZ": 4,
++  "DE": 304,
++  "DK": 1,
++  "EE": 5,
++  "ES": 16,
++  "FI": 36,
++  "FR": 45,
++  "GB": 98,
++  "GE": 1,
++  "GR": 3,
++  "HK": 15,
++  "IL": 1,
++  "IN": 5,
++  "IR": 1,
++  "IT": 6,
++  "JP": 15,
++  "KR": 3,
++  "LT": 1,
++  "LV": 2,
++  "MD": 1,
++  "MY": 1,
++  "NL": 173,
++  "NO": 4,
++  "PL": 43,
++  "RO": 1,
++  "RS": 2,
++  "RU": 1,
++  "SE": 36,
++  "SG": 9,
++  "TR": 4,
++  "TW": 2,
++  "US": 57,
++  "ZA": 1
++}
++
++========== [3/9] PUBLISH HTTP ROUTES ==========
++178:async def publish_status(
++467:async def subscription_country(
++582:    app.router.add_get(
++587:    app.router.add_get(
++588:        "/sub/country/{country_code}",
++589:        subscription_country,
++592:    app.router.add_get(
++597:    app.router.add_get(
++598:        "/api/publish/status",
++599:        publish_status,
++
++========== [4/9] PANEL COUNTRY MODULES ==========
++
++----- /opt/config-location/app/panel/country_ui.py -----
++430:               href="/publish">
++575:            <div id="countrySummary"
++955:async function api(url){
++991:    const s=await api(
++992:        "/api/country/summary"
++1002:            s.country_known
++1007:            s.country_unresolved
++1012:            s.country_rotating
++1017:            s.country_coverage_percent
++1031:        s.country_states,
++1036:        "countrySummary",
++1037:        s.countries,
++1148:                const country=
++1149:                    row.country_code
++1152:                            row.country_code
++1155:                            row.country_name
++1158:                                row.country_name
++1199:                    +country
++1204:                        row.country_state
++1216:                        row.source_count
++1246:        const data=await api(
++1247:            "/api/configs?"
++1465:async def country_page(
++
++----- /opt/config-location/app/panel/read_model.py -----
++6:from app.country.panel_projection_adapter import overlay_country_collection
++11:COUNTRY_ROOT = STATE_ROOT / 'country'
++12:IDENTITY_ROOT = COUNTRY_ROOT / 'country-identity'
++44:def _country_view(*, identity: dict[str, Any] | None, pipeline: dict[str, Any] | None) -> dict[str, Any]:
++47:    locked = identity.get('locked') is True and bool(identity.get('country_code'))
++49:        code = str(identity.get('country_code')).upper()
++50:        name = identity.get('country_name') or pipeline.get('country_name')
++53:        code = str(pipeline.get('country_code')).upper() if pipeline.get('country_code') else None
++54:        name = pipeline.get('country_name')
++58:    return overlay_country_collection({'country_code': code, 'country_name': name, 'country_locked': locked, 'country_source': source, 'country_state': state, 'country_unresolved': unresolved, 'exit_ip': pipeline.get('exit_ip'), 'country_confidence': pipeline.get('confidence'), 'rotating': state.lower() in {'confirmed_rotating', 'confirmed_rotating_ip'}})
++65:    country = _country_view(identity=identity, pipeline=pipeline)
++71:    return overlay_country_collection({'config_id': config_id, 'config_type': config.get('config_type') or config.get('type') or 'unknown', 'last_seen': config.get('last_seen_at') or config.get('last_seen'), 'first_seen': config.get('first_seen_at') or config.get('first_seen'), 'source_count': len(source_ids), 'source_ids': source_ids, 'health_status': str(health_status), 'lifecycle_state': str(lifecycle_state), **country})
++82:    countries = Counter()
++83:    country_states = Counter()
++84:    country_known = 0
++92:        country_states[row['country_state']] += 1
++93:        if row['country_code']:
++94:            country_known += 1
++95:            countries[row['country_code']] += 1
++96:        if row['country_unresolved']:
++100:    return {'total_configs': total, 'country_known': country_known, 'country_unresolved': unresolved, 'country_rotating': rotating, 'country_coverage_percent': round(country_known / total * 100.0 if total else 0.0, 2), 'types': dict(types), 'health': dict(health), 'lifecycle': dict(lifecycle), 'country_states': dict(country_states), 'countries': dict(countries.most_common())}
++102:def query_configs(*, search: str='', config_type: str='', health_status: str='', country_code: str='', country_state: str='', unresolved_only: bool=False, offset: int=0, limit: int=100) -> dict[str, Any]:
++106:    country_code = country_code.strip().upper()
++107:    country_state = country_state.strip().lower()
++116:        if country_code and str(row['country_code'] or '').upper() != country_code:
++118:        if country_state and str(row['country_state']).lower() != country_state:
++120:        if unresolved_only and (not row['country_unresolved']):
++123:            haystack = ' '.join([str(row.get('config_id', '')), str(row.get('config_type', '')), str(row.get('country_code', '')), str(row.get('country_name', '')), str(row.get('exit_ip', ''))]).lower()
++129:    return overlay_country_collection({'total': total, 'offset': offset, 'limit': limit, 'items': page})
++137:            return overlay_country_collection(value)
++140:            return overlay_country_collection(record)
++141:    return overlay_country_collection(None)
++146:        return overlay_country_collection(None)
++149:        return overlay_country_collection(None)
++157:    return overlay_country_collection({'config_id': config_id, 'summary': summary, 'config': {'config_type': config.get('config_type') or config.get('type'), 'first_seen_at': config.get('first_seen_at') or config.get('first_seen'), 'last_seen_at': config.get('last_seen_at') or config.get('last_seen'), 'source_ids': config.get('source_ids') or [], 'raw': raw}, 'health': health, 'lifecycle': lifecycle, 'country_identity': identity, 'country_pipeline': pipeline, 'country_result': result})
++
++----- /opt/config-location/app/panel/publish_read_model.py -----
++11:# Canonical publish/subscription discovery
++29:def _discover_publish_status() -> dict[str, Any]:
++35:        app.publish.filter.build_publish_snapshot()
++38:    publishable IDs returned by that canonical snapshot.
++48:        from app.publish.filter import (
++53:            build_publish_snapshot,
++60:                "app.publish.filter",
++80:            snapshot=build_publish_snapshot()
++96:                    "app.publish.filter.build_publish_snapshot",
++168:                    "publish_eligible",
++203:            ==snapshot.publishable
++205:            ==snapshot.publishable
++213:                "app.publish.filter.build_publish_snapshot",
++236:            "publishable":
++238:                    snapshot.publishable
++312:            "app.publish.filter.build_publish_snapshot",
++322:def _discover_routes() -> list[str]:
++339:    for route in app.router.routes():
++342:            path=route.resource.canonical
++362:def _classify_routes(
++363:    routes: list[str],
++369:        "country":[],
++374:    for path in routes:
++394:            "{country" in low
++395:            or "/country/" in low
++398:            result["country"].append(
++424:def publish_summary() -> dict[str, Any]:
++426:    status=_discover_publish_status()
++428:    routes=_discover_routes()
++430:    classes=_classify_routes(
++431:        routes
++437:    route_template=None
++447:            route_template=item
++451:    if route_template:
++461:                        route_template.replace(
++470:        "publish_status":
++473:        "routes":
++474:            routes,
++476:        "route_classes":
++483:                in routes
++489:            "country_templates":
++491:                    "country"
++
++----- /opt/config-location/app/panel/publish_ui.py -----
++251:                Canonical publish view
++260:               href="/country">
++298:                 id="publishable">
++340:                 id="routeCount">
++424:async function api(
++536:            ?.country_templates
++572:            "<div>Subscription route پیدا نشد</div>";
++655:    const data=await api(
++656:        "/api/publish/summary"
++661:        data.publish_status
++670:                "healthy_count",
++681:                "recovered_count",
++687:    const publishable=
++691:                "publishable",
++692:                "publishable_count",
++694:                "eligible_count",
++695:                "total_publishable",
++710:    $("publishable").textContent=
++712:            publishable
++715:    $("routeCount").textContent=
++718:                data.routes
++773:async def publish_page(
++
++========== [5/9] PANEL SERVER ROUTES ==========
++19:from app.panel.country_ui import (
++20:    country_page,
++31:from app.panel.publish_ui import (
++32:    publish_page,
++45:from app.publish.http import install_publish_routes
++294:            "/api/publish/status",
++3355:        "publish_eligible",
++4612:async def api_country_summary(
++4691:        country_code=str(
++4693:                "country",
++4698:        country_state=str(
++4724:async def api_country_unresolved(
++4782:        country_state=str(
++4911:async def api_publish_summary(
++4914:    from app.panel.publish_read_model import (
++4915:        publish_summary,
++4919:        publish_summary()
++5092:    app.router.add_get(
++5097:    app.router.add_post(
++5102:    app.router.add_get(
++5107:    app.router.add_get(
++5112:    app.router.add_get(
++5117:    app.router.add_get(
++5122:    app.router.add_get(
++5123:        "/api/sources",
++5128:    app.router.add_get(
++5129:        "/api/country/summary",
++5130:        api_country_summary
++5133:    app.router.add_get(
++5134:        "/api/configs",
++5138:    app.router.add_get(
++5139:        "/api/country/unresolved",
++5140:        api_country_unresolved
++5143:    app.router.add_get(
++5148:    app.router.add_get(
++5153:    app.router.add_get(
++5154:        "/country",
++5155:        country_page
++5158:    app.router.add_get(
++5163:    app.router.add_get(
++5164:        "/api/config/{config_id}",
++5168:    app.router.add_get(
++5173:    app.router.add_get(
++5174:        "/api/operations/summary",
++5178:    app.router.add_get(
++5179:        "/api/xray/failures",
++5183:    app.router.add_get(
++5184:        "/api/xray/failure/{bundle_id}",
++5188:    app.router.add_get(
++5189:        "/publish",
++5190:        publish_page
++5193:    app.router.add_get(
++5194:        "/api/publish/summary",
++5195:        api_publish_summary
++5198:    app.router.add_get(
++5208:    app.router.add_post(
++5213:    app.router.add_post(
++5218:    app.router.add_post(
++5228:    app.router.add_post(
++5233:    app.router.add_post(
++5238:    app.router.add_post(
++5243:    app.router.add_post(
++5248:    app.router.add_post(
++5253:    app.router.add_get(
++5258:    app.router.add_post(
++5263:    app.router.add_post(
++5268:    app.router.add_post(
++5284:    install_publish_routes(app)
++
++========== [6/9] COUNTRY API GAP ==========
++GET_ROUTES=
++/sub/all
++/sub/country/{country_code}
++/sub/{config_type}
++/api/publish/status
++COUNTRY_CATALOG_API_PRESENT= False
++MATCHED_CATALOG_ROUTES= []
++
++========== [7/9] CURRENT COUNTRY HTTP CONTRACT ==========
++
++--- UNKNOWN ---
++HTTP/1.1 200 OK
++Cache-Control: no-store
++X-Config-Policy: health-lifecycle
++X-Config-Country: UNKNOWN
++X-Config-Publishable: 1298
++X-Config-Country-Count: 336
++X-Config-Corrupt: 0
++X-Country-Source: canonical-projection-v2
++X-Country-Contract: healthy
++Content-Type: text/plain; charset=utf-8
++Content-Length: 74729
++Date: Sun, 06 Sep 2026 01:37:40 GMT
++Server: Python/3.14 aiohttp/3.14.3
++
++BODY_LINES=336
++
++--- CONFLICT ---
++HTTP/1.1 200 OK
++Cache-Control: no-store
++X-Config-Policy: health-lifecycle
++X-Config-Country: CONFLICT
++X-Config-Publishable: 1298
++X-Config-Country-Count: 0
++X-Config-Corrupt: 0
++X-Country-Source: canonical-projection-v2
++X-Country-Contract: healthy
++Content-Type: text/plain; charset=utf-8
++Content-Length: 0
++Date: Sun, 06 Sep 2026 01:37:40 GMT
++Server: Python/3.14 aiohttp/3.14.3
++
++BODY_LINES=0
++
++--- DE ---
++HTTP/1.1 200 OK
++Cache-Control: no-store
++X-Config-Policy: health-lifecycle
++X-Config-Country: DE
++X-Config-Publishable: 1298
++X-Config-Country-Count: 304
++X-Config-Corrupt: 0
++X-Country-Source: canonical-projection-v2
++X-Country-Contract: healthy
++Content-Type: text/plain; charset=utf-8
++Content-Length: 54704
++Date: Sun, 06 Sep 2026 01:37:41 GMT
++Server: Python/3.14 aiohttp/3.14.3
++
++BODY_LINES=304
++
++--- US ---
++HTTP/1.1 200 OK
++Cache-Control: no-store
++X-Config-Policy: health-lifecycle
++X-Config-Country: US
++X-Config-Publishable: 1298
++X-Config-Country-Count: 57
++X-Config-Corrupt: 0
++X-Country-Source: canonical-projection-v2
++X-Country-Contract: healthy
++Content-Type: text/plain; charset=utf-8
++Content-Length: 14400
++Date: Sun, 06 Sep 2026 01:37:41 GMT
++Server: Python/3.14 aiohttp/3.14.3
++
++BODY_LINES=57
++
++========== [8/9] SERVICE / PERFORMANCE BASELINE ==========
++active
++active
++active
++/sub/all http=200 time=0.161482
++/sub/country/UNKNOWN http=200 time=0.169354
++/sub/country/DE http=200 time=0.164944
++
++========== [9/9] DISCOVERY RESULT ==========
++PHASE6_PASS0_MODE=READ_ONLY
++PRODUCTION_MUTATION=NO
++SERVICE_RESTART=NO
++DISCOVERY_COMPLETE=YES
++
++PHASE6_PASS0_COUNTRY_CATALOG_DISCOVERY_SUCCESS
+diff --git a/manifests/source-sha256.txt b/manifests/source-sha256.txt
+index 964bb03..9033026 100644
+--- a/manifests/source-sha256.txt
++++ b/manifests/source-sha256.txt
+@@ -15570,7 +15570,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
+ 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
+ a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
+ da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+-fdeed98878bee847b6dc5909bd456e98b75adbbacefb228a4785504b6b72c3b4  server/opt/config-location/PROJECT-STATE.md
++4dd6761d69975a64be319a44a3a1b57c888e0df492ccc98aa8f39135e1d05246  server/opt/config-location/PROJECT-STATE.md
+ 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
+ 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
+ 0e63c7cea5c2b60eab9f70ac997137377fdec436cd7d88c4d8b37577a0da6ed3  server/opt/config-location/scripts/detector-test.py
+diff --git a/server/opt/config-location/PROJECT-STATE.md b/server/opt/config-location/PROJECT-STATE.md
+index 2039e3a..5376034 100644
+--- a/server/opt/config-location/PROJECT-STATE.md
++++ b/server/opt/config-location/PROJECT-STATE.md
+@@ -1,6 +1,6 @@
+ # Config Location — Project State
+ 
+-Updated: 2026-09-06T01:29:45+00:00
++Updated: 2026-09-06T01:37:38+00:00
+ 
+ ## Release
+ 
+@@ -9,9 +9,9 @@ Updated: 2026-09-06T01:29:45+00:00
+ 
+ ## Git
+ 
+-- Commit: `d4398a18d4af4630257895f9b6db3638f98c77ae`
+-- Short: `d4398a1`
+-- Mirror dirty files: 0
++- Commit: `0ee1899f6c171f1e903b91f74b3f9f410a2c46f3`
++- Short: `0ee1899`
++- Mirror dirty files: 1
+ 
+ ## Services
+ 
+@@ -30,11 +30,12 @@ Updated: 2026-09-06T01:29:45+00:00
+ ## Runtime
+ 
+ - Countries: 52
+-- Publishable configs: 1304
++- Publishable configs: 1298
+ 
+ ## Active development scripts
+ 
+ ```
+ live-stream-self-test.sh
+ observability-self-test.sh
++phase6-pass0-country-catalog-discovery.sh
+ ```
