@@ -1,0 +1,16 @@
+{
+  "asn": "AS213169",
+  "config_id": "4d97257b28b3a884b365a13d904dd1009764bc417086f3231f33f68bc6de1c5d",
+  "country_code": "US",
+  "country_confidence": 0.92,
+  "country_name": "United States",
+  "determined_epoch": 1788281608,
+  "first_exit_ip": "143.246.56.117",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Catixs Ltd",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

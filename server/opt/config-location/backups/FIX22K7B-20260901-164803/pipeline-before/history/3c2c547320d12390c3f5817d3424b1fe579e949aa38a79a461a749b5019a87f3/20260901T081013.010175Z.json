@@ -1,0 +1,53 @@
+{
+  "asn": "AS14061",
+  "confidence": 1.0,
+  "config_id": "3c2c547320d12390c3f5817d3424b1fe579e949aa38a79a461a749b5019a87f3",
+  "config_type": "json_xray",
+  "country_code": "SG",
+  "country_name": "Singapore",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "139.59.124.172",
+  "finished_at": "2026-09-01T08:10:13.010151+00:00",
+  "flag": "🇸🇬",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "SG",
+    "country_name": "Singapore",
+    "flag": "🇸🇬",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "DigitalOcean, LLC",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "SG",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-xray-json",
+    "protocol": null
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T08:10:02.423107+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

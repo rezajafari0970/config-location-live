@@ -1,0 +1,53 @@
+{
+  "asn": "AS204770",
+  "confidence": 1.0,
+  "config_id": "3e0dc5626d3a0d156ab51b7ffcda1ee0175a5543b953f7462b264d0113308605",
+  "config_type": "json_xray",
+  "country_code": "US",
+  "country_name": "United States",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "88.216.68.68",
+  "finished_at": "2026-09-01T12:47:46.940641+00:00",
+  "flag": "🇺🇸",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "US",
+    "country_name": "United States",
+    "flag": "🇺🇸",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Private Customer",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "US",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-xray-json",
+    "protocol": null
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T12:47:44.290292+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

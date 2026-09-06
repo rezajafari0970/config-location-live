@@ -1,0 +1,53 @@
+{
+  "asn": "AS207957",
+  "confidence": 1.0,
+  "config_id": "6277b91e31d4b3cc2d3791ebb41ef2dfb7302eca54f3fcf914b3af655b1fb92d",
+  "config_type": "vless",
+  "country_code": "DE",
+  "country_name": "Germany",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "144.31.216.241",
+  "finished_at": "2026-09-01T08:03:29.764581+00:00",
+  "flag": "🇩🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "DE",
+    "country_name": "Germany",
+    "flag": "🇩🇪",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "SERV.HOST GROUP LTD",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "DE",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T08:03:22.029112+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

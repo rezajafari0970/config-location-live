@@ -1,0 +1,16 @@
+{
+  "asn": "AS20473",
+  "config_id": "27ae7a16d2fdfdfd70208ec0b7ee7faffc9cadefe7c319020b28b1421db18239",
+  "country_code": "PL",
+  "country_confidence": 0.92,
+  "country_name": "Poland",
+  "determined_epoch": 1788281609,
+  "first_exit_ip": "70.34.252.131",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "The Constant Company, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

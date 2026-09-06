@@ -1,0 +1,16 @@
+{
+  "asn": "AS401152",
+  "config_id": "1b281e4abe4266c16a1edd891922d640acdf4c1e10adf6a1ead11c4d4d39881d",
+  "country_code": "US",
+  "country_confidence": 1.0,
+  "country_name": "United States",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "31.77.220.162",
+  "flag": "🇺🇸",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Ace Data Centers II, LLC",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

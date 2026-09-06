@@ -1,0 +1,16 @@
+{
+  "asn": "AS57043",
+  "config_id": "c70c0e59ac618d429afd477522c2868ebe33f7368387274bf73594a4f15a2f8c",
+  "country_code": "PL",
+  "country_confidence": 1.0,
+  "country_name": "Poland",
+  "determined_epoch": 1788282710,
+  "first_exit_ip": "151.243.182.249",
+  "flag": "🇵🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "HOSTKEY B.V.",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

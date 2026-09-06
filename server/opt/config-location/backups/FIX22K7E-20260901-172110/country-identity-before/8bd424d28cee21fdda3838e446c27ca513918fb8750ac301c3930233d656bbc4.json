@@ -1,0 +1,16 @@
+{
+  "asn": "AS62610",
+  "config_id": "8bd424d28cee21fdda3838e446c27ca513918fb8750ac301c3930233d656bbc4",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "2a0b:21c1:600e:5f75:0:27:0:2",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Zenlayer Inc",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

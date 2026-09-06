@@ -1,0 +1,53 @@
+{
+  "asn": "AS62240",
+  "confidence": 1.0,
+  "config_id": "0a383395951adeecd411a62e661fbbe7d22c58f90abda9d879d469a8628e4527",
+  "config_type": "vless",
+  "country_code": "US",
+  "country_name": "United States",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "185.195.57.169",
+  "finished_at": "2026-09-01T02:02:14.121776+00:00",
+  "flag": "🇺🇸",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "US",
+    "country_name": "United States",
+    "flag": "🇺🇸",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "New Jersey Network",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "US",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:02:12.501697+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

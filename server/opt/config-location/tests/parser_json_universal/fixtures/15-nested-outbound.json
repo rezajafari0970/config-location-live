@@ -1,0 +1,15 @@
+{
+  "wrapper": {
+    "profile": {
+      "outbounds": [
+        {
+          "type": "hysteria2",
+          "tag": "nested",
+          "server": "example.com",
+          "server_port": 443,
+          "password": "golden"
+        }
+      ]
+    }
+  }
+}

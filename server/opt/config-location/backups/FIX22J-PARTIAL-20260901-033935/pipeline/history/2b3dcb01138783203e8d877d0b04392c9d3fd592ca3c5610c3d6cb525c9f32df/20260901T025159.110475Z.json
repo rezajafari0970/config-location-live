@@ -1,0 +1,53 @@
+{
+  "asn": "AS213535",
+  "confidence": 1.0,
+  "config_id": "2b3dcb01138783203e8d877d0b04392c9d3fd592ca3c5610c3d6cb525c9f32df",
+  "config_type": "vless",
+  "country_code": "US",
+  "country_name": "United States",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "64.49.12.115",
+  "finished_at": "2026-09-01T02:51:59.110449+00:00",
+  "flag": "🇺🇸",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "US",
+    "country_name": "United States",
+    "flag": "🇺🇸",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "YottaSrc Cloud & Hosting Services",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "US",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:51:55.306658+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

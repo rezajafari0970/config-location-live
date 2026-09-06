@@ -1,0 +1,16 @@
+{
+  "asn": "AS212743",
+  "config_id": "ede0d3583623692a2657ca61837d1b7d63fc182063084d2a8389e5788b40568f",
+  "country_code": "PL",
+  "country_confidence": 1.0,
+  "country_name": "Poland",
+  "determined_epoch": 1788282864,
+  "first_exit_ip": "94.183.209.243",
+  "flag": "🇵🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "EternityCloud",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

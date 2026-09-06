@@ -1,0 +1,16 @@
+{
+  "asn": "AS20473",
+  "config_id": "0d7aca8e93ec45b96df85ae0478b7b8b5c428443dc6dad8ded3773fde33ed681",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "95.179.166.142",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Vultr Holdings LLC Frankfurt",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

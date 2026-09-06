@@ -1,0 +1,16 @@
+{
+  "asn": "AS207957",
+  "config_id": "7abf80d92689704188421894575053f4a144ca4565bdd2e12c208a55cf43a873",
+  "country_code": "EE",
+  "country_confidence": 0.92,
+  "country_name": "Estonia",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "31.76.55.178",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "SERV.HOST GROUP LTD",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

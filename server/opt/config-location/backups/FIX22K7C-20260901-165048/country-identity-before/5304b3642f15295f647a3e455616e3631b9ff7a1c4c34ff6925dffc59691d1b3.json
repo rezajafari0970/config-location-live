@@ -1,0 +1,16 @@
+{
+  "asn": "AS60781",
+  "config_id": "5304b3642f15295f647a3e455616e3631b9ff7a1c4c34ff6925dffc59691d1b3",
+  "country_code": "NL",
+  "country_confidence": 1.0,
+  "country_name": "Netherlands",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "2001:1af8:5301:133:1c00:efff:fe00:203e",
+  "flag": "🇳🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "LeaseWeb Netherlands B.V.",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

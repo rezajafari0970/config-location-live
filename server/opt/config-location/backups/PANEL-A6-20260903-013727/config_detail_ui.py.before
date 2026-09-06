@@ -1,0 +1,791 @@
+from __future__ import annotations
+
+from aiohttp import web
+
+
+# PANEL_A5_CONFIG_DETAIL_UI
+
+
+HTML = r'''<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport"
+      content="width=device-width,initial-scale=1">
+
+<title>Config Detail</title>
+
+<style>
+
+:root{
+    color-scheme:dark;
+
+    --bg:#0b0f14;
+    --panel:#111821;
+    --panel2:#161f2b;
+    --border:#273342;
+
+    --text:#eef4fb;
+    --muted:#94a5b8;
+
+    --green:#39d98a;
+    --red:#ff667a;
+    --yellow:#f5c451;
+    --blue:#55aaff;
+    --violet:#a98bff;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+.shell{
+    width:min(1450px,96%);
+    margin:0 auto;
+    padding:18px 0 50px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.topbar h1{
+    margin:0 0 5px;
+    font-size:21px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-height:40px;
+    padding:8px 13px;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    background:var(--panel);
+    color:var(--text);
+
+    text-decoration:none;
+}
+
+.btn:hover{
+    background:var(--panel2);
+}
+
+.mono{
+    direction:ltr;
+    text-align:left;
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Consolas,
+        monospace;
+}
+
+.muted{
+    color:var(--muted);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+    gap:12px;
+}
+
+.card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:15px;
+}
+
+.metric-title{
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.metric-value{
+    font-size:20px;
+    font-weight:700;
+    word-break:break-word;
+}
+
+.section{
+    margin-top:14px;
+}
+
+.section h2{
+    margin:0 0 12px;
+    font-size:16px;
+}
+
+.detail-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+    gap:12px;
+}
+
+pre{
+    margin:0;
+
+    padding:12px;
+
+    min-height:120px;
+    max-height:520px;
+    overflow:auto;
+
+    direction:ltr;
+    text-align:left;
+
+    background:#0b1118;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    white-space:pre-wrap;
+    word-break:break-word;
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Consolas,
+        monospace;
+
+    font-size:12px;
+    line-height:1.5;
+}
+
+.badge{
+    display:inline-flex;
+    padding:4px 9px;
+
+    border-radius:999px;
+    border:1px solid var(--border);
+
+    font-size:12px;
+}
+
+.good{
+    color:var(--green);
+}
+
+.bad{
+    color:var(--red);
+}
+
+.warn{
+    color:var(--yellow);
+}
+
+.info{
+    color:var(--blue);
+}
+
+.violet{
+    color:var(--violet);
+}
+
+.error{
+    display:none;
+
+    padding:12px;
+    margin-bottom:12px;
+
+    border:
+        1px solid rgba(255,102,122,.5);
+
+    border-radius:10px;
+
+    background:
+        rgba(255,102,122,.08);
+
+    color:#ff9cab;
+}
+
+@media(max-width:900px){
+
+    .grid{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+    .detail-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .topbar{
+        flex-direction:column;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="shell">
+
+    <div class="topbar">
+
+        <div>
+
+            <h1>
+                🔎 Config Detail
+            </h1>
+
+            <div id="configId"
+                 class="mono muted">
+                -
+            </div>
+
+        </div>
+
+        <div class="actions">
+
+            <a href="/country"
+               class="btn">
+                Country
+            </a>
+
+            <a href="/configs"
+               class="btn">
+                Configs
+            </a>
+
+            <a href="/"
+               class="btn">
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div id="errorBox"
+         class="error">
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="metric-title">
+                Type
+            </div>
+
+            <div id="type"
+                 class="metric-value">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="metric-title">
+                Health
+            </div>
+
+            <div id="health"
+                 class="metric-value">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="metric-title">
+                Country
+            </div>
+
+            <div id="country"
+                 class="metric-value">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="metric-title">
+                Country State
+            </div>
+
+            <div id="countryState"
+                 class="metric-value">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="metric-title">
+                Exit IP
+            </div>
+
+            <div id="exitIp"
+                 class="metric-value mono">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="metric-title">
+                Lifecycle
+            </div>
+
+            <div id="lifecycleState"
+                 class="metric-value">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="metric-title">
+                Sources
+            </div>
+
+            <div id="sources"
+                 class="metric-value">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="metric-title">
+                Last Seen
+            </div>
+
+            <div id="lastSeen"
+                 class="metric-value mono">
+                -
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="section detail-grid">
+
+        <div class="card">
+
+            <h2>
+                Country Identity
+            </h2>
+
+            <pre id="identity">
+-
+            </pre>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                Country Pipeline
+            </h2>
+
+            <pre id="pipeline">
+-
+            </pre>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                Health
+            </h2>
+
+            <pre id="healthJson">
+-
+            </pre>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                Lifecycle
+            </h2>
+
+            <pre id="lifecycleJson">
+-
+            </pre>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                Country Evidence / Result
+            </h2>
+
+            <pre id="resultJson">
+-
+            </pre>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                Source IDs
+            </h2>
+
+            <pre id="sourceIds">
+-
+            </pre>
+
+        </div>
+
+    </div>
+
+
+    <div class="section card">
+
+        <h2>
+            Raw Config
+        </h2>
+
+        <pre id="raw">
+-
+        </pre>
+
+    </div>
+
+</div>
+
+
+<script>
+
+"use strict";
+
+const CONFIG_ID =
+    decodeURIComponent(
+        location.pathname
+        .split("/")
+        .filter(Boolean)
+        .pop()
+        || ""
+    );
+
+
+const $ = id =>
+    document.getElementById(id);
+
+
+function escText(
+    value
+){
+    return String(
+        value ?? "-"
+    );
+}
+
+
+function pretty(
+    value
+){
+
+    if(
+        value===null
+        || value===undefined
+    ){
+        return "-";
+    }
+
+    try{
+        return JSON.stringify(
+            value,
+            null,
+            2
+        );
+    }catch(_){
+        return String(value);
+    }
+}
+
+
+async function api(
+    url
+){
+
+    const response=await fetch(
+        url,
+        {
+            credentials:
+                "same-origin",
+
+            headers:{
+                "Accept":
+                    "application/json"
+            }
+        }
+    );
+
+
+    if(
+        response.status===401
+        || response.status===403
+        || response.status===302
+    ){
+        location.href="/login";
+        throw new Error(
+            "authentication required"
+        );
+    }
+
+
+    if(response.status===404){
+        throw new Error(
+            "Config not found"
+        );
+    }
+
+
+    if(!response.ok){
+        throw new Error(
+            "HTTP "
+            +response.status
+        );
+    }
+
+
+    return await response.json();
+}
+
+
+function showError(
+    error
+){
+
+    const box=$(
+        "errorBox"
+    );
+
+    box.style.display=
+        "block";
+
+    box.textContent=
+        String(
+            error?.message
+            || error
+        );
+}
+
+
+async function load(){
+
+    $("configId").textContent=
+        CONFIG_ID;
+
+
+    try{
+
+        const data=await api(
+            "/api/config/"
+            +encodeURIComponent(
+                CONFIG_ID
+            )
+        );
+
+
+        const summary=
+            data.summary || {};
+
+        const config=
+            data.config || {};
+
+
+        $("type").textContent=
+            escText(
+                summary.config_type
+            );
+
+
+        $("health").textContent=
+            escText(
+                summary.health_status
+            );
+
+
+        $("country").textContent=
+            summary.country_code
+            ?(
+                summary.country_code
+                +(
+                    summary.country_name
+                    ?" · "
+                    +summary.country_name
+                    :""
+                )
+            )
+            :"Unresolved";
+
+
+        $("countryState").textContent=
+            escText(
+                summary.country_state
+            );
+
+
+        $("exitIp").textContent=
+            escText(
+                summary.exit_ip
+            );
+
+
+        $("lifecycleState").textContent=
+            escText(
+                summary.lifecycle_state
+            );
+
+
+        $("sources").textContent=
+            Number(
+                summary.source_count
+                || 0
+            ).toLocaleString();
+
+
+        $("lastSeen").textContent=
+            escText(
+                summary.last_seen
+            );
+
+
+        $("identity").textContent=
+            pretty(
+                data.country_identity
+            );
+
+
+        $("pipeline").textContent=
+            pretty(
+                data.country_pipeline
+            );
+
+
+        $("healthJson").textContent=
+            pretty(
+                data.health
+            );
+
+
+        $("lifecycleJson").textContent=
+            pretty(
+                data.lifecycle
+            );
+
+
+        $("resultJson").textContent=
+            pretty(
+                data.country_result
+            );
+
+
+        $("sourceIds").textContent=
+            pretty(
+                config.source_ids
+            );
+
+
+        $("raw").textContent=
+            escText(
+                config.raw
+            );
+
+
+    }catch(error){
+
+        console.error(error);
+        showError(error);
+    }
+}
+
+
+load();
+
+</script>
+
+</body>
+</html>
+'''
+
+
+async def config_detail_page(
+    request: web.Request,
+) -> web.Response:
+
+    return web.Response(
+        text=HTML,
+        content_type="text/html",
+        charset="utf-8",
+    )

@@ -1,0 +1,53 @@
+{
+  "asn": "AS20473",
+  "confidence": 1.0,
+  "config_id": "6b691dd0dae8512dd65a5679146db6abe90b996f1da8c077dc4d7ac2ebb703a6",
+  "config_type": "vless",
+  "country_code": "US",
+  "country_name": "United States",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "45.76.70.30",
+  "finished_at": "2026-09-01T11:55:38.666385+00:00",
+  "flag": "🇺🇸",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "US",
+    "country_name": "United States",
+    "flag": "🇺🇸",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Vultr Holdings, LLC",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "US",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T11:55:33.683136+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

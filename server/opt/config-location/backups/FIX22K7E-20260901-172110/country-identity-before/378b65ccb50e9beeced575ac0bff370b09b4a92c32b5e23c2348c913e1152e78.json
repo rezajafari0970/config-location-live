@@ -1,0 +1,16 @@
+{
+  "asn": "AS16276",
+  "config_id": "378b65ccb50e9beeced575ac0bff370b09b4a92c32b5e23c2348c913e1152e78",
+  "country_code": "GB",
+  "country_confidence": 0.92,
+  "country_name": "United Kingdom",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "51.38.71.147",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "OVH SAS",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

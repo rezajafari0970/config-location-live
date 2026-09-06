@@ -1,0 +1,53 @@
+{
+  "asn": "AS212815",
+  "confidence": 1.0,
+  "config_id": "8b92ba8d38da9b336f11525c1f923dfe455cdd4d6d4ee4ab27aa8d0e46fb4408",
+  "config_type": "json_xray",
+  "country_code": "FR",
+  "country_name": "France",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "45.13.119.222",
+  "finished_at": "2026-09-01T16:34:18.215336+00:00",
+  "flag": "🇫🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "FR",
+    "country_name": "France",
+    "flag": "🇫🇷",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Dyjix SAS",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "FR",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-xray-json",
+    "protocol": null
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T16:34:08.098059+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

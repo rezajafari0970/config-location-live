@@ -1,0 +1,23 @@
+{
+  "route": {
+    "final": "proxy"
+  },
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "vless",
+      "tag": "proxy",
+      "server": "example.com",
+      "server_port": 443,
+      "uuid": "33333333-3333-4333-8333-333333333333",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com"
+      }
+    }
+  ]
+}

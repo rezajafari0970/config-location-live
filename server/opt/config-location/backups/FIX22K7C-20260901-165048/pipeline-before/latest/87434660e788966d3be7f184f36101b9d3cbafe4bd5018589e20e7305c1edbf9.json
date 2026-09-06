@@ -1,0 +1,12 @@
+{
+  "config_id": "87434660e788966d3be7f184f36101b9d3cbafe4bd5018589e20e7305c1edbf9",
+  "config_type": "vless",
+  "exit_agreed": 1,
+  "exit_ip": null,
+  "exit_successful": 1,
+  "finished_at": "2026-09-01T16:31:43.031904+00:00",
+  "reason": "exit_ip_disagreement",
+  "schema_version": 1,
+  "started_at": "2026-09-01T16:31:37.868323+00:00",
+  "state": "unstable_exit"
+}

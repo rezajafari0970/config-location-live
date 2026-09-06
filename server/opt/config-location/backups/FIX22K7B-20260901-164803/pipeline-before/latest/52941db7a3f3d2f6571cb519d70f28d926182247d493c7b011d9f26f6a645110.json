@@ -1,0 +1,53 @@
+{
+  "asn": "AS44112",
+  "confidence": 1.0,
+  "config_id": "52941db7a3f3d2f6571cb519d70f28d926182247d493c7b011d9f26f6a645110",
+  "config_type": "vless",
+  "country_code": "RU",
+  "country_name": "Russian Federation",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "77.222.53.218",
+  "finished_at": "2026-09-01T07:27:14.297916+00:00",
+  "flag": "🇷🇺",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "RU",
+    "country_name": "Russian Federation",
+    "flag": "🇷🇺",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "SpaceWeb",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "RU",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T07:27:07.178489+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

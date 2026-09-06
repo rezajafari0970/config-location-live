@@ -1,0 +1,16 @@
+{
+  "asn": "AS58061",
+  "config_id": "4fbceaeeb4754d16157118c731fb2ed9510b5da016972d62047cd8ca33025102",
+  "country_code": "NL",
+  "country_confidence": 1.0,
+  "country_name": "Netherlands",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "188.116.23.244",
+  "flag": "🇳🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "IROKO Networks Corporation",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

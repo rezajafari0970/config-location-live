@@ -1,0 +1,53 @@
+{
+  "asn": "AS204044",
+  "confidence": 1.0,
+  "config_id": "0bae69d9798fa94cef98a239181a019e4d268fbe829319a4611c10eda142ab56",
+  "config_type": "vless",
+  "country_code": "GB",
+  "country_name": "United Kingdom",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "217.179.220.226",
+  "finished_at": "2026-09-01T02:05:11.471783+00:00",
+  "flag": "🇬🇧",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "GB",
+    "country_name": "United Kingdom",
+    "flag": "🇬🇧",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Hosted Range",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "GB",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:05:09.616529+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

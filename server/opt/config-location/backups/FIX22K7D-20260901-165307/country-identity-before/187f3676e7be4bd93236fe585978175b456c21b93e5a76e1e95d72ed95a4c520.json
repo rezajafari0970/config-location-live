@@ -1,0 +1,16 @@
+{
+  "asn": "AS14061",
+  "config_id": "187f3676e7be4bd93236fe585978175b456c21b93e5a76e1e95d72ed95a4c520",
+  "country_code": "GB",
+  "country_confidence": 1.0,
+  "country_name": "United Kingdom",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "178.128.166.96",
+  "flag": "🇬🇧",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "DigitalOcean, LLC",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

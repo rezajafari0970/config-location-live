@@ -1,0 +1,12 @@
+[Unit]
+Description=Config Location DevLog Live Collector
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/config-location-devlog-collector
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

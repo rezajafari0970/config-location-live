@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -u
+
+REPO_DIR="/var/lib/config-location/devlog-github/repo"
+PUBLIC_LOG="/var/www/config-location-devlog/latest.log"
+SSHCONF="/etc/config-location/github/ssh_config"
+
+export GIT_SSH_COMMAND="ssh -F $SSHCONF"
+
+exec 9>/run/config-location-devlog-github.lock
+flock -n 9 || exit 0
+
+[ -d "$REPO_DIR/.git" ] || exit 0
+[ -r "$PUBLIC_LOG" ] || exit 0
+
+cd "$REPO_DIR" || exit 0
+
+git fetch origin main >/dev/null 2>&1 || exit 0
+git checkout -f main >/dev/null 2>&1 || exit 0
+git reset --hard origin/main >/dev/null 2>&1 || exit 0
+
+install -m 0644 "$PUBLIC_LOG" latest.log.tmp || exit 0
+mv -f latest.log.tmp latest.log || exit 0
+
+git add latest.log
+
+git diff --cached --quiet && exit 0
+
+STAGE="$(
+    grep '^STAGE=' latest.log |
+    tail -1 |
+    cut -d= -f2- |
+    tr -cs 'A-Za-z0-9._-' '_' ||
+    true
+)"
+
+[ -n "${STAGE:-}" ] || STAGE="unknown"
+
+git commit \
+    -m "devlog: ${STAGE} $(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+    >/dev/null 2>&1 || exit 0
+
+git push origin main >/dev/null 2>&1 || exit 0
+
+exit 0

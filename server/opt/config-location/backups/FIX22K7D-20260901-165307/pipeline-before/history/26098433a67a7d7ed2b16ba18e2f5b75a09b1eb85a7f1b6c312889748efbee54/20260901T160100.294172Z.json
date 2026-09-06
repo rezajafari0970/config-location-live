@@ -1,0 +1,96 @@
+{
+  "asn": "AS16276",
+  "confidence": 1.0,
+  "config_id": "26098433a67a7d7ed2b16ba18e2f5b75a09b1eb85a7f1b6c312889748efbee54",
+  "config_type": "ss",
+  "country_code": "FR",
+  "country_name": "France",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "91.134.92.132",
+  "finished_at": "2026-09-01T16:01:00.294146+00:00",
+  "flag": "🇫🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "FR",
+    "country_name": "France",
+    "flag": "🇫🇷",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "OVH",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "FR",
+    "country_name": "France",
+    "executed": true,
+    "flag": "🇫🇷",
+    "providers": [
+      {
+        "asn": "AS16276",
+        "country_code": "FR",
+        "country_name": null,
+        "duration_ms": 144,
+        "error": null,
+        "network_name": "OVH SAS",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 54,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS16276",
+        "country_code": "FR",
+        "country_name": "France",
+        "duration_ms": 271,
+        "error": null,
+        "network_name": "OVH SAS",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T16:00:57.550675+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

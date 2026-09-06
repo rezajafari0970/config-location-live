@@ -1,0 +1,16 @@
+{
+  "asn": "AS14956",
+  "config_id": "16f5d7c809d20613b93e8168e404cb8bd9b8ef5a4be0e3978696d59ee9c91b0d",
+  "country_code": "CH",
+  "country_confidence": 0.92,
+  "country_name": "Switzerland",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "45.59.126.91",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "RouterHosting LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

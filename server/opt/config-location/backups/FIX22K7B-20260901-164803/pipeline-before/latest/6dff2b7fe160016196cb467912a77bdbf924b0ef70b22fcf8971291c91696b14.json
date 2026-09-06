@@ -1,0 +1,96 @@
+{
+  "asn": "AS214716",
+  "confidence": 1.0,
+  "config_id": "6dff2b7fe160016196cb467912a77bdbf924b0ef70b22fcf8971291c91696b14",
+  "config_type": "json_xray",
+  "country_code": "GB",
+  "country_name": "France",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "213.130.137.120",
+  "finished_at": "2026-09-01T13:29:57.562710+00:00",
+  "flag": "🇬🇧",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "GB",
+    "country_name": "France",
+    "flag": "🇬🇧",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Ipxo",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "GB",
+    "country_name": "France",
+    "executed": true,
+    "flag": "🇬🇧",
+    "providers": [
+      {
+        "asn": "AS214716",
+        "country_code": "GB",
+        "country_name": null,
+        "duration_ms": 140,
+        "error": null,
+        "network_name": "WEYRO LTD",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 136,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS214716",
+        "country_code": "GB",
+        "country_name": "France",
+        "duration_ms": 200,
+        "error": null,
+        "network_name": "WEYRO LTD",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-xray-json",
+    "protocol": null
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T13:29:54.872174+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

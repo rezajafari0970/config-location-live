@@ -1,0 +1,53 @@
+{
+  "asn": "AS14061",
+  "confidence": 1.0,
+  "config_id": "4b73b13d5abfb81ce7180b2a5df790f361edd500724feb4912c8f852e9e39df5",
+  "config_type": "vless",
+  "country_code": "DE",
+  "country_name": "Germany",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "46.101.196.163",
+  "finished_at": "2026-09-01T06:03:46.115786+00:00",
+  "flag": "🇩🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "DE",
+    "country_name": "Germany",
+    "flag": "🇩🇪",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "DigitalOcean, LLC",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "DE",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T06:03:43.575667+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "asn": "AS3462",
+  "confidence": 1.0,
+  "config_id": "468189c0aeb402f3d3ea4cec66694eeb353ea61e5ce85ce79124183f598e66ba",
+  "config_type": "ss",
+  "country_code": "TW",
+  "country_name": "Taiwan",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "2001:b011:3802:ebc0:f4cb:81e7:1c58:f817",
+  "finished_at": "2026-09-01T16:28:21.622288+00:00",
+  "flag": "🇹🇼",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "TW",
+    "country_name": "Taiwan",
+    "flag": "🇹🇼",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "HiNet Taiwan",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "TW",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T16:28:17.741271+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

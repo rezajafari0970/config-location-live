@@ -1,0 +1,53 @@
+{
+  "asn": "AS20473",
+  "confidence": 1.0,
+  "config_id": "71b9a20b13db0e410ed6488adf33ae36d3c9c66655fa2cd7aa5d1d6bb080ce05",
+  "config_type": "ss",
+  "country_code": "FR",
+  "country_name": "France",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "107.191.46.101",
+  "finished_at": "2026-09-01T09:11:59.315475+00:00",
+  "flag": "🇫🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "FR",
+    "country_name": "France",
+    "flag": "🇫🇷",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Vultr Holdings, LLC",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "FR",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T09:11:56.288363+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "config_id": "7a8107b264c1ac5618cee42962d5afcb915dbffafb2576e6cb7c4a68951eea2b",
+  "config_type": "ss",
+  "exit_agreed": 0,
+  "exit_ip": null,
+  "exit_successful": 0,
+  "finished_at": "2026-09-01T14:44:01.274249+00:00",
+  "reason": "no_exit_probe_succeeded",
+  "schema_version": 1,
+  "started_at": "2026-09-01T14:43:56.130890+00:00",
+  "state": "error"
+}

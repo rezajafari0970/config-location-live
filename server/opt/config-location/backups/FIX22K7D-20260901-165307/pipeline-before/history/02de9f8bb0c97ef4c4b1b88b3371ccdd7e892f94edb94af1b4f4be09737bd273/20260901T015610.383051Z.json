@@ -1,0 +1,53 @@
+{
+  "asn": "AS24940",
+  "confidence": 1.0,
+  "config_id": "02de9f8bb0c97ef4c4b1b88b3371ccdd7e892f94edb94af1b4f4be09737bd273",
+  "config_type": "vless",
+  "country_code": "DE",
+  "country_name": "Germany",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "116.202.19.249",
+  "finished_at": "2026-09-01T01:56:10.383038+00:00",
+  "flag": "🇩🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "DE",
+    "country_name": "Germany",
+    "flag": "🇩🇪",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Hetzner Online GmbH",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "DE",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T01:56:09.640499+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

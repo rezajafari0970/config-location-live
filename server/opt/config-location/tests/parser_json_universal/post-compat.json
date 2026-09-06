@@ -1,0 +1,167 @@
+{
+  "detector_file": "/opt/config-location/app/parser/detector.py",
+  "detector_sha256": "ae1e049611a080ea8daea57820070d3329998b6ca41513e7229e764afbe40668",
+  "extract_signature": "(text)",
+  "fixtures": {
+    "hy2.txt": {
+      "input_sha256": "ae1d3fb457b94387d7575a7d6ac53ea8d6144062ff6b17dc0c06b46941dbfac9",
+      "output": [
+        {
+          "canonical": "hy2://golden-password@example.com:443/?sni=example.com&insecure=1#Golden-HY2",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "2b0947407bdb0ea1e20e39b580af3ba50d1140dc1fbbcdd1ac0255c8278805f4",
+          "preserve_raw": true,
+          "raw": "hy2://golden-password@example.com:443/?sni=example.com&insecure=1#Golden-HY2",
+          "type": "hy2"
+        }
+      ],
+      "status": "ok"
+    },
+    "hysteria2.txt": {
+      "input_sha256": "660847b92acae485bddf984f9e7a84fe3d0f0319b9d81fe24536aa51c6cfdac7",
+      "output": [
+        {
+          "canonical": "hysteria2://golden-password@example.com:443/?sni=example.com&insecure=1#Golden-Hysteria2",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "cdd20b871eda26a52b534033be6d6a1003c1bbf7f8efe5ee438e2e1a95079780",
+          "preserve_raw": true,
+          "raw": "hysteria2://golden-password@example.com:443/?sni=example.com&insecure=1#Golden-Hysteria2",
+          "type": "hy2"
+        }
+      ],
+      "status": "ok"
+    },
+    "json-xray.json": {
+      "input_sha256": "5722cfe5167005c4f269af6718ddfe8af44789fdf503f9acd7e118ed4da19aa9",
+      "output": [
+        {
+          "canonical": "vless://44444444-4444-4444-8444-444444444444@example.com:443?encryption=none&type=tcp&security=tls&sni=example.com#proxy",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "28a488228ca1e3e2c6c78af101e66f859448b4e3231c2e3122f9df1c1f00864c",
+          "preserve_raw": true,
+          "raw": "vless://44444444-4444-4444-8444-444444444444@example.com:443?encryption=none&type=tcp&security=tls&sni=example.com#proxy",
+          "type": "vless"
+        }
+      ],
+      "status": "ok"
+    },
+    "mixed.txt": {
+      "input_sha256": "e2e0828f996d3a5aa174f88ccdcad5d837c053ea3ccd29414e2e6bf913349eed",
+      "output": [
+        {
+          "canonical": "vless://22222222-2222-4222-8222-222222222222@example.org:443?encryption=none&security=reality&type=tcp&sni=www.cloudflare.com&fp=chrome&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&sid=abcd#Mixed-VLESS",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "a7bcb51be65a434ca36a24c393ae03c97cda6232e68ed273a77e1786b2b5e9d2",
+          "preserve_raw": true,
+          "raw": "vless://22222222-2222-4222-8222-222222222222@example.org:443?encryption=none&security=reality&type=tcp&sni=www.cloudflare.com&fp=chrome&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&sid=abcd#Mixed-VLESS",
+          "type": "vless"
+        },
+        {
+          "canonical": "trojan://mixed-password@example.net:443?security=tls&sni=example.net#Mixed-Trojan",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "f1a5e0c44932d92a919ffac0ff0df2045d947a6d947d1490c289c76de626db37",
+          "preserve_raw": true,
+          "raw": "trojan://mixed-password@example.net:443?security=tls&sni=example.net#Mixed-Trojan",
+          "type": "trojan"
+        },
+        {
+          "canonical": "trojan://mixed-password@example.net:443?security=tls&sni=example.net#Mixed-Trojan\n\nrandom text after",
+          "confidence": 100,
+          "detector_version": "4.0",
+          "fingerprint": "a64a1a2d48e625b5069a67765c576997bc566b2eefe7d7576622fd16261bccdb",
+          "preserve_raw": true,
+          "raw": "trojan://mixed-password@example.net:443?security=tls&sni=example.net#Mixed-Trojan\n\nrandom text after",
+          "type": "trojan"
+        }
+      ],
+      "status": "ok"
+    },
+    "noise.txt": {
+      "input_sha256": "1dfd061ba03a0ac67722fc13940587d078e16fa76accad8f0b314898e61c5388",
+      "output": [],
+      "status": "ok"
+    },
+    "ss.txt": {
+      "input_sha256": "f18803eda13a2984f874581065bd89835b831d9a96f6524b0ade2f9b41a873fa",
+      "output": [
+        {
+          "canonical": "ss://YWVzLTEyOC1nY206Z29sZGVuLXBhc3N3b3Jk@example.com:8388#Golden-SS",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "e0bf131c48a9fe818cb497f11564e9889b5bd14c7917d499ecf9b12788a66203",
+          "preserve_raw": true,
+          "raw": "ss://YWVzLTEyOC1nY206Z29sZGVuLXBhc3N3b3Jk@example.com:8388#Golden-SS",
+          "type": "ss"
+        }
+      ],
+      "status": "ok"
+    },
+    "trojan.txt": {
+      "input_sha256": "4403235b5f9403345f58f944458e642b0ff5e8a48bebf96201468ab3380b75dd",
+      "output": [
+        {
+          "canonical": "trojan://golden-password@example.com:443?security=tls&type=tcp&sni=example.com#Golden-Trojan",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "8a79b0fe53d2ee4bb7e191aa1a6327ed0b9bf609bbaf618444ce26a1b7cf89c1",
+          "preserve_raw": true,
+          "raw": "trojan://golden-password@example.com:443?security=tls&type=tcp&sni=example.com#Golden-Trojan",
+          "type": "trojan"
+        }
+      ],
+      "status": "ok"
+    },
+    "vless.txt": {
+      "input_sha256": "1de63afd4e72e64bc9a102479045f6142883a0d0aaa387248f91fdd1b3e9891e",
+      "output": [
+        {
+          "canonical": "vless://11111111-1111-4111-8111-111111111111@example.com:443?encryption=none&security=tls&type=ws&host=example.com&path=%2Fws&sni=example.com#Golden-VLESS",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "af3116fd49fb3b06da5c82f8dd91605543c5d86e80e361ce6ef636592e887372",
+          "preserve_raw": true,
+          "raw": "vless://11111111-1111-4111-8111-111111111111@example.com:443?encryption=none&security=tls&type=ws&host=example.com&path=%2Fws&sni=example.com#Golden-VLESS",
+          "type": "vless"
+        }
+      ],
+      "status": "ok"
+    },
+    "vmess.txt": {
+      "input_sha256": "b7eb340881073e4a139946e3c3b8a03e67566fa9b9df4d6f7dc4aa30018fa3c6",
+      "output": [
+        {
+          "canonical": "vmess://eyJ2IjoiMiIsInBzIjoiR29sZGVuLVZNZXNzIiwiYWRkIjoiZXhhbXBsZS5jb20iLCJwb3J0IjoiNDQzIiwiaWQiOiIzMzMzMzMzMy0zMzMzLTQzMzMtODMzMy0zMzMzMzMzMzMzMzMiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6IndzIiwidHlwZSI6Im5vbmUiLCJob3N0IjoiZXhhbXBsZS5jb20iLCJwYXRoIjoiL3dzIiwidGxzIjoidGxzIiwic25pIjoiZXhhbXBsZS5jb20ifQ==",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "5585869e22c583b4b85ea4b1b81fdaa705b91d36cc7a8ff88734e2f501b6359a",
+          "preserve_raw": true,
+          "raw": "vmess://eyJ2IjoiMiIsInBzIjoiR29sZGVuLVZNZXNzIiwiYWRkIjoiZXhhbXBsZS5jb20iLCJwb3J0IjoiNDQzIiwiaWQiOiIzMzMzMzMzMy0zMzMzLTQzMzMtODMzMy0zMzMzMzMzMzMzMzMiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6IndzIiwidHlwZSI6Im5vbmUiLCJob3N0IjoiZXhhbXBsZS5jb20iLCJwYXRoIjoiL3dzIiwidGxzIjoidGxzIiwic25pIjoiZXhhbXBsZS5jb20ifQ==",
+          "type": "vmess"
+        }
+      ],
+      "status": "ok"
+    },
+    "wireguard.txt": {
+      "input_sha256": "bfa08e7a8aa3a3ea122809d9aa50675c9ac4e9311c65fc62ff62c8bef9f497c6",
+      "output": [
+        {
+          "canonical": "wireguard://golden-private-key@example.com:51820?publickey=golden-public-key&address=10.0.0.2%2F32#Golden-WireGuard",
+          "confidence": 100,
+          "detector_version": "6.0",
+          "fingerprint": "7033cba2eb92422908757b60c8c82649f511da95a2fa045faddb27107a5bc7a4",
+          "preserve_raw": true,
+          "raw": "wireguard://golden-private-key@example.com:51820?publickey=golden-public-key&address=10.0.0.2%2F32#Golden-WireGuard",
+          "type": "wireguard"
+        }
+      ],
+      "status": "ok"
+    }
+  },
+  "module": "app.parser.detector",
+  "schema_version": 1
+}

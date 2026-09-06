@@ -1,0 +1,96 @@
+{
+  "asn": "AS14061",
+  "confidence": 0.0,
+  "config_id": "5524b2e9dc0b179ce1744f96efdd7cdea2671c4aea1693d4f8e38f55cf2d15c9",
+  "config_type": "vless",
+  "country_code": null,
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2a03:b0c0:3:f0:0:2:e434:6000",
+  "finished_at": "2026-09-01T15:10:28.509566+00:00",
+  "flag": null,
+  "fusion": {
+    "confidence": 0.0,
+    "conflict": false,
+    "country_code": null,
+    "country_name": null,
+    "flag": null,
+    "primary_state": "ambiguous",
+    "reason": "country_evidence_ambiguous",
+    "recovery_state": "ambiguous",
+    "source": "none",
+    "state": "ambiguous"
+  },
+  "network_name": "Digital Ocean",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 1,
+    "confidence": 0.5,
+    "country_code": null,
+    "country_name": null,
+    "executed": true,
+    "flag": null,
+    "providers": [
+      {
+        "asn": "AS14061",
+        "country_code": "DE",
+        "country_name": null,
+        "duration_ms": 213,
+        "error": null,
+        "network_name": "DigitalOcean, LLC",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 196,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS14061",
+        "country_code": "US",
+        "country_name": "Germany",
+        "duration_ms": 303,
+        "error": null,
+        "network_name": "DigitalOcean LLC",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_provider_disagreement",
+    "state": "ambiguous",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T15:10:26.990820+00:00",
+  "state": "ambiguous",
+  "temporal": {
+    "observations": 0,
+    "reason": "no_usable_observations",
+    "stable_country": false,
+    "stable_exit_ip": false,
+    "state": "unknown",
+    "unique_countries": 0,
+    "unique_exit_ips": 0
+  }
+}

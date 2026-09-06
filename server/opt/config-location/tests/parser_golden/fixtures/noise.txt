@@ -1,0 +1,3 @@
+this is ordinary text
+https://example.com/
+nothing here should be treated as a VPN config unless current parser intentionally does so

@@ -1,0 +1,31 @@
+[Unit]
+Description=Config Location Permanent Safety Removal Waiting Worker
+After=network-online.target config-location-retest.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+User=root
+Group=root
+
+WorkingDirectory=/opt/config-location
+
+Environment=PYTHONPATH=/opt/config-location
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/opt/config-location/venv/bin/python -m app.health.lifecycle.removal_wait_worker
+
+Restart=always
+RestartSec=5
+
+TimeoutStopSec=20
+KillSignal=SIGTERM
+
+Nice=8
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

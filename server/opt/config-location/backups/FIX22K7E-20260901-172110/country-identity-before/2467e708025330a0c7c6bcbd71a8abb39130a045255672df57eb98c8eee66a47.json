@@ -1,0 +1,16 @@
+{
+  "asn": "AS16509",
+  "config_id": "2467e708025330a0c7c6bcbd71a8abb39130a045255672df57eb98c8eee66a47",
+  "country_code": "GB",
+  "country_confidence": 0.92,
+  "country_name": "United Kingdom",
+  "determined_epoch": 1788281606,
+  "first_exit_ip": "2a05:d01c:274:6200:8b95:5447:645b:b645",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Amazon.com, Inc.",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

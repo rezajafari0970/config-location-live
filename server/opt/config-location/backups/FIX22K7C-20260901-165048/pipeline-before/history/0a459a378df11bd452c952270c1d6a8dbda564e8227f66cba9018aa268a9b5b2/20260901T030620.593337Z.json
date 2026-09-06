@@ -1,0 +1,62 @@
+{
+  "confidence": 0.75,
+  "config_id": "0a459a378df11bd452c952270c1d6a8dbda564e8227f66cba9018aa268a9b5b2",
+  "config_type": "vless",
+  "country_code": "GB",
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 15,
+    "attempts": 15,
+    "successful": 15
+  },
+  "exit_ip": "83.147.18.3",
+  "flag": "🇬🇧",
+  "reason": "hard_recovery_consensus",
+  "recovery_evidence": [
+    {
+      "country_code": "GB",
+      "error": null,
+      "provider": "ipwho",
+      "success": true
+    },
+    {
+      "country_code": null,
+      "error": "curl: (22) The requested URL returned error: 429",
+      "provider": "ipapi_co",
+      "success": false
+    },
+    {
+      "country_code": "GB",
+      "error": null,
+      "provider": "ip_api",
+      "success": true
+    },
+    {
+      "country_code": "GB",
+      "error": null,
+      "provider": "ipinfo",
+      "success": true
+    },
+    {
+      "country_code": null,
+      "error": "invalid_json",
+      "provider": "freeipapi",
+      "success": false
+    },
+    {
+      "country_code": "IQ",
+      "error": null,
+      "provider": "ipguide",
+      "success": true
+    },
+    {
+      "country_code": null,
+      "error": "invalid_json",
+      "provider": "rdap",
+      "success": false
+    }
+  ],
+  "recovery_layer": "ultimate",
+  "schema_version": 2,
+  "state": "confirmed_stable"
+}

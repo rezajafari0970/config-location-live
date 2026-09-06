@@ -1,0 +1,380 @@
+from __future__ import annotations
+
+from typing import Any
+from pathlib import Path
+import inspect
+import re
+
+
+# ============================================================
+# PANEL_A7_PUBLISH_READ_MODEL
+# Canonical publish/subscription discovery
+# READ ONLY
+# ============================================================
+
+
+def _safe_dict(
+    value: Any,
+) -> dict[str, Any]:
+
+    if isinstance(
+        value,
+        dict,
+    ):
+        return value
+
+    return {}
+
+
+def _discover_publish_status() -> dict[str, Any]:
+
+    candidates=[
+        (
+            "app.publish",
+            "status",
+        ),
+        (
+            "app.publish.status",
+            "status",
+        ),
+        (
+            "app.publish.status",
+            "get_status",
+        ),
+        (
+            "app.publish.service",
+            "status",
+        ),
+        (
+            "app.publish.service",
+            "publish_status",
+        ),
+    ]
+
+
+    for module_name,func_name in candidates:
+
+        try:
+
+            module=__import__(
+                module_name,
+                fromlist=[
+                    func_name,
+                ],
+            )
+
+        except Exception:
+            continue
+
+
+        func=getattr(
+            module,
+            func_name,
+            None,
+        )
+
+        if not callable(func):
+            continue
+
+
+        try:
+
+            value=func()
+
+        except Exception:
+            continue
+
+
+        if isinstance(
+            value,
+            dict,
+        ):
+
+            result=dict(value)
+
+            result[
+                "_source"
+            ]=(
+                module_name
+                +"."
+                +func_name
+            )
+
+            return result
+
+
+    # PANEL_A7_R1_HANDLER_FALLBACK
+    # Fallback: inspect the existing canonical panel handler.
+    try:
+
+        import app.panel.server as panel_server
+
+        handler=getattr(
+            panel_server,
+            "api_publish_status",
+            None,
+        )
+
+        source=(
+            inspect.getsource(handler)
+            if callable(handler)
+            else ""
+        )
+
+    except Exception:
+
+        handler=None
+        source=""
+
+
+    if callable(handler):
+
+        # Try to discover zero-argument callable names used
+        # inside the existing canonical handler.
+        names=re.findall(
+            r"([A-Za-z_][A-Za-z0-9_]*)\s*\(",
+            source,
+        )
+
+        skip={
+            "web",
+            "json_response",
+            "str",
+            "int",
+            "float",
+            "bool",
+            "dict",
+            "list",
+            "set",
+            "tuple",
+            "len",
+        }
+
+        for name in names:
+
+            if name in skip:
+                continue
+
+            obj=getattr(
+                panel_server,
+                name,
+                None,
+            )
+
+            if not callable(obj):
+                continue
+
+            try:
+                value=obj()
+            except TypeError:
+                continue
+            except Exception:
+                continue
+
+            if isinstance(
+                value,
+                dict,
+            ):
+
+                result=dict(value)
+
+                result[
+                    "_source"
+                ]=(
+                    "app.panel.server."
+                    +name
+                )
+
+                return result
+
+
+    return {
+        "_source":
+            "unresolved",
+
+        "_note":
+            "canonical status function not directly importable",
+
+        "_api_handler_present":
+            bool(source),
+    }
+
+
+def _discover_routes() -> list[str]:
+
+    try:
+
+        from app.panel.server import (
+            create_app,
+        )
+
+        app=create_app()
+
+    except Exception:
+
+        return []
+
+
+    found=set()
+
+    for route in app.router.routes():
+
+        try:
+            path=route.resource.canonical
+        except Exception:
+            continue
+
+        if not isinstance(
+            path,
+            str,
+        ):
+            continue
+
+        if (
+            path.startswith("/sub/")
+            or path=="/sub"
+        ):
+            found.add(path)
+
+
+    return sorted(found)
+
+
+def _classify_routes(
+    routes: list[str],
+) -> dict[str, list[str]]:
+
+    result={
+        "all":[],
+        "type":[],
+        "country":[],
+        "other":[],
+    }
+
+
+    for path in routes:
+
+        low=path.lower()
+
+        if path=="/sub/all":
+
+            result["all"].append(
+                path
+            )
+
+        elif (
+            "{config_type}" in path
+            or "{type}" in path
+        ):
+
+            result["type"].append(
+                path
+            )
+
+        elif (
+            "{country" in low
+            or "/country/" in low
+        ):
+
+            result["country"].append(
+                path
+            )
+
+        else:
+
+            result["other"].append(
+                path
+            )
+
+
+    return result
+
+
+def _known_types() -> list[str]:
+
+    return [
+        "vless",
+        "vmess",
+        "trojan",
+        "ss",
+        "wireguard",
+        "json_xray",
+    ]
+
+
+def publish_summary() -> dict[str, Any]:
+
+    status=_discover_publish_status()
+
+    routes=_discover_routes()
+
+    classes=_classify_routes(
+        routes
+    )
+
+
+    type_links=[]
+
+    route_template=None
+
+    for item in classes[
+        "type"
+    ]:
+
+        if (
+            "{config_type}"
+            in item
+        ):
+            route_template=item
+            break
+
+
+    if route_template:
+
+        for config_type in _known_types():
+
+            type_links.append(
+                {
+                    "type":
+                        config_type,
+
+                    "path":
+                        route_template.replace(
+                            "{config_type}",
+                            config_type,
+                        ),
+                }
+            )
+
+
+    return {
+        "publish_status":
+            status,
+
+        "routes":
+            routes,
+
+        "route_classes":
+            classes,
+
+        "links":{
+            "all":
+                "/sub/all"
+                if "/sub/all"
+                in routes
+                else None,
+
+            "types":
+                type_links,
+
+            "country_templates":
+                classes[
+                    "country"
+                ],
+
+            "other":
+                classes[
+                    "other"
+                ],
+        },
+    }

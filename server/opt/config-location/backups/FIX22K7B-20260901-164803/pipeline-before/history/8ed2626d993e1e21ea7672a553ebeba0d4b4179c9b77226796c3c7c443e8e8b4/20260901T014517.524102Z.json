@@ -1,0 +1,53 @@
+{
+  "asn": "AS12876",
+  "confidence": 1.0,
+  "config_id": "8ed2626d993e1e21ea7672a553ebeba0d4b4179c9b77226796c3c7c443e8e8b4",
+  "config_type": "trojan",
+  "country_code": "FR",
+  "country_name": "France",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "51.159.147.185",
+  "finished_at": "2026-09-01T01:45:17.524073+00:00",
+  "flag": "🇫🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "FR",
+    "country_name": "France",
+    "flag": "🇫🇷",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Scaleway SAS",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "FR",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "trojan"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T01:45:16.379343+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

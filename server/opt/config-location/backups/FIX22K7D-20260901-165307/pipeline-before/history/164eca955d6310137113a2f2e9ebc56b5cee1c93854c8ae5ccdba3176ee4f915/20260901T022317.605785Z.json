@@ -1,0 +1,53 @@
+{
+  "asn": "AS19970",
+  "confidence": 1.0,
+  "config_id": "164eca955d6310137113a2f2e9ebc56b5cee1c93854c8ae5ccdba3176ee4f915",
+  "config_type": "vmess",
+  "country_code": "PH",
+  "country_name": "Philippines",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "61.245.11.60",
+  "finished_at": "2026-09-01T02:23:17.605778+00:00",
+  "flag": "🇵🇭",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "PH",
+    "country_name": "Philippines",
+    "flag": "🇵🇭",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "R&R Managed Telecom Services",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "PH",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vmess"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:23:07.666390+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

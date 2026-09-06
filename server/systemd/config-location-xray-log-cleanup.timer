@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily cleanup of Config Location Xray forensic logs
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=20m
+
+[Install]
+WantedBy=timers.target

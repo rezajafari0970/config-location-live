@@ -1,0 +1,16 @@
+{
+  "asn": "AS30058",
+  "config_id": "17d5e2b991351cb0ef6e7b8148492f8443028fb162d5054c434995eb98d70a46",
+  "country_code": "NL",
+  "country_confidence": 0.92,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "50.7.193.130",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "FDCservers.net",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

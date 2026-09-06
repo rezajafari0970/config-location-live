@@ -1,0 +1,53 @@
+{
+  "asn": "AS44051",
+  "confidence": 1.0,
+  "config_id": "2723baba91e3147ef554c3a95766428be9910f901f3c679bc547d716126e6373",
+  "config_type": "vless",
+  "country_code": "DE",
+  "country_name": "Germany",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "130.17.6.235",
+  "finished_at": "2026-09-01T02:41:45.196789+00:00",
+  "flag": "🇩🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "DE",
+    "country_name": "Germany",
+    "flag": "🇩🇪",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "www.fornex.com, Fornex Hosting S.L.",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "DE",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:41:44.326647+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

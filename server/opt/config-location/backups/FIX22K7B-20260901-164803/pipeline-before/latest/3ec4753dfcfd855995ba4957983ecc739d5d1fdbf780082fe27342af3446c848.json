@@ -1,0 +1,96 @@
+{
+  "asn": "AS210644",
+  "confidence": 1.0,
+  "config_id": "3ec4753dfcfd855995ba4957983ecc739d5d1fdbf780082fe27342af3446c848",
+  "config_type": "vless",
+  "country_code": "GB",
+  "country_name": "United States",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "150.241.72.5",
+  "finished_at": "2026-09-01T04:13:09.807754+00:00",
+  "flag": "🇬🇧",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "GB",
+    "country_name": "United States",
+    "flag": "🇬🇧",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "xorek.cloud International LTD",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "GB",
+    "country_name": "United States",
+    "executed": true,
+    "flag": "🇬🇧",
+    "providers": [
+      {
+        "asn": "AS207957",
+        "country_code": "GB",
+        "country_name": null,
+        "duration_ms": 145,
+        "error": null,
+        "network_name": "SERV.HOST GROUP LTD",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 30,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS207957",
+        "country_code": "GB",
+        "country_name": "United States",
+        "duration_ms": 130,
+        "error": null,
+        "network_name": "SERV.HOST GROUP LTD",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T04:12:53.203109+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

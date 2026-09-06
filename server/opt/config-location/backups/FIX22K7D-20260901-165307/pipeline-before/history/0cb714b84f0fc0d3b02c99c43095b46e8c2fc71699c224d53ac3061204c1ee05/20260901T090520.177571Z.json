@@ -1,0 +1,53 @@
+{
+  "asn": "AS49791",
+  "confidence": 1.0,
+  "config_id": "0cb714b84f0fc0d3b02c99c43095b46e8c2fc71699c224d53ac3061204c1ee05",
+  "config_type": "vless",
+  "country_code": "PL",
+  "country_name": "Poland",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2a05:fc1:40:2e9::b",
+  "finished_at": "2026-09-01T09:05:20.177550+00:00",
+  "flag": "🇵🇱",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "PL",
+    "country_name": "Poland",
+    "flag": "🇵🇱",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Newserverlife LLC",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "PL",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T09:05:16.275612+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

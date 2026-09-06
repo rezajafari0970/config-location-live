@@ -1,0 +1,53 @@
+{
+  "asn": "AS14061",
+  "confidence": 1.0,
+  "config_id": "74c127f4081d513a165e424a1d78eb9c1d6aa4d0e8d90743908651515d393cfb",
+  "config_type": "vless",
+  "country_code": "NL",
+  "country_name": "Netherlands",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "206.189.99.37",
+  "finished_at": "2026-09-01T11:11:38.882999+00:00",
+  "flag": "🇳🇱",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "NL",
+    "country_name": "Netherlands",
+    "flag": "🇳🇱",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "DigitalOcean, LLC",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "NL",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T11:11:35.912510+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "asn": "AS56655",
+  "confidence": 1.0,
+  "config_id": "2d8a3fdfa4e82eda201f27fd35d255c5450106b2d032d46da8d4adbe91ee4f49",
+  "config_type": "vless",
+  "country_code": "NO",
+  "country_name": "Norway",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "194.110.207.162",
+  "finished_at": "2026-09-01T10:56:04.827033+00:00",
+  "flag": "🇳🇴",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "NO",
+    "country_name": "Norway",
+    "flag": "🇳🇴",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Gigahost AS",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "NO",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T10:55:45.840268+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

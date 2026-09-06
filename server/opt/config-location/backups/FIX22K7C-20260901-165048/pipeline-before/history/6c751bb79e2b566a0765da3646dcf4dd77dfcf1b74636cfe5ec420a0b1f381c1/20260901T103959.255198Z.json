@@ -1,0 +1,53 @@
+{
+  "asn": "AS20473",
+  "confidence": 1.0,
+  "config_id": "6c751bb79e2b566a0765da3646dcf4dd77dfcf1b74636cfe5ec420a0b1f381c1",
+  "config_type": "vless",
+  "country_code": "SE",
+  "country_name": "Sweden",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "70.34.209.241",
+  "finished_at": "2026-09-01T10:39:59.255188+00:00",
+  "flag": "🇸🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "SE",
+    "country_name": "Sweden",
+    "flag": "🇸🇪",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "The Constant Company, LLC",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "SE",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T10:39:53.836453+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

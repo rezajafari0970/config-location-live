@@ -1,0 +1,7 @@
+text before
+
+vless://22222222-2222-4222-8222-222222222222@example.org:443?encryption=none&security=reality&type=tcp&sni=www.cloudflare.com&fp=chrome&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&sid=abcd#Mixed-VLESS
+
+trojan://mixed-password@example.net:443?security=tls&sni=example.net#Mixed-Trojan
+
+random text after

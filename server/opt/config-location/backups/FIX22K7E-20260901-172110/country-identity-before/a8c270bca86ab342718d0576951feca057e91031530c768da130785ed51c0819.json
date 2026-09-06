@@ -1,0 +1,16 @@
+{
+  "asn": "AS210976",
+  "config_id": "a8c270bca86ab342718d0576951feca057e91031530c768da130785ed51c0819",
+  "country_code": "NL",
+  "country_confidence": 1.0,
+  "country_name": "Netherlands",
+  "determined_epoch": 1788281637,
+  "first_exit_ip": "72.56.81.165",
+  "flag": "🇳🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Timeweb, LLP",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

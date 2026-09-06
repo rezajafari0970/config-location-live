@@ -1,0 +1,16 @@
+{
+  "asn": "AS62240",
+  "config_id": "8b2f3c6b4cc63151b85a42161e93dd0b7629819a0a6cb1cca0189b2c419a6a59",
+  "country_code": "US",
+  "country_confidence": 0.92,
+  "country_name": "United States",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "185.195.57.175",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Clouvider",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

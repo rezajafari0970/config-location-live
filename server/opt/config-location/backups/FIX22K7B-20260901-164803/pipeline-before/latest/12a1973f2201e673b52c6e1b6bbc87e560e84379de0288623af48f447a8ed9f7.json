@@ -1,0 +1,53 @@
+{
+  "asn": "AS215439",
+  "confidence": 1.0,
+  "config_id": "12a1973f2201e673b52c6e1b6bbc87e560e84379de0288623af48f447a8ed9f7",
+  "config_type": "vless",
+  "country_code": "SE",
+  "country_name": "Sweden",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "87.121.105.149",
+  "finished_at": "2026-09-01T06:36:08.503752+00:00",
+  "flag": "🇸🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "SE",
+    "country_name": "Sweden",
+    "flag": "🇸🇪",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "play2go.cloud - Cheap and reliable hosting",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "SE",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T06:36:04.296246+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

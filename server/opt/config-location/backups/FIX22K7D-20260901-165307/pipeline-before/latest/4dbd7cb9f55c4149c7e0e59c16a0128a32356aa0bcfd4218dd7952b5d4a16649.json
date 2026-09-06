@@ -1,0 +1,96 @@
+{
+  "asn": "AS213535",
+  "confidence": 0.0,
+  "config_id": "4dbd7cb9f55c4149c7e0e59c16a0128a32356aa0bcfd4218dd7952b5d4a16649",
+  "config_type": "vless",
+  "country_code": null,
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "45.67.139.198",
+  "finished_at": "2026-09-01T15:54:28.990744+00:00",
+  "flag": null,
+  "fusion": {
+    "confidence": 0.0,
+    "conflict": false,
+    "country_code": null,
+    "country_name": null,
+    "flag": null,
+    "primary_state": "ambiguous",
+    "reason": "country_evidence_ambiguous",
+    "recovery_state": "ambiguous",
+    "source": "none",
+    "state": "ambiguous"
+  },
+  "network_name": "YottaSrc",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 1,
+    "confidence": 0.5,
+    "country_code": null,
+    "country_name": null,
+    "executed": true,
+    "flag": null,
+    "providers": [
+      {
+        "asn": "AS213535",
+        "country_code": "FR",
+        "country_name": null,
+        "duration_ms": 182,
+        "error": null,
+        "network_name": "YottaSrc",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 83,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS213535",
+        "country_code": "SA",
+        "country_name": "France",
+        "duration_ms": 254,
+        "error": null,
+        "network_name": "YottaSrc",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_provider_disagreement",
+    "state": "ambiguous",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T15:54:27.551921+00:00",
+  "state": "ambiguous",
+  "temporal": {
+    "observations": 0,
+    "reason": "no_usable_observations",
+    "stable_country": false,
+    "stable_exit_ip": false,
+    "state": "unknown",
+    "unique_countries": 0,
+    "unique_exit_ips": 0
+  }
+}

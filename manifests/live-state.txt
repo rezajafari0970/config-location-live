@@ -1,0 +1,4 @@
+hostname=serverprojects.ptr.network
+source=/opt/config-location
+repository=rezajafari0970/config-location-live
+phase5_state=PRODUCTION_COMPLETE

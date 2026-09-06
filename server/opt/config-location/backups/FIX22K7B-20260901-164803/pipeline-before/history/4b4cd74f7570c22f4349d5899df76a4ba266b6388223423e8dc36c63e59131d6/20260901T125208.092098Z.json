@@ -1,0 +1,53 @@
+{
+  "asn": "AS207957",
+  "confidence": 1.0,
+  "config_id": "4b4cd74f7570c22f4349d5899df76a4ba266b6388223423e8dc36c63e59131d6",
+  "config_type": "vless",
+  "country_code": "RU",
+  "country_name": "Russia",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "178.250.186.139",
+  "finished_at": "2026-09-01T12:52:08.092080+00:00",
+  "flag": "🇷🇺",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "RU",
+    "country_name": "Russia",
+    "flag": "🇷🇺",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Russia, Moscow",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "RU",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T12:52:04.310572+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "asn": "AS63949",
+  "confidence": 1.0,
+  "config_id": "59f92c55345a7363348c8f6152e79e95a2fa390bdbec48a63d3b4fe09214f528",
+  "config_type": "ss",
+  "country_code": "IN",
+  "country_name": "India",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "172.105.39.124",
+  "finished_at": "2026-09-01T08:14:34.525686+00:00",
+  "flag": "🇮🇳",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "IN",
+    "country_name": "India",
+    "flag": "🇮🇳",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Linode",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "IN",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T08:14:02.137769+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

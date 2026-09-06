@@ -1,0 +1,16 @@
+{
+  "asn": "AS212238",
+  "config_id": "8a579656d24a9b264ce0a608a970854ec5415f50831eca530e7aa0c21db79e75",
+  "country_code": "SG",
+  "country_confidence": 0.92,
+  "country_name": "Singapore",
+  "determined_epoch": 1788281606,
+  "first_exit_ip": "149.88.23.207",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Datacamp Limited",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

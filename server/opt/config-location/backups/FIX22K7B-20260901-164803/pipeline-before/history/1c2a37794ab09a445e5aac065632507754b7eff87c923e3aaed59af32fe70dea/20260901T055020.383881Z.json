@@ -1,0 +1,53 @@
+{
+  "asn": "AS45102",
+  "confidence": 1.0,
+  "config_id": "1c2a37794ab09a445e5aac065632507754b7eff87c923e3aaed59af32fe70dea",
+  "config_type": "vless",
+  "country_code": "US",
+  "country_name": "United States",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "47.89.186.170",
+  "finished_at": "2026-09-01T05:50:20.383865+00:00",
+  "flag": "🇺🇸",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "US",
+    "country_name": "United States",
+    "flag": "🇺🇸",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Alibaba Cloud - US",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "US",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T05:50:13.854672+00:00",
+  "state": "confirmed_rotating_ip",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_multiple_exit_ips",
+    "stable_country": true,
+    "stable_exit_ip": false,
+    "state": "confirmed_rotating_ip",
+    "unique_countries": 1,
+    "unique_exit_ips": 2
+  }
+}

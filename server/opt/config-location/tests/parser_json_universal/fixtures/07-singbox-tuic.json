@@ -1,0 +1,16 @@
+{
+  "outbounds": [
+    {
+      "type": "tuic",
+      "tag": "proxy",
+      "server": "example.com",
+      "server_port": 443,
+      "uuid": "44444444-4444-4444-8444-444444444444",
+      "password": "golden",
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com"
+      }
+    }
+  ]
+}

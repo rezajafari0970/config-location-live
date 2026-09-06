@@ -1,0 +1,16 @@
+{
+  "asn": "AS14061",
+  "config_id": "904ba9d28442dcb2fcf0f6cbed8cfab988ff5ec15babce14b01ab4c0cb2aea8c",
+  "country_code": "CA",
+  "country_confidence": 0.92,
+  "country_name": "Canada",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "178.128.230.65",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "DigitalOcean, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

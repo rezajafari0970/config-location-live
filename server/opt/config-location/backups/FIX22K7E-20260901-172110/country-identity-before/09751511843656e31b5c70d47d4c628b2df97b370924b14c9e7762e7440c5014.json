@@ -1,0 +1,16 @@
+{
+  "asn": "AS24940",
+  "config_id": "09751511843656e31b5c70d47d4c628b2df97b370924b14c9e7762e7440c5014",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788281292,
+  "first_exit_ip": "188.245.115.87",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Hetzner Online GmbH",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+export PYTHONPATH=/opt/config-location
+export PYTHONUNBUFFERED=1
+
+exec /opt/config-location/venv/bin/python \
+-m app.country.daemon

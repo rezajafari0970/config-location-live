@@ -1,0 +1,62 @@
+{
+  "confidence": 0.8,
+  "config_id": "3a778f60fa0718923f6bd8a84d945eef710b22f940c747cdc7a0aec373f02cf6",
+  "config_type": "vless",
+  "country_code": "NL",
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 12,
+    "attempts": 15,
+    "successful": 12
+  },
+  "exit_ip": "45.143.166.50",
+  "flag": "🇳🇱",
+  "reason": "hard_recovery_consensus",
+  "recovery_evidence": [
+    {
+      "country_code": "NL",
+      "error": null,
+      "provider": "ipwho",
+      "success": true
+    },
+    {
+      "country_code": "NL",
+      "error": null,
+      "provider": "ipapi_co",
+      "success": true
+    },
+    {
+      "country_code": "NL",
+      "error": null,
+      "provider": "ip_api",
+      "success": true
+    },
+    {
+      "country_code": "NL",
+      "error": null,
+      "provider": "ipinfo",
+      "success": true
+    },
+    {
+      "country_code": null,
+      "error": "invalid_json",
+      "provider": "freeipapi",
+      "success": false
+    },
+    {
+      "country_code": "EE",
+      "error": null,
+      "provider": "ipguide",
+      "success": true
+    },
+    {
+      "country_code": null,
+      "error": "invalid_json",
+      "provider": "rdap",
+      "success": false
+    }
+  ],
+  "recovery_layer": "ultimate",
+  "schema_version": 2,
+  "state": "confirmed_stable"
+}

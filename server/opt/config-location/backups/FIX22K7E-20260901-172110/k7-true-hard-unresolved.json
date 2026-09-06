@@ -1,0 +1,192 @@
+[
+  {
+    "config_id": "85e7e1d64eff5552fbca12a21acdd946a555d1405fabbd4d5193c5529e38cc09",
+    "exit_ip": "162.35.231.31",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "33157db843faec6b3a229f92e7f12325da11bf40239c078239f6360fe4f45fa8",
+    "exit_ip": "150.241.72.85",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "1f56f3cddc3611efdda1db527b96006c0cc2e97a738b88c37ca709298bf8a2d8",
+    "exit_ip": "159.223.218.99",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "17f97e8e541f3d314c2b0ba5d861f3868128164629aa0e38185d640d6b00f3c5",
+    "exit_ip": "167.99.220.11",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "5e8192715d2616febdd509d8d0f050ff409771d9fe144b066bb08eb3ac4228f1",
+    "exit_ip": "212.2.35.168",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "1161af133f40c55552da030dcd2d0f3f92c6b7cca17bfaee43eca794d1c19d98",
+    "exit_ip": "188.166.45.148",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "941d3747fc96334c715421c3bd5797912206fbecbe56df80366497b983c9b8f5",
+    "exit_ip": "68.183.73.201",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "88e56cfa340325655d77f72b63341978b797841e235b7c717aa24f47776e1ad5",
+    "exit_ip": "143.246.56.117",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "0d9c7443b2edf036c75793311a8797c0b405b07e330242f4e11a3e4c05bd98e4",
+    "exit_ip": "134.209.206.198",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "4d8deadaa6ad3d5d3e9a999be44c14cb88425b5437f12eeb57e55c3d8533d776",
+    "exit_ip": "50.7.38.242",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "1e2efab28898457861ffe54f700b2a7163554b0306a483b2c4de59998ae9e793",
+    "exit_ip": "150.241.72.85",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "63f7d7f8452c38a47d155b0df10e11f7bf20190befd0695c9f9992b107c7747d",
+    "exit_ip": "150.241.73.137",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "5d45b8444bbe7ad6d4ff6a40d94b1034b9b7ad3631f62400657d0473f3cbbb7e",
+    "exit_ip": "157.230.96.54",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "132b4cc5db341966e87e768963763d51923837cce2b264b3e9d88fe0aff79133",
+    "exit_ip": "2001:41d0:701:1100::d73a",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "893d7b9ac6bcf3adcc0075840e7a132c71a4b6ac5de473ed954c35f4f24f6e75",
+    "exit_ip": "216.238.116.203",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "9037908e3e9bfc163485094cf6b0a08d44ad891a2089fa1cb7238f574546ff5e",
+    "exit_ip": "2.26.101.64",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "3d438d841fa9ede1a55797c420b1ca11b4b2ba5cc4a0aa3a5ff72f1ee17d88ff",
+    "exit_ip": "178.128.247.194",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "4e8f324fa35190a1f89d2b47922aaf450c056e15aa1bc679a0de864af9e24c4f",
+    "exit_ip": "51.158.206.80",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "3ae9d7e3ef9830f60a21f86fd0ab33b10518cf944541421689ee887424cb5912",
+    "exit_ip": "2a01:ecc0:d00:22f::2",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "83a2274d6bd1a9d03c80e4aae635f9c857875331f04f601b8a28cdf1ff49f1ae",
+    "exit_ip": "51.158.238.142",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "3345008a399e88b8b56fb79361583661fc9cd8e8161def645c31f255614273be",
+    "exit_ip": "2a14:7c0:1002:1723::",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "425352b03af197becb208e2355e31a645572f63c7657a404601585dd0a748095",
+    "exit_ip": "150.241.72.85",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "142703aee407107b61cc1513bc33546294c3e68f15b560335c534ddf491e041c",
+    "exit_ip": "138.197.181.136",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "50427f91bff2d32b837aff7a6c3eeb59d3a23566ce390c8c4a61e47953cf4ebe",
+    "exit_ip": "159.223.28.171",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "613316850566fa3d34c4af4f6bdbdd759645fae49fa725ca0ec8b73f7117bb98",
+    "exit_ip": "104.248.143.207",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "4e3b707bac72a31262aa090b931c7546996947a62a15583e86c68c12ab635410",
+    "exit_ip": "208.77.244.24",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "299bf94ef8d1547bee11467ed471c2e9076439b6d6de296f25addab8492db36c",
+    "exit_ip": "2a12:bec4:1483:17a::2",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "925eea010b8d6e4d77e5cc066f0b006d80698570bced933ede84e4cb733bdaf7",
+    "exit_ip": "164.92.209.131",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "1ae63ca671637cf9a9180acd2dd85df5b05df13b0f928ed5b84b23179535f64f",
+    "exit_ip": "2a01:ecc0:d40:bb::2",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "2c437828b25a66ca1f2151758caaf5e2e81246cfa502310e59937c4afff891aa",
+    "exit_ip": "149.88.23.207",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "11a55f1b355908985361642dafeda7ae591046041cdb9b7e6ae9a997d6db8644",
+    "exit_ip": "212.2.35.168",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "934594e99050551b97099c37babbeb8c26edbe3de7a6a4a3957b4ae6efa37867",
+    "exit_ip": "2.27.204.143",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "121e5cf602ba866cf20007217ed4379b1752cbf02456bd0397ad6df4512e2937",
+    "exit_ip": "216.128.169.145",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "9388b12d5f55a6dbdb919842fcaa9aabb3507758155e06ef15e9f4bf1957fc53",
+    "exit_ip": "165.232.81.23",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "9489a7995947971fa1b0d2cce3236bbd7aa4f32f5ee0cf9b360eacbdb1753923",
+    "exit_ip": "178.62.196.230",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "93f354002cb761a654ec39e5155048f425e3516afd1e5b9c83757b533e402909",
+    "exit_ip": "31.76.79.118",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "902a5eadac58f98b7c1b0ffa99c8ea78f832bd8b3bee19423f594a723812537f",
+    "exit_ip": "209.38.103.167",
+    "state": "ambiguous"
+  },
+  {
+    "config_id": "8f92f95bfa6ab26c1b1fcf9a76e37add6026550edd0cfa1c4beb7c954cd1c44c",
+    "exit_ip": "2001:41d0:601:1100::509e",
+    "state": "ambiguous"
+  }
+]

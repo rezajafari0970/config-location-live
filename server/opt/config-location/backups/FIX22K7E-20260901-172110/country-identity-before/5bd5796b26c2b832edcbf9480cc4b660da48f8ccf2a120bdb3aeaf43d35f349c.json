@@ -1,0 +1,16 @@
+{
+  "asn": "AS212552",
+  "config_id": "5bd5796b26c2b832edcbf9480cc4b660da48f8ccf2a120bdb3aeaf43d35f349c",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "185.221.237.22",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "BitCommand LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

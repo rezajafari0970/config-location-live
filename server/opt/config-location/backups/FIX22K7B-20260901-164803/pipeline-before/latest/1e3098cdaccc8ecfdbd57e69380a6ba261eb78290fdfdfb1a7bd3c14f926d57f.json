@@ -1,0 +1,53 @@
+{
+  "asn": "AS16509",
+  "confidence": 1.0,
+  "config_id": "1e3098cdaccc8ecfdbd57e69380a6ba261eb78290fdfdfb1a7bd3c14f926d57f",
+  "config_type": "vless",
+  "country_code": "GB",
+  "country_name": "United Kingdom",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2a05:d01c:274:6200:507d:52fc:e633:4fa3",
+  "finished_at": "2026-09-01T09:05:49.918459+00:00",
+  "flag": "🇬🇧",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "GB",
+    "country_name": "United Kingdom",
+    "flag": "🇬🇧",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Amazon Data Services Ireland Ltd",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "GB",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T09:05:46.430334+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

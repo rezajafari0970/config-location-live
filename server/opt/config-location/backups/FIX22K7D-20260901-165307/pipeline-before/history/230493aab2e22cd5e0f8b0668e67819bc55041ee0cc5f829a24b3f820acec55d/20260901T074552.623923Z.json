@@ -1,0 +1,53 @@
+{
+  "asn": "AS202053",
+  "confidence": 1.0,
+  "config_id": "230493aab2e22cd5e0f8b0668e67819bc55041ee0cc5f829a24b3f820acec55d",
+  "config_type": "vless",
+  "country_code": "FI",
+  "country_name": "Finland",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "87.58.154.233",
+  "finished_at": "2026-09-01T07:45:52.623902+00:00",
+  "flag": "🇫🇮",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "FI",
+    "country_name": "Finland",
+    "flag": "🇫🇮",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "UpCloud Ltd",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "FI",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T07:45:49.616202+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

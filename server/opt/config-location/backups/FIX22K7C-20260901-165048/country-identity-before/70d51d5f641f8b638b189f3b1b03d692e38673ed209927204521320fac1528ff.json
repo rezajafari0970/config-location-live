@@ -1,0 +1,16 @@
+{
+  "asn": "AS20473",
+  "config_id": "70d51d5f641f8b638b189f3b1b03d692e38673ed209927204521320fac1528ff",
+  "country_code": "SG",
+  "country_confidence": 1.0,
+  "country_name": "Singapore",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "139.180.159.133",
+  "flag": "🇸🇬",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "SGP VULTR CUST",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,53 @@
+{
+  "asn": "AS60781",
+  "confidence": 1.0,
+  "config_id": "3f8beff66ae378a9a24dfd2dd154308aac6c86799f6096ec1ee8e92cfbd5bdf1",
+  "config_type": "vless",
+  "country_code": "NL",
+  "country_name": "Netherlands",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "2001:1af8:5301:133:1c00:efff:fe00:203e",
+  "finished_at": "2026-09-01T07:35:53.083662+00:00",
+  "flag": "🇳🇱",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "NL",
+    "country_name": "Netherlands",
+    "flag": "🇳🇱",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "LeaseWeb Netherlands B.V.",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "NL",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T07:35:29.631314+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

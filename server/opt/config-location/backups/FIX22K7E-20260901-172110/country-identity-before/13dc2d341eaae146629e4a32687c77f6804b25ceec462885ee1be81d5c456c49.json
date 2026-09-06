@@ -1,0 +1,16 @@
+{
+  "asn": "AS215590",
+  "config_id": "13dc2d341eaae146629e4a32687c77f6804b25ceec462885ee1be81d5c456c49",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "144.31.140.127",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "DpkgSoft International Limited",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

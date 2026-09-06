@@ -1,0 +1,16 @@
+{
+  "asn": "AS212238",
+  "config_id": "eb3202845d6f094e6d79173216cd71b9a638ffeb606412225fdc3515777d36d5",
+  "country_code": "US",
+  "country_confidence": 1.0,
+  "country_name": "United States",
+  "determined_epoch": 1788281389,
+  "first_exit_ip": "149.34.251.246",
+  "flag": "🇺🇸",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Datacamp Limited",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

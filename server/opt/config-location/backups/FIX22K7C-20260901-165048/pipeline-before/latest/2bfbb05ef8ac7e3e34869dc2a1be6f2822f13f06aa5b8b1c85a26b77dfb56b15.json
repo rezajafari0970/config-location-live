@@ -1,0 +1,53 @@
+{
+  "asn": "AS64289",
+  "confidence": 1.0,
+  "config_id": "2bfbb05ef8ac7e3e34869dc2a1be6f2822f13f06aa5b8b1c85a26b77dfb56b15",
+  "config_type": "vless",
+  "country_code": "NL",
+  "country_name": "Netherlands",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2a14:3f87:f001:47::a",
+  "finished_at": "2026-09-01T02:54:28.579918+00:00",
+  "flag": "🇳🇱",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "NL",
+    "country_name": "Netherlands",
+    "flag": "🇳🇱",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Macarne Limited",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "NL",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:54:25.288562+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

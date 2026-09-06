@@ -1,0 +1,53 @@
+{
+  "asn": "AS24940",
+  "confidence": 1.0,
+  "config_id": "0196db94b8df520880641b738ffa24327e90725e7447c7b5037ff9114d1d8bd3",
+  "config_type": "vless",
+  "country_code": "FI",
+  "country_name": "Finland",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "65.109.211.113",
+  "finished_at": "2026-09-01T01:42:41.931493+00:00",
+  "flag": "🇫🇮",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "FI",
+    "country_name": "Finland",
+    "flag": "🇫🇮",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Hetzner Online GmbH",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "FI",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T01:42:40.635096+00:00",
+  "state": "confirmed_rotating_ip",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_multiple_exit_ips",
+    "stable_country": true,
+    "stable_exit_ip": false,
+    "state": "confirmed_rotating_ip",
+    "unique_countries": 1,
+    "unique_exit_ips": 2
+  }
+}

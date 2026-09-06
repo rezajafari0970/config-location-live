@@ -1,0 +1,16 @@
+{
+  "asn": "AS197574",
+  "config_id": "4c37c000097fbccd8a825b06e545bd2ece27c734719f075b22eb72ed0df0af89",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281608,
+  "first_exit_ip": "31.56.189.27",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "ExpressHost Ltd",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,53 @@
+{
+  "asn": "AS20473",
+  "confidence": 1.0,
+  "config_id": "443af04df02fbdeaf6ec542b00e2d8da7ec1f23ed708903e66ae35e5b3718c7e",
+  "config_type": "vless",
+  "country_code": "DE",
+  "country_name": "Germany",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2a05:f480:1800:3d3d:5400:6ff:fe9f:322b",
+  "finished_at": "2026-09-01T04:40:56.562357+00:00",
+  "flag": "🇩🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "DE",
+    "country_name": "Germany",
+    "flag": "🇩🇪",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "The Constant Company, LLC.",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "DE",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T04:40:53.440485+00:00",
+  "state": "confirmed_rotating_ip",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_multiple_exit_ips",
+    "stable_country": true,
+    "stable_exit_ip": false,
+    "state": "confirmed_rotating_ip",
+    "unique_countries": 1,
+    "unique_exit_ips": 2
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS212815",
+  "config_id": "8b92ba8d38da9b336f11525c1f923dfe455cdd4d6d4ee4ab27aa8d0e46fb4408",
+  "country_code": "FR",
+  "country_confidence": 1.0,
+  "country_name": "France",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "45.13.119.222",
+  "flag": "🇫🇷",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Dyjix SAS",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

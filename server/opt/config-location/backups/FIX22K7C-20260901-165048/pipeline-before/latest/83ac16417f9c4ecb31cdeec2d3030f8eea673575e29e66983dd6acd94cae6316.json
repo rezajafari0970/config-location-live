@@ -1,0 +1,96 @@
+{
+  "asn": "AS20860",
+  "confidence": 1.0,
+  "config_id": "83ac16417f9c4ecb31cdeec2d3030f8eea673575e29e66983dd6acd94cae6316",
+  "config_type": "vless",
+  "country_code": "GB",
+  "country_name": "United Kingdom",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "5.152.223.97",
+  "finished_at": "2026-09-01T14:08:19.862494+00:00",
+  "flag": "🇬🇧",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "GB",
+    "country_name": "United Kingdom",
+    "flag": "🇬🇧",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Redstation Limited",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "GB",
+    "country_name": "United Kingdom",
+    "executed": true,
+    "flag": "🇬🇧",
+    "providers": [
+      {
+        "asn": "AS20860",
+        "country_code": "GB",
+        "country_name": null,
+        "duration_ms": 157,
+        "error": null,
+        "network_name": "IOMART CLOUD SERVICES LIMITED",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 32,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS20860",
+        "country_code": "GB",
+        "country_name": "United Kingdom",
+        "duration_ms": 170,
+        "error": null,
+        "network_name": "IOMART CLOUD SERVICES LIMITED",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T14:08:16.705437+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

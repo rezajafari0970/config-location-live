@@ -1,0 +1,53 @@
+{
+  "asn": "AS48753",
+  "confidence": 1.0,
+  "config_id": "1b9f3e14ae1d9b734a7b6daa3b390dc9a6a904aeab4f1f8f6b9a2ed40e206c0d",
+  "config_type": "vless",
+  "country_code": "MD",
+  "country_name": "Moldova",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "143.246.223.251",
+  "finished_at": "2026-09-01T12:40:30.296256+00:00",
+  "flag": "🇲🇩",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "MD",
+    "country_name": "Moldova",
+    "flag": "🇲🇩",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Alexhost S.R.L",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "MD",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T12:40:27.446555+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "asn": "AS212743",
+  "confidence": 1.0,
+  "config_id": "54d061ba18f11da2778055e7cce4ebd273185f7fc6c04218f89dd3a7c6c15826",
+  "config_type": "vless",
+  "country_code": "PL",
+  "country_name": "Poland",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "94.183.209.243",
+  "finished_at": "2026-09-01T10:23:52.370076+00:00",
+  "flag": "🇵🇱",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "PL",
+    "country_name": "Poland",
+    "flag": "🇵🇱",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "EternityCloud",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "PL",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T10:23:42.544794+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "asn": "AS212238",
+  "confidence": 0.0,
+  "config_id": "8a579656d24a9b264ce0a608a970854ec5415f50831eca530e7aa0c21db79e75",
+  "config_type": "vmess",
+  "country_code": null,
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "149.88.23.207",
+  "finished_at": "2026-09-01T14:25:48.012294+00:00",
+  "flag": null,
+  "fusion": {
+    "confidence": 0.0,
+    "conflict": false,
+    "country_code": null,
+    "country_name": null,
+    "flag": null,
+    "primary_state": "ambiguous",
+    "reason": "country_evidence_ambiguous",
+    "recovery_state": "ambiguous",
+    "source": "none",
+    "state": "ambiguous"
+  },
+  "network_name": "Datacamp Limited",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 1,
+    "confidence": 0.5,
+    "country_code": null,
+    "country_name": null,
+    "executed": true,
+    "flag": null,
+    "providers": [
+      {
+        "asn": "AS212238",
+        "country_code": "SG",
+        "country_name": null,
+        "duration_ms": 226,
+        "error": null,
+        "network_name": "Datacamp Limited",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 76,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS212238",
+        "country_code": "GB",
+        "country_name": "Singapore",
+        "duration_ms": 164,
+        "error": null,
+        "network_name": "Datacamp Limited",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_provider_disagreement",
+    "state": "ambiguous",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vmess"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T14:25:46.077820+00:00",
+  "state": "ambiguous",
+  "temporal": {
+    "observations": 0,
+    "reason": "no_usable_observations",
+    "stable_country": false,
+    "stable_exit_ip": false,
+    "state": "unknown",
+    "unique_countries": 0,
+    "unique_exit_ips": 0
+  }
+}

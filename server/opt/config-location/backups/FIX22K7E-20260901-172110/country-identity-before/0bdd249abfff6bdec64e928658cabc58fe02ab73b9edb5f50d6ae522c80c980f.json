@@ -1,0 +1,16 @@
+{
+  "asn": "AS20473",
+  "config_id": "0bdd249abfff6bdec64e928658cabc58fe02ab73b9edb5f50d6ae522c80c980f",
+  "country_code": "AU",
+  "country_confidence": 0.92,
+  "country_name": "Australia",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "45.77.236.204",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "The Constant Company, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

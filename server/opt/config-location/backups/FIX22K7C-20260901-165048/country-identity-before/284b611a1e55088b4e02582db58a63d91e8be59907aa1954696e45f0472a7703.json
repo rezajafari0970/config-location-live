@@ -1,0 +1,16 @@
+{
+  "asn": "AS57043",
+  "config_id": "284b611a1e55088b4e02582db58a63d91e8be59907aa1954696e45f0472a7703",
+  "country_code": "TR",
+  "country_confidence": 1.0,
+  "country_name": "Türkiye",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "156.67.63.231",
+  "flag": "🇹🇷",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "HOSTKEY B.V",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

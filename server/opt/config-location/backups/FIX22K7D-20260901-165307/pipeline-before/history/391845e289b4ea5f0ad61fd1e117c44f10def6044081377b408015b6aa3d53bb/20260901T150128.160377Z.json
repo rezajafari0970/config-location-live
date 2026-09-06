@@ -1,0 +1,96 @@
+{
+  "asn": "AS203466",
+  "confidence": 0.0,
+  "config_id": "391845e289b4ea5f0ad61fd1e117c44f10def6044081377b408015b6aa3d53bb",
+  "config_type": "vless",
+  "country_code": null,
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "38.44.98.151",
+  "finished_at": "2026-09-01T15:01:28.160354+00:00",
+  "flag": null,
+  "fusion": {
+    "confidence": 0.0,
+    "conflict": false,
+    "country_code": null,
+    "country_name": null,
+    "flag": null,
+    "primary_state": "ambiguous",
+    "reason": "country_evidence_ambiguous",
+    "recovery_state": "ambiguous",
+    "source": "none",
+    "state": "ambiguous"
+  },
+  "network_name": "INTROSERV d.o.o",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 1,
+    "confidence": 0.5,
+    "country_code": null,
+    "country_name": null,
+    "executed": true,
+    "flag": null,
+    "providers": [
+      {
+        "asn": "AS174",
+        "country_code": "NL",
+        "country_name": null,
+        "duration_ms": 140,
+        "error": null,
+        "network_name": "Cogent Communications, LLC",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 31,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS203466",
+        "country_code": "SI",
+        "country_name": "United States",
+        "duration_ms": 171,
+        "error": null,
+        "network_name": "INTROSERV d.o.o",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_provider_disagreement",
+    "state": "ambiguous",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T15:01:26.631144+00:00",
+  "state": "ambiguous",
+  "temporal": {
+    "observations": 0,
+    "reason": "no_usable_observations",
+    "stable_country": false,
+    "stable_exit_ip": false,
+    "state": "unknown",
+    "unique_countries": 0,
+    "unique_exit_ips": 0
+  }
+}

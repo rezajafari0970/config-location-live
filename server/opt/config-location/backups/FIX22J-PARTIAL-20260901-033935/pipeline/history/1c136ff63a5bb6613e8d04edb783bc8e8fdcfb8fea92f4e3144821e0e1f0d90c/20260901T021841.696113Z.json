@@ -1,0 +1,53 @@
+{
+  "asn": "AS44620",
+  "confidence": 1.0,
+  "config_id": "1c136ff63a5bb6613e8d04edb783bc8e8fdcfb8fea92f4e3144821e0e1f0d90c",
+  "config_type": "vless",
+  "country_code": "TR",
+  "country_name": "Türkiye",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "45.74.178.142",
+  "finished_at": "2026-09-01T02:18:41.696105+00:00",
+  "flag": "🇹🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "TR",
+    "country_name": "Türkiye",
+    "flag": "🇹🇷",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Netlen Internet Hizmetleri Ltd. Sti.",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "TR",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:18:39.110056+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS213520",
+  "config_id": "3f06786d6762bd41785ee7c7fbcbce6835f9952d9f6adbe39e627c51cb69d772",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788282081,
+  "first_exit_ip": "150.241.64.1",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Senko Digital LLC",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

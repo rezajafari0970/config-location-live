@@ -1,0 +1,16 @@
+{
+  "asn": "AS47172",
+  "config_id": "a1b4684b638bbad87fb31a8f87e018a0db4faf605484c18323e38d0c8a2b31d5",
+  "country_code": "NL",
+  "country_confidence": 1.0,
+  "country_name": "Netherlands",
+  "determined_epoch": 1788282708,
+  "first_exit_ip": "193.29.139.230",
+  "flag": "🇳🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Greenhost BV",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

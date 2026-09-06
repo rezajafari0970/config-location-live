@@ -1,0 +1,16 @@
+{
+  "asn": "AS59642",
+  "config_id": "72d4709c767e53b3b7d5665da4bbcbd79b4f5eb47c3e3ba2732942458bad44a4",
+  "country_code": "NL",
+  "country_confidence": 1.0,
+  "country_name": "Netherlands",
+  "determined_epoch": 1788282333,
+  "first_exit_ip": "84.32.189.22",
+  "flag": "🇳🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "UAB Nacionalinis Telekomunikaciju Tinklas",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

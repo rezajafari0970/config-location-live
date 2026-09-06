@@ -1,0 +1,53 @@
+{
+  "asn": "AS16276",
+  "confidence": 1.0,
+  "config_id": "8430a73decb1324075d19088c33e6248d4f1515dbcc74e23e7a5bf8df46cb72c",
+  "config_type": "ss",
+  "country_code": "US",
+  "country_name": "United States",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "15.204.246.132",
+  "finished_at": "2026-09-01T12:13:29.679935+00:00",
+  "flag": "🇺🇸",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "US",
+    "country_name": "United States",
+    "flag": "🇺🇸",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "OVH US LLC",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "US",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T12:13:24.066135+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

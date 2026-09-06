@@ -1,0 +1,16 @@
+{
+  "asn": "AS215540",
+  "config_id": "722e3c8461be4fc92c6a200b3a29b22c002303419948800cfcf14df795692879",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "139.28.241.77",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "GLOBAL CONNECTIVITY SOLUTIONS LLP",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

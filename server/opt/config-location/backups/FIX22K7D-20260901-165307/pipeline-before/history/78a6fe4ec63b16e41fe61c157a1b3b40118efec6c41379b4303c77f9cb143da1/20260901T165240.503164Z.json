@@ -1,0 +1,96 @@
+{
+  "asn": "AS400992",
+  "confidence": 0.0,
+  "config_id": "78a6fe4ec63b16e41fe61c157a1b3b40118efec6c41379b4303c77f9cb143da1",
+  "config_type": "vless",
+  "country_code": null,
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "185.236.26.208",
+  "finished_at": "2026-09-01T16:52:40.503142+00:00",
+  "flag": null,
+  "fusion": {
+    "confidence": 0.0,
+    "conflict": false,
+    "country_code": null,
+    "country_name": null,
+    "flag": null,
+    "primary_state": "ambiguous",
+    "reason": "country_evidence_ambiguous",
+    "recovery_state": "ambiguous",
+    "source": "none",
+    "state": "ambiguous"
+  },
+  "network_name": "Huize Holdings LLC",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 1,
+    "confidence": 0.5,
+    "country_code": null,
+    "country_name": null,
+    "executed": true,
+    "flag": null,
+    "providers": [
+      {
+        "asn": "AS400992",
+        "country_code": "DE",
+        "country_name": null,
+        "duration_ms": 184,
+        "error": null,
+        "network_name": "ZhouyiSat Communications",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 50,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS400992",
+        "country_code": "US",
+        "country_name": "Germany",
+        "duration_ms": 170,
+        "error": null,
+        "network_name": "ZhouyiSat Communications",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_provider_disagreement",
+    "state": "ambiguous",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T16:52:38.911255+00:00",
+  "state": "ambiguous",
+  "temporal": {
+    "observations": 0,
+    "reason": "no_usable_observations",
+    "stable_country": false,
+    "stable_exit_ip": false,
+    "state": "unknown",
+    "unique_countries": 0,
+    "unique_exit_ips": 0
+  }
+}

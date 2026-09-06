@@ -1,0 +1,96 @@
+{
+  "asn": "AS20473",
+  "confidence": 1.0,
+  "config_id": "3e6b4415a2fc8db8d3ac4231bce7ed5b940375c2cc4511b0938a500c7d974863",
+  "config_type": "vless",
+  "country_code": "US",
+  "country_name": "United States",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "149.248.19.159",
+  "finished_at": "2026-09-01T13:53:20.164103+00:00",
+  "flag": "🇺🇸",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "US",
+    "country_name": "United States",
+    "flag": "🇺🇸",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Vultr Holdings, LLC",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "US",
+    "country_name": "United States",
+    "executed": true,
+    "flag": "🇺🇸",
+    "providers": [
+      {
+        "asn": "AS20473",
+        "country_code": "US",
+        "country_name": null,
+        "duration_ms": 183,
+        "error": null,
+        "network_name": "The Constant Company, LLC",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 103,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS20473",
+        "country_code": "US",
+        "country_name": "United States",
+        "duration_ms": 159,
+        "error": null,
+        "network_name": "The Constant Company, LLC",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T13:53:15.491281+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

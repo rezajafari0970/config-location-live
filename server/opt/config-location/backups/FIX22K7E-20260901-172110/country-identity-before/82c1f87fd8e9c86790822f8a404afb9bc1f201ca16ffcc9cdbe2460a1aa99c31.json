@@ -1,0 +1,16 @@
+{
+  "asn": "AS215540",
+  "config_id": "82c1f87fd8e9c86790822f8a404afb9bc1f201ca16ffcc9cdbe2460a1aa99c31",
+  "country_code": "TR",
+  "country_confidence": 0.92,
+  "country_name": "Turkey",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "77.83.245.34",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "GLOBAL CONNECTIVITY SOLUTIONS LLP",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

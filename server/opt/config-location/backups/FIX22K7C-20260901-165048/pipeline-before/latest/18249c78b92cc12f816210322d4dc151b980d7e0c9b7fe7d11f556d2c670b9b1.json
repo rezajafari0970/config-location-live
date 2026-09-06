@@ -1,0 +1,53 @@
+{
+  "asn": "AS14061",
+  "confidence": 1.0,
+  "config_id": "18249c78b92cc12f816210322d4dc151b980d7e0c9b7fe7d11f556d2c670b9b1",
+  "config_type": "vmess",
+  "country_code": "IN",
+  "country_name": "India",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "134.209.154.176",
+  "finished_at": "2026-09-01T02:15:39.851142+00:00",
+  "flag": "🇮🇳",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "IN",
+    "country_name": "India",
+    "flag": "🇮🇳",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "DigitalOcean, LLC",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "IN",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vmess"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:15:36.532195+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

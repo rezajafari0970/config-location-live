@@ -1,0 +1,96 @@
+{
+  "asn": null,
+  "confidence": 0.0,
+  "config_id": "2b057e4cb1195487f3dfb6ce9e4231013b9d5dbbb40a5c1e76e60dcb382a0a28",
+  "config_type": "ss",
+  "country_code": null,
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "194.61.121.93",
+  "finished_at": "2026-09-01T13:40:56.466519+00:00",
+  "flag": null,
+  "fusion": {
+    "confidence": 0.0,
+    "conflict": false,
+    "country_code": null,
+    "country_name": null,
+    "flag": null,
+    "primary_state": "unknown",
+    "reason": "country_evidence_ambiguous",
+    "recovery_state": "ambiguous",
+    "source": "none",
+    "state": "ambiguous"
+  },
+  "network_name": null,
+  "network_type": "unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 0.0,
+    "country_code": null,
+    "state": "unknown"
+  },
+  "recovery": {
+    "agreed": 1,
+    "confidence": 0.5,
+    "country_code": null,
+    "country_name": null,
+    "executed": true,
+    "flag": null,
+    "providers": [
+      {
+        "asn": "AS62005",
+        "country_code": "PL",
+        "country_name": null,
+        "duration_ms": 166,
+        "error": null,
+        "network_name": "BlueVPS OU",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 63,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS62005",
+        "country_code": "EE",
+        "country_name": "Poland",
+        "duration_ms": 328,
+        "error": null,
+        "network_name": "BlueVPS OÜ",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_provider_disagreement",
+    "state": "ambiguous",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T13:40:55.135800+00:00",
+  "state": "ambiguous",
+  "temporal": {
+    "observations": 0,
+    "reason": "no_usable_observations",
+    "stable_country": false,
+    "stable_exit_ip": false,
+    "state": "unknown",
+    "unique_countries": 0,
+    "unique_exit_ips": 0
+  }
+}

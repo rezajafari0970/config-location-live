@@ -1,0 +1,16 @@
+{
+  "asn": "AS13335",
+  "config_id": "6354db271885b70a90062ec0bb76604d75d2bf6d8591007d68eef9a352a652a2",
+  "country_code": "AT",
+  "country_confidence": 0.92,
+  "country_name": "Austria",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "104.28.207.39",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Cloudflare, Inc.",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

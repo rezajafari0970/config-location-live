@@ -1,0 +1,264 @@
+from __future__ import annotations
+
+import subprocess
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+from .sandbox import XraySandbox
+from .xray_capability import (
+    classify_xray_capability,
+)
+from .validation import (
+    classify_xray_validation_output,
+)
+from .builders.uri_xray import UriXrayRuntimeBuilder
+from .builders.xray_json import XrayJsonRuntimeBuilder
+from .builders.wireguard_xray import (
+    WireGuardXrayRuntimeBuilder,
+)
+from ..plugins.types import RuntimeRequest
+
+
+class RuntimeLaunchError(RuntimeError):
+    def __init__(
+        self,
+        message: str,
+        *,
+        code: str = "runtime_launch_failed",
+        source_invalid: bool = False,
+        retryable: bool = False,
+    ) -> None:
+        super().__init__(message)
+        self.code = code
+        self.source_invalid = source_invalid
+        self.retryable = retryable
+
+
+@dataclass
+class RunningRuntime:
+    sandbox: XraySandbox
+    config_id: str
+    config_type: str
+    metadata: dict[str, Any]
+
+    @property
+    def socks_port(self) -> int:
+        if self.sandbox.socks_port is None:
+            raise RuntimeLaunchError(
+                "SOCKS port unavailable"
+            )
+        return self.sandbox.socks_port
+
+    @property
+    def proxy_url(self) -> str:
+        return (
+            f"socks5h://127.0.0.1:"
+            f"{self.socks_port}"
+        )
+
+    @property
+    def pid(self) -> int:
+        process = self.sandbox.process
+
+        if process is None:
+            raise RuntimeLaunchError(
+                "Xray process unavailable"
+            )
+
+        return process.pid
+
+    def stop(self) -> None:
+        self.sandbox.cleanup()
+
+
+class RuntimeLauncher:
+
+    def __init__(
+        self,
+        *,
+        base_dir: Path = Path(
+            "/var/lib/config-location/"
+            "health-sandboxes"
+        ),
+        xray_binary: Path = Path(
+            "/usr/local/bin/xray"
+        ),
+    ) -> None:
+
+        self.base_dir = base_dir
+        self.xray_binary = xray_binary
+
+        self.uri_builder = (
+            UriXrayRuntimeBuilder()
+        )
+
+        self.json_builder = (
+            XrayJsonRuntimeBuilder()
+        )
+
+        self.wireguard_builder = (
+            WireGuardXrayRuntimeBuilder()
+        )
+
+    def _builder(
+        self,
+        config_type: str,
+    ):
+        kind = config_type.strip().lower()
+
+        if self.uri_builder.supports(kind):
+            return self.uri_builder
+
+        if self.json_builder.supports(kind):
+            return self.json_builder
+
+        if self.wireguard_builder.supports(kind):
+            return self.wireguard_builder
+
+        raise RuntimeLaunchError(
+            f"unsupported config type: {kind}",
+            code="unsupported_config_type",
+            source_invalid=False,
+            retryable=False,
+        )
+
+    def launch(
+        self,
+        *,
+        config_id: str,
+        config_type: str,
+        source: Any,
+        startup_timeout: float = 6.0,
+    ) -> RunningRuntime:
+
+        decision = (
+            classify_xray_capability(
+                config_type,
+                source,
+            )
+        )
+
+        if not decision.supported:
+
+            raise RuntimeLaunchError(
+                decision.reason,
+
+                code=
+                    decision.status,
+
+                source_invalid=(
+                    decision.status
+                    ==
+                    "invalid"
+                ),
+
+                retryable=False,
+            )
+
+        sandbox = XraySandbox(
+            base_dir=self.base_dir,
+            xray_binary=self.xray_binary,
+            config_id=config_id,
+        )
+
+        try:
+            sandbox.create()
+
+            if sandbox.socks_port is None:
+                raise RuntimeLaunchError(
+                    "port allocation failed"
+                )
+
+            builder = self._builder(
+                config_type
+            )
+
+            artifact = builder.build_runtime(
+                RuntimeRequest(
+                    config_id=config_id,
+                    config_type=config_type,
+                    source=source,
+                    sandbox_dir=(
+                        sandbox.paths.root
+                    ),
+                    socks_port=(
+                        sandbox.socks_port
+                    ),
+                )
+            )
+
+            # Builder and sandbox must agree on
+            # the exact isolated config path.
+            if (
+                artifact.config_path
+                != sandbox.paths.config
+            ):
+                raise RuntimeLaunchError(
+                    "runtime path mismatch"
+                )
+
+            # Validate before starting a real
+            # process. No proxy traffic occurs.
+            result = subprocess.run(
+                [
+                    str(self.xray_binary),
+                    "run",
+                    "-test",
+                    "-c",
+                    str(
+                        artifact.config_path
+                    ),
+                ],
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                timeout=10,
+            )
+
+            if result.returncode != 0:
+
+                classification = (
+                    classify_xray_validation_output(
+                        result.stdout,
+                        result.stderr,
+                    )
+                )
+
+                raise RuntimeLaunchError(
+                    (
+                        "xray config validation failed: "
+                        + classification.code
+                    ),
+                    code=classification.code,
+                    source_invalid=(
+                        classification.source_invalid
+                    ),
+                    retryable=(
+                        classification.retryable
+                    ),
+                )
+
+            sandbox.start()
+
+            if not sandbox.wait_started(
+                timeout=startup_timeout
+            ):
+                raise RuntimeLaunchError(
+                    "xray SOCKS listener "
+                    "did not become ready"
+                )
+
+            return RunningRuntime(
+                sandbox=sandbox,
+                config_id=config_id,
+                config_type=config_type,
+                metadata=dict(
+                    artifact.metadata
+                ),
+            )
+
+        except Exception:
+            sandbox.cleanup()
+            raise

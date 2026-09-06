@@ -1,0 +1,12 @@
+{
+  "config_id": "757f8c9c92ca3b46016646edfd640ed86b4f6caab788912d5b9c925ccd52a693",
+  "config_type": "trojan",
+  "exit_agreed": 1,
+  "exit_ip": null,
+  "exit_successful": 1,
+  "finished_at": "2026-09-01T11:56:09.127374+00:00",
+  "reason": "exit_ip_disagreement",
+  "schema_version": 1,
+  "started_at": "2026-09-01T11:56:03.841775+00:00",
+  "state": "unstable_exit"
+}

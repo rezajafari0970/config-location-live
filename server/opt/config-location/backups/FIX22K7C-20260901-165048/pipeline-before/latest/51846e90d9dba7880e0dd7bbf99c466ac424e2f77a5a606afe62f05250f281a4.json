@@ -1,0 +1,53 @@
+{
+  "asn": "AS47172",
+  "confidence": 1.0,
+  "config_id": "51846e90d9dba7880e0dd7bbf99c466ac424e2f77a5a606afe62f05250f281a4",
+  "config_type": "ss",
+  "country_code": "NL",
+  "country_name": "Netherlands",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "193.29.139.152",
+  "finished_at": "2026-09-01T05:48:56.777191+00:00",
+  "flag": "🇳🇱",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "NL",
+    "country_name": "Netherlands",
+    "flag": "🇳🇱",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Greenhost BV",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "NL",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T05:48:53.862143+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

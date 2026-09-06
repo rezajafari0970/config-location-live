@@ -1,0 +1,16 @@
+{
+  "asn": "AS203466",
+  "config_id": "d63af507209a7566c7bbf710cc6a1836a86c1fb81dd0d50668c859dc8c0c9a2e",
+  "country_code": "NL",
+  "country_confidence": 1.0,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788280802,
+  "first_exit_ip": "38.44.98.150",
+  "flag": "🇳🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "INTROSERV d.o.o",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

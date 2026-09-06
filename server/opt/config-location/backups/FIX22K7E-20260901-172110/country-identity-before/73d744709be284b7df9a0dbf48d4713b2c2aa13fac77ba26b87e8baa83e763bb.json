@@ -1,0 +1,16 @@
+{
+  "asn": "AS215730",
+  "config_id": "73d744709be284b7df9a0dbf48d4713b2c2aa13fac77ba26b87e8baa83e763bb",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788281981,
+  "first_exit_ip": "94.156.232.254",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "H2.NEXUS Frankfurt Network",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

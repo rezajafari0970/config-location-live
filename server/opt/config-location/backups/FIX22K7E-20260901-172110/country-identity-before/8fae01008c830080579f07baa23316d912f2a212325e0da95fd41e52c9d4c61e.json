@@ -1,0 +1,16 @@
+{
+  "asn": "AS16509",
+  "config_id": "8fae01008c830080579f07baa23316d912f2a212325e0da95fd41e52c9d4c61e",
+  "country_code": "SG",
+  "country_confidence": 0.92,
+  "country_name": "Singapore",
+  "determined_epoch": 1788281606,
+  "first_exit_ip": "2406:da18:16ca:7200:1fd7:f02a:7447:13dc",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Amazon.com, Inc.",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

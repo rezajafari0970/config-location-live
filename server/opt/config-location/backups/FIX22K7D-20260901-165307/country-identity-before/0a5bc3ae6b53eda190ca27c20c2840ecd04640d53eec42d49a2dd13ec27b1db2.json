@@ -1,0 +1,16 @@
+{
+  "asn": "AS399646",
+  "config_id": "0a5bc3ae6b53eda190ca27c20c2840ecd04640d53eec42d49a2dd13ec27b1db2",
+  "country_code": "US",
+  "country_confidence": 1.0,
+  "country_name": "United States",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "149.112.84.49",
+  "flag": "🇺🇸",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Snaju Development",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

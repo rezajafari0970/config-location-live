@@ -1,0 +1,53 @@
+{
+  "asn": "AS26383",
+  "confidence": 1.0,
+  "config_id": "0ec05e076dc1d7c62f716151088e86f0c4742b55213c7e337545c4fc6f5a28d0",
+  "config_type": "ss",
+  "country_code": "IT",
+  "country_name": "Italy",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2605:e440:12::2:235",
+  "finished_at": "2026-09-01T02:06:42.294931+00:00",
+  "flag": "🇮🇹",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "IT",
+    "country_name": "Italy",
+    "flag": "🇮🇹",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Baxet Group Inc.",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "IT",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:06:40.693844+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

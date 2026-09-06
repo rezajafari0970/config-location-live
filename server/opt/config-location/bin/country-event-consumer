@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+export PYTHONPATH=/opt/config-location
+
+exec /opt/config-location/venv/bin/python \
+-m app.country.event_consumer

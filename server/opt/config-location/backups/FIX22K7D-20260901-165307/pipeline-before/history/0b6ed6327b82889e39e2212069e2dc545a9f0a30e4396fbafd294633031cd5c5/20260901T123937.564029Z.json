@@ -1,0 +1,53 @@
+{
+  "asn": "AS16276",
+  "confidence": 1.0,
+  "config_id": "0b6ed6327b82889e39e2212069e2dc545a9f0a30e4396fbafd294633031cd5c5",
+  "config_type": "vless",
+  "country_code": "CA",
+  "country_name": "Canada",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2607:5300:205:200::8aeb",
+  "finished_at": "2026-09-01T12:39:37.564008+00:00",
+  "flag": "🇨🇦",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "CA",
+    "country_name": "Canada",
+    "flag": "🇨🇦",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "OVH Hosting, Inc.",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "CA",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T12:39:34.292260+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

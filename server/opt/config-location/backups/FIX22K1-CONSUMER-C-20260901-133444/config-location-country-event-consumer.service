@@ -1,0 +1,20 @@
+[Unit]
+Description=Config Location Country Event Consumer
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/config-location
+Environment=PYTHONPATH=/opt/config-location
+Environment=COUNTRY_EVENT_CONSUMER_WORKERS=2
+ExecStart=/opt/config-location/bin/country-event-consumer
+Restart=always
+RestartSec=2
+User=root
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

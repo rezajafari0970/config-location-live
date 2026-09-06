@@ -1,0 +1,53 @@
+{
+  "asn": "AS154177",
+  "confidence": 1.0,
+  "config_id": "085a1510f70732014ad6bbda3d97924e081db2a2cabc4697db90016e2077d95b",
+  "config_type": "vmess",
+  "country_code": "ID",
+  "country_name": "Indonesia",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "130.94.93.63",
+  "finished_at": "2026-09-01T02:01:29.161535+00:00",
+  "flag": "🇮🇩",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "ID",
+    "country_name": "Indonesia",
+    "flag": "🇮🇩",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "LIGHT NODE LIMITED",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "ID",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vmess"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:01:26.079199+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS57043",
+  "config_id": "6ea68df95790cd91cdb80769b3cdfb99914964a64afa46a79f64924bc23fd87d",
+  "country_code": "FI",
+  "country_confidence": 0.92,
+  "country_name": "Finland",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "107.181.151.39",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "HOSTKEY B.V.",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

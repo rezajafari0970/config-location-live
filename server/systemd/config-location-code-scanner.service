@@ -1,0 +1,6 @@
+[Unit]
+Description=Config Location Code Scanner
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/config-location-code-scanner

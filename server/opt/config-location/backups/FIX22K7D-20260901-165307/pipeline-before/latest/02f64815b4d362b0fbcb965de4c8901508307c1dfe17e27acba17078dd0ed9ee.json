@@ -1,0 +1,96 @@
+{
+  "asn": "AS25198",
+  "confidence": 1.0,
+  "config_id": "02f64815b4d362b0fbcb965de4c8901508307c1dfe17e27acba17078dd0ed9ee",
+  "config_type": "vless",
+  "country_code": "RO",
+  "country_name": "Romania",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "93.114.194.178",
+  "finished_at": "2026-09-01T04:35:17.540456+00:00",
+  "flag": "🇷🇴",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "RO",
+    "country_name": "Romania",
+    "flag": "🇷🇴",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Tennet Telecom SRL",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 0.6666666666666666,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "RO",
+    "country_name": "Romania",
+    "executed": true,
+    "flag": "🇷🇴",
+    "providers": [
+      {
+        "asn": "AS25198",
+        "country_code": "RO",
+        "country_name": null,
+        "duration_ms": 140,
+        "error": null,
+        "network_name": "ZetServers",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 36,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS25198",
+        "country_code": "RO",
+        "country_name": "Romania",
+        "duration_ms": 126,
+        "error": null,
+        "network_name": "INTERKVM HOST (ZetServers)",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T04:35:13.613249+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SOURCE="/var/www/config-location-devlog/latest.log"
+TARGET="/var/www/config-location-devlog/current.log"
+
+[ -r "$SOURCE" ] || exit 1
+
+TMP="${TARGET}.tmp.$$"
+
+python3 - "$SOURCE" "$TMP" <<'PY'
+from pathlib import Path
+import sys
+
+source = Path(sys.argv[1])
+target = Path(sys.argv[2])
+
+text = source.read_text(
+    encoding="utf-8",
+    errors="replace",
+)
+
+marker = "CONFIG_LOCATION_DEVLOG"
+
+positions = []
+
+start = 0
+
+while True:
+    pos = text.find(marker, start)
+
+    if pos < 0:
+        break
+
+    positions.append(pos)
+    start = pos + len(marker)
+
+if not positions:
+    raise SystemExit(
+        "CONFIG_LOCATION_DEVLOG marker not found"
+    )
+
+pos = positions[-1]
+
+line_start = text.rfind(
+    "\n",
+    0,
+    pos,
+)
+
+if line_start < 0:
+    line_start = 0
+else:
+    line_start += 1
+
+separator_start = text.rfind(
+    "============================================================",
+    0,
+    pos,
+)
+
+if separator_start >= 0:
+    line_start = separator_start
+
+current = text[line_start:].strip()
+
+target.write_text(
+    current + "\n",
+    encoding="utf-8",
+)
+PY
+
+chmod 0644 "$TMP"
+mv -f "$TMP" "$TARGET"

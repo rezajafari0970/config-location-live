@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+LOGROOT="/var/log/config-location/chatgpt"
+STAGEDIR="$LOGROOT/stages"
+CURRENT="$LOGROOT/current.log"
+
+if [ "$#" -lt 2 ]; then
+    echo
+    echo "Usage:"
+    echo "  devrun STAGE command [args...]"
+    echo
+    echo "Example:"
+    echo "  devrun HT1 bash /root/ht1.sh"
+    exit 2
+fi
+
+STAGE="$1"
+shift
+
+SAFE_STAGE="$(
+    printf '%s' "$STAGE" \
+    | tr -cs 'A-Za-z0-9._-' '_'
+)"
+
+STAMP="$(date +%Y%m%d-%H%M%S)"
+STAGELOG="$STAGEDIR/${SAFE_STAGE}-${STAMP}.log"
+
+mkdir -p "$STAGEDIR"
+
+touch \
+    "$CURRENT" \
+    "$STAGELOG"
+
+chmod 0640 \
+    "$CURRENT" \
+    "$STAGELOG" \
+    2>/dev/null || true
+
+START="$(date -Is)"
+
+{
+    echo
+    echo "============================================================"
+    echo "CONFIG_LOCATION_DEVLOG"
+    echo "STAGE=$STAGE"
+    echo "HOST=$(hostname)"
+    echo "START=$START"
+    echo "PID=$$"
+    echo "COMMAND=$*"
+    echo "============================================================"
+    echo
+} | tee -a "$CURRENT" "$STAGELOG"
+
+set +e
+
+"$@" \
+    > >(
+        tee -a \
+            "$CURRENT" \
+            "$STAGELOG"
+    ) \
+    2> >(
+        tee -a \
+            "$CURRENT" \
+            "$STAGELOG" \
+            >&2
+    )
+
+RC=$?
+
+set -e
+
+END="$(date -Is)"
+
+{
+    echo
+    echo
+    echo "============================================================"
+    echo "STAGE=$STAGE"
+    echo "END=$END"
+    echo "EXIT_CODE=$RC"
+
+    if [ "$RC" -eq 0 ]; then
+        echo "DEVLOG_RESULT=PASS"
+    else
+        echo "DEVLOG_RESULT=FAIL"
+    fi
+
+    echo "STAGE_LOG=$STAGELOG"
+    echo "============================================================"
+    echo
+} | tee -a "$CURRENT" "$STAGELOG"
+
+
+# Publish sanitized copy for remote development inspection.
+if [ -x /opt/config-location/bin/devlog-publish ]; then
+    /opt/config-location/bin/devlog-publish >/dev/null 2>&1 || true
+fi
+
+exit "$RC"

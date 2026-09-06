@@ -1,0 +1,12 @@
+{
+  "config_id": "1ce9ac4aac5433904757846b11a421abff6d8413a0e3c22dbb930de19196e72a",
+  "config_type": "ss",
+  "exit_agreed": 1,
+  "exit_ip": null,
+  "exit_successful": 1,
+  "finished_at": "2026-09-01T02:25:42.104290+00:00",
+  "reason": "exit_ip_disagreement",
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:25:29.245084+00:00",
+  "state": "unstable_exit"
+}

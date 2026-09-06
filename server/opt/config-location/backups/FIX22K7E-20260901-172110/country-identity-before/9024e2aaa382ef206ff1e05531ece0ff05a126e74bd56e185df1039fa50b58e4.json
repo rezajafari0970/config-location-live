@@ -1,0 +1,16 @@
+{
+  "asn": "AS14061",
+  "config_id": "9024e2aaa382ef206ff1e05531ece0ff05a126e74bd56e185df1039fa50b58e4",
+  "country_code": "AU",
+  "country_confidence": 0.92,
+  "country_name": "Australia",
+  "determined_epoch": 1788281606,
+  "first_exit_ip": "170.64.178.252",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "DigitalOcean, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

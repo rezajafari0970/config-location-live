@@ -1,0 +1,16 @@
+{
+  "asn": "AS45102",
+  "config_id": "0a48b24718ccbf610c507ccbf1913c007ff27b990a77280b9de108367060baa4",
+  "country_code": "HK",
+  "country_confidence": 0.92,
+  "country_name": "Hong Kong",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "8.217.229.155",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Alibaba (US) Technology Co., Ltd.",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS213877",
+  "config_id": "da81f2cf17af0908ff3b04240d963717e52a6165934ecb46b3185afc60d883f7",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788281694,
+  "first_exit_ip": "2a01:ecc0:40:12c7::2",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "u1host ltd",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

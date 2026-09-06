@@ -1,0 +1,53 @@
+{
+  "asn": "AS63949",
+  "confidence": 1.0,
+  "config_id": "5e1da89736da95acd7d650e723087bdebcc5b12bda7cf7d8c8d68de7cc473814",
+  "config_type": "ss",
+  "country_code": "BR",
+  "country_name": "Brazil",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "172.233.15.29",
+  "finished_at": "2026-09-01T07:50:59.333944+00:00",
+  "flag": "🇧🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "BR",
+    "country_name": "Brazil",
+    "flag": "🇧🇷",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Linode",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "BR",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T07:50:50.858877+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

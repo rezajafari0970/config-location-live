@@ -1,0 +1,53 @@
+{
+  "asn": "AS24940",
+  "confidence": 1.0,
+  "config_id": "73f4094ac3acdd72401984109f92754495f3aea83e68779eb87e6a2cd0e58f09",
+  "config_type": "json_xray",
+  "country_code": "DE",
+  "country_name": "Germany",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2a01:4f8:1c16:aedd::1",
+  "finished_at": "2026-09-01T09:31:58.244622+00:00",
+  "flag": "🇩🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "DE",
+    "country_name": "Germany",
+    "flag": "🇩🇪",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Hetzner Online GmbH",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "DE",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-xray-json",
+    "protocol": null
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T09:31:54.473872+00:00",
+  "state": "confirmed_rotating_ip",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_multiple_exit_ips",
+    "stable_country": true,
+    "stable_exit_ip": false,
+    "state": "confirmed_rotating_ip",
+    "unique_countries": 1,
+    "unique_exit_ips": 2
+  }
+}

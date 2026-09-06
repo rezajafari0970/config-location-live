@@ -1,0 +1,16 @@
+{
+  "asn": "AS20473",
+  "config_id": "1598df938d22d9cb28fd24ca2c81ab92497cfaa3825fac5a353a2ad97541a293",
+  "country_code": "PL",
+  "country_confidence": 1.0,
+  "country_name": "Poland",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "64.176.65.189",
+  "flag": "🇵🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Vultr Holdings, LLC",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

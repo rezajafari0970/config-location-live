@@ -1,0 +1,16 @@
+{
+  "asn": "AS9123",
+  "config_id": "159ff3d28fc43dd965c81c5e7004d90d3b7002aeb05114236be6645b689e7285",
+  "country_code": "RU",
+  "country_confidence": 1.0,
+  "country_name": "Russian Federation",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "87.249.54.103",
+  "flag": "🇷🇺",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "JSC TIMEWEB",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

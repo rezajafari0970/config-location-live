@@ -1,0 +1,53 @@
+{
+  "asn": "AS214195",
+  "confidence": 1.0,
+  "config_id": "0fda9e6087c77a5d5e9799bd39a60262d72cd318ff26f47e90d8a451eafd16a6",
+  "config_type": "vless",
+  "country_code": "TR",
+  "country_name": "Türkiye",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "45.74.159.56",
+  "finished_at": "2026-09-01T02:08:13.719188+00:00",
+  "flag": "🇹🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "TR",
+    "country_name": "Türkiye",
+    "flag": "🇹🇷",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Tres Teknoloji",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "TR",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:08:12.216636+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

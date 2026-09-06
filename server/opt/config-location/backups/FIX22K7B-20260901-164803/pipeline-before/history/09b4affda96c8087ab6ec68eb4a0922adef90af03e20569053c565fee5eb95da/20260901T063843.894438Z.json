@@ -1,0 +1,53 @@
+{
+  "asn": "AS16276",
+  "confidence": 1.0,
+  "config_id": "09b4affda96c8087ab6ec68eb4a0922adef90af03e20569053c565fee5eb95da",
+  "config_type": "vless",
+  "country_code": "AU",
+  "country_name": "Australia",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "51.161.204.242",
+  "finished_at": "2026-09-01T06:38:43.894419+00:00",
+  "flag": "🇦🇺",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "AU",
+    "country_name": "Australia",
+    "flag": "🇦🇺",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "OVH Australia PTY LTD",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "AU",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T06:38:34.042177+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

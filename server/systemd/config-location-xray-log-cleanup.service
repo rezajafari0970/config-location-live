@@ -1,0 +1,12 @@
+[Unit]
+Description=Config Location Xray forensic log cleanup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/config-location-xray-log-cleanup
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/log/config-location/xray

@@ -1,0 +1,16 @@
+{
+  "asn": "AS967",
+  "config_id": "388b07a8373c2042d928e0a193b107629af5b6665f5a50c4b8c84e4668b14219",
+  "country_code": "US",
+  "country_confidence": 1.0,
+  "country_name": "United States",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "23.236.69.39",
+  "flag": "🇺🇸",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Aoyou L.L.C",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

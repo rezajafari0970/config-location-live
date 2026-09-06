@@ -1,0 +1,16 @@
+{
+  "asn": "AS31898",
+  "config_id": "638c7501fb81acc88d93b086c94e09ab24cd4962b60543699efd9df4f97e31e3",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "141.147.60.74",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Oracle Corporation",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

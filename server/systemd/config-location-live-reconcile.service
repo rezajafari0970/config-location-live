@@ -1,0 +1,10 @@
+[Unit]
+Description=Config Location GitHub Mirror Reconcile
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/local/sbin/config-location-live-sync
+
+Nice=10

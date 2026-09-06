@@ -1,0 +1,29 @@
+{
+  "route": {
+    "final": "proxy-b"
+  },
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "vless",
+      "tag": "proxy-a",
+      "server": "a.example.com",
+      "server_port": 443,
+      "uuid": "55555555-5555-4555-8555-555555555555"
+    },
+    {
+      "type": "trojan",
+      "tag": "proxy-b",
+      "server": "b.example.com",
+      "server_port": 443,
+      "password": "golden"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

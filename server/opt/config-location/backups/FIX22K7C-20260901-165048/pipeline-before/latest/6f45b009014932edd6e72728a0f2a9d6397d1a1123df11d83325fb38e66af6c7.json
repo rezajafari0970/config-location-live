@@ -1,0 +1,53 @@
+{
+  "asn": "AS40676",
+  "confidence": 1.0,
+  "config_id": "6f45b009014932edd6e72728a0f2a9d6397d1a1123df11d83325fb38e66af6c7",
+  "config_type": "ss",
+  "country_code": "ES",
+  "country_name": "Spain",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "108.181.70.23",
+  "finished_at": "2026-09-01T08:48:32.702266+00:00",
+  "flag": "🇪🇸",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "ES",
+    "country_name": "Spain",
+    "flag": "🇪🇸",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Psychz Networks",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "ES",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T08:48:28.972181+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

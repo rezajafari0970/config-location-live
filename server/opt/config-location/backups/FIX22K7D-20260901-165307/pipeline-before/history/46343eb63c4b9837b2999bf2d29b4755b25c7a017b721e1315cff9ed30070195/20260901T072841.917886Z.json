@@ -1,0 +1,96 @@
+{
+  "asn": "AS9123",
+  "confidence": 1.0,
+  "config_id": "46343eb63c4b9837b2999bf2d29b4755b25c7a017b721e1315cff9ed30070195",
+  "config_type": "vless",
+  "country_code": "RU",
+  "country_name": "Russia",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "201.24.49.120",
+  "finished_at": "2026-09-01T07:28:41.917867+00:00",
+  "flag": "🇷🇺",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "RU",
+    "country_name": "Russia",
+    "flag": "🇷🇺",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "JSC TIMEWEB",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 0.5,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "RU",
+    "country_name": "Russia",
+    "executed": true,
+    "flag": "🇷🇺",
+    "providers": [
+      {
+        "asn": "AS9123",
+        "country_code": "RU",
+        "country_name": null,
+        "duration_ms": 239,
+        "error": null,
+        "network_name": "JSC TIMEWEB",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 80,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS9123",
+        "country_code": "RU",
+        "country_name": "Russia",
+        "duration_ms": 339,
+        "error": null,
+        "network_name": "JSC \"TIMEWEB\"",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T07:28:37.219252+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

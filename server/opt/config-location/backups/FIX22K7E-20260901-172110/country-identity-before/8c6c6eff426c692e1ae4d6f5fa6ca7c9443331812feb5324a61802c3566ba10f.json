@@ -1,0 +1,16 @@
+{
+  "asn": "AS216150",
+  "config_id": "8c6c6eff426c692e1ae4d6f5fa6ca7c9443331812feb5324a61802c3566ba10f",
+  "country_code": "NL",
+  "country_confidence": 0.92,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "217.60.24.23",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Nurmukan Zhantorin",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

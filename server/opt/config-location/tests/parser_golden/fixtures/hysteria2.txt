@@ -1,0 +1,1 @@
+hysteria2://golden-password@example.com:443/?sni=example.com&insecure=1#Golden-Hysteria2

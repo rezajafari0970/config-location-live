@@ -1,0 +1,16 @@
+{
+  "asn": "AS16276",
+  "config_id": "f8e212b65fce71a4a8bdcb3f4a8c2aa2d0e3a31cf7c2bd0bb08be9bbf5259c09",
+  "country_code": "CA",
+  "country_confidence": 1.0,
+  "country_name": "Canada",
+  "determined_epoch": 1788281858,
+  "first_exit_ip": "51.79.64.198",
+  "flag": "🇨🇦",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "OVH Hosting, Inc.",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

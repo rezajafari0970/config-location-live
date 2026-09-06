@@ -1,0 +1,16 @@
+{
+  "asn": "AS62005",
+  "config_id": "2b057e4cb1195487f3dfb6ce9e4231013b9d5dbbb40a5c1e76e60dcb382a0a28",
+  "country_code": "PL",
+  "country_confidence": 0.92,
+  "country_name": "Poland",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "194.61.121.93",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "BlueVPS OU",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS215439",
+  "config_id": "01c06d48f21cee37f97241679e222c484c3f5c8090ae13e2d9694e2d4496828b",
+  "country_code": "FI",
+  "country_confidence": 1.0,
+  "country_name": "Finland",
+  "determined_epoch": 1788281292,
+  "first_exit_ip": "31.76.80.69",
+  "flag": "🇫🇮",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "play2go.cloud - Cheap and reliable hosting",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

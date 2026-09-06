@@ -1,0 +1,96 @@
+{
+  "asn": "AS206991",
+  "confidence": 1.0,
+  "config_id": "0be9ca9feb090e0f9c97070ff03410fde9cf5e5b52bb4ddb19d1c988d5a077a2",
+  "config_type": "json_xray",
+  "country_code": "TR",
+  "country_name": "Türkiye",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "185.123.100.56",
+  "finished_at": "2026-09-01T16:36:22.821376+00:00",
+  "flag": "🇹🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "TR",
+    "country_name": "Türkiye",
+    "flag": "🇹🇷",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Bilrom Bilisim ve Medya Hizmetleri Sanayi ve Ticaret",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "TR",
+    "country_name": "Türkiye",
+    "executed": true,
+    "flag": "🇹🇷",
+    "providers": [
+      {
+        "asn": "AS206991",
+        "country_code": "TR",
+        "country_name": null,
+        "duration_ms": 324,
+        "error": null,
+        "network_name": "Iksir Internet Hizmetleri A.S.",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 69,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS206991",
+        "country_code": "TR",
+        "country_name": "Türkiye",
+        "duration_ms": 176,
+        "error": null,
+        "network_name": "Iksir Internet Hizmetleri A.S.",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-xray-json",
+    "protocol": null
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T16:36:17.807415+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

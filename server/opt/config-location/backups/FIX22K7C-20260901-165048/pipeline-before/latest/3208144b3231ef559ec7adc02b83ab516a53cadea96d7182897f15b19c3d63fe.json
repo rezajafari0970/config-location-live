@@ -1,0 +1,53 @@
+{
+  "asn": "AS9123",
+  "confidence": 1.0,
+  "config_id": "3208144b3231ef559ec7adc02b83ab516a53cadea96d7182897f15b19c3d63fe",
+  "config_type": "vless",
+  "country_code": "RU",
+  "country_name": "Russian Federation",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "90.156.229.168",
+  "finished_at": "2026-09-01T09:47:58.131272+00:00",
+  "flag": "🇷🇺",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "RU",
+    "country_name": "Russian Federation",
+    "flag": "🇷🇺",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "JSC TIMEWEB",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "RU",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T09:47:49.944316+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS12876",
+  "config_id": "0185f590c36192e5c95acee5ad6a7c11b1b9b8e6b4cb471dc3aeb38394c06223",
+  "country_code": "NL",
+  "country_confidence": 1.0,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788280927,
+  "first_exit_ip": "51.158.237.7",
+  "flag": "🇳🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Scaleway - Amsterdam, Netherlands",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

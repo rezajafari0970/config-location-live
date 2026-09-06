@@ -1,0 +1,62 @@
+{
+  "confidence": 0.8,
+  "config_id": "36f8913d1950e3ab020d57e52d9280301e9f366a4bef2f6b23f0a38a5c180304",
+  "config_type": "ss",
+  "country_code": "AR",
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 12,
+    "attempts": 15,
+    "successful": 12
+  },
+  "exit_ip": "154.205.154.118",
+  "flag": "🇦🇷",
+  "reason": "hard_recovery_consensus",
+  "recovery_evidence": [
+    {
+      "country_code": "AR",
+      "error": null,
+      "provider": "ipwho",
+      "success": true
+    },
+    {
+      "country_code": "AR",
+      "error": null,
+      "provider": "ipapi_co",
+      "success": true
+    },
+    {
+      "country_code": "AR",
+      "error": null,
+      "provider": "ip_api",
+      "success": true
+    },
+    {
+      "country_code": "AR",
+      "error": null,
+      "provider": "ipinfo",
+      "success": true
+    },
+    {
+      "country_code": null,
+      "error": "invalid_json",
+      "provider": "freeipapi",
+      "success": false
+    },
+    {
+      "country_code": "HK",
+      "error": null,
+      "provider": "ipguide",
+      "success": true
+    },
+    {
+      "country_code": null,
+      "error": "invalid_json",
+      "provider": "rdap",
+      "success": false
+    }
+  ],
+  "recovery_layer": "ultimate",
+  "schema_version": 2,
+  "state": "confirmed_stable"
+}

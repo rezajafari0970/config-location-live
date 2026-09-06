@@ -1,0 +1,53 @@
+{
+  "asn": "AS31898",
+  "confidence": 1.0,
+  "config_id": "746f350c899ce14f29480449b9d71cdec4c382abc90a139dfddf185b711895d7",
+  "config_type": "vless",
+  "country_code": "SG",
+  "country_name": "Singapore",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2603:c024:4517:e220:5e70:409b:163d:faff",
+  "finished_at": "2026-09-01T09:33:23.972151+00:00",
+  "flag": "🇸🇬",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "SG",
+    "country_name": "Singapore",
+    "flag": "🇸🇬",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Oracle Corporation",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "SG",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T09:33:14.465149+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

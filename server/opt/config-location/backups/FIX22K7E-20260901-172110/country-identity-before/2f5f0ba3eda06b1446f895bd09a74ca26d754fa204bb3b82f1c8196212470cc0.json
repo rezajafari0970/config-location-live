@@ -1,0 +1,16 @@
+{
+  "asn": "AS58212",
+  "config_id": "2f5f0ba3eda06b1446f895bd09a74ca26d754fa204bb3b82f1c8196212470cc0",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788282332,
+  "first_exit_ip": "45.145.41.219",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "dataforest GmbH",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

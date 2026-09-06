@@ -1,0 +1,16 @@
+{
+  "asn": "AS31898",
+  "config_id": "c2bd7736ebd3774d1ed7b7314f662135590bb2a7727ec99d18485c8ae8dd298e",
+  "country_code": "GB",
+  "country_confidence": 1.0,
+  "country_name": "United Kingdom",
+  "determined_epoch": 1788282861,
+  "first_exit_ip": "129.151.85.181",
+  "flag": "🇬🇧",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Oracle Cloud Infrastructure (uk-cardiff-1)",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

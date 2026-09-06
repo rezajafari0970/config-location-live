@@ -1,0 +1,96 @@
+{
+  "asn": "AS3462",
+  "confidence": 1.0,
+  "config_id": "72d4e79a72974374b008212dc0adc0b889f081cc7a224472560311030fb14ac2",
+  "config_type": "json_xray",
+  "country_code": "TW",
+  "country_name": "Taiwan",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "2001:b011:3802:aac7:a68d:e9d3:fb8d:b47f",
+  "finished_at": "2026-09-01T16:18:52.337343+00:00",
+  "flag": "🇹🇼",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "TW",
+    "country_name": "Taiwan",
+    "flag": "🇹🇼",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Hinet Twnic",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "TW",
+    "country_name": "Taiwan",
+    "executed": true,
+    "flag": "🇹🇼",
+    "providers": [
+      {
+        "asn": "AS3462",
+        "country_code": "TW",
+        "country_name": null,
+        "duration_ms": 156,
+        "error": null,
+        "network_name": "Data Communication Business Group",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 40,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS3462",
+        "country_code": "TW",
+        "country_name": "Taiwan",
+        "duration_ms": 163,
+        "error": null,
+        "network_name": "HiNet (Chunghwa Telecom)",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-xray-json",
+    "protocol": null
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T16:18:47.816041+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

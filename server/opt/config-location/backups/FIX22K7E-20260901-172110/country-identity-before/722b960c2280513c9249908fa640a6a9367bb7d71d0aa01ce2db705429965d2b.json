@@ -1,0 +1,16 @@
+{
+  "asn": "AS24940",
+  "config_id": "722b960c2280513c9249908fa640a6a9367bb7d71d0aa01ce2db705429965d2b",
+  "country_code": "FI",
+  "country_confidence": 0.92,
+  "country_name": "Finland",
+  "determined_epoch": 1788281606,
+  "first_exit_ip": "2a01:4f9:c011:125a::1",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Hetzner Online GmbH",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

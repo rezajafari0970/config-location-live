@@ -1,0 +1,53 @@
+{
+  "asn": "AS8254",
+  "confidence": 1.0,
+  "config_id": "06ff42758effaaf5ae27fbfa0fd808724febab0e6d0ec2ba9432e256d534bec1",
+  "config_type": "vless",
+  "country_code": "ES",
+  "country_name": "Spain",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "193.238.154.18",
+  "finished_at": "2026-09-01T03:40:56.494278+00:00",
+  "flag": "🇪🇸",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "ES",
+    "country_name": "Spain",
+    "flag": "🇪🇸",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Green Floid LLC",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "ES",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T03:40:52.976631+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS16509",
+  "config_id": "e420d75253cc4037c1ced933de5d0856e59275cce46bb124db765d8d0ff580b6",
+  "country_code": "SG",
+  "country_confidence": 1.0,
+  "country_name": "Singapore",
+  "determined_epoch": 1788280711,
+  "first_exit_ip": "13.250.114.194",
+  "flag": "🇸🇬",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Amazon Data Services Singapore",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

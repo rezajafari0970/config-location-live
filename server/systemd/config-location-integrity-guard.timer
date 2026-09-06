@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Config Location Referential Integrity Guard
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=60s
+AccuracySec=5s
+Persistent=true
+Unit=config-location-integrity-guard.service
+
+[Install]
+WantedBy=timers.target

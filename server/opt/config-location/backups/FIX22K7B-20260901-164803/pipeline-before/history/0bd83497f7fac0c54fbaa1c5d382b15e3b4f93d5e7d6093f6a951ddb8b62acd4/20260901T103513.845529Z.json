@@ -1,0 +1,12 @@
+{
+  "config_id": "0bd83497f7fac0c54fbaa1c5d382b15e3b4f93d5e7d6093f6a951ddb8b62acd4",
+  "config_type": "vmess",
+  "exit_agreed": 0,
+  "exit_ip": null,
+  "exit_successful": 0,
+  "finished_at": "2026-09-01T10:35:13.845511+00:00",
+  "reason": "no_exit_probe_succeeded",
+  "schema_version": 1,
+  "started_at": "2026-09-01T10:35:12.732183+00:00",
+  "state": "error"
+}

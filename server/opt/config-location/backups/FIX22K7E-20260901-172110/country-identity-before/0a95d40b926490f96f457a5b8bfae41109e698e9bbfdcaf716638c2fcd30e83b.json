@@ -1,0 +1,16 @@
+{
+  "asn": "AS20473",
+  "config_id": "0a95d40b926490f96f457a5b8bfae41109e698e9bbfdcaf716638c2fcd30e83b",
+  "country_code": "SE",
+  "country_confidence": 0.92,
+  "country_name": "Sweden",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "70.34.215.249",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "The Constant Company, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

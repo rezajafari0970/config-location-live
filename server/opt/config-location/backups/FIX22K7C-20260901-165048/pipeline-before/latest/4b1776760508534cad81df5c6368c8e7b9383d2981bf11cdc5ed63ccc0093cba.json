@@ -1,0 +1,53 @@
+{
+  "asn": "AS16509",
+  "confidence": 1.0,
+  "config_id": "4b1776760508534cad81df5c6368c8e7b9383d2981bf11cdc5ed63ccc0093cba",
+  "config_type": "vless",
+  "country_code": "SG",
+  "country_name": "Singapore",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2406:da18:1999:af00:4686:8447:fb9:37fd",
+  "finished_at": "2026-09-01T05:07:30.828867+00:00",
+  "flag": "🇸🇬",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "SG",
+    "country_name": "Singapore",
+    "flag": "🇸🇬",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Amazon.com, Inc.",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "SG",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T05:07:23.628642+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "example.com",
+            "port": 443,
+            "users": [
+              {
+                "id": "22222222-2222-4222-8222-222222222222",
+                "alterId": 0,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "example.com"
+        },
+        "wsSettings": {
+          "path": "/ws",
+          "headers": {
+            "Host": "example.com"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS14061",
+  "config_id": "6dc7421c3d81b5849989fdfba430180f8fa8d4ec4853d95cb593d1331e459932",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "164.90.171.1",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "DigitalOcean, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

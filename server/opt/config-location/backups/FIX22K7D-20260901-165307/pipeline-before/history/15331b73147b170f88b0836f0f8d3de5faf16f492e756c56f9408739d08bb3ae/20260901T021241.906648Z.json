@@ -1,0 +1,53 @@
+{
+  "asn": "AS16509",
+  "confidence": 1.0,
+  "config_id": "15331b73147b170f88b0836f0f8d3de5faf16f492e756c56f9408739d08bb3ae",
+  "config_type": "vless",
+  "country_code": "JP",
+  "country_name": "Japan",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2406:da14:1adf:9500:707e:9da2:3199:3a84",
+  "finished_at": "2026-09-01T02:12:41.906638+00:00",
+  "flag": "🇯🇵",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "JP",
+    "country_name": "Japan",
+    "flag": "🇯🇵",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Amazon.com, Inc.",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "JP",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:12:38.069417+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

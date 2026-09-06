@@ -1,0 +1,16 @@
+{
+  "asn": "AS215703",
+  "config_id": "5755f717bd2e1748514e822ae1c3735347e15346b7f2714e433956ed587d87fd",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788280757,
+  "first_exit_ip": "81.18.48.98",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "FREAKHOSTING",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

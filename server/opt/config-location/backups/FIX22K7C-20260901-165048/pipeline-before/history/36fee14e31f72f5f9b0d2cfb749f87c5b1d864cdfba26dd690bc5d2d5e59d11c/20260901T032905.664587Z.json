@@ -1,0 +1,62 @@
+{
+  "confidence": 0.8,
+  "config_id": "36fee14e31f72f5f9b0d2cfb749f87c5b1d864cdfba26dd690bc5d2d5e59d11c",
+  "config_type": "vless",
+  "country_code": "CA",
+  "country_name": null,
+  "exit_consensus": {
+    "agreed": 9,
+    "attempts": 15,
+    "successful": 15
+  },
+  "exit_ip": "2600:3c04::2000:33ff:feea:6ce8",
+  "flag": "🇨🇦",
+  "reason": "hard_recovery_consensus",
+  "recovery_evidence": [
+    {
+      "country_code": "CA",
+      "error": null,
+      "provider": "ipwho",
+      "success": true
+    },
+    {
+      "country_code": "CA",
+      "error": null,
+      "provider": "ipapi_co",
+      "success": true
+    },
+    {
+      "country_code": "CA",
+      "error": null,
+      "provider": "ip_api",
+      "success": true
+    },
+    {
+      "country_code": "CA",
+      "error": null,
+      "provider": "ipinfo",
+      "success": true
+    },
+    {
+      "country_code": null,
+      "error": "invalid_json",
+      "provider": "freeipapi",
+      "success": false
+    },
+    {
+      "country_code": "SG",
+      "error": null,
+      "provider": "ipguide",
+      "success": true
+    },
+    {
+      "country_code": null,
+      "error": "invalid_json",
+      "provider": "rdap",
+      "success": false
+    }
+  ],
+  "recovery_layer": "ultimate",
+  "schema_version": 2,
+  "state": "confirmed_stable"
+}

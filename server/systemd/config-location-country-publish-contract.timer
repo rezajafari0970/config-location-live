@@ -1,0 +1,12 @@
+[Unit]
+Description=Config Location Country Publish Contract Timer
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=60s
+AccuracySec=10s
+Persistent=true
+Unit=config-location-country-publish-contract.service
+
+[Install]
+WantedBy=timers.target

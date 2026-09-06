@@ -1,0 +1,96 @@
+{
+  "asn": "AS60781",
+  "confidence": 1.0,
+  "config_id": "6b263b1dcbd6f989667515ff66152468eb90f8d353e4efd632367b728cae2b8f",
+  "config_type": "vless",
+  "country_code": "NL",
+  "country_name": "The Netherlands",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2001:1af8:5301:118:1c00:95ff:fe00:10b8",
+  "finished_at": "2026-09-01T16:09:40.534678+00:00",
+  "flag": "🇳🇱",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "NL",
+    "country_name": "The Netherlands",
+    "flag": "🇳🇱",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "LeaseWeb Netherlands B.V",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "NL",
+    "country_name": "The Netherlands",
+    "executed": true,
+    "flag": "🇳🇱",
+    "providers": [
+      {
+        "asn": "AS60781",
+        "country_code": "NL",
+        "country_name": null,
+        "duration_ms": 163,
+        "error": null,
+        "network_name": "LeaseWeb Netherlands B.V.",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 77,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS60781",
+        "country_code": "NL",
+        "country_name": "The Netherlands",
+        "duration_ms": 175,
+        "error": null,
+        "network_name": "LeaseWeb Netherlands B.V.",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T16:09:37.625291+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

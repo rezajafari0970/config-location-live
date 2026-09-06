@@ -1,0 +1,53 @@
+{
+  "asn": "AS137535",
+  "confidence": 1.0,
+  "config_id": "1fa626ddd1c727036048e0eb26a274f0fed13405c428610f377f6a329bb297e7",
+  "config_type": "vless",
+  "country_code": "JP",
+  "country_name": "Japan",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "177.3.90.74",
+  "finished_at": "2026-09-01T02:32:10.339145+00:00",
+  "flag": "🇯🇵",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "JP",
+    "country_name": "Japan",
+    "flag": "🇯🇵",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "JT TELECOM INTERNATIONAL PTE.LTD.",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "JP",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:32:06.583649+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS51167",
+  "config_id": "c2a43c69031346b91a45951613640fa6c8e6ee859dc7ff3b94be0b11b95d2911",
+  "country_code": "FR",
+  "country_confidence": 1.0,
+  "country_name": "France",
+  "determined_epoch": 1788282864,
+  "first_exit_ip": "2a02:c207:2292:6156::1",
+  "flag": "🇫🇷",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Contabo GmbH",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

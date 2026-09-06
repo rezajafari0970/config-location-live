@@ -1,0 +1,16 @@
+{
+  "asn": "AS20860",
+  "config_id": "7a3dcc9fd255ad78de0925c922b6f673df6281fb8ae297e1de52466265852f5b",
+  "country_code": "GB",
+  "country_confidence": 1.0,
+  "country_name": "United Kingdom",
+  "determined_epoch": 1788280635,
+  "first_exit_ip": "95.154.196.63",
+  "flag": "🇬🇧",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Iomart Managed Services Limited",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS213887",
+  "config_id": "40b8bb47566989ef7decf534db67498532fdff4842998d86e201c0e8d25b7340",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281606,
+  "first_exit_ip": "2a0b:4141:820:aa5::2",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "WAIcore Ltd",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

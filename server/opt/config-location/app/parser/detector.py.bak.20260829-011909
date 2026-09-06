@@ -1,0 +1,720 @@
+from __future__ import annotations
+
+import base64
+import hashlib
+import json
+import re
+from typing import Any
+from urllib.parse import urlsplit, unquote
+
+
+KNOWN_SCHEMES = {
+    "vless": "vless",
+    "vmess": "vmess",
+    "trojan": "trojan",
+    "ss": "ss",
+    "ssr": "ssr",
+    "hysteria": "hysteria",
+    "hysteria2": "hy2",
+    "hy2": "hy2",
+    "tuic": "tuic",
+    "wireguard": "wireguard",
+    "wg": "wireguard",
+
+    # Napsternet families are preserved.
+    "npv": "napsternet",
+    "npvt": "napsternet",
+    "nps": "napsternet",
+    "napsternet": "napsternet",
+}
+
+
+URI_RE = re.compile(
+    r'(?P<uri>[A-Za-z][A-Za-z0-9+.-]*://[^\s<>"\']+)',
+    re.I,
+)
+
+
+def _b64decode_loose(value: str) -> bytes | None:
+    value = value.strip()
+
+    if not value:
+        return None
+
+    try:
+        value += "=" * (-len(value) % 4)
+
+        return base64.urlsafe_b64decode(
+            value.encode()
+        )
+    except Exception:
+        return None
+
+
+def _clean_uri(uri: str) -> str:
+    # punctuation commonly attached by text/HTML
+    return uri.rstrip(
+        ".,;)]}>،؛"
+    ).strip()
+
+
+def _json_compact(obj: Any) -> str:
+    return json.dumps(
+        obj,
+        ensure_ascii=False,
+        separators=(",", ":"),
+        sort_keys=False,
+    )
+
+
+def _looks_like_proxy_json(obj: Any) -> bool:
+    if not isinstance(obj, dict):
+        return False
+
+    keys = set(obj)
+
+    if {
+        "outbounds",
+        "inbounds",
+    } & keys:
+        return True
+
+    if (
+        "protocol" in obj
+        and (
+            "settings" in obj
+            or "streamSettings" in obj
+        )
+    ):
+        return True
+
+    # sing-box style
+    if (
+        "outbounds" in obj
+        and isinstance(
+            obj.get("outbounds"),
+            list
+        )
+    ):
+        return True
+
+    return False
+
+
+def _validate_host_port(
+    uri: str,
+    require_user: bool = False,
+) -> bool:
+    try:
+        p = urlsplit(uri)
+
+        if not p.hostname:
+            return False
+
+        if p.port is None:
+            return False
+
+        if not (
+            1 <= int(p.port) <= 65535
+        ):
+            return False
+
+        if require_user and not p.username:
+            return False
+
+        return True
+
+    except Exception:
+        return False
+
+
+def _validate_vless(uri: str) -> bool:
+    if not _validate_host_port(
+        uri,
+        require_user=True
+    ):
+        return False
+
+    try:
+        user = urlsplit(uri).username or ""
+
+        # UUID: permissive enough for existing clients,
+        # but reject obviously broken values.
+        return (
+            len(user) >= 16
+            and " " not in user
+        )
+
+    except Exception:
+        return False
+
+
+def _validate_trojan(uri: str) -> bool:
+    return _validate_host_port(
+        uri,
+        require_user=True
+    )
+
+
+def _validate_hy(uri: str) -> bool:
+    return _validate_host_port(
+        uri,
+        require_user=False
+    )
+
+
+def _validate_tuic(uri: str) -> bool:
+    return _validate_host_port(
+        uri,
+        require_user=True
+    )
+
+
+def _validate_ss(uri: str) -> bool:
+    if not uri.lower().startswith(
+        "ss://"
+    ):
+        return False
+
+    body = uri[5:].split(
+        "#",
+        1
+    )[0]
+
+    if len(body) < 5:
+        return False
+
+    # SIP002 plain userinfo@host:port
+    try:
+        p = urlsplit(uri)
+
+        if p.hostname and p.port:
+            return True
+
+    except Exception:
+        pass
+
+    # base64 style
+    core = body.split(
+        "?",
+        1
+    )[0]
+
+    decoded = _b64decode_loose(
+        core
+    )
+
+    if decoded:
+        try:
+            txt = decoded.decode(
+                "utf-8",
+                errors="strict"
+            )
+
+            return (
+                ":" in txt
+                and len(txt) >= 5
+            )
+        except Exception:
+            pass
+
+    return False
+
+
+def _decode_vmess(
+    uri: str
+) -> dict | None:
+    if not uri.lower().startswith(
+        "vmess://"
+    ):
+        return None
+
+    encoded = uri[8:].strip()
+
+    raw = _b64decode_loose(
+        encoded
+    )
+
+    if not raw:
+        return None
+
+    try:
+        obj = json.loads(
+            raw.decode(
+                "utf-8"
+            )
+        )
+    except Exception:
+        return None
+
+    if not isinstance(
+        obj,
+        dict
+    ):
+        return None
+
+    address = str(
+        obj.get("add", "")
+    ).strip()
+
+    port = str(
+        obj.get("port", "")
+    ).strip()
+
+    user_id = str(
+        obj.get("id", "")
+    ).strip()
+
+    if (
+        not address
+        or not port
+        or not user_id
+    ):
+        return None
+
+    try:
+        nport = int(port)
+
+        if not (
+            1 <= nport <= 65535
+        ):
+            return None
+    except Exception:
+        return None
+
+    return obj
+
+
+def _canonical_uri(
+    protocol: str,
+    uri: str
+) -> str:
+    # Remarks are not part of server identity.
+    base = uri.split(
+        "#",
+        1
+    )[0].strip()
+
+    if protocol == "vmess":
+        obj = _decode_vmess(uri)
+
+        if obj:
+            obj = dict(obj)
+
+            # ps is display name, not identity.
+            obj.pop(
+                "ps",
+                None
+            )
+
+            return _json_compact(
+                obj
+            )
+
+    return base
+
+
+def _item(
+    protocol: str,
+    raw: str,
+    canonical: str | None = None,
+):
+    canonical = (
+        canonical
+        if canonical is not None
+        else raw
+    )
+
+    digest = hashlib.sha256(
+        (
+            protocol
+            + "\0"
+            + canonical
+        ).encode(
+            "utf-8",
+            errors="ignore"
+        )
+    ).hexdigest()
+
+    return {
+        "type": protocol,
+        "raw": raw,
+        "canonical": canonical,
+        "fingerprint": digest,
+    }
+
+
+def detect_uri(
+    uri: str
+) -> dict | None:
+    uri = _clean_uri(
+        uri
+    )
+
+    if "://" not in uri:
+        return None
+
+    scheme = uri.split(
+        "://",
+        1
+    )[0].lower()
+
+    if scheme in {
+        "http",
+        "https",
+        "ftp",
+        "file",
+    }:
+        return None
+
+    protocol = KNOWN_SCHEMES.get(
+        scheme
+    )
+
+    if protocol == "vless":
+        if not _validate_vless(uri):
+            return None
+
+    elif protocol == "vmess":
+        if not _decode_vmess(uri):
+            return None
+
+    elif protocol == "trojan":
+        if not _validate_trojan(uri):
+            return None
+
+    elif protocol == "ss":
+        if not _validate_ss(uri):
+            return None
+
+    elif protocol in {
+        "hysteria",
+        "hy2",
+    }:
+        if not _validate_hy(uri):
+            return None
+
+    elif protocol == "tuic":
+        if not _validate_tuic(uri):
+            return None
+
+    elif protocol == "wireguard":
+        # preserve URI; detailed WG validation later.
+        if len(uri) < 15:
+            return None
+
+    elif protocol == "napsternet":
+        # Must remain untouched in this stage.
+        if len(uri) < 12:
+            return None
+
+    elif protocol is None:
+        # Unknown non-http scheme = custom.
+        # Preserve it exactly; never parse it.
+        if (
+            len(uri) < 10
+            or " " in uri
+        ):
+            return None
+
+        protocol = "custom"
+
+    return _item(
+        protocol,
+        uri,
+        _canonical_uri(
+            protocol,
+            uri
+        ),
+    )
+
+
+def _extract_wireguard_native(
+    text: str
+):
+    low = text.lower()
+
+    if (
+        "[interface]" not in low
+        or "[peer]" not in low
+    ):
+        return []
+
+    required = (
+        "privatekey",
+        "publickey",
+        "endpoint",
+    )
+
+    if not all(
+        item in low
+        for item in required
+    ):
+        return []
+
+    raw = text.strip()
+
+    return [
+        _item(
+            "wireguard",
+            raw,
+            raw,
+        )
+    ]
+
+
+def _extract_json(
+    text: str
+):
+    text = text.strip()
+
+    if not text:
+        return []
+
+    try:
+        obj = json.loads(
+            text
+        )
+    except Exception:
+        return []
+
+    results = []
+
+    if _looks_like_proxy_json(
+        obj
+    ):
+        raw = _json_compact(
+            obj
+        )
+
+        results.append(
+            _item(
+                "json",
+                raw,
+                raw,
+            )
+        )
+
+        return results
+
+    # Arrays may contain links or JSON configs.
+    if isinstance(
+        obj,
+        list
+    ):
+        for value in obj:
+            if isinstance(
+                value,
+                str
+            ):
+                results.extend(
+                    extract_configs(
+                        value,
+                        depth=1
+                    )
+                )
+
+            elif _looks_like_proxy_json(
+                value
+            ):
+                raw = _json_compact(
+                    value
+                )
+
+                results.append(
+                    _item(
+                        "json",
+                        raw,
+                        raw,
+                    )
+                )
+
+    # common API wrappers
+    elif isinstance(
+        obj,
+        dict
+    ):
+        for key in (
+            "configs",
+            "confs",
+            "data",
+            "result",
+            "servers",
+        ):
+            value = obj.get(
+                key
+            )
+
+            if isinstance(
+                value,
+                list
+            ):
+                for child in value:
+                    if isinstance(
+                        child,
+                        str
+                    ):
+                        results.extend(
+                            extract_configs(
+                                child,
+                                depth=1
+                            )
+                        )
+
+                    elif isinstance(
+                        child,
+                        dict
+                    ):
+                        for possible in (
+                            "link",
+                            "config",
+                            "url",
+                        ):
+                            val = child.get(
+                                possible
+                            )
+
+                            if isinstance(
+                                val,
+                                str
+                            ):
+                                results.extend(
+                                    extract_configs(
+                                        val,
+                                        depth=1
+                                    )
+                                )
+
+    return results
+
+
+def _looks_like_base64_blob(
+    text: str
+) -> bool:
+    compact = "".join(
+        text.split()
+    )
+
+    if len(compact) < 16:
+        return False
+
+    if len(compact) > 8_000_000:
+        return False
+
+    return bool(
+        re.fullmatch(
+            r'[A-Za-z0-9_\-+/=]+',
+            compact
+        )
+    )
+
+
+def extract_configs(
+    text: str,
+    depth: int = 0,
+):
+    if not isinstance(
+        text,
+        str
+    ):
+        return []
+
+    if depth > 2:
+        return []
+
+    text = (
+        text
+        .replace(
+            "\x00",
+            ""
+        )
+        .strip()
+    )
+
+    if not text:
+        return []
+
+    # Obvious web error pages are not configs.
+    low_prefix = text[:500].lower()
+
+    if (
+        "<html" in low_prefix
+        or "<!doctype html" in low_prefix
+    ):
+        return []
+
+    results = []
+
+    results.extend(
+        _extract_json(
+            text
+        )
+    )
+
+    results.extend(
+        _extract_wireguard_native(
+            text
+        )
+    )
+
+    for match in URI_RE.finditer(
+        text
+    ):
+        detected = detect_uri(
+            match.group(
+                "uri"
+            )
+        )
+
+        if detected:
+            results.append(
+                detected
+            )
+
+    # Whole-response base64 subscription.
+    if (
+        depth < 2
+        and _looks_like_base64_blob(
+            text
+        )
+    ):
+        compact = "".join(
+            text.split()
+        )
+
+        decoded = _b64decode_loose(
+            compact
+        )
+
+        if decoded:
+            try:
+                decoded_text = decoded.decode(
+                    "utf-8"
+                )
+
+                # Avoid recursively re-processing same text.
+                if (
+                    decoded_text.strip()
+                    and decoded_text.strip()
+                    != text
+                ):
+                    results.extend(
+                        extract_configs(
+                            decoded_text,
+                            depth=depth + 1
+                        )
+                    )
+            except Exception:
+                pass
+
+    # De-duplicate inside response.
+    unique = {}
+
+    for item in results:
+        unique[
+            item["fingerprint"]
+        ] = item
+
+    return list(
+        unique.values()
+    )

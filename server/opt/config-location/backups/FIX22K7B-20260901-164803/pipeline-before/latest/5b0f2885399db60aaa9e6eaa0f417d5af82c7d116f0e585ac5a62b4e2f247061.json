@@ -1,0 +1,53 @@
+{
+  "asn": "AS16276",
+  "confidence": 1.0,
+  "config_id": "5b0f2885399db60aaa9e6eaa0f417d5af82c7d116f0e585ac5a62b4e2f247061",
+  "config_type": "vless",
+  "country_code": "IT",
+  "country_name": "Italy",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "57.131.38.163",
+  "finished_at": "2026-09-01T07:39:35.806568+00:00",
+  "flag": "🇮🇹",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "IT",
+    "country_name": "Italy",
+    "flag": "🇮🇹",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "OVH SAS",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "IT",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T07:39:23.146896+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

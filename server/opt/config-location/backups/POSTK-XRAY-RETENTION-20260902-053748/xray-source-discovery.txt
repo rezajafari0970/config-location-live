@@ -1,0 +1,330 @@
+/opt/config-location/app/parser/detector.py:516:        return "json_xray"
+/opt/config-location/app/parser/detector.py:525:        return "json_xray"
+/opt/config-location/app/parser/detector.py:1189:        return "json_xray"
+/opt/config-location/app/parser/detector.py:1198:        return "json_xray"
+/opt/config-location/app/parser/universal_json.py:227:            return "xray"
+/opt/config-location/app/parser/universal_json.py:237:        return "xray-outbound"
+/opt/config-location/app/parser/universal_json.py:515:def _xray_vless(o: dict[str,Any]) -> str | None:
+/opt/config-location/app/parser/universal_json.py:592:def _xray_vmess(o: dict[str,Any]) -> str | None:
+/opt/config-location/app/parser/universal_json.py:713:def _xray_server_uri(
+/opt/config-location/app/parser/universal_json.py:1158:def _extract_xray(
+/opt/config-location/app/parser/universal_json.py:1201:            schema="xray",
+/opt/config-location/app/parser/universal_json.py:1216:            item.generated_uri=_xray_vless(o)
+/opt/config-location/app/parser/universal_json.py:1219:            item.generated_uri=_xray_vmess(o)
+/opt/config-location/app/parser/universal_json.py:1226:            item.generated_uri=_xray_server_uri(
+/opt/config-location/app/parser/universal_json.py:1236:            item.generated_uri=_xray_server_uri(
+/opt/config-location/app/parser/universal_json.py:1349:            if schema.startswith("xray"):
+/opt/config-location/app/parser/universal_json.py:1351:                    _extract_xray(
+/opt/config-location/app/core/source_runtime.py:5:import tempfile
+/opt/config-location/app/core/source_runtime.py:94:        fd, tmp = tempfile.mkstemp(
+/opt/config-location/app/core/storage.py:5:import tempfile
+/opt/config-location/app/core/storage.py:44:        fd, tmp_name = tempfile.mkstemp(
+/opt/config-location/app/core/config_store.py:5:import tempfile
+/opt/config-location/app/core/config_store.py:80:    fd, tmp = tempfile.mkstemp(
+/opt/config-location/app/country/worker.py:6:import tempfile
+/opt/config-location/app/country/worker.py:99:    fd,tmp=tempfile.mkstemp(
+/opt/config-location/app/country/event_consumer.py:542:            "second_xray":
+/opt/config-location/app/country/strong_exit_recovery.py:4:import subprocess
+/opt/config-location/app/country/strong_exit_recovery.py:86:        p=subprocess.run(
+/opt/config-location/app/country/strong_exit_recovery.py:88:            stdin=subprocess.DEVNULL,
+/opt/config-location/app/country/strong_exit_recovery.py:89:            stdout=subprocess.PIPE,
+/opt/config-location/app/country/strong_exit_recovery.py:90:            stderr=subprocess.DEVNULL,
+/opt/config-location/app/country/strong_exit_recovery.py:103:        p.stdout
+/opt/config-location/app/country/temporal.py:5:import tempfile
+/opt/config-location/app/country/temporal.py:49:    fd,tmp=tempfile.mkstemp(
+/opt/config-location/app/country/same_runtime_fastpath.py:15:    "same-runtime-fastpath.jsonl"
+/opt/config-location/app/country/same_runtime_fastpath.py:108:            "new_xray_started":False,
+/opt/config-location/app/country/same_runtime_fastpath.py:136:            "new_xray_started":False,
+/opt/config-location/app/country/fallback_geo.py:5:import subprocess
+/opt/config-location/app/country/fallback_geo.py:43:        p=subprocess.run(
+/opt/config-location/app/country/fallback_geo.py:56:            stdin=subprocess.DEVNULL,
+/opt/config-location/app/country/fallback_geo.py:57:            stdout=subprocess.PIPE,
+/opt/config-location/app/country/fallback_geo.py:58:            stderr=subprocess.PIPE,
+/opt/config-location/app/country/fallback_geo.py:76:                    p.stderr.strip()
+/opt/config-location/app/country/fallback_geo.py:84:                p.stdout
+/opt/config-location/app/country/fallback_geo.py:94:    except subprocess.TimeoutExpired:
+/opt/config-location/app/country/storage.py:5:import tempfile
+/opt/config-location/app/country/storage.py:32:    fd, tmp = tempfile.mkstemp(
+/opt/config-location/app/country/hard_fallback.py:4:import subprocess
+/opt/config-location/app/country/hard_fallback.py:20:    r=subprocess.run(
+/opt/config-location/app/country/hard_fallback.py:40:                r.stderr
+/opt/config-location/app/country/hard_fallback.py:46:        r.stdout
+/opt/config-location/app/country/geo_cache.py:6:import tempfile
+/opt/config-location/app/country/geo_cache.py:123:    fd,tmp=tempfile.mkstemp(
+/opt/config-location/app/country/health_hook.py:139:                "xray_started"
+/opt/config-location/app/country/health_hook.py:160:                "xray_ok"
+/opt/config-location/app/country/health_hook.py:224:                "xray_started":
+/opt/config-location/app/country/event_bus.py:7:import tempfile
+/opt/config-location/app/country/event_bus.py:77:    fd,tmp=tempfile.mkstemp(
+/opt/config-location/app/country/geo_providers.py:5:import subprocess
+/opt/config-location/app/country/geo_providers.py:51:        p=subprocess.run(
+/opt/config-location/app/country/geo_providers.py:64:            stdin=subprocess.DEVNULL,
+/opt/config-location/app/country/geo_providers.py:65:            stdout=subprocess.PIPE,
+/opt/config-location/app/country/geo_providers.py:66:            stderr=subprocess.PIPE,
+/opt/config-location/app/country/geo_providers.py:84:                    p.stderr.strip()
+/opt/config-location/app/country/geo_providers.py:92:                p.stdout
+/opt/config-location/app/country/geo_providers.py:110:    except subprocess.TimeoutExpired:
+/opt/config-location/app/country/geo_providers.py:531:        # Running curl subprocesses remain bounded by
+/opt/config-location/app/country/exit_observer.py:4:import subprocess
+/opt/config-location/app/country/exit_observer.py:117:        result = subprocess.run(
+/opt/config-location/app/country/exit_observer.py:119:            stdin=subprocess.DEVNULL,
+/opt/config-location/app/country/exit_observer.py:120:            stdout=subprocess.PIPE,
+/opt/config-location/app/country/exit_observer.py:121:            stderr=subprocess.PIPE,
+/opt/config-location/app/country/exit_observer.py:142:                    result.stderr.strip()
+/opt/config-location/app/country/exit_observer.py:149:            result.stdout
+/opt/config-location/app/country/exit_observer.py:170:    except subprocess.TimeoutExpired:
+/opt/config-location/app/country/progressive_recovery.py:4:import subprocess
+/opt/config-location/app/country/progressive_recovery.py:41:    result=subprocess.run(
+/opt/config-location/app/country/progressive_recovery.py:61:                result.stderr
+/opt/config-location/app/country/progressive_recovery.py:67:        result.stdout
+/opt/config-location/app/country/pipeline.py:5:import tempfile
+/opt/config-location/app/country/pipeline.py:117:    fd,tmp=tempfile.mkstemp(
+/opt/config-location/app/country/rdap_recovery.py:4:import subprocess
+/opt/config-location/app/country/rdap_recovery.py:30:        p=subprocess.run(
+/opt/config-location/app/country/rdap_recovery.py:42:            stdin=subprocess.DEVNULL,
+/opt/config-location/app/country/rdap_recovery.py:43:            stdout=subprocess.PIPE,
+/opt/config-location/app/country/rdap_recovery.py:44:            stderr=subprocess.PIPE,
+/opt/config-location/app/country/rdap_recovery.py:68:                p.stderr.strip()
+/opt/config-location/app/country/rdap_recovery.py:78:            p.stdout
+/opt/config-location/app/observability/selftest.py:5:import tempfile
+/opt/config-location/app/observability/selftest.py:27:    with tempfile.TemporaryDirectory() as td:
+/opt/config-location/app/health/runtime/launcher.py:3:import subprocess
+/opt/config-location/app/health/runtime/launcher.py:9:from .xray_capability import (
+/opt/config-location/app/health/runtime/launcher.py:10:    classify_xray_capability,
+/opt/config-location/app/health/runtime/launcher.py:13:    classify_xray_validation_output,
+/opt/config-location/app/health/runtime/launcher.py:15:from .builders.uri_xray import UriXrayRuntimeBuilder
+/opt/config-location/app/health/runtime/launcher.py:16:from .builders.xray_json import XrayJsonRuntimeBuilder
+/opt/config-location/app/health/runtime/launcher.py:17:from .builders.wireguard_xray import (
+/opt/config-location/app/health/runtime/launcher.py:84:        xray_binary: Path = Path(
+/opt/config-location/app/health/runtime/launcher.py:85:            "/usr/local/bin/xray"
+/opt/config-location/app/health/runtime/launcher.py:90:        self.xray_binary = xray_binary
+/opt/config-location/app/health/runtime/launcher.py:136:            classify_xray_capability(
+/opt/config-location/app/health/runtime/launcher.py:161:            xray_binary=self.xray_binary,
+/opt/config-location/app/health/runtime/launcher.py:203:            result = subprocess.run(
+/opt/config-location/app/health/runtime/launcher.py:205:                    str(self.xray_binary),
+/opt/config-location/app/health/runtime/launcher.py:213:                stdin=subprocess.DEVNULL,
+/opt/config-location/app/health/runtime/launcher.py:214:                stdout=subprocess.PIPE,
+/opt/config-location/app/health/runtime/launcher.py:215:                stderr=subprocess.PIPE,
+/opt/config-location/app/health/runtime/launcher.py:223:                    classify_xray_validation_output(
+/opt/config-location/app/health/runtime/launcher.py:224:                        result.stdout,
+/opt/config-location/app/health/runtime/launcher.py:225:                        result.stderr,
+/opt/config-location/app/health/runtime/launcher.py:231:                        "xray config validation failed: "
+/opt/config-location/app/health/runtime/launcher.py:249:                    "xray SOCKS listener "
+/opt/config-location/app/health/runtime/builders/uri_xray.py:83:    xray_network = "tcp" if network == "raw" else network
+/opt/config-location/app/health/runtime/builders/uri_xray.py:86:        "network": xray_network,
+/opt/config-location/app/health/runtime/builders/uri_xray.py:373:    plugin_name = "runtime-uri-xray"
+/opt/config-location/app/health/runtime/builders/selftest_xray_json.py:4:import tempfile
+/opt/config-location/app/health/runtime/builders/selftest_xray_json.py:7:from .xray_json import (
+/opt/config-location/app/health/runtime/builders/selftest_xray_json.py:80:        "json_xray"
+/opt/config-location/app/health/runtime/builders/selftest_xray_json.py:83:    with tempfile.TemporaryDirectory() as td:
+/opt/config-location/app/health/runtime/builders/selftest_xray_json.py:88:                config_type="json_xray",
+/opt/config-location/app/health/runtime/builders/selftest_xray_json.py:95:        runtime = json.loads(
+/opt/config-location/app/health/runtime/builders/selftest_xray_json.py:135:                config_type="json_xray",
+/opt/config-location/app/health/runtime/builders/wireguard_xray.py:702:        "runtime-wireguard-xray"
+/opt/config-location/app/health/runtime/builders/xray_json.py:23:            "xray json source must be str or dict"
+/opt/config-location/app/health/runtime/builders/xray_json.py:30:            "invalid xray json"
+/opt/config-location/app/health/runtime/builders/xray_json.py:35:            "xray json root must be object"
+/opt/config-location/app/health/runtime/builders/xray_json.py:188:    plugin_name = "runtime-xray-json"
+/opt/config-location/app/health/runtime/builders/xray_json.py:203:            == "json_xray"
+/opt/config-location/app/health/runtime/validation.py:13:def classify_xray_validation_output(
+/opt/config-location/app/health/runtime/validation.py:14:    stdout: str | None,
+/opt/config-location/app/health/runtime/validation.py:15:    stderr: str | None,
+/opt/config-location/app/health/runtime/validation.py:19:        (stdout or "")
+/opt/config-location/app/health/runtime/validation.py:21:        + (stderr or "")
+/opt/config-location/app/health/runtime/validation.py:92:        code="xray_validation_failed",
+/opt/config-location/app/health/runtime/selftest.py:78:        xray_binary=Path("/usr/local/bin/xray"),
+/opt/config-location/app/health/runtime/selftest.py:130:            f"[PASS] isolated xray pid="
+/opt/config-location/app/health/runtime/selftest.py:134:        print("[PASS] stdout/stderr isolated")
+/opt/config-location/app/health/runtime/xray_capability.py:13:    "integrity/xray-runtime/"
+/opt/config-location/app/health/runtime/xray_capability.py:25:    "json_xray",
+/opt/config-location/app/health/runtime/xray_capability.py:356:def classify_xray_capability(
+/opt/config-location/app/health/runtime/xray_capability.py:370:            "unsupported_by_xray",
+/opt/config-location/app/health/runtime/xray_capability.py:371:            "protocol_outside_xray_scope",
+/opt/config-location/app/health/runtime/xray_capability.py:383:    if kind=="json_xray":
+/opt/config-location/app/health/runtime/xray_capability.py:437:            "unsupported_by_xray",
+/opt/config-location/app/health/runtime/xray_capability.py:461:            "unsupported_by_xray_version",
+/opt/config-location/app/health/runtime/xray_capability.py:462:            "installed_xray_rejects_protocol",
+/opt/config-location/app/health/runtime/xray_capability.py:490:                "unsupported_by_xray_version",
+/opt/config-location/app/health/runtime/xray_capability.py:492:                    "installed_xray_rejects_transport:"
+/opt/config-location/app/health/runtime/xray_capability.py:521:                "unsupported_by_xray_version",
+/opt/config-location/app/health/runtime/xray_capability.py:523:                    "installed_xray_rejects_security:"
+/opt/config-location/app/health/runtime/xray_capability.py:534:        "xray_capable",
+/opt/config-location/app/health/runtime/sandbox.py:6:import subprocess
+/opt/config-location/app/health/runtime/sandbox.py:30:    stdout: Path
+/opt/config-location/app/health/runtime/sandbox.py:31:    stderr: Path
+/opt/config-location/app/health/runtime/sandbox.py:62:        xray_binary: Path,
+/opt/config-location/app/health/runtime/sandbox.py:82:            stdout=root / "xray.stdout.log",
+/opt/config-location/app/health/runtime/sandbox.py:83:            stderr=root / "xray.stderr.log",
+/opt/config-location/app/health/runtime/sandbox.py:84:            pid=root / "xray.pid",
+/opt/config-location/app/health/runtime/sandbox.py:87:        self.xray_binary = xray_binary
+/opt/config-location/app/health/runtime/sandbox.py:89:        self.process: subprocess.Popen | None = None
+/opt/config-location/app/health/runtime/sandbox.py:146:        stdout = self.paths.stdout.open("ab")
+/opt/config-location/app/health/runtime/sandbox.py:147:        stderr = self.paths.stderr.open("ab")
+/opt/config-location/app/health/runtime/sandbox.py:150:            self.process = subprocess.Popen(
+/opt/config-location/app/health/runtime/sandbox.py:152:                    str(self.xray_binary),
+/opt/config-location/app/health/runtime/sandbox.py:158:                stdin=subprocess.DEVNULL,
+/opt/config-location/app/health/runtime/sandbox.py:159:                stdout=stdout,
+/opt/config-location/app/health/runtime/sandbox.py:160:                stderr=stderr,
+/opt/config-location/app/health/runtime/sandbox.py:166:            stdout.close()
+/opt/config-location/app/health/runtime/sandbox.py:167:            stderr.close()
+/opt/config-location/app/health/runtime/sandbox.py:236:        except subprocess.TimeoutExpired:
+/opt/config-location/app/health/storage/json_store.py:5:import tempfile
+/opt/config-location/app/health/storage/json_store.py:141:            "xray_started":
+/opt/config-location/app/health/storage/json_store.py:142:                result.xray_started,
+/opt/config-location/app/health/storage/json_store.py:144:            "xray_exit_code":
+/opt/config-location/app/health/storage/json_store.py:145:                result.xray_exit_code,
+/opt/config-location/app/health/storage/json_store.py:278:            xray_started=bool(
+/opt/config-location/app/health/storage/json_store.py:280:                    "xray_started",
+/opt/config-location/app/health/storage/json_store.py:285:            xray_exit_code=(
+/opt/config-location/app/health/storage/json_store.py:288:                        "xray_exit_code"
+/opt/config-location/app/health/storage/json_store.py:292:                    "xray_exit_code"
+/opt/config-location/app/health/storage/json_store.py:361:            tempfile.mkstemp(
+/opt/config-location/app/health/storage/selftest_store.py:3:import tempfile
+/opt/config-location/app/health/storage/selftest_store.py:19:    with tempfile.TemporaryDirectory(
+/opt/config-location/app/health/storage/selftest_store.py:44:            xray_started=True,
+/opt/config-location/app/health/storage/selftest_store.py:160:            xray_started=True,
+/opt/config-location/app/health/core/models.py:21:    UNSUPPORTED_BY_XRAY = "unsupported_by_xray"
+/opt/config-location/app/health/core/models.py:22:    UNSUPPORTED_BY_XRAY_VERSION = "unsupported_by_xray_version"
+/opt/config-location/app/health/core/models.py:58:    xray_started: bool = False
+/opt/config-location/app/health/core/models.py:59:    xray_exit_code: int | None = None
+/opt/config-location/app/health/core/models.py:76:            and self.xray_started
+/opt/config-location/app/health/core/scheduler.py:311:        "json_xray",
+/opt/config-location/app/health/core/production_scheduler.py:49:    "json_xray",
+/opt/config-location/app/health/core/selftest_scheduler.py:3:import tempfile
+/opt/config-location/app/health/core/selftest_scheduler.py:71:    with tempfile.TemporaryDirectory(
+/opt/config-location/app/health/core/engine.py:117:        result.xray_started = True
+/opt/config-location/app/health/core/engine.py:211:        stdout_path = (
+/opt/config-location/app/health/core/engine.py:212:            runtime.sandbox.paths.stdout
+/opt/config-location/app/health/core/engine.py:215:        stderr_path = (
+/opt/config-location/app/health/core/engine.py:216:            runtime.sandbox.paths.stderr
+/opt/config-location/app/health/core/engine.py:220:            "xray_logs"
+/opt/config-location/app/health/core/engine.py:222:            "stdout_bytes": (
+/opt/config-location/app/health/core/engine.py:223:                stdout_path.stat().st_size
+/opt/config-location/app/health/core/engine.py:224:                if stdout_path.exists()
+/opt/config-location/app/health/core/engine.py:227:            "stderr_bytes": (
+/opt/config-location/app/health/core/engine.py:228:                stderr_path.stat().st_size
+/opt/config-location/app/health/core/engine.py:229:                if stderr_path.exists()
+/opt/config-location/app/health/core/engine.py:268:        result.xray_started = False
+/opt/config-location/app/health/core/engine.py:292:        if code == "unsupported_by_xray":
+/opt/config-location/app/health/core/engine.py:298:        elif code == "unsupported_by_xray_version":
+/opt/config-location/app/health/core/engine.py:336:            "xray_process_started":
+/opt/config-location/app/health/core/engine.py:363:                result.xray_exit_code = (
+/opt/config-location/app/health/core/adaptive_network.py:4:import subprocess
+/opt/config-location/app/health/core/adaptive_network.py:70:        result = subprocess.run(
+/opt/config-location/app/health/core/adaptive_network.py:73:            stdin=subprocess.DEVNULL,
+/opt/config-location/app/health/core/adaptive_network.py:75:            stdout=subprocess.PIPE,
+/opt/config-location/app/health/core/adaptive_network.py:76:            stderr=subprocess.DEVNULL,
+/opt/config-location/app/health/core/adaptive_network.py:90:        result.stdout
+/opt/config-location/app/health/core/selftest_decision.py:36:        xray_started=True,
+/opt/config-location/app/health/core/selftest_decision.py:97:        xray_started=True,
+/opt/config-location/app/health/core/selftest_decision.py:148:        xray_started=True,
+/opt/config-location/app/health/core/selftest_decision.py:170:        xray_started=False,
+/opt/config-location/app/health/core/selftest_decision.py:188:    assert d.reason == "xray_failed"
+/opt/config-location/app/health/core/selftest_decision.py:201:        xray_started=True,
+/opt/config-location/app/health/core/always_on_adaptive.py:52:    STATE_ROOT / "effective-runtime.json"
+/opt/config-location/app/health/core/policy.py:38:        result.xray_started
+/opt/config-location/app/health/core/decision.py:16:    xray_ok: bool
+/opt/config-location/app/health/core/decision.py:55:    xray_started: bool,
+/opt/config-location/app/health/core/decision.py:68:    xray_ok = bool(
+/opt/config-location/app/health/core/decision.py:69:        xray_started
+/opt/config-location/app/health/core/decision.py:81:        xray_ok
+/opt/config-location/app/health/core/decision.py:89:    elif not xray_ok:
+/opt/config-location/app/health/core/decision.py:90:        reason = "xray_failed"
+/opt/config-location/app/health/core/decision.py:103:        xray_ok=xray_ok,
+/opt/config-location/app/health/core/decision.py:121:        xray_started=(
+/opt/config-location/app/health/core/decision.py:122:            result.xray_started
+/opt/config-location/app/health/core/decision.py:146:        "xray_ok":
+/opt/config-location/app/health/core/decision.py:147:            decision.xray_ok,
+/opt/config-location/app/health/core/adaptive_controller.py:8:import subprocess
+/opt/config-location/app/health/core/adaptive_controller.py:32:    health_xray_processes: int
+/opt/config-location/app/health/core/adaptive_controller.py:273:def health_xray_count() -> int:
+/opt/config-location/app/health/core/adaptive_controller.py:308:            "xray" in cmdline.lower()
+/opt/config-location/app/health/core/adaptive_controller.py:530:        health_xray_processes=
+/opt/config-location/app/health/core/adaptive_controller.py:531:            health_xray_count(),
+/opt/config-location/app/health/core/adaptive_controller.py:612:            result = subprocess.run(
+/opt/config-location/app/health/core/adaptive_controller.py:615:                stdin=subprocess.DEVNULL,
+/opt/config-location/app/health/core/adaptive_controller.py:616:                stdout=subprocess.PIPE,
+/opt/config-location/app/health/core/adaptive_controller.py:617:                stderr=subprocess.DEVNULL,
+/opt/config-location/app/health/core/adaptive_controller.py:636:            result.stdout
+/opt/config-location/app/health/core/adaptive_controller.py:750:    result = subprocess.run(
+/opt/config-location/app/health/core/adaptive_controller.py:758:        stdin=subprocess.DEVNULL,
+/opt/config-location/app/health/core/adaptive_controller.py:759:        stdout=subprocess.DEVNULL,
+/opt/config-location/app/health/core/adaptive_controller.py:760:        stderr=subprocess.DEVNULL,
+/opt/config-location/app/health/core/adaptive_controller.py:1219:                "max_health_xray"
+/opt/config-location/app/health/core/adaptive_controller.py:1222:        - resources.health_xray_processes,
+/opt/config-location/app/health/panel_adaptive.py:27:    "effective-runtime.json"
+/opt/config-location/app/health/panel_adaptive.py:391:        "max_health_xray"
+/opt/config-location/app/health/panel_adaptive.py:394:            "max_health_xray",
+/opt/config-location/app/health/panel_adaptive.py:396:                "max_health_xray",
+/opt/config-location/app/health/panel_adaptive.py:400:        "max_health_xray",
+/opt/config-location/app/health/panel_adaptive.py:631:<div><label>حداکثر Xrayهای Health</label><input id="xray" type="number"><span class="help">1 تا 500</span></div>
+/opt/config-location/app/health/panel_adaptive.py:658:   $('ram').value=get(['server_guard','reserve_ram_mb'],1536); $('fd').value=get(['server_guard','max_fd_percent'],70); $('xray').value=get(['server_guard','max_health_xray'],200);
+/opt/config-location/app/health/panel_adaptive.py:670:   server_guard:{target_cpu_percent:Number($('ctarget').value),max_cpu_percent:Number($('cmax').value),critical_cpu_percent:Number($('ccritical').value),reserve_ram_mb:Number($('ram').value),max_fd_percent:Number($('fd').value),max_health_xray:Number($('xray').value)},
+/opt/config-location/app/health/lifecycle/consecutive.py:6:import tempfile
+/opt/config-location/app/health/lifecycle/consecutive.py:83:    fd, tmp = tempfile.mkstemp(
+/opt/config-location/app/health/lifecycle/engine.py:5:import tempfile
+/opt/config-location/app/health/lifecycle/engine.py:116:    fd, tmp = tempfile.mkstemp(
+/opt/config-location/app/health/lifecycle/selftest_watchdog.py:4:import tempfile
+/opt/config-location/app/health/lifecycle/selftest_watchdog.py:31:    with tempfile.TemporaryDirectory(
+/opt/config-location/app/health/lifecycle/write_control.py:6:import tempfile
+/opt/config-location/app/health/lifecycle/write_control.py:149:    fd, tmp = tempfile.mkstemp(
+/opt/config-location/app/health/lifecycle/safety_gates.py:4:import subprocess
+/opt/config-location/app/health/lifecycle/safety_gates.py:106:    result = subprocess.run(
+/opt/config-location/app/health/lifecycle/safety_gates.py:114:        stdout=subprocess.DEVNULL,
+/opt/config-location/app/health/lifecycle/safety_gates.py:115:        stderr=subprocess.DEVNULL,
+/opt/config-location/app/health/lifecycle/policy.py:5:import tempfile
+/opt/config-location/app/health/lifecycle/policy.py:124:    fd, tmp = tempfile.mkstemp(
+/opt/config-location/app/health/lifecycle/stale_watchdog.py:6:import subprocess
+/opt/config-location/app/health/lifecycle/stale_watchdog.py:226:    result = subprocess.run(
+/opt/config-location/app/health/lifecycle/stale_watchdog.py:234:        stdout=subprocess.DEVNULL,
+/opt/config-location/app/health/lifecycle/stale_watchdog.py:235:        stderr=subprocess.DEVNULL,
+/opt/config-location/app/health/lifecycle/stale_watchdog.py:242:    result = subprocess.run(
+/opt/config-location/app/health/lifecycle/stale_watchdog.py:258:        result.stderr
+/opt/config-location/app/health/lifecycle/stale_watchdog.py:259:        or result.stdout
+/opt/config-location/app/health/lifecycle/sync_daemon.py:234:            file=sys.stderr,
+/opt/config-location/app/health/selftest.py:55:        xray_started=True,
+/opt/config-location/app/health/selftest.py:88:        xray_started=True,
+/opt/config-location/app/health/probes/upload.py:3:import subprocess
+/opt/config-location/app/health/probes/upload.py:4:import tempfile
+/opt/config-location/app/health/probes/upload.py:17:    process = subprocess.Popen(
+/opt/config-location/app/health/probes/upload.py:19:        stdin=subprocess.DEVNULL,
+/opt/config-location/app/health/probes/upload.py:20:        stdout=subprocess.PIPE,
+/opt/config-location/app/health/probes/upload.py:21:        stderr=subprocess.PIPE,
+/opt/config-location/app/health/probes/upload.py:40:                except subprocess.TimeoutExpired:
+/opt/config-location/app/health/probes/upload.py:49:                stdout, stderr = (
+/opt/config-location/app/health/probes/upload.py:50:                    process.communicate()
+/opt/config-location/app/health/probes/upload.py:53:                return subprocess.CompletedProcess(
+/opt/config-location/app/health/probes/upload.py:56:                    stdout,
+/opt/config-location/app/health/probes/upload.py:57:                    stderr,
+/opt/config-location/app/health/probes/upload.py:65:                except subprocess.TimeoutExpired:
+/opt/config-location/app/health/probes/upload.py:69:                raise subprocess.TimeoutExpired(
+/opt/config-location/app/health/probes/upload.py:170:    with tempfile.TemporaryDirectory(
+/opt/config-location/app/health/probes/upload.py:217:        except subprocess.TimeoutExpired:
+/opt/config-location/app/health/probes/upload.py:247:            result.stdout
+/opt/config-location/app/health/probes/download.py:3:import subprocess
+/opt/config-location/app/health/probes/download.py:16:    process = subprocess.Popen(
+/opt/config-location/app/health/probes/download.py:18:        stdin=subprocess.DEVNULL,
+/opt/config-location/app/health/probes/download.py:19:        stdout=subprocess.PIPE,
+/opt/config-location/app/health/probes/download.py:20:        stderr=subprocess.PIPE,
+/opt/config-location/app/health/probes/download.py:39:                except subprocess.TimeoutExpired:
+/opt/config-location/app/health/probes/download.py:48:                stdout, stderr = (
+/opt/config-location/app/health/probes/download.py:49:                    process.communicate()
+/opt/config-location/app/health/probes/download.py:52:                return subprocess.CompletedProcess(
+/opt/config-location/app/health/probes/download.py:55:                    stdout,
+/opt/config-location/app/health/probes/download.py:56:                    stderr,
+/opt/config-location/app/health/probes/download.py:64:                except subprocess.TimeoutExpired:
+/opt/config-location/app/health/probes/download.py:68:                raise subprocess.TimeoutExpired(
+/opt/config-location/app/health/probes/download.py:171:    except subprocess.TimeoutExpired:
+/opt/config-location/app/health/probes/download.py:193:        parts = result.stdout.strip().split()
+/opt/config-location/app/publish/selftest.py:4:import tempfile
+/opt/config-location/app/publish/selftest.py:13:    with tempfile.TemporaryDirectory(
+/opt/config-location/app/integrity/lock_gc.py:9:import tempfile
+/opt/config-location/app/integrity/lock_gc.py:104:    fd, tmp_name = tempfile.mkstemp(
+/opt/config-location/app/integrity/referential_guard.py:7:import tempfile
+/opt/config-location/app/integrity/referential_guard.py:85:    fd, tmp_name = tempfile.mkstemp(
+/opt/config-location/app/integrity/selftest_store_health.py:4:import tempfile
+/opt/config-location/app/integrity/selftest_store_health.py:33:    with tempfile.TemporaryDirectory() as td:
+/opt/config-location/app/integrity/store_health.py:5:import tempfile
+/opt/config-location/app/integrity/store_health.py:45:    fd, tmp_name = tempfile.mkstemp(
+/opt/config-location/app/integrity/health_history_gc.py:7:import tempfile
+/opt/config-location/app/integrity/health_history_gc.py:109:    fd, name = tempfile.mkstemp(

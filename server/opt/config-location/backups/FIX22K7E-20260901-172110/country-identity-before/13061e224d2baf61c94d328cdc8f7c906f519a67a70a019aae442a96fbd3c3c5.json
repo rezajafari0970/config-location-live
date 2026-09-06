@@ -1,0 +1,16 @@
+{
+  "asn": "AS20473",
+  "config_id": "13061e224d2baf61c94d328cdc8f7c906f519a67a70a019aae442a96fbd3c3c5",
+  "country_code": "BR",
+  "country_confidence": 0.92,
+  "country_name": "Brazil",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "216.238.124.86",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "The Constant Company, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,53 @@
+{
+  "asn": "AS50979",
+  "confidence": 1.0,
+  "config_id": "0a20a6b47cc6ec117ab7f87036f44ba47bd0f3f2cfc64e1902bb94a05b160c81",
+  "config_type": "vless",
+  "country_code": "LV",
+  "country_name": "Latvia",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "195.123.208.92",
+  "finished_at": "2026-09-01T04:07:17.855635+00:00",
+  "flag": "🇱🇻",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "LV",
+    "country_name": "Latvia",
+    "flag": "🇱🇻",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Green Floid LLC",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "LV",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T04:07:03.171049+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

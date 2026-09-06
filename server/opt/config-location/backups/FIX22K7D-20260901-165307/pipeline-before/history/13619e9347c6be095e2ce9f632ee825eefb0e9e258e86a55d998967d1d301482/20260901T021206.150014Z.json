@@ -1,0 +1,53 @@
+{
+  "asn": "AS154177",
+  "confidence": 1.0,
+  "config_id": "13619e9347c6be095e2ce9f632ee825eefb0e9e258e86a55d998967d1d301482",
+  "config_type": "vless",
+  "country_code": "KR",
+  "country_name": "South Korea",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "130.94.29.111",
+  "finished_at": "2026-09-01T02:12:06.150004+00:00",
+  "flag": "🇰🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "KR",
+    "country_name": "South Korea",
+    "flag": "🇰🇷",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "LIGHT NODE LIMITED",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "KR",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:12:01.825514+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

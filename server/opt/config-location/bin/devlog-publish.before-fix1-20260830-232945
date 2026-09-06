@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SOURCE="/var/log/config-location/chatgpt/current.log"
+DEST="/var/lib/config-location/devlog-public/public-latest.log"
+TMP="${DEST}.tmp.$$"
+
+if [ ! -f "$SOURCE" ]; then
+    printf '%s\n' \
+        'CONFIG_LOCATION_PUBLIC_DEVLOG' \
+        'STATUS=NO_PRIVATE_LOG' \
+        > "$TMP"
+else
+
+    tail -n 1200 "$SOURCE" \
+    | sed -E \
+        -e 's#(CONFIGLOC_ADMIN_PASSWORD=).*#\1***REDACTED***#Ig' \
+        -e 's#(CONFIGLOC_SESSION_SECRET=).*#\1***REDACTED***#Ig' \
+        -e 's#(CONFIGLOC_DEVLOG_TOKEN=).*#\1***REDACTED***#Ig' \
+        -e 's#(PASSWORD[=:][[:space:]]*).*#\1***REDACTED***#Ig' \
+        -e 's#(SECRET[=:][[:space:]]*).*#\1***REDACTED***#Ig' \
+        -e 's#(TOKEN[=:][[:space:]]*).*#\1***REDACTED***#Ig' \
+        -e 's#(/devlog/)[A-Za-z0-9_-]{20,}#\1***REDACTED***#g' \
+        > "$TMP"
+
+fi
+
+chown configloc:configloc "$TMP"
+chmod 0644 "$TMP"
+
+mv -f "$TMP" "$DEST"

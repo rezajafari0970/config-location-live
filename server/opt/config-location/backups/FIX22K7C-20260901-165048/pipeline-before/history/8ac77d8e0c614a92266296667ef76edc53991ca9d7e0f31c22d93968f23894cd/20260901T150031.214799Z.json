@@ -1,0 +1,96 @@
+{
+  "asn": "AS47172",
+  "confidence": 1.0,
+  "config_id": "8ac77d8e0c614a92266296667ef76edc53991ca9d7e0f31c22d93968f23894cd",
+  "config_type": "ss",
+  "country_code": "NL",
+  "country_name": "The Netherlands",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "193.29.139.165",
+  "finished_at": "2026-09-01T15:00:31.214775+00:00",
+  "flag": "🇳🇱",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "NL",
+    "country_name": "The Netherlands",
+    "flag": "🇳🇱",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Greenhost BV",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "NL",
+    "country_name": "The Netherlands",
+    "executed": true,
+    "flag": "🇳🇱",
+    "providers": [
+      {
+        "asn": "AS47172",
+        "country_code": "NL",
+        "country_name": null,
+        "duration_ms": 194,
+        "error": null,
+        "network_name": "Greenhost BV",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 78,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS47172",
+        "country_code": "NL",
+        "country_name": "The Netherlands",
+        "duration_ms": 230,
+        "error": null,
+        "network_name": "Greenhost BV",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T15:00:26.645115+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS44620",
+  "config_id": "0fea2655a5bb528fd212fe0e316049ec88f734d237a720c40ebb4ddd8dad908b",
+  "country_code": "TR",
+  "country_confidence": 1.0,
+  "country_name": "Türkiye",
+  "determined_epoch": 1788280609,
+  "first_exit_ip": "2a01:f900:11:b8::1",
+  "flag": "🇹🇷",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Netlen Internet Hizmetleri Ltd. Sti.",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

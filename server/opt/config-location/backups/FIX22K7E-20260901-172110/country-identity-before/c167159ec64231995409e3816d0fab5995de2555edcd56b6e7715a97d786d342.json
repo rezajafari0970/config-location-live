@@ -1,0 +1,16 @@
+{
+  "asn": "AS21859",
+  "config_id": "c167159ec64231995409e3816d0fab5995de2555edcd56b6e7715a97d786d342",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788281732,
+  "first_exit_ip": "162.221.196.52",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "ZENLA-1",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,1 @@
+wireguard://golden-private-key@example.com:51820?publickey=golden-public-key&address=10.0.0.2%2F32#Golden-WireGuard

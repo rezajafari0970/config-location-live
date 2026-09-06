@@ -1,0 +1,16 @@
+{
+  "asn": "AS206715",
+  "config_id": "5ff14a81d8e66506eccd25e51182cd0c9852285454308110f6dfc88e2a0d5968",
+  "country_code": "SE",
+  "country_confidence": 0.92,
+  "country_name": "Sweden",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "144.31.179.21",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "UXHOST LTD",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

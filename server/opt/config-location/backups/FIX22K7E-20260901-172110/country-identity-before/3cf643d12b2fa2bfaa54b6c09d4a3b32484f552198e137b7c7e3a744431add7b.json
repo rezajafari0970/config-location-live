@@ -1,0 +1,16 @@
+{
+  "asn": "AS14061",
+  "config_id": "3cf643d12b2fa2bfaa54b6c09d4a3b32484f552198e137b7c7e3a744431add7b",
+  "country_code": "NL",
+  "country_confidence": 0.92,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "64.227.69.245",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "DigitalOcean, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

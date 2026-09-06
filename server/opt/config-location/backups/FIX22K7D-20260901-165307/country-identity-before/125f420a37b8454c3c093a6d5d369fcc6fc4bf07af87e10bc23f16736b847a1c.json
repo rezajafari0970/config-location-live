@@ -1,0 +1,16 @@
+{
+  "asn": "AS61254",
+  "config_id": "125f420a37b8454c3c093a6d5d369fcc6fc4bf07af87e10bc23f16736b847a1c",
+  "country_code": "NL",
+  "country_confidence": 1.0,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "37.49.224.9",
+  "flag": "🇳🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "ESTOXY OU",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

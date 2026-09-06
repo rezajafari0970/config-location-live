@@ -1,0 +1,1 @@
+trojan://golden-password@example.com:443?security=tls&type=tcp&sni=example.com#Golden-Trojan

@@ -1,0 +1,1768 @@
+from __future__ import annotations
+
+import os
+import html
+import hmac
+import hashlib
+import secrets
+import time
+from pathlib import Path
+
+from aiohttp import web
+
+from app.core.source_manager import (
+    list_sources,
+    get_source,
+    add_source,
+    edit_source,
+    delete_source,
+    set_enabled,
+    stats,
+    add_sources_bulk,
+    delete_sources,
+    delete_all_sources,
+)
+
+PORT = int(os.environ.get("CONFIGLOC_PORT", "4040"))
+
+ADMIN_USER = os.environ.get(
+    "CONFIGLOC_ADMIN_USER",
+    "admin",
+)
+
+ADMIN_PASSWORD = os.environ.get(
+    "CONFIGLOC_ADMIN_PASSWORD",
+    "admin",
+)
+
+SESSION_SECRET = os.environ.get(
+    "CONFIGLOC_SESSION_SECRET",
+    "change-me",
+)
+
+SESSION_COOKIE = "configloc_session"
+
+# Login معمولی: 24 ساعت
+SESSION_TTL = 86400
+
+# Remember me: 1 سال
+REMEMBER_TTL = 365 * 24 * 60 * 60
+
+sessions = {}
+
+
+FETCH_STATUS_FILE = Path(
+    "/var/lib/config-location/state/fetcher-status.json"
+)
+
+
+def get_fetcher_status():
+
+    default = {
+        "status": "not_started",
+        "running": False,
+        "last_cycle_at": None,
+        "last_success_at": None,
+        "current_source": None,
+        "cycle": 0,
+    }
+
+    try:
+
+        if not FETCH_STATUS_FILE.exists():
+            return default
+
+        import json
+
+        data = json.loads(
+            FETCH_STATUS_FILE.read_text(
+                encoding="utf-8"
+            )
+        )
+
+        if not isinstance(
+            data,
+            dict
+        ):
+            return default
+
+        result = default.copy()
+        result.update(data)
+
+        return result
+
+    except Exception:
+
+        return default
+
+
+
+def esc(value):
+    return html.escape(str(value or ""))
+
+
+def page(title, content, show_header=True):
+    header = ""
+
+    if show_header:
+        header = f"""
+<div class="header">
+    <div>
+        <h1>Config Location</h1>
+        <small>Management Panel • Port {PORT}</small>
+    </div>
+
+    <a class="button secondary" href="/logout">
+        خروج
+    </a>
+</div>
+"""
+
+    return web.Response(
+        content_type="text/html",
+        charset="utf-8",
+        text=f"""<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+>
+
+<title>{esc(title)}</title>
+
+<style>
+
+* {{
+    box-sizing:border-box;
+}}
+
+:root {{
+    --orange:#f97316;
+    --orange-dark:#ea580c;
+    --orange-soft:#fff7ed;
+
+    --bg:#f8fafc;
+    --card:#ffffff;
+
+    --border:#e2e8f0;
+
+    --text:#1e293b;
+    --muted:#64748b;
+
+    --green:#16a34a;
+    --red:#dc2626;
+    --gray:#64748b;
+}}
+
+body {{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Tahoma,Arial,sans-serif;
+}}
+
+.header {{
+    padding:17px 22px;
+    background:#ffffff;
+    border-bottom:3px solid var(--orange);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}}
+
+.header h1 {{
+    margin:0;
+    font-size:22px;
+    color:var(--orange-dark);
+}}
+
+.header small {{
+    color:var(--muted);
+}}
+
+.container {{
+    max-width:1200px;
+    margin:20px auto;
+    padding:0 14px;
+}}
+
+.card {{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:17px;
+    margin-bottom:16px;
+    box-shadow:0 3px 12px rgba(15,23,42,.05);
+}}
+
+.login-wrap {{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            #ffedd5,
+            transparent 38%
+        ),
+        #f8fafc;
+}}
+
+.login-card {{
+    width:100%;
+    max-width:420px;
+    background:white;
+    border:1px solid #fed7aa;
+    border-top:5px solid var(--orange);
+    border-radius:18px;
+    padding:26px;
+    box-shadow:
+        0 12px 35px rgba(249,115,22,.12);
+}}
+
+.login-card h2 {{
+    margin:0 0 8px 0;
+    color:var(--orange-dark);
+}}
+
+.subtitle {{
+    color:var(--muted);
+    margin-bottom:22px;
+}}
+
+.grid {{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+}}
+
+.stat {{
+    padding:17px;
+    border-radius:12px;
+    background:var(--orange-soft);
+    border:1px solid #fed7aa;
+}}
+
+.stat strong {{
+    display:block;
+    font-size:26px;
+    color:var(--orange-dark);
+}}
+
+label {{
+    display:block;
+    margin-bottom:7px;
+    font-size:14px;
+}}
+
+input,select {{
+    width:100%;
+    padding:11px 12px;
+    border-radius:9px;
+    border:1px solid #cbd5e1;
+    color:var(--text);
+    background:#ffffff;
+    outline:none;
+}}
+
+input:focus,
+select:focus {{
+    border-color:var(--orange);
+    box-shadow:
+        0 0 0 3px rgba(249,115,22,.12);
+}}
+
+button,
+.button {{
+    padding:10px 15px;
+    border:0;
+    border-radius:9px;
+    cursor:pointer;
+    background:var(--orange);
+    color:#ffffff;
+    text-decoration:none;
+    display:inline-block;
+    font-weight:bold;
+}}
+
+button:hover,
+.button:hover {{
+    background:var(--orange-dark);
+}}
+
+.secondary {{
+    background:#475569;
+}}
+
+.red {{
+    background:var(--red);
+}}
+
+.gray {{
+    background:var(--gray);
+}}
+
+.green {{
+    background:var(--green);
+}}
+
+table {{
+    width:100%;
+    border-collapse:collapse;
+}}
+
+td,th {{
+    padding:11px 10px;
+    border-bottom:1px solid var(--border);
+    text-align:right;
+    vertical-align:middle;
+}}
+
+th {{
+    background:#fff7ed;
+    color:#9a3412;
+}}
+
+.url {{
+    direction:ltr;
+    text-align:left;
+    max-width:440px;
+    word-break:break-all;
+}}
+
+.actions form {{
+    display:inline-block;
+    margin:2px;
+}}
+
+.msg {{
+    background:#f0fdf4;
+    border:1px solid #86efac;
+    color:#166534;
+    padding:12px;
+    border-radius:10px;
+}}
+
+.error {{
+    background:#fef2f2;
+    border-color:#fecaca;
+    color:#991b1b;
+}}
+
+a {{
+    color:var(--orange-dark);
+}}
+
+.remember {{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin:16px 0;
+    cursor:pointer;
+    user-select:none;
+}}
+
+.remember input {{
+    width:18px;
+    height:18px;
+    accent-color:var(--orange);
+}}
+
+.remember span {{
+    color:#475569;
+    font-size:14px;
+}}
+
+.login-button {{
+    width:100%;
+    font-size:15px;
+    margin-top:4px;
+}}
+
+@media(max-width:600px) {{
+
+    .header {{
+        padding:14px;
+    }}
+
+    .container {{
+        margin-top:14px;
+    }}
+
+    .login-card {{
+        padding:22px 18px;
+    }}
+
+}}
+
+</style>
+</head>
+
+<body>
+
+{header}
+
+<div class="container">
+{content}
+</div>
+
+</body>
+</html>"""
+    )
+
+
+def cleanup_sessions():
+    now = time.time()
+
+    expired = [
+        token
+        for token, info in sessions.items()
+        if now > info["expires"]
+    ]
+
+    for token in expired:
+        sessions.pop(token, None)
+
+
+def create_signed_cookie(token: str, expires: int) -> str:
+    payload = f"{token}:{expires}"
+
+    signature = hmac.new(
+        SESSION_SECRET.encode(),
+        payload.encode(),
+        hashlib.sha256
+    ).hexdigest()
+
+    return f"{token}:{expires}:{signature}"
+
+
+def verify_signed_cookie(value: str):
+    try:
+        token, expires_text, signature = value.split(":", 2)
+
+        expires = int(expires_text)
+
+        if time.time() > expires:
+            return None
+
+        payload = f"{token}:{expires}"
+
+        expected = hmac.new(
+            SESSION_SECRET.encode(),
+            payload.encode(),
+            hashlib.sha256
+        ).hexdigest()
+
+        if not hmac.compare_digest(
+            signature,
+            expected
+        ):
+            return None
+
+        return token, expires
+
+    except Exception:
+        return None
+
+
+def is_authenticated(request):
+    cleanup_sessions()
+
+    cookie = request.cookies.get(
+        SESSION_COOKIE
+    )
+
+    if not cookie:
+        return False
+
+    verified = verify_signed_cookie(cookie)
+
+    if not verified:
+        return False
+
+    token, expires = verified
+
+    if token in sessions:
+        return True
+
+    # برای Remember Me:
+    # حتی بعد از Restart سرویس نیز Cookie معتبر می‌ماند.
+    sessions[token] = {
+        "expires": expires
+    }
+
+    return True
+
+
+@web.middleware
+async def auth_middleware(request, handler):
+
+    public_paths = {
+        "/login",
+        "/health",
+    }
+
+    if request.path in public_paths:
+        return await handler(request)
+
+    if not is_authenticated(request):
+        raise web.HTTPFound("/login")
+
+    return await handler(request)
+
+
+async def login_page(request):
+
+    if is_authenticated(request):
+        raise web.HTTPFound("/")
+
+    error = request.query.get(
+        "error",
+        ""
+    )
+
+    msg = ""
+
+    if error:
+        msg = f"""
+<div class="msg error">
+{esc(error)}
+</div>
+"""
+
+    content = f"""
+<div class="login-wrap">
+
+<div class="login-card">
+
+<h2>ورود به پنل</h2>
+
+<div class="subtitle">
+Config Location Management Panel
+</div>
+
+{msg}
+
+<form method="post" action="/login">
+
+<p>
+<label>نام کاربری</label>
+
+<input
+    name="username"
+    autocomplete="username"
+    placeholder="admin"
+    required
+>
+</p>
+
+<p>
+<label>رمز عبور</label>
+
+<input
+    type="password"
+    name="password"
+    autocomplete="current-password"
+    placeholder="رمز عبور"
+    required
+>
+</p>
+
+<label class="remember">
+
+<input
+    type="checkbox"
+    name="remember"
+    value="1"
+    checked
+>
+
+<span>
+مرا به خاطر بسپار
+</span>
+
+</label>
+
+<button
+    type="submit"
+    class="login-button"
+>
+ورود
+</button>
+
+</form>
+
+</div>
+
+</div>
+"""
+
+    return page(
+        "ورود",
+        content,
+        show_header=False
+    )
+
+
+async def login_post(request):
+
+    data = await request.post()
+
+    username = str(
+        data.get("username", "")
+    )
+
+    password = str(
+        data.get("password", "")
+    )
+
+    remember = (
+        str(
+            data.get("remember", "")
+        ) == "1"
+    )
+
+    valid_user = hmac.compare_digest(
+        username,
+        ADMIN_USER
+    )
+
+    valid_password = hmac.compare_digest(
+        password,
+        ADMIN_PASSWORD
+    )
+
+    if not (
+        valid_user
+        and valid_password
+    ):
+        raise web.HTTPFound(
+            "/login?error=نام کاربری یا رمز عبور اشتباه است."
+        )
+
+    ttl = (
+        REMEMBER_TTL
+        if remember
+        else SESSION_TTL
+    )
+
+    expires = int(
+        time.time() + ttl
+    )
+
+    token = secrets.token_urlsafe(32)
+
+    sessions[token] = {
+        "expires": expires
+    }
+
+    signed_cookie = create_signed_cookie(
+        token,
+        expires
+    )
+
+    response = web.HTTPFound("/")
+
+    response.set_cookie(
+        SESSION_COOKIE,
+        signed_cookie,
+        httponly=True,
+        samesite="Lax",
+        max_age=ttl,
+        path="/",
+    )
+
+    raise response
+
+
+async def logout(request):
+
+    cookie = request.cookies.get(
+        SESSION_COOKIE
+    )
+
+    if cookie:
+        verified = verify_signed_cookie(
+            cookie
+        )
+
+        if verified:
+            token, _ = verified
+            sessions.pop(token, None)
+
+    response = web.HTTPFound(
+        "/login"
+    )
+
+    response.del_cookie(
+        SESSION_COOKIE,
+        path="/"
+    )
+
+    raise response
+
+
+async def dashboard(request):
+
+    source_list = list_sources()
+    s = stats()
+    fetcher = get_fetcher_status()
+
+    message = request.query.get(
+        "msg",
+        ""
+    )
+
+    error = request.query.get(
+        "error",
+        ""
+    )
+
+    notice = ""
+
+    if message:
+        notice += f"""
+<div class="card msg">
+{esc(message)}
+</div>
+"""
+
+    if error:
+        notice += f"""
+<div class="card msg error">
+{esc(error)}
+</div>
+"""
+
+    rows = []
+
+    for src in source_list:
+
+        state = (
+            "فعال"
+            if src.get("enabled")
+            else "غیرفعال"
+        )
+
+        state_class = (
+            "green"
+            if src.get("enabled")
+            else "gray"
+        )
+
+        rows.append(f"""
+<tr>
+
+<td>
+<input
+    type="checkbox"
+    name="source_ids"
+    value="{esc(src['id'])}"
+>
+</td>
+
+<td>
+{esc(src.get("name") or "-")}
+</td>
+
+<td class="url">
+{esc(src.get("url"))}
+</td>
+
+<td>
+{esc(src.get("fetch_interval_seconds"))}
+ثانیه
+</td>
+
+<td>
+<span class="button {state_class}">
+{state}
+</span>
+</td>
+
+<td>
+{
+esc(
+    src.get("last_fetch_at")
+    or
+    "-"
+)
+}
+</td>
+
+<td>
+{esc(src.get("duplicate_add_count",0))}
+</td>
+
+<td class="actions">
+
+<a
+    class="button"
+    href="/source/{esc(src['id'])}/edit"
+>
+ویرایش
+</a>
+
+<form
+    method="post"
+    action="/source/{esc(src['id'])}/toggle"
+>
+<button class="gray">
+روشن/خاموش
+</button>
+</form>
+
+<form
+    method="post"
+    action="/source/{esc(src['id'])}/delete"
+    onsubmit="return confirm('سورس حذف شود؟')"
+>
+<button class="red">
+حذف
+</button>
+</form>
+
+</td>
+
+</tr>
+""")
+
+    table_rows = "\n".join(rows)
+
+    content = f"""
+{notice}
+
+<div class="grid">
+
+<div class="stat">
+<strong>{s["total"]}</strong>
+کل سورس‌ها
+</div>
+
+<div class="stat">
+<strong>{s["enabled"]}</strong>
+فعال
+</div>
+
+<div class="stat">
+<strong>{s["disabled"]}</strong>
+غیرفعال
+</div>
+
+<div class="stat">
+<strong>OK</strong>
+<a href="/self-test">
+تست سیستم
+</a>
+</div>
+
+<div class="stat">
+
+<strong>
+{
+"RUNNING"
+if fetcher.get("running")
+else
+"STOPPED"
+}
+</strong>
+
+وضعیت Fetch
+
+</div>
+
+<div class="stat">
+
+<strong style="font-size:15px">
+{
+esc(
+    fetcher.get("last_cycle_at")
+    or
+    "-"
+)
+}
+</strong>
+
+آخرین چرخه Fetch
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+افزودن Source
+</h3>
+
+<form
+    method="post"
+    action="/source/add"
+>
+
+<p>
+<label>
+نام اختیاری
+</label>
+
+<input
+    name="name"
+    placeholder="مثلاً Hot Configs"
+>
+</p>
+
+<p>
+<label>
+URL
+</label>
+
+<input
+    required
+    name="url"
+    dir="ltr"
+    placeholder="https://example.com/sub"
+>
+</p>
+
+<p>
+<label>
+فاصله Fetch بر حسب ثانیه
+</label>
+
+<input
+    name="interval"
+    type="number"
+    min="10"
+    max="86400"
+    value="60"
+>
+</p>
+
+<button type="submit">
+افزودن Source
+</button>
+
+</form>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+افزودن گروهی Source ها
+</h3>
+
+<p style="color:#64748b">
+هر لینک را در یک خط وارد کنید.
+لینک‌های تکراری به صورت خودکار ادغام می‌شوند.
+</p>
+
+<form
+    method="post"
+    action="/source/bulk-add"
+>
+
+<p>
+<label>
+لیست URL ها
+</label>
+
+<textarea
+    name="urls"
+    dir="ltr"
+    required
+    style="
+        width:100%;
+        min-height:220px;
+        padding:12px;
+        border-radius:10px;
+        border:1px solid #cbd5e1;
+        resize:vertical;
+        font-family:monospace;
+        font-size:13px;
+    "
+    placeholder="https://example.com/sub1&#10;https://example.com/sub2&#10;https://example.com/sub3"
+></textarea>
+</p>
+
+
+<p>
+
+<label>
+فاصله Fetch برای همه لینک‌ها بر حسب ثانیه
+</label>
+
+<input
+    name="interval"
+    type="number"
+    min="10"
+    max="86400"
+    value="60"
+>
+
+</p>
+
+<p style="
+    padding:10px 12px;
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    border-radius:9px;
+    color:#9a3412;
+">
+
+تمام Source ها به صورت خودکار فعال می‌شوند و
+نوع آن‌ها توسط Fetch Engine تشخیص داده خواهد شد.
+
+</p>
+
+
+<button type="submit">
+افزودن گروهی Source ها
+</button>
+
+</form>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Source ها
+</h3>
+
+<form
+    method="post"
+    action="/source/delete-selected"
+    id="source-list-form"
+>
+
+<div style="
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+">
+
+<button
+    type="button"
+    class="secondary"
+    onclick="
+        document
+        .querySelectorAll(
+            'input[name=source_ids]'
+        )
+        .forEach(
+            function(x) {{
+                x.checked = true;
+            }}
+        );
+    "
+>
+انتخاب همه
+</button>
+
+<button
+    type="button"
+    class="secondary"
+    onclick="
+        document
+        .querySelectorAll(
+            'input[name=source_ids]'
+        )
+        .forEach(
+            function(x) {{
+                x.checked = false;
+            }}
+        );
+    "
+>
+لغو انتخاب
+</button>
+
+<button
+    type="submit"
+    class="red"
+    onclick="
+        return confirm(
+            'Source های انتخاب شده حذف شوند؟'
+        );
+    "
+>
+حذف انتخاب‌شده‌ها
+</button>
+
+</form>
+
+<form
+    method="post"
+    action="/source/delete-all"
+    style="display:inline"
+>
+
+<button
+    type="submit"
+    class="red"
+    onclick="
+        return confirm(
+            'تمام Source ها حذف شوند؟'
+        );
+    "
+>
+حذف همه لینک‌ها
+</button>
+
+</form>
+
+</div>
+
+
+<form
+    method="post"
+    action="/source/delete-selected"
+>
+
+<div style="overflow:auto">
+
+<table>
+
+<thead>
+
+<tr>
+<th>انتخاب</th>
+<th>نام</th>
+<th>URL</th>
+<th>Interval</th>
+<th>وضعیت</th>
+<th>آخرین Fetch</th>
+<th>Duplicate Add</th>
+<th>عملیات</th>
+</tr>
+
+</thead>
+
+<tbody>
+{table_rows}
+</tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<button
+    type="submit"
+    class="red"
+    onclick="
+        return confirm(
+            'Source های انتخاب شده حذف شوند؟'
+        );
+    "
+>
+حذف انتخاب‌شده‌ها
+</button>
+
+</form>
+
+</div>
+"""
+
+    return page(
+        "Config Location",
+        content
+    )
+
+
+async def source_add(request):
+
+    data = await request.post()
+
+    try:
+
+        source, duplicate = add_source(
+            url=data.get(
+                "url",
+                ""
+            ),
+            name=data.get(
+                "name",
+                ""
+            ),
+            interval=data.get(
+                "interval",
+                "60"
+            ),
+        )
+
+        msg = (
+            "این URL قبلاً وجود داشت و ادغام شد."
+            if duplicate
+            else
+            "Source با موفقیت اضافه شد."
+        )
+
+        raise web.HTTPFound(
+            f"/?msg={msg}"
+        )
+
+    except web.HTTPException:
+        raise
+
+    except Exception as e:
+        raise web.HTTPFound(
+            f"/?error={str(e)}"
+        )
+
+
+
+async def source_bulk_add(request):
+
+    data = await request.post()
+
+    raw_urls = str(
+        data.get(
+            "urls",
+            ""
+        )
+    )
+
+    lines = raw_urls.splitlines()
+
+    interval = data.get(
+        "interval",
+        "60"
+    )
+
+    fetch_mode = "auto"
+    enabled = True
+    fetch_immediately = True
+
+    try:
+
+        result = add_sources_bulk(
+            urls=lines,
+            interval=interval,
+            fetch_mode=fetch_mode,
+            enabled=enabled,
+            fetch_immediately=fetch_immediately,
+        )
+
+        msg = (
+            f"Import انجام شد | "
+            f"جدید: {result['added']} | "
+            f"ادغام: {result['merged']} | "
+            f"نامعتبر: {result['invalid']}"
+        )
+
+        if result[
+            "invalid_items"
+        ]:
+
+            details = " | ".join(
+                item["url"]
+                for item
+                in result[
+                    "invalid_items"
+                ][:5]
+            )
+
+            msg += (
+                f" | Invalid: {details}"
+            )
+
+        raise web.HTTPFound(
+            f"/?msg={msg}"
+        )
+
+    except web.HTTPException:
+        raise
+
+    except Exception as e:
+
+        raise web.HTTPFound(
+            f"/?error={str(e)}"
+        )
+
+
+
+async def source_edit_page(request):
+
+    source_id = request.match_info[
+        "source_id"
+    ]
+
+    src = get_source(
+        source_id
+    )
+
+    if not src:
+        raise web.HTTPNotFound()
+
+    content = f"""
+<div class="card">
+
+<h3>
+ویرایش Source
+</h3>
+
+<form
+    method="post"
+    action="/source/{esc(source_id)}/edit"
+>
+
+<p>
+<label>
+نام
+</label>
+
+<input
+    name="name"
+    value="{esc(src.get('name'))}"
+>
+</p>
+
+<p>
+<label>
+URL
+</label>
+
+<input
+    required
+    name="url"
+    dir="ltr"
+    value="{esc(src.get('url'))}"
+>
+</p>
+
+<p>
+<label>
+Fetch Interval
+</label>
+
+<input
+    name="interval"
+    type="number"
+    min="10"
+    max="86400"
+    value="{esc(src.get('fetch_interval_seconds'))}"
+>
+</p>
+
+<button>
+ذخیره
+</button>
+
+<a
+    class="button secondary"
+    href="/"
+>
+بازگشت
+</a>
+
+</form>
+
+</div>
+"""
+
+    return page(
+        "Edit Source",
+        content
+    )
+
+
+async def source_edit_post(request):
+
+    source_id = request.match_info[
+        "source_id"
+    ]
+
+    data = await request.post()
+
+    try:
+
+        edit_source(
+            source_id=source_id,
+            url=data.get(
+                "url",
+                ""
+            ),
+            name=data.get(
+                "name",
+                ""
+            ),
+            interval=data.get(
+                "interval",
+                "60"
+            ),
+        )
+
+        raise web.HTTPFound(
+            "/?msg=Source ویرایش شد."
+        )
+
+    except web.HTTPException:
+        raise
+
+    except Exception as e:
+        raise web.HTTPFound(
+            f"/?error={str(e)}"
+        )
+
+
+async def source_delete(request):
+
+    source_id = request.match_info[
+        "source_id"
+    ]
+
+    deleted = delete_source(
+        source_id
+    )
+
+    msg = (
+        "Source حذف شد."
+        if deleted
+        else
+        "Source پیدا نشد."
+    )
+
+    raise web.HTTPFound(
+        f"/?msg={msg}"
+    )
+
+
+
+async def source_delete_selected(request):
+
+    data = await request.post()
+
+    selected = data.getall(
+        "source_ids",
+        []
+    )
+
+    deleted = delete_sources(
+        selected
+    )
+
+    raise web.HTTPFound(
+        f"/?msg={deleted} Source حذف شد."
+    )
+
+
+async def source_delete_all(request):
+
+    deleted = delete_all_sources()
+
+    raise web.HTTPFound(
+        f"/?msg={deleted} Source حذف شد."
+    )
+
+
+
+async def source_toggle(request):
+
+    source_id = request.match_info[
+        "source_id"
+    ]
+
+    src = get_source(
+        source_id
+    )
+
+    if not src:
+        raise web.HTTPNotFound()
+
+    set_enabled(
+        source_id,
+        not bool(
+            src.get("enabled")
+        )
+    )
+
+    raise web.HTTPFound(
+        "/?msg=وضعیت Source تغییر کرد."
+    )
+
+
+async def health(request):
+
+    return web.json_response({
+        "status": "ok",
+        "project": "config-location",
+        "component": "panel",
+        "stage": 1,
+        "port": PORT,
+        "auth": "persistent-panel-session",
+        "theme": "orange-light"
+    })
+
+
+async def api_sources(request):
+
+    return web.json_response({
+        "sources": list_sources(),
+        "stats": stats(),
+    })
+
+
+async def self_test(request):
+
+    tests = []
+
+    def add(name, ok, info=""):
+        tests.append({
+            "name": name,
+            "ok": bool(ok),
+            "info": str(info),
+        })
+
+    try:
+
+        source_dir = Path(
+            "/var/lib/config-location/sources"
+        )
+
+        add(
+            "Source storage directory",
+            source_dir.is_dir(),
+            source_dir
+        )
+
+    except Exception as e:
+
+        add(
+            "Source directory",
+            False,
+            e
+        )
+
+    try:
+
+        test_file = Path(
+            "/var/lib/config-location/state/panel-self-test.tmp"
+        )
+
+        test_file.write_text(
+            "ok",
+            encoding="utf-8"
+        )
+
+        ok = (
+            test_file.read_text(
+                encoding="utf-8"
+            )
+            == "ok"
+        )
+
+        test_file.unlink(
+            missing_ok=True
+        )
+
+        add(
+            "Storage write test",
+            ok
+        )
+
+    except Exception as e:
+
+        add(
+            "Storage write test",
+            False,
+            e
+        )
+
+    try:
+
+        current = list_sources()
+
+        add(
+            "Source database readable",
+            isinstance(
+                current,
+                list
+            ),
+            f"{len(current)} sources"
+        )
+
+    except Exception as e:
+
+        add(
+            "Source database readable",
+            False,
+            e
+        )
+
+    add(
+        "Panel authentication",
+        is_authenticated(request),
+        "Persistent session active"
+    )
+
+    all_ok = all(
+        item["ok"]
+        for item in tests
+    )
+
+    rows = "".join(
+        f"""
+<tr>
+<td>{esc(t["name"])}</td>
+<td>
+{"✅ OK" if t["ok"] else "❌ FAIL"}
+</td>
+<td>
+{esc(t["info"])}
+</td>
+</tr>
+"""
+        for t in tests
+    )
+
+    content = f"""
+<div class="card">
+
+<h2>
+{
+"✅ SYSTEM TEST PASSED"
+if all_ok
+else
+"❌ SYSTEM TEST FAILED"
+}
+</h2>
+
+<table>
+
+<tr>
+<th>Test</th>
+<th>Status</th>
+<th>Details</th>
+</tr>
+
+{rows}
+
+</table>
+
+<br>
+
+<a
+    class="button"
+    href="/"
+>
+بازگشت به پنل
+</a>
+
+</div>
+"""
+
+    return page(
+        "System Test",
+        content
+    )
+
+
+def create_app():
+
+    app = web.Application(
+        middlewares=[
+            auth_middleware
+        ]
+    )
+
+    app.router.add_get(
+        "/login",
+        login_page
+    )
+
+    app.router.add_post(
+        "/login",
+        login_post
+    )
+
+    app.router.add_get(
+        "/logout",
+        logout
+    )
+
+    app.router.add_get(
+        "/",
+        dashboard
+    )
+
+    app.router.add_get(
+        "/health",
+        health
+    )
+
+    app.router.add_get(
+        "/api/sources",
+        api_sources
+    )
+
+    app.router.add_get(
+        "/self-test",
+        self_test
+    )
+
+    app.router.add_post(
+        "/source/add",
+        source_add
+    )
+
+    app.router.add_post(
+        "/source/bulk-add",
+        source_bulk_add
+    )
+
+    app.router.add_get(
+        "/source/{source_id}/edit",
+        source_edit_page
+    )
+
+    app.router.add_post(
+        "/source/{source_id}/edit",
+        source_edit_post
+    )
+
+    app.router.add_post(
+        "/source/{source_id}/delete",
+        source_delete
+    )
+
+    app.router.add_post(
+        "/source/{source_id}/toggle",
+        source_toggle
+    )
+
+    app.router.add_post(
+        "/source/delete-selected",
+        source_delete_selected
+    )
+
+    app.router.add_post(
+        "/source/delete-all",
+        source_delete_all
+    )
+
+    return app
+
+
+if __name__ == "__main__":
+
+    web.run_app(
+        create_app(),
+        host="0.0.0.0",
+        port=PORT,
+        access_log=None,
+    )

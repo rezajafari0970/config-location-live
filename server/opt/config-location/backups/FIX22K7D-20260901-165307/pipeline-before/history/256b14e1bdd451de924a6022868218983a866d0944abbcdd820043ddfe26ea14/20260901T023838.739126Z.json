@@ -1,0 +1,53 @@
+{
+  "asn": "AS13335",
+  "confidence": 1.0,
+  "config_id": "256b14e1bdd451de924a6022868218983a866d0944abbcdd820043ddfe26ea14",
+  "config_type": "vless",
+  "country_code": "AT",
+  "country_name": "Austria",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "104.28.239.43",
+  "finished_at": "2026-09-01T02:38:38.739109+00:00",
+  "flag": "🇦🇹",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "AT",
+    "country_name": "Austria",
+    "flag": "🇦🇹",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Cloudflare, Inc.",
+  "network_type": "cdn",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "AT",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:38:37.710618+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

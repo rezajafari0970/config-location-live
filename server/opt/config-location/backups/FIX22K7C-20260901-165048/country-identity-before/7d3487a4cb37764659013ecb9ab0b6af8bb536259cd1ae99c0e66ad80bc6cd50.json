@@ -1,0 +1,16 @@
+{
+  "asn": "AS211619",
+  "config_id": "7d3487a4cb37764659013ecb9ab0b6af8bb536259cd1ae99c0e66ad80bc6cd50",
+  "country_code": "RS",
+  "country_confidence": 1.0,
+  "country_name": "Serbia",
+  "determined_epoch": 1788281292,
+  "first_exit_ip": "150.40.126.22",
+  "flag": "🇷🇸",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "MAXKO d.o.o.",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

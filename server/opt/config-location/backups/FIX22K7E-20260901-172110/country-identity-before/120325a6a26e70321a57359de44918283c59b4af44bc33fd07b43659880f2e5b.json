@@ -1,0 +1,16 @@
+{
+  "asn": "AS213535",
+  "config_id": "120325a6a26e70321a57359de44918283c59b4af44bc33fd07b43659880f2e5b",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "136.148.67.122",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "YottaSrc",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

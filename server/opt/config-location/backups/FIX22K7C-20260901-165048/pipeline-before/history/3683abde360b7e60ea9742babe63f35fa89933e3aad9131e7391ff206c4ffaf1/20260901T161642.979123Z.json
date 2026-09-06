@@ -1,0 +1,12 @@
+{
+  "config_id": "3683abde360b7e60ea9742babe63f35fa89933e3aad9131e7391ff206c4ffaf1",
+  "config_type": "json_xray",
+  "exit_agreed": 0,
+  "exit_ip": null,
+  "exit_successful": 0,
+  "finished_at": "2026-09-01T16:16:42.979097+00:00",
+  "reason": "no_exit_probe_succeeded",
+  "schema_version": 1,
+  "started_at": "2026-09-01T16:16:37.842222+00:00",
+  "state": "error"
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS202053",
+  "config_id": "7af149741d15004a38a2e6b2c5983e0ff9f67294379c1444f4dd8b966ea0f5d7",
+  "country_code": "SG",
+  "country_confidence": 0.92,
+  "country_name": "Singapore",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "2a04:3543:1000:2310:7827:c2ff:fe0c:3e49",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "UpCloud Ltd",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

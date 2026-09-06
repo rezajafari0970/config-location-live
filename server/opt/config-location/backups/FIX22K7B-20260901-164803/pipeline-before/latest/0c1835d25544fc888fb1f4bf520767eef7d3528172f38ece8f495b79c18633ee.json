@@ -1,0 +1,53 @@
+{
+  "asn": "AS211619",
+  "confidence": 1.0,
+  "config_id": "0c1835d25544fc888fb1f4bf520767eef7d3528172f38ece8f495b79c18633ee",
+  "config_type": "vless",
+  "country_code": "BG",
+  "country_name": "Bulgaria",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "45.9.156.28",
+  "finished_at": "2026-09-01T15:26:19.588004+00:00",
+  "flag": "🇧🇬",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "BG",
+    "country_name": "Bulgaria",
+    "flag": "🇧🇬",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "MAXKO d.o.o.",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "BG",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T15:26:17.289831+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

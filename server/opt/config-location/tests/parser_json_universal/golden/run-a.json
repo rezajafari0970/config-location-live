@@ -1,0 +1,704 @@
+{
+  "01-xray-vless-reality.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 13,
+    "protocols": [
+      "vless",
+      "vless",
+      "field",
+      "field",
+      "field",
+      "field",
+      "vless",
+      "vless"
+    ],
+    "schema": "xray",
+    "selected": [
+      {
+        "protocol": "vless",
+        "selected": true,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "field",
+        "selected": false,
+        "tag": null
+      },
+      {
+        "protocol": "field",
+        "selected": false,
+        "tag": null
+      },
+      {
+        "protocol": "field",
+        "selected": false,
+        "tag": null
+      },
+      {
+        "protocol": "field",
+        "selected": false,
+        "tag": null
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy"
+      }
+    ],
+    "unknown_protocols": [
+      "field"
+    ],
+    "uri_count": 1,
+    "uris": [
+      "vless://11111111-1111-4111-8111-111111111111@example.com:443?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=www.cloudflare.com&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&sid=abcd&spx=%2F#proxy"
+    ],
+    "warnings": [
+      "unsupported_or_unknown_outbound:field"
+    ]
+  },
+  "02-xray-vmess-ws.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 10,
+    "protocols": [
+      "vmess",
+      "vmess",
+      "vmess",
+      "vmess"
+    ],
+    "schema": "xray",
+    "selected": [
+      {
+        "protocol": "vmess",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "vmess",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "vmess",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "vmess",
+        "selected": false,
+        "tag": "proxy"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "vmess://eyJ2IjoiMiIsInBzIjoicHJveHkiLCJhZGQiOiJleGFtcGxlLmNvbSIsInBvcnQiOiI0NDMiLCJpZCI6IjIyMjIyMjIyLTIyMjItNDIyMi04MjIyLTIyMjIyMjIyMjIyMiIsImFpZCI6IjAiLCJzY3kiOiJhdXRvIiwibmV0Ijoid3MiLCJ0eXBlIjoibm9uZSIsImhvc3QiOiJleGFtcGxlLmNvbSIsInBhdGgiOiIvd3MiLCJ0bHMiOiJ0bHMiLCJzbmkiOiJleGFtcGxlLmNvbSJ9"
+    ],
+    "warnings": []
+  },
+  "03-xray-trojan.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 8,
+    "protocols": [
+      "trojan",
+      "trojan",
+      "trojan",
+      "trojan"
+    ],
+    "schema": "xray",
+    "selected": [
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "proxy"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "trojan://golden-password@example.com:443?type=tcp&security=tls&sni=example.com#proxy"
+    ],
+    "warnings": []
+  },
+  "04-xray-ss.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 6,
+    "protocols": [
+      "shadowsocks",
+      "shadowsocks",
+      "shadowsocks",
+      "shadowsocks"
+    ],
+    "schema": "xray",
+    "selected": [
+      {
+        "protocol": "shadowsocks",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "shadowsocks",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "shadowsocks",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "shadowsocks",
+        "selected": false,
+        "tag": "proxy"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "ss://YWVzLTEyOC1nY206Z29sZGVu@example.com:8388#proxy"
+    ],
+    "warnings": []
+  },
+  "05-singbox-vless.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 6,
+    "protocols": [
+      "vless",
+      "vless",
+      "vless",
+      "vless"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "vless",
+        "selected": true,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "vless://33333333-3333-4333-8333-333333333333@example.com:443?security=tls&sni=example.com&encryption=none&flow=xtls-rprx-vision#proxy"
+    ],
+    "warnings": []
+  },
+  "06-singbox-hy2.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 4,
+    "protocols": [
+      "hysteria2",
+      "hysteria2",
+      "hysteria2",
+      "hysteria2"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "proxy"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "hy2://golden@example.com:443/?security=tls&sni=example.com&allowInsecure=1#proxy"
+    ],
+    "warnings": []
+  },
+  "07-singbox-tuic.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 4,
+    "protocols": [
+      "tuic",
+      "tuic",
+      "tuic",
+      "tuic"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "tuic",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "tuic",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "tuic",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "tuic",
+        "selected": false,
+        "tag": "proxy"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "tuic://44444444-4444-4444-8444-444444444444:golden@example.com:443?security=tls&sni=example.com#proxy"
+    ],
+    "warnings": []
+  },
+  "08-singbox-anytls.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 4,
+    "protocols": [
+      "anytls",
+      "anytls",
+      "anytls",
+      "anytls"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "anytls",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "anytls",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "anytls",
+        "selected": false,
+        "tag": "proxy"
+      },
+      {
+        "protocol": "anytls",
+        "selected": false,
+        "tag": "proxy"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "anytls://golden@example.com:443?security=tls&sni=example.com#proxy"
+    ],
+    "warnings": []
+  },
+  "09-multi-outbound.json": {
+    "decoded": true,
+    "detector_output_count": 2,
+    "json_documents": 7,
+    "protocols": [
+      "trojan",
+      "vless",
+      "vless",
+      "trojan",
+      "vless",
+      "trojan",
+      "vless",
+      "trojan"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "trojan",
+        "selected": true,
+        "tag": "proxy-b"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy-a"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy-a"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "proxy-b"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy-a"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "proxy-b"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "proxy-a"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "proxy-b"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 2,
+    "uris": [
+      "trojan://golden@b.example.com:443#proxy-b",
+      "vless://55555555-5555-4555-8555-555555555555@a.example.com:443?encryption=none#proxy-a"
+    ],
+    "warnings": []
+  },
+  "10-json-array.json": {
+    "decoded": true,
+    "detector_output_count": 2,
+    "json_documents": 7,
+    "protocols": [
+      "vless",
+      "vless",
+      "trojan",
+      "trojan",
+      "vless",
+      "vless",
+      "vless",
+      "vless",
+      "trojan",
+      "trojan",
+      "trojan",
+      "trojan"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "one"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "one"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "two"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "two"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "one"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "one"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "one"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "one"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "two"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "two"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "two"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "two"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 2,
+    "uris": [
+      "vless://66666666-6666-4666-8666-666666666666@one.example.com:443?encryption=none#one",
+      "trojan://golden@two.example.com:443#two"
+    ],
+    "warnings": []
+  },
+  "11-escaped-wrapper.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 4,
+    "protocols": [
+      "vless",
+      "vless",
+      "vless",
+      "vless"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "escaped"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "escaped"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "escaped"
+      },
+      {
+        "protocol": "vless",
+        "selected": false,
+        "tag": "escaped"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "vless://77777777-7777-4777-8777-777777777777@example.com:443?encryption=none#escaped"
+    ],
+    "warnings": []
+  },
+  "12-base64-wrapper.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 4,
+    "protocols": [
+      "trojan",
+      "trojan",
+      "trojan",
+      "trojan"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "base64"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "base64"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "base64"
+      },
+      {
+        "protocol": "trojan",
+        "selected": false,
+        "tag": "base64"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "trojan://golden@example.com:443#base64"
+    ],
+    "warnings": []
+  },
+  "13-unknown-valid.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 3,
+    "protocols": [
+      "future-protocol-xyz",
+      "future-protocol-xyz",
+      "future-protocol-xyz",
+      "future-protocol-xyz"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "future-protocol-xyz",
+        "selected": false,
+        "tag": "future"
+      },
+      {
+        "protocol": "future-protocol-xyz",
+        "selected": false,
+        "tag": "future"
+      },
+      {
+        "protocol": "future-protocol-xyz",
+        "selected": false,
+        "tag": "future"
+      },
+      {
+        "protocol": "future-protocol-xyz",
+        "selected": false,
+        "tag": "future"
+      }
+    ],
+    "unknown_protocols": [
+      "future-protocol-xyz"
+    ],
+    "uri_count": 0,
+    "uris": [],
+    "warnings": [
+      "unsupported_or_unknown_outbound:future-protocol-xyz"
+    ]
+  },
+  "14-random-json.json": {
+    "decoded": true,
+    "detector_output_count": 0,
+    "json_documents": 1,
+    "protocols": [],
+    "schema": null,
+    "selected": [],
+    "unknown_protocols": [],
+    "uri_count": 0,
+    "uris": [],
+    "warnings": [
+      "valid_json_but_no_proxy_outbound_found"
+    ]
+  },
+  "15-nested-outbound.json": {
+    "decoded": true,
+    "detector_output_count": 1,
+    "json_documents": 5,
+    "protocols": [
+      "hysteria2",
+      "hysteria2",
+      "hysteria2",
+      "hysteria2",
+      "hysteria2",
+      "hysteria2",
+      "hysteria2",
+      "hysteria2"
+    ],
+    "schema": "sing-box",
+    "selected": [
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "nested"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "nested"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "nested"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "nested"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "nested"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "nested"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "nested"
+      },
+      {
+        "protocol": "hysteria2",
+        "selected": false,
+        "tag": "nested"
+      }
+    ],
+    "unknown_protocols": [],
+    "uri_count": 1,
+    "uris": [
+      "hy2://golden@example.com:443/#nested"
+    ],
+    "warnings": []
+  }
+}

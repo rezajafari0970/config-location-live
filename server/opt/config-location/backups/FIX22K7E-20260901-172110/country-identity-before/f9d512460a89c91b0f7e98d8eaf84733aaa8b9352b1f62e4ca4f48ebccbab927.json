@@ -1,0 +1,16 @@
+{
+  "asn": "AS202053",
+  "config_id": "f9d512460a89c91b0f7e98d8eaf84733aaa8b9352b1f62e4ca4f48ebccbab927",
+  "country_code": "FI",
+  "country_confidence": 1.0,
+  "country_name": "Finland",
+  "determined_epoch": 1788282860,
+  "first_exit_ip": "87.58.154.233",
+  "flag": "🇫🇮",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "UpCloud Ltd",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,96 @@
+{
+  "asn": "AS24940",
+  "confidence": 1.0,
+  "config_id": "4caf4f6a52a954f71e5cd08ad5b41aeff7e5b6bd27da4f9293d44f9eb68805f2",
+  "config_type": "json_xray",
+  "country_code": "DE",
+  "country_name": "Germany",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "178.104.163.18",
+  "finished_at": "2026-09-01T15:40:30.733097+00:00",
+  "flag": "🇩🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "DE",
+    "country_name": "Germany",
+    "flag": "🇩🇪",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Hetzner",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "DE",
+    "country_name": "Germany",
+    "executed": true,
+    "flag": "🇩🇪",
+    "providers": [
+      {
+        "asn": "AS24940",
+        "country_code": "DE",
+        "country_name": null,
+        "duration_ms": 191,
+        "error": null,
+        "network_name": "Hetzner Online GmbH",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 104,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS24940",
+        "country_code": "DE",
+        "country_name": "Germany",
+        "duration_ms": 261,
+        "error": null,
+        "network_name": "Hetzner Online GmbH",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-xray-json",
+    "protocol": null
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T15:40:27.546426+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

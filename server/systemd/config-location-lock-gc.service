@@ -1,0 +1,19 @@
+[Unit]
+Description=Config Location Real Schema Lock Garbage Collection
+After=local-fs.target
+ConditionPathIsDirectory=/var/lib/config-location/locks
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/opt/config-location
+
+Environment=PYTHONPATH=/opt/config-location
+Environment=CONFIG_LOCATION_LOCK_GC_MIN_AGE_HOURS=24
+Environment=CONFIG_LOCATION_LOCK_GC_MAX=5000
+
+ExecStart=/opt/config-location/venv/bin/python -m app.integrity.lock_gc
+
+NoNewPrivileges=true
+PrivateTmp=true

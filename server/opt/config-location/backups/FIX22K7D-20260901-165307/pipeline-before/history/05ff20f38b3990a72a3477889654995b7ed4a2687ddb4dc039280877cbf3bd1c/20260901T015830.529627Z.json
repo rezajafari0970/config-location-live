@@ -1,0 +1,53 @@
+{
+  "asn": "AS153914",
+  "confidence": 1.0,
+  "config_id": "05ff20f38b3990a72a3477889654995b7ed4a2687ddb4dc039280877cbf3bd1c",
+  "config_type": "vless",
+  "country_code": "IN",
+  "country_name": "India",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "5.253.30.99",
+  "finished_at": "2026-09-01T01:58:30.529611+00:00",
+  "flag": "🇮🇳",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "IN",
+    "country_name": "India",
+    "flag": "🇮🇳",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "BEAFORT LIMITED",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "IN",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T01:58:27.705573+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

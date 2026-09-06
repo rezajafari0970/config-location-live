@@ -1,0 +1,16 @@
+{
+  "asn": "AS64289",
+  "config_id": "5a4332e7939732aa19deba79fb691a3d1e66acd3756f54ef4b2f16d88119a4e6",
+  "country_code": "NL",
+  "country_confidence": 1.0,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788280469,
+  "first_exit_ip": "2a14:3f87:f001:46::a",
+  "flag": "🇳🇱",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Macarne Limited",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS49791",
+  "config_id": "17daf2e7952d15bca145cd386e531f4e5e5f7dd232391af20b61d87bbc4c077c",
+  "country_code": "PL",
+  "country_confidence": 0.92,
+  "country_name": "Poland",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "2a05:fc1:40:71::12",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Newserverlife LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

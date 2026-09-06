@@ -1,0 +1,16 @@
+{
+  "asn": "AS58061",
+  "config_id": "4f7caf46a7adbbe0006aa4a579380c5181bffd790f842154890e89053f42ad73",
+  "country_code": "KZ",
+  "country_confidence": 0.92,
+  "country_name": "Kazakhstan",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "38.244.179.61",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Scalaxy B.V.",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

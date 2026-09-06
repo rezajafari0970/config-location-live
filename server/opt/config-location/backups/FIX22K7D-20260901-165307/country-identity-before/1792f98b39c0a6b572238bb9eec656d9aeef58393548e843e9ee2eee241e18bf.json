@@ -1,0 +1,16 @@
+{
+  "asn": "AS16276",
+  "config_id": "1792f98b39c0a6b572238bb9eec656d9aeef58393548e843e9ee2eee241e18bf",
+  "country_code": "US",
+  "country_confidence": 1.0,
+  "country_name": "United States",
+  "determined_epoch": 1788280517,
+  "first_exit_ip": "184.174.97.130",
+  "flag": "🇺🇸",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "REGXA LLC",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS197974",
+  "config_id": "0dd403ce10de4ec92b28ffc69dba46b6f698a718d042611c6961d23b7d3474c3",
+  "country_code": "JP",
+  "country_confidence": 1.0,
+  "country_name": "Japan",
+  "determined_epoch": 1788282872,
+  "first_exit_ip": "31.76.91.72",
+  "flag": "🇯🇵",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Vladislav Nitsenko",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

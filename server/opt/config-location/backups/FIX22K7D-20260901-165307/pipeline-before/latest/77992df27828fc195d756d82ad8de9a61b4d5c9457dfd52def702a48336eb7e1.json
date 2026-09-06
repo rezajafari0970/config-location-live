@@ -1,0 +1,96 @@
+{
+  "asn": null,
+  "confidence": 1.0,
+  "config_id": "77992df27828fc195d756d82ad8de9a61b4d5c9457dfd52def702a48336eb7e1",
+  "config_type": "vless",
+  "country_code": "NO",
+  "country_name": "Norway",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 2,
+    "total": 3
+  },
+  "exit_ip": "194.110.207.182",
+  "finished_at": "2026-09-01T13:43:28.655018+00:00",
+  "flag": "🇳🇴",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "NO",
+    "country_name": "Norway",
+    "flag": "🇳🇴",
+    "primary_state": "unknown",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": null,
+  "network_type": "unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 0.0,
+    "country_code": null,
+    "state": "unknown"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "NO",
+    "country_name": "Norway",
+    "executed": true,
+    "flag": "🇳🇴",
+    "providers": [
+      {
+        "asn": "AS56655",
+        "country_code": "NO",
+        "country_name": null,
+        "duration_ms": 150,
+        "error": null,
+        "network_name": "Gigahost AS",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 36,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS56655",
+        "country_code": "NO",
+        "country_name": "Norway",
+        "duration_ms": 347,
+        "error": null,
+        "network_name": "Gigahost AS",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T13:43:25.434908+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

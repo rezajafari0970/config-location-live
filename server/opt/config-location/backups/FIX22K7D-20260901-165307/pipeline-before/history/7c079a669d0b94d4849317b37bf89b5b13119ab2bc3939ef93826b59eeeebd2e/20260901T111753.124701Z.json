@@ -1,0 +1,53 @@
+{
+  "asn": "AS16276",
+  "confidence": 1.0,
+  "config_id": "7c079a669d0b94d4849317b37bf89b5b13119ab2bc3939ef93826b59eeeebd2e",
+  "config_type": "json_xray",
+  "country_code": "IT",
+  "country_name": "Italy",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "57.131.38.163",
+  "finished_at": "2026-09-01T11:17:53.124670+00:00",
+  "flag": "🇮🇹",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "IT",
+    "country_name": "Italy",
+    "flag": "🇮🇹",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "OVH SAS",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": true,
+    "confidence": 1.0,
+    "country_code": "IT",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-xray-json",
+    "protocol": null
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T11:17:36.057615+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

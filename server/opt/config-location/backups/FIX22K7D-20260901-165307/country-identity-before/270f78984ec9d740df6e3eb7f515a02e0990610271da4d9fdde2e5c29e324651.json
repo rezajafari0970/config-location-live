@@ -1,0 +1,16 @@
+{
+  "asn": "AS215703",
+  "config_id": "270f78984ec9d740df6e3eb7f515a02e0990610271da4d9fdde2e5c29e324651",
+  "country_code": "GB",
+  "country_confidence": 1.0,
+  "country_name": "United Kingdom",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "109.176.229.45",
+  "flag": "🇬🇧",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "FREAKHOSTING",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

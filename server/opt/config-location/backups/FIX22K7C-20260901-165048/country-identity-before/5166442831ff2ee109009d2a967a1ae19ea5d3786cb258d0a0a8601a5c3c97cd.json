@@ -1,0 +1,16 @@
+{
+  "asn": "AS204957",
+  "config_id": "5166442831ff2ee109009d2a967a1ae19ea5d3786cb258d0a0a8601a5c3c97cd",
+  "country_code": "RO",
+  "country_confidence": 1.0,
+  "country_name": "Romania",
+  "determined_epoch": 1788280975,
+  "first_exit_ip": "82.117.255.174",
+  "flag": "🇷🇴",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Green Floid LLC",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

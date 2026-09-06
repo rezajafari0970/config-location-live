@@ -1,0 +1,53 @@
+{
+  "asn": "AS215730",
+  "confidence": 1.0,
+  "config_id": "215710290f32e8188bf8e38f1786ffdc85b253119984783ebe6965b4cce0c3a3",
+  "config_type": "vless",
+  "country_code": "FI",
+  "country_name": "Finland",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2a0b:4143:0:222::2",
+  "finished_at": "2026-09-01T02:32:12.469643+00:00",
+  "flag": "🇫🇮",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "FI",
+    "country_name": "Finland",
+    "flag": "🇫🇮",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "H2NEXUS LTD",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "FI",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:32:10.878471+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS219337",
+  "config_id": "5525785e7cef89e6cb15a0217f4ee13b7eabde43ed601792ca410517f081e840",
+  "country_code": "NL",
+  "country_confidence": 0.92,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "2.27.204.143",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "PLAY2GO - FZCO",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

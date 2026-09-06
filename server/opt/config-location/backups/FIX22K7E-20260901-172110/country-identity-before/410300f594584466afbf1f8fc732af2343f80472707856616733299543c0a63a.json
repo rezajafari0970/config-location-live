@@ -1,0 +1,16 @@
+{
+  "asn": "AS210644",
+  "config_id": "410300f594584466afbf1f8fc732af2343f80472707856616733299543c0a63a",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "213.165.44.101",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "AEZA GROUP LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

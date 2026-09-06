@@ -1,0 +1,16 @@
+{
+  "asn": "AS20473",
+  "config_id": "6157fe98d0545626fc40e9d4d45a561e06933e639e8347525a57667a9779f7e3",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "95.179.167.77",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "The Constant Company, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

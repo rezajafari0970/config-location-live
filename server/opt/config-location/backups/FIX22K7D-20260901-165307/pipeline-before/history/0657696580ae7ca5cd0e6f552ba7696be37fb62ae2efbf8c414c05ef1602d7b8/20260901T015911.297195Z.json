@@ -1,0 +1,96 @@
+{
+  "asn": "AS214716",
+  "confidence": 1.0,
+  "config_id": "0657696580ae7ca5cd0e6f552ba7696be37fb62ae2efbf8c414c05ef1602d7b8",
+  "config_type": "vless",
+  "country_code": "GB",
+  "country_name": "France",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "213.130.137.90",
+  "finished_at": "2026-09-01T01:59:11.297174+00:00",
+  "flag": "🇬🇧",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "GB",
+    "country_name": "France",
+    "flag": "🇬🇧",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Ipxo",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 0.5,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "GB",
+    "country_name": "France",
+    "executed": true,
+    "flag": "🇬🇧",
+    "providers": [
+      {
+        "asn": "AS214716",
+        "country_code": "GB",
+        "country_name": null,
+        "duration_ms": 150,
+        "error": null,
+        "network_name": "WEYRO LTD",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 27,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS214716",
+        "country_code": "GB",
+        "country_name": "France",
+        "duration_ms": 126,
+        "error": null,
+        "network_name": "WEYRO LTD",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T01:59:09.949012+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "asn": "AS153914",
+  "confidence": 1.0,
+  "config_id": "016c4e132b303516ea8787ad2ea5a6a952ace1091fcb79d689ddab5942310eea",
+  "config_type": "vless",
+  "country_code": "IN",
+  "country_name": "Cyprus",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "5.253.42.163",
+  "finished_at": "2026-09-01T01:42:40.622713+00:00",
+  "flag": "🇮🇳",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "IN",
+    "country_name": "Cyprus",
+    "flag": "🇮🇳",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "BEAFORT LIMITED",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 0.6666666666666666,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "IN",
+    "country_name": "Cyprus",
+    "executed": true,
+    "flag": "🇮🇳",
+    "providers": [
+      {
+        "asn": "AS153914",
+        "country_code": "IN",
+        "country_name": null,
+        "duration_ms": 139,
+        "error": null,
+        "network_name": "NETRANEX TECHNOLOGIES (INDIA) PRIVATE LIMITED",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 42,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS153914",
+        "country_code": "IN",
+        "country_name": "Cyprus",
+        "duration_ms": 120,
+        "error": null,
+        "network_name": "NETRANEX TECHNOLOGIES (INDIA) PRIVATE LIMITED",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T01:42:37.197016+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

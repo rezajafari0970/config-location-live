@@ -1,0 +1,16 @@
+{
+  "asn": "AS20473",
+  "config_id": "4f42f1c9920904438a444da90b6e19e893d042b92aec9fda0b88fe3fd188e9a9",
+  "country_code": "FR",
+  "country_confidence": 1.0,
+  "country_name": "France",
+  "determined_epoch": 1788280609,
+  "first_exit_ip": "136.244.112.46",
+  "flag": "🇫🇷",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "The Constant Company, LLC",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,53 @@
+{
+  "asn": "AS8075",
+  "confidence": 1.0,
+  "config_id": "721d967d7b44a1a71beadf1626948309a98bb797fc237e8e612b4d7963e93d87",
+  "config_type": "vless",
+  "country_code": "CL",
+  "country_name": "Chile",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "68.211.146.18",
+  "finished_at": "2026-09-01T09:23:03.937578+00:00",
+  "flag": "🇨🇱",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "CL",
+    "country_name": "Chile",
+    "flag": "🇨🇱",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Microsoft Corporation",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "CL",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T09:22:53.315884+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

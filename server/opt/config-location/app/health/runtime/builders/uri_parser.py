@@ -1,0 +1,382 @@
+from __future__ import annotations
+
+import base64
+import json
+from dataclasses import dataclass, field
+from typing import Any
+from urllib.parse import (
+    parse_qsl,
+    unquote,
+    urlsplit,
+)
+
+
+class UriParseError(ValueError):
+    pass
+
+
+def _b64(value: str) -> str:
+    value = unquote(value.strip())
+
+    # Shadowsocks SIP002 commonly uses
+    # unpadded URL-safe Base64.
+    value = "".join(
+        value.split()
+    )
+
+    padded = (
+        value
+        + "=" * (-len(value) % 4)
+    )
+
+    candidates = [
+        padded,
+        padded.replace("-", "+").replace("_", "/"),
+    ]
+
+    for candidate in candidates:
+        for altchars in (None, b"-_"):
+            try:
+                raw = base64.b64decode(
+                    candidate.encode("ascii"),
+                    altchars=altchars,
+                    validate=False,
+                )
+
+                return raw.decode(
+                    "utf-8",
+                    errors="strict",
+                )
+
+            except Exception:
+                continue
+
+    raise UriParseError(
+        "invalid base64 payload"
+    )
+
+
+@dataclass(frozen=True)
+class ParsedProxy:
+    protocol: str
+    host: str
+    port: int
+
+    user_id: str | None = None
+    password: str | None = None
+    method: str | None = None
+
+    network: str = "tcp"
+    security: str = "none"
+
+    query: dict[str, str] = field(
+        default_factory=dict
+    )
+
+    extras: dict[str, Any] = field(
+        default_factory=dict
+    )
+
+
+def _query(uri) -> dict[str, str]:
+    result = {}
+
+    for key, value in parse_qsl(
+        uri.query,
+        keep_blank_values=True,
+    ):
+        # Preserve the last explicit value,
+        # matching common client behavior.
+        result[key] = value
+
+    return result
+
+
+def parse_vless(raw: str) -> ParsedProxy:
+    u = urlsplit(raw)
+
+    if u.scheme.lower() != "vless":
+        raise UriParseError("not vless")
+
+    if not u.hostname or not u.port:
+        raise UriParseError(
+            "vless host/port missing"
+        )
+
+    user = unquote(u.username or "")
+
+    if not user:
+        raise UriParseError(
+            "vless uuid missing"
+        )
+
+    q = _query(u)
+
+    return ParsedProxy(
+        protocol="vless",
+        host=u.hostname,
+        port=u.port,
+        user_id=user,
+        network=(
+            q.get("type", "tcp") or "tcp"
+        ).lower(),
+        security=(
+            q.get("security", "none")
+            or "none"
+        ).lower(),
+        query=q,
+    )
+
+
+def parse_trojan(raw: str) -> ParsedProxy:
+    u = urlsplit(raw)
+
+    if u.scheme.lower() != "trojan":
+        raise UriParseError("not trojan")
+
+    if not u.hostname or not u.port:
+        raise UriParseError(
+            "trojan host/port missing"
+        )
+
+    password = unquote(
+        u.username or ""
+    )
+
+    if not password:
+        raise UriParseError(
+            "trojan password missing"
+        )
+
+    q = _query(u)
+
+    return ParsedProxy(
+        protocol="trojan",
+        host=u.hostname,
+        port=u.port,
+        password=password,
+        network=(
+            q.get("type", "tcp") or "tcp"
+        ).lower(),
+        security=(
+            q.get("security", "none")
+            or "none"
+        ).lower(),
+        query=q,
+    )
+
+
+def parse_vmess(raw: str) -> ParsedProxy:
+    if not raw.lower().startswith(
+        "vmess://"
+    ):
+        raise UriParseError("not vmess")
+
+    decoded = _b64(
+        raw[len("vmess://"):]
+    )
+
+    try:
+        obj = json.loads(decoded)
+    except Exception as exc:
+        raise UriParseError(
+            "invalid vmess json"
+        ) from exc
+
+    if not isinstance(obj, dict):
+        raise UriParseError(
+            "vmess root not object"
+        )
+
+    host = str(
+        obj.get("add", "")
+    ).strip()
+
+    try:
+        port = int(obj.get("port"))
+    except Exception as exc:
+        raise UriParseError(
+            "vmess port invalid"
+        ) from exc
+
+    user = str(
+        obj.get("id", "")
+    ).strip()
+
+    if not host or not user:
+        raise UriParseError(
+            "vmess required field missing"
+        )
+
+    q = {
+        str(k): str(v)
+        for k, v in obj.items()
+        if v is not None
+    }
+
+    return ParsedProxy(
+        protocol="vmess",
+        host=host,
+        port=port,
+        user_id=user,
+        network=str(
+            obj.get("net", "tcp")
+            or "tcp"
+        ).lower(),
+        security=str(
+            obj.get("tls", "none")
+            or "none"
+        ).lower(),
+        query=q,
+        extras=obj,
+    )
+
+
+def parse_ss(raw: str) -> ParsedProxy:
+    if not raw.lower().startswith(
+        "ss://"
+    ):
+        raise UriParseError("not ss")
+
+    body = raw[len("ss://"):]
+
+    # Remove fragment first, but retain query
+    # separately for future plugin handling.
+    if "#" in body:
+        body, _ = body.split("#", 1)
+
+    query = {}
+
+    if "?" in body:
+        body, query_text = body.split(
+            "?",
+            1,
+        )
+
+        query = dict(
+            parse_qsl(
+                query_text,
+                keep_blank_values=True,
+            )
+        )
+
+    if "@" in body:
+        userinfo, endpoint = body.rsplit(
+            "@",
+            1,
+        )
+
+        if ":" not in userinfo:
+            userinfo = _b64(userinfo)
+
+    else:
+        decoded = _b64(body)
+
+        if "@" not in decoded:
+            raise UriParseError(
+                "ss endpoint missing"
+            )
+
+        userinfo, endpoint = decoded.rsplit(
+            "@",
+            1,
+        )
+
+    if ":" not in userinfo:
+        raise UriParseError(
+            "ss method/password missing"
+        )
+
+    method, password = userinfo.split(
+        ":",
+        1,
+    )
+
+    # urlsplit safely handles IPv6 when
+    # endpoint is bracketed.
+    ep = urlsplit(
+        "//" + endpoint
+    )
+
+    if not ep.hostname or not ep.port:
+        raise UriParseError(
+            "ss host/port missing"
+        )
+
+    return ParsedProxy(
+        protocol="shadowsocks",
+        host=ep.hostname,
+        port=ep.port,
+        password=unquote(password),
+        method=unquote(method),
+        query=query,
+    )
+
+
+
+
+def parse_socks(raw: str) -> ParsedProxy:
+
+    u=urlsplit(raw)
+
+    if u.scheme.lower() not in {
+        "socks",
+        "socks5",
+    }:
+        raise UriParseError(
+            "not socks"
+        )
+
+    if not u.hostname or not u.port:
+        raise UriParseError(
+            "socks host/port missing"
+        )
+
+    return ParsedProxy(
+        protocol="socks",
+        host=u.hostname,
+        port=u.port,
+        user_id=(
+            unquote(
+                u.username or ""
+            )
+            or None
+        ),
+        password=(
+            unquote(
+                u.password or ""
+            )
+            or None
+        ),
+        network="tcp",
+        security="none",
+        query=_query(u),
+    )
+
+
+def parse_proxy_uri(
+    raw: str,
+    config_type: str,
+) -> ParsedProxy:
+
+    kind = config_type.strip().lower()
+
+    if kind == "vless":
+        return parse_vless(raw)
+
+    if kind == "vmess":
+        return parse_vmess(raw)
+
+    if kind == "trojan":
+        return parse_trojan(raw)
+
+    if kind == "ss":
+        return parse_ss(raw)
+
+    if kind in {"socks", "socks5"}:
+        return parse_socks(raw)
+
+
+    raise UriParseError(
+        f"unsupported uri type: {kind}"
+    )

@@ -1,0 +1,53 @@
+{
+  "asn": "AS212238",
+  "confidence": 1.0,
+  "config_id": "09ddc0fb8df458972087154b37b90dda01f5306fef3cedb9ed725e395ad46257",
+  "config_type": "ss",
+  "country_code": "JP",
+  "country_name": "Japan",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "149.22.87.240",
+  "finished_at": "2026-09-01T07:05:35.006650+00:00",
+  "flag": "🇯🇵",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "JP",
+    "country_name": "Japan",
+    "flag": "🇯🇵",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Datacamp Limited",
+  "network_type": "hosting",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "JP",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "shadowsocks"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T07:05:27.414138+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

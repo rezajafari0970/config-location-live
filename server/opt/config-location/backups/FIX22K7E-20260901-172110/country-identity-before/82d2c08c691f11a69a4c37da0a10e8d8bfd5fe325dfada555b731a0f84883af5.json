@@ -1,0 +1,16 @@
+{
+  "asn": "AS213535",
+  "config_id": "82d2c08c691f11a69a4c37da0a10e8d8bfd5fe325dfada555b731a0f84883af5",
+  "country_code": "FR",
+  "country_confidence": 0.92,
+  "country_name": "France",
+  "determined_epoch": 1788281606,
+  "first_exit_ip": "217.179.6.187",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "YottaSrc",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

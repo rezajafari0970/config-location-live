@@ -1,0 +1,16 @@
+{
+  "asn": "AS63949",
+  "config_id": "bd401deecacfaa40b6ed8fa7110898d2517be78af1d95535510424a2584cd241",
+  "country_code": "US",
+  "country_confidence": 1.0,
+  "country_name": "United States",
+  "determined_epoch": 1788282872,
+  "first_exit_ip": "2a01:7e03::2000:c6ff:fec0:fe2",
+  "flag": "🇺🇸",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Linode, LLC",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

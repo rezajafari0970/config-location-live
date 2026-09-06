@@ -1,0 +1,16 @@
+{
+  "asn": "AS12876",
+  "config_id": "6dae7ee9a17b9e202d80ff0b8da0c717abee3cc5a9c45a7bc49fd8e7a9393641",
+  "country_code": "NL",
+  "country_confidence": 0.92,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788281608,
+  "first_exit_ip": "51.15.42.222",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Scaleway SAS",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

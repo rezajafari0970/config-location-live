@@ -1,0 +1,16 @@
+{
+  "asn": "AS209693",
+  "config_id": "06c3f35c679308eceaf2f843e3fba12b129c745b31c9ff1fc8821b421ad7082b",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281608,
+  "first_exit_ip": "194.48.250.31",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "OC NETWORKS LIMITED",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

@@ -1,0 +1,16 @@
+{
+  "asn": "AS214996",
+  "config_id": "f9c5072e09f1160266fcd029f65b9d8e446c026b1dcabcb25562233f9dc79951",
+  "country_code": "US",
+  "country_confidence": 1.0,
+  "country_name": "United States",
+  "determined_epoch": 1788282862,
+  "first_exit_ip": "2a0a:4cc0:2000:b55e:5495:1aff:fe33:6b69",
+  "flag": "🇺🇸",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "netcup GmbH",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

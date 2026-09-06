@@ -1,0 +1,16 @@
+{
+  "asn": "AS174",
+  "config_id": "1c3cc6af4f5a60030a602d8d60ffc1753ce62e3e73bb634516eac6624a73c246",
+  "country_code": "NL",
+  "country_confidence": 0.92,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788281608,
+  "first_exit_ip": "38.44.98.151",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Cogent Communications, LLC",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

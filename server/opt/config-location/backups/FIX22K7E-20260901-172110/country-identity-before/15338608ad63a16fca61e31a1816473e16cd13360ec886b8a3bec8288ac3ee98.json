@@ -1,0 +1,16 @@
+{
+  "asn": "AS203466",
+  "config_id": "15338608ad63a16fca61e31a1816473e16cd13360ec886b8a3bec8288ac3ee98",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281606,
+  "first_exit_ip": "38.45.18.10",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "INTROSERV d.o.o",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

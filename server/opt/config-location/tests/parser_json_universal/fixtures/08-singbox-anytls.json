@@ -1,0 +1,15 @@
+{
+  "outbounds": [
+    {
+      "type": "anytls",
+      "tag": "proxy",
+      "server": "example.com",
+      "server_port": 443,
+      "password": "golden",
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com"
+      }
+    }
+  ]
+}

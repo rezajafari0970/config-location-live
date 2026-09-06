@@ -1,0 +1,96 @@
+{
+  "asn": "AS44620",
+  "confidence": 1.0,
+  "config_id": "88656fdc0576a6313e7597d98c2e0dc71507f775350c335c387f1c59786047f2",
+  "config_type": "vless",
+  "country_code": "TR",
+  "country_name": "Türkiye",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "2a01:f900:12:2f::1",
+  "finished_at": "2026-09-01T14:27:39.742469+00:00",
+  "flag": "🇹🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "TR",
+    "country_name": "Türkiye",
+    "flag": "🇹🇷",
+    "primary_state": "ambiguous",
+    "reason": "secondary_consensus_recovered_country",
+    "recovery_state": "confirmed",
+    "source": "recovery",
+    "state": "confirmed"
+  },
+  "network_name": "Netlen Internet Hizmetleri Ltd. Sti",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": null,
+    "state": "ambiguous"
+  },
+  "recovery": {
+    "agreed": 2,
+    "confidence": 1.0,
+    "country_code": "TR",
+    "country_name": "Türkiye",
+    "executed": true,
+    "flag": "🇹🇷",
+    "providers": [
+      {
+        "asn": "AS44620",
+        "country_code": "TR",
+        "country_name": null,
+        "duration_ms": 186,
+        "error": null,
+        "network_name": "Netlen Internet Hizmetleri Ltd. Sti.",
+        "provider": "ipinfo",
+        "success": true
+      },
+      {
+        "asn": null,
+        "country_code": null,
+        "country_name": null,
+        "duration_ms": 69,
+        "error": "invalid_json",
+        "network_name": null,
+        "provider": "freeipapi",
+        "success": false
+      },
+      {
+        "asn": "AS44620",
+        "country_code": "TR",
+        "country_name": "Türkiye",
+        "duration_ms": 210,
+        "error": null,
+        "network_name": "Netlen Internet Hizmetleri Ltd. Sti.",
+        "provider": "ipguide",
+        "success": true
+      }
+    ],
+    "reason": "fallback_country_consensus",
+    "state": "confirmed",
+    "successful": 2,
+    "total": 3
+  },
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T14:27:35.931932+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

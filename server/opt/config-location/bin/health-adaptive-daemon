@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+export PYTHONPATH="/opt/config-location"
+
+exec /usr/bin/python3 \
+  -m app.health.core.always_on_adaptive

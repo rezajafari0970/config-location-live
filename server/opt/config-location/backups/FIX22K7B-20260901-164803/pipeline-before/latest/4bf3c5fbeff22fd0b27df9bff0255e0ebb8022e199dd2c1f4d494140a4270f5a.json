@@ -1,0 +1,53 @@
+{
+  "asn": "AS35758",
+  "confidence": 1.0,
+  "config_id": "4bf3c5fbeff22fd0b27df9bff0255e0ebb8022e199dd2c1f4d494140a4270f5a",
+  "config_type": "vless",
+  "country_code": "GR",
+  "country_name": "Greece",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "185.126.238.87",
+  "finished_at": "2026-09-01T07:08:57.159785+00:00",
+  "flag": "🇬🇷",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "GR",
+    "country_name": "Greece",
+    "flag": "🇬🇷",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Oneprovider.com - Athens Infrastructure",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "GR",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T07:08:49.851644+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

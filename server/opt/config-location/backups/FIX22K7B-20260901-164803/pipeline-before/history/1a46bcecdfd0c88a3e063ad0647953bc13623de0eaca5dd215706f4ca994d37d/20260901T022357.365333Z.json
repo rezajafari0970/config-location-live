@@ -1,0 +1,53 @@
+{
+  "asn": "AS13335",
+  "confidence": 1.0,
+  "config_id": "1a46bcecdfd0c88a3e063ad0647953bc13623de0eaca5dd215706f4ca994d37d",
+  "config_type": "vless",
+  "country_code": "CH",
+  "country_name": "Switzerland",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "104.28.253.246",
+  "finished_at": "2026-09-01T02:23:57.365319+00:00",
+  "flag": "🇨🇭",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "CH",
+    "country_name": "Switzerland",
+    "flag": "🇨🇭",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Cloudflare, Inc.",
+  "network_type": "cdn",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "CH",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:23:56.507167+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

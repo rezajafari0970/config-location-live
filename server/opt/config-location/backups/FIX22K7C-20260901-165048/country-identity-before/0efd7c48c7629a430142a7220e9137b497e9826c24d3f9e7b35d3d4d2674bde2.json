@@ -1,0 +1,16 @@
+{
+  "asn": "AS211619",
+  "config_id": "0efd7c48c7629a430142a7220e9137b497e9826c24d3f9e7b35d3d4d2674bde2",
+  "country_code": "BG",
+  "country_confidence": 1.0,
+  "country_name": "Bulgaria",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "45.9.156.24",
+  "flag": "🇧🇬",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "MAXKO d.o.o.",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

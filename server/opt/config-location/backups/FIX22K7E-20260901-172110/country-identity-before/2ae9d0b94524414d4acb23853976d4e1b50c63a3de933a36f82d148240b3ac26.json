@@ -1,0 +1,16 @@
+{
+  "asn": "AS136258",
+  "config_id": "2ae9d0b94524414d4acb23853976d4e1b50c63a3de933a36f82d148240b3ac26",
+  "country_code": "DE",
+  "country_confidence": 1.0,
+  "country_name": "Germany",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "185.226.172.8",
+  "flag": "🇩🇪",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "oneprovider.com - Frankfurt Infrastructure",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

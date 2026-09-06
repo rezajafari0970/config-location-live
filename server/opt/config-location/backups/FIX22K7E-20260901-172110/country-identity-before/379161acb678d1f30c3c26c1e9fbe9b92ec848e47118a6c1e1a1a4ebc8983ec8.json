@@ -1,0 +1,16 @@
+{
+  "asn": "AS16276",
+  "config_id": "379161acb678d1f30c3c26c1e9fbe9b92ec848e47118a6c1e1a1a4ebc8983ec8",
+  "country_code": "DE",
+  "country_confidence": 0.92,
+  "country_name": "Germany",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "2001:41d0:701:1100::214c",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "OVH SAS",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

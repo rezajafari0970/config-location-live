@@ -1,0 +1,18 @@
+[Unit]
+Description=Config Location Referential Integrity Guard
+After=local-fs.target
+ConditionPathIsDirectory=/var/lib/config-location
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/opt/config-location
+Environment=PYTHONPATH=/opt/config-location
+ExecStart=/opt/config-location/venv/bin/python -m app.integrity.referential_guard
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

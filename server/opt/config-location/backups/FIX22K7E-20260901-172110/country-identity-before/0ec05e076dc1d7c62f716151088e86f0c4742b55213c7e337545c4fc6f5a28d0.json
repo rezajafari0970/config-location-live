@@ -1,0 +1,16 @@
+{
+  "asn": "AS26383",
+  "config_id": "0ec05e076dc1d7c62f716151088e86f0c4742b55213c7e337545c4fc6f5a28d0",
+  "country_code": "IT",
+  "country_confidence": 1.0,
+  "country_name": "Italy",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "2605:e440:12::2:235",
+  "flag": "🇮🇹",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Baxet Group Inc.",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

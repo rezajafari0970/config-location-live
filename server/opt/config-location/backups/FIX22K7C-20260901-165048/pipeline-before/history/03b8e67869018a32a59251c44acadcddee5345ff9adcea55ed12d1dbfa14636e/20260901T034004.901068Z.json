@@ -1,0 +1,53 @@
+{
+  "asn": "AS45102",
+  "confidence": 1.0,
+  "config_id": "03b8e67869018a32a59251c44acadcddee5345ff9adcea55ed12d1dbfa14636e",
+  "config_type": "vmess",
+  "country_code": "HK",
+  "country_name": "Hong Kong",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "47.244.120.197",
+  "finished_at": "2026-09-01T03:40:04.901049+00:00",
+  "flag": "🇭🇰",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "HK",
+    "country_name": "Hong Kong",
+    "flag": "🇭🇰",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Alibaba Cloud - HK",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "HK",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vmess"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T03:39:52.980312+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

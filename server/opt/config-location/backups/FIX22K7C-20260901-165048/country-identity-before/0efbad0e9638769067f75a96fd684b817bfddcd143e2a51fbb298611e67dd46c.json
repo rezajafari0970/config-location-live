@@ -1,0 +1,16 @@
+{
+  "asn": "AS56655",
+  "config_id": "0efbad0e9638769067f75a96fd684b817bfddcd143e2a51fbb298611e67dd46c",
+  "country_code": "NO",
+  "country_confidence": 1.0,
+  "country_name": "Norway",
+  "determined_epoch": 1788281291,
+  "first_exit_ip": "194.110.207.162",
+  "flag": "🇳🇴",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Gigahost AS",
+  "network_type": "isp_or_unknown",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

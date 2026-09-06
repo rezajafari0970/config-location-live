@@ -1,0 +1,16 @@
+{
+  "asn": "AS16276",
+  "config_id": "c0e6344ec3515bc7423a09cd9663e910c7239fd0c7019c4cf7e73c0cfd920126",
+  "country_code": "US",
+  "country_confidence": 1.0,
+  "country_name": "United States",
+  "determined_epoch": 1788281262,
+  "first_exit_ip": "2604:2dc0:200:26ce::",
+  "flag": "🇺🇸",
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "OVH US LLC",
+  "network_type": "hosting",
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

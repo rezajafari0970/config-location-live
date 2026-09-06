@@ -1,0 +1,53 @@
+{
+  "asn": "AS198610",
+  "confidence": 1.0,
+  "config_id": "51f21c956bbff9a5447e7b5a6f5612df936c643a234c10df15a1b7fb327e1676",
+  "config_type": "vless",
+  "country_code": "RU",
+  "country_name": "Russian Federation",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "31.128.37.67",
+  "finished_at": "2026-09-01T09:18:00.929857+00:00",
+  "flag": "🇷🇺",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "RU",
+    "country_name": "Russian Federation",
+    "flag": "🇷🇺",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Beget LLC",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "RU",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vless"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T09:17:56.658804+00:00",
+  "state": "confirmed_stable",
+  "temporal": {
+    "observations": 2,
+    "reason": "stable_country_and_exit_ip",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "confirmed_stable",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

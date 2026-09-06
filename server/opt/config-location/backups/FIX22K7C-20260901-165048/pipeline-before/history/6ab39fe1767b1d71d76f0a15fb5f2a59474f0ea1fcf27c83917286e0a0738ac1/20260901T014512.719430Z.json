@@ -1,0 +1,53 @@
+{
+  "asn": "AS13335",
+  "confidence": 1.0,
+  "config_id": "6ab39fe1767b1d71d76f0a15fb5f2a59474f0ea1fcf27c83917286e0a0738ac1",
+  "config_type": "wireguard",
+  "country_code": "DE",
+  "country_name": "Germany",
+  "exit_consensus": {
+    "agreed": 2,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "104.28.197.9",
+  "finished_at": "2026-09-01T01:45:12.719418+00:00",
+  "flag": "🇩🇪",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "DE",
+    "country_name": "Germany",
+    "flag": "🇩🇪",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Cloudflare, Inc.",
+  "network_type": "cdn",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "DE",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-wireguard-xray",
+    "protocol": "wireguard"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T01:45:07.817645+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

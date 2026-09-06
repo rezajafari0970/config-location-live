@@ -1,0 +1,53 @@
+{
+  "asn": "AS54801",
+  "confidence": 1.0,
+  "config_id": "0a88f6411e068331456717dfa655752ed8ece86cde69901455e533faa677d81d",
+  "config_type": "vmess",
+  "country_code": "HK",
+  "country_name": "Hong Kong",
+  "exit_consensus": {
+    "agreed": 3,
+    "successful": 3,
+    "total": 3
+  },
+  "exit_ip": "156.245.232.239",
+  "finished_at": "2026-09-01T02:03:43.811698+00:00",
+  "flag": "🇭🇰",
+  "fusion": {
+    "confidence": 1.0,
+    "conflict": false,
+    "country_code": "HK",
+    "country_name": "Hong Kong",
+    "flag": "🇭🇰",
+    "primary_state": "confirmed",
+    "reason": "strong_primary_retained",
+    "recovery_state": null,
+    "source": "primary",
+    "state": "confirmed"
+  },
+  "network_name": "Zillion Network Inc.",
+  "network_type": "isp_or_unknown",
+  "primary": {
+    "cache_hit": false,
+    "confidence": 1.0,
+    "country_code": "HK",
+    "state": "confirmed"
+  },
+  "recovery": null,
+  "runtime": {
+    "builder": "runtime-uri-xray",
+    "protocol": "vmess"
+  },
+  "schema_version": 1,
+  "started_at": "2026-09-01T02:03:40.481941+00:00",
+  "state": "pending_confirmation",
+  "temporal": {
+    "observations": 1,
+    "reason": "insufficient_temporal_observations",
+    "stable_country": true,
+    "stable_exit_ip": true,
+    "state": "pending_confirmation",
+    "unique_countries": 1,
+    "unique_exit_ips": 1
+  }
+}

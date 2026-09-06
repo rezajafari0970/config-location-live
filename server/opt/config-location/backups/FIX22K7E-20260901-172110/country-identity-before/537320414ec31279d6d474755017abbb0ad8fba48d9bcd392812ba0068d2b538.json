@@ -1,0 +1,16 @@
+{
+  "asn": "AS400940",
+  "config_id": "537320414ec31279d6d474755017abbb0ad8fba48d9bcd392812ba0068d2b538",
+  "country_code": "NL",
+  "country_confidence": 0.92,
+  "country_name": "The Netherlands",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "152.55.185.176",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Railway",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}

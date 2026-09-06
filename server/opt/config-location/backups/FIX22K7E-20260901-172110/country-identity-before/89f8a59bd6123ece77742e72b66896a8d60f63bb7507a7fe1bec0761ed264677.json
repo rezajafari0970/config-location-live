@@ -1,0 +1,16 @@
+{
+  "asn": "AS8075",
+  "config_id": "89f8a59bd6123ece77742e72b66896a8d60f63bb7507a7fe1bec0761ed264677",
+  "country_code": "CA",
+  "country_confidence": 0.92,
+  "country_name": "Canada",
+  "determined_epoch": 1788281607,
+  "first_exit_ip": "130.107.73.148",
+  "flag": null,
+  "geo_state": "confirmed",
+  "locked": true,
+  "network_name": "Microsoft Corporation",
+  "network_type": null,
+  "schema_version": 1,
+  "source": "k6c-country-once"
+}
