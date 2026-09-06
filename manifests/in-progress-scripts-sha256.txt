@@ -402,6 +402,7 @@ ab2ded2a270d9e8441e065c060f502da5703ef4af419a51458102f7d5c5e7fad  scripts/in-pro
 a150b23e6d61439008f659330fa7c66481d4ae22966d2caf87fb09b0c7098b0f  scripts/in-progress/rebuild-small-production-snapshot.sh
 d644b73a3212fde949d4df2cc835322e5b63367b76565b7d8316ad5f434f50c7  scripts/in-progress/restore-git-remote-after-purge.sh
 11a549067874dcc77a6fc7e33597b04175e106f95fe7bb234f2ac257fa11eb8c  scripts/in-progress/run-phase0-fixed.sh
+f36b1cb01fabab031c53f40aa9414d4b105f8550e651922abb4207cc49a364ef  scripts/in-progress/run-runtime-evidence-and-push.sh
 6120763a651e5a1a5f66f451653c05074ef477b4ea0996576d60598d0dd8aadd  scripts/in-progress/safe-cleanup-server.sh
 7bf310a70e813929989017f590de4c758e5a84e7d9873f179b12d7d84aaac3b4  scripts/in-progress/safe-convert-snapshot.sh
 1b9b9af2f84c4c44bc18803fd9c75518e43daa11421a075ba4cb222f65b54f4a  scripts/in-progress/safe-production-snapshot-builder-fast.sh
