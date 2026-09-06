@@ -1,0 +1,130 @@
+diff --git a/dev-observability/live/phase6-pass2-public-country-catalog-auth-20260906-020028/current.log b/dev-observability/live/phase6-pass2-public-country-catalog-auth-20260906-020028/current.log
+new file mode 100644
+index 0000000..0b85fc0
+--- /dev/null
++++ b/dev-observability/live/phase6-pass2-public-country-catalog-auth-20260906-020028/current.log
+@@ -0,0 +1,50 @@
++================================================
++ PHASE 6 PASS 2
++ PUBLIC COUNTRY CATALOG AUTH CONTRACT
++================================================
++
++========== [1/8] PRECHECK ==========
++CATALOG_BEFORE=302
++PRECHECK=PASS
++
++========== [2/8] EXACT AUTH PATCH ==========
++AUTH_PATCH=APPLIED
++AUTH_CONTRACT=PASS
++
++========== [3/8] COMPILE ==========
++COMPILE=PASS
++
++========== [4/8] CONTROLLED RESTART ==========
++READY[1] service=active http=000
++READY[2] service=active http=200
++PANEL_READY=PASS
++
++========== [5/8] PUBLIC CATALOG CONTRACT ==========
++CATALOG_AFTER=200
++PUBLIC_HTTP=PASS
++
++========== [6/8] JSON CONTRACT ==========
++PUBLISHABLE= 1325
++RESOLVED= 1140
++UNKNOWN= 185
++CONFLICT= 0
++COUNTRY_COUNT= 41
++JSON_CONTRACT=PASS
++
++========== [7/8] REGRESSION ==========
++ALL=200
++UNKNOWN=200
++CONFLICT=200
++INVALID=404
++STATUS=200
++CATALOG=200
++REGRESSION=PASS
++
++========== [8/8] STABILITY ==========
++PANEL_STATE=active
++FINAL_CATALOG_HTTP=200
++
++PHASE6_PASS2=PASS
++CATALOG_PUBLIC=YES
++AUTH_REDIRECT=REMOVED
++PRODUCTION_HEALTHY=YES
+diff --git a/manifests/source-sha256.txt b/manifests/source-sha256.txt
+index b27910c..9606d18 100644
+--- a/manifests/source-sha256.txt
++++ b/manifests/source-sha256.txt
+@@ -157,7 +157,7 @@ e72d1882b636cff2d7d596f6ce3e6cc7d7763821d35ea26218412a13e9504859  server/opt/con
+ 86ffc11d90f938370020502d5f153c6e332b210d8a8bb8885153996f1ab5c4cb  server/opt/config-location/app/panel/publish_read_model.py
+ 01907f4f731849c8f74b68d63af81fa952e7ecfebfb822dd284bcb12c1314e98  server/opt/config-location/app/panel/publish_ui.py
+ 1caad6c9d82eaa970c76a61884c0d5616965eadb1e931a0eafdce55caaa16f34  server/opt/config-location/app/panel/read_model.py
+-b52b258a52dd095c275c781f354282df947ac24c178c4cc9f3ccf3136582d32b  server/opt/config-location/app/panel/server.py
++01d5682be5aef6ea1c41c8271152191bd83e27c933e53ba50c139b8711012ea8  server/opt/config-location/app/panel/server.py
+ b0e47a945078de2f7442df9b24ea27a32e19923234cf6583e52b26cbafbfd71b  server/opt/config-location/app/panel/server.py.bak.20260829-005109
+ f1a9b8d281e52f0829198fc71336eac48ae82509704921a8fdc2db607b7f5300  server/opt/config-location/app/panel/server.py.bak.20260829-005549
+ 111a844c5792d23a79870f60f283e97c8fcdceb3726f0edcd2deb01641091942  server/opt/config-location/app/panel/server.py.bak.20260829-010005
+@@ -15572,7 +15572,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
+ 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
+ a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
+ da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+-917aa65701db28be17dcfecb629041fee859ed2bcc49cb302f995b9891adcd94  server/opt/config-location/PROJECT-STATE.md
++78c57eb3c4d60ee3310c17a69d184c972e831b523f61a4bef22c46c5521ff1b9  server/opt/config-location/PROJECT-STATE.md
+ 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
+ 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
+ 0e63c7cea5c2b60eab9f70ac997137377fdec436cd7d88c4d8b37577a0da6ed3  server/opt/config-location/scripts/detector-test.py
+diff --git a/server/opt/config-location/PROJECT-STATE.md b/server/opt/config-location/PROJECT-STATE.md
+index 5adb012..e239054 100644
+--- a/server/opt/config-location/PROJECT-STATE.md
++++ b/server/opt/config-location/PROJECT-STATE.md
+@@ -1,6 +1,6 @@
+ # Config Location — Project State
+ 
+-Updated: 2026-09-06T01:54:42+00:00
++Updated: 2026-09-06T02:00:42+00:00
+ 
+ ## Release
+ 
+@@ -9,9 +9,9 @@ Updated: 2026-09-06T01:54:42+00:00
+ 
+ ## Git
+ 
+-- Commit: `5d51e1b8a6ba08be786bb3e9fb613b816aeb1a6c`
+-- Short: `5d51e1b`
+-- Mirror dirty files: 0
++- Commit: `67358a9fc6208a9af80ecb08384a719967a70a89`
++- Short: `67358a9`
++- Mirror dirty files: 1
+ 
+ ## Services
+ 
+@@ -30,7 +30,7 @@ Updated: 2026-09-06T01:54:42+00:00
+ ## Runtime
+ 
+ - Countries: 53
+-- Publishable configs: 1287
++- Publishable configs: 1325
+ 
+ ## Active development scripts
+ 
+@@ -41,4 +41,5 @@ phase6-pass1b-public-country-catalog-fix.sh
+ phase6-pass1b-recovery-diagnostic.sh
+ phase6-pass1-canonical-country-catalog-api.sh
+ phase6-pass1c-repair-catalog-contract.sh
++phase6-pass2-public-country-catalog-auth.sh
+ ```
+diff --git a/server/opt/config-location/app/panel/server.py b/server/opt/config-location/app/panel/server.py
+index 39a05d3..0ca62c7 100644
+--- a/server/opt/config-location/app/panel/server.py
++++ b/server/opt/config-location/app/panel/server.py
+@@ -292,6 +292,7 @@ async def auth_middleware(
+             "/login",
+             "/health",
+             "/api/publish/status",
++            "/api/countries",
+         }
+         or request.path.startswith(
+             "/devlog/"

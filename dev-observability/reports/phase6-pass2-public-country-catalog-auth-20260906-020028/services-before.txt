@@ -1,0 +1,42 @@
+  UNIT                                             LOAD      ACTIVE     SUB     JOB   DESCRIPTION
+  config-location-dev-script-sync.path             loaded    active     waiting       Watch Config Location Development Scripts
+  config-location-canary-readiness.service         loaded    active     running       Config Location Permanent Canary Readiness Controller
+  config-location-code-scanner.service             loaded    inactive   dead          Config Location Code Scanner
+  config-location-country-event-consumer.service   loaded    active     running       Config Location Country Event Consumer
+● config-location-country-publish-contract.service loaded    activating start   start Config Location Country Publish Permanent Contract Guard
+  config-location-country-worker.service           loaded    active     running       Config Location Country Detection Shadow Worker
+  config-location-dev-cleanup.service              loaded    inactive   dead          Config Location Development Cleanup
+  config-location-dev-context-watcher.service      loaded    active     running       Config Location Dev Context Watcher
+  config-location-dev-script-sync.service          loaded    inactive   dead          Config Location Development Script Git Sync
+● config-location-dev-status.service               not-found failed     failed        config-location-dev-status.service
+  config-location-fetcher.service                  loaded    active     running       Config Location Fetch Engine
+  config-location-git-gc.service                   loaded    inactive   dead          Config Location Mirror Git Maintenance
+  config-location-health-adaptive.service          loaded    active     running       Config Location Always-On Adaptive Health Controller
+  config-location-health-history-gc.service        loaded    inactive   dead          Config Location Health History Retention GC
+  config-location-integrity-guard.service          loaded    inactive   dead          Config Location Referential Integrity Guard
+  config-location-lifecycle-sync.service           loaded    active     running       Config Location Lifecycle Sync
+  config-location-lifecycle-watchdog.service       loaded    active     running       Config Location Lifecycle Stale State Watchdog
+● config-location-live-reconcile.service           loaded    activating start   start Config Location GitHub Mirror Reconcile
+  config-location-live-watch.service               loaded    active     running       Config Location Real-Time GitHub Mirror
+  config-location-lock-gc.service                  loaded    inactive   dead          Config Location Real Schema Lock Garbage Collection
+  config-location-panel.service                    loaded    active     running       Config Location Management Panel
+  config-location-removal-wait.service             loaded    active     running       Config Location Permanent Safety Removal Waiting Worker
+  config-location-retest.service                   loaded    active     running       Config Location Permanent Health Retest Scheduler
+  config-location-xray-log-cleanup.service         loaded    inactive   dead          Config Location Xray forensic log cleanup
+  config-location-code-scanner.timer               loaded    active     waiting       Config Location Code Scanner Timer
+  config-location-country-publish-contract.timer   loaded    active     running       Config Location Country Publish Contract Timer
+  config-location-dev-cleanup.timer                loaded    active     waiting       Config Location Development Cleanup Timer
+  config-location-git-gc.timer                     loaded    active     waiting       Weekly Config Location Git Maintenance
+  config-location-health-history-gc.timer          loaded    active     waiting       Run Config Location Health History GC
+  config-location-integrity-guard.timer            loaded    active     waiting       Run Config Location Referential Integrity Guard
+  config-location-live-reconcile.timer             loaded    active     running       Config Location GitHub Mirror Reconcile Timer
+  config-location-lock-gc.timer                    loaded    active     waiting       Run Config Location Lock Garbage Collection
+  config-location-xray-log-cleanup.timer           loaded    active     waiting       Daily cleanup of Config Location Xray forensic logs
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+        JOB    → Pending job for the unit.
+
+33 loaded units listed.
+To show all installed unit files use 'systemctl list-unit-files'.

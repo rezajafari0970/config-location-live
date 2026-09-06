@@ -1,0 +1,4 @@
+A	dev-observability/live/phase6-pass2-public-country-catalog-auth-20260906-020028/current.log
+M	manifests/source-sha256.txt
+M	server/opt/config-location/PROJECT-STATE.md
+M	server/opt/config-location/app/panel/server.py

@@ -1,0 +1,5 @@
+ .../current.log                                    | 50 ++++++++++++++++++++++
+ manifests/source-sha256.txt                        |  4 +-
+ server/opt/config-location/PROJECT-STATE.md        | 11 ++---
+ server/opt/config-location/app/panel/server.py     |  1 +
+ 4 files changed, 59 insertions(+), 7 deletions(-)
