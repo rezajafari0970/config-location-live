@@ -1,0 +1,17 @@
+================================================
+ PHASE 6 PASS 1C
+ REPAIR COUNTRY CATALOG CONTRACT
+================================================
+
+========== [1/9] BASELINE ==========
+14:    build_country_catalog,
+182:async def country_catalog(
+189:            build_country_catalog()
+653:        "/api/countries",
+654:        country_catalog,
+BASELINE_CAPTURED=YES
+
+========== [2/9] RESTORE CATALOG MODULE ==========
+CATALOG_RESTORED=YES
+
+========== [3/9] HTTP CONTRACT RECONCILE ==========
