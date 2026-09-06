@@ -1,0 +1,8 @@
+[Unit]
+Description=Config Location Development Script Git Sync
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/config-location-sync-dev-scripts
+User=root
