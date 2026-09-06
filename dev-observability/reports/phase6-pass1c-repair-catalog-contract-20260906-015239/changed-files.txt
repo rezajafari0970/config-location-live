@@ -1,0 +1,4 @@
+A	dev-observability/live/phase6-pass1c-repair-catalog-contract-20260906-015239/current.log
+M	manifests/source-sha256.txt
+M	server/opt/config-location/PROJECT-STATE.md
+A	server/opt/config-location/app/country/catalog.py

@@ -1,0 +1,243 @@
+diff --git a/dev-observability/live/phase6-pass1c-repair-catalog-contract-20260906-015239/current.log b/dev-observability/live/phase6-pass1c-repair-catalog-contract-20260906-015239/current.log
+new file mode 100644
+index 0000000..57aac44
+--- /dev/null
++++ b/dev-observability/live/phase6-pass1c-repair-catalog-contract-20260906-015239/current.log
+@@ -0,0 +1,35 @@
++================================================
++ PHASE 6 PASS 1C
++ REPAIR COUNTRY CATALOG CONTRACT
++================================================
++
++========== [1/9] BASELINE ==========
++14:    build_country_catalog,
++182:async def country_catalog(
++189:            build_country_catalog()
++653:        "/api/countries",
++654:        country_catalog,
++BASELINE_CAPTURED=YES
++
++========== [2/9] RESTORE CATALOG MODULE ==========
++CATALOG_RESTORED=YES
++
++========== [3/9] HTTP CONTRACT RECONCILE ==========
++HTTP_CONTRACT_RECONCILE=PASS
++
++========== [4/9] COMPILE + IMPORT ==========
++COUNTRY_COUNT= 42
++PUBLISHABLE= 1282
++IMPORT_CONTRACT=PASS
++COMPILE=PASS
++
++========== [5/9] RESTART ==========
++READY_TRY=1 STATE=active HTTP=000
++READY_TRY=2 STATE=active HTTP=200
++PANEL_READY=PASS
++
++========== [6/9] CORE REGRESSION ==========
++ALL=
++
++========== ROLLBACK ==========
++/root/dev-scripts/in-progress/phase6-pass1c-repair-catalog-contract.sh: line 43: cp: command not found
+diff --git a/manifests/source-sha256.txt b/manifests/source-sha256.txt
+index 0c390a4..416cc5f 100644
+--- a/manifests/source-sha256.txt
++++ b/manifests/source-sha256.txt
+@@ -13,6 +13,7 @@ dbf26835929da86167671e2980ef521123a3ee0c1b458df8f929ca87cbeabeb0  server/opt/con
+ 2655d5776c67722c32b65030029ce096df46395070fdfbebf30243dfa744e414  server/opt/config-location/app/core/source_runtime.py
+ df80a662b18b9015bb78068cedd0a7361df4f81612610f9663ca9eb3b442fff1  server/opt/config-location/app/core/storage.py
+ 749595885b5dea1b1c3ac04555d5726f7a1aa8f645adfee0f5f51042bca3d822  server/opt/config-location/app/country/adaptive.py
++19edc954170ebade9e18e61cf2bde3ba7bcad6a747274b108b6f5d1a862a2e68  server/opt/config-location/app/country/catalog.py
+ a70459fbf5ed0f93de9111013836ff9c30a9390782f719dfc567f3941339c8f0  server/opt/config-location/app/country/consensus.py
+ a66070f21372b22d4d78a834ac5553b3c82f72663863e0ef5f5b761babb38155  server/opt/config-location/app/country/country_identity.py
+ b1c1f6acc82e93d8490227b2ef03ff22c354928c92b55dc556dfede50c5c9b1f  server/opt/config-location/app/country/daemon.py
+@@ -15571,7 +15572,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
+ 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
+ a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
+ da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+-eecf3365be8b050403d92728cf61a533131d2809661578fafdc95b88ecdcdf72  server/opt/config-location/PROJECT-STATE.md
++f5049183bd4bc8102b107ed79502cf8311600d88db618e99c5a330d32bc26966  server/opt/config-location/PROJECT-STATE.md
+ 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
+ 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
+ 0e63c7cea5c2b60eab9f70ac997137377fdec436cd7d88c4d8b37577a0da6ed3  server/opt/config-location/scripts/detector-test.py
+diff --git a/server/opt/config-location/PROJECT-STATE.md b/server/opt/config-location/PROJECT-STATE.md
+index 3245c0d..2eed34c 100644
+--- a/server/opt/config-location/PROJECT-STATE.md
++++ b/server/opt/config-location/PROJECT-STATE.md
+@@ -1,6 +1,6 @@
+ # Config Location — Project State
+ 
+-Updated: 2026-09-06T01:49:09+00:00
++Updated: 2026-09-06T01:52:49+00:00
+ 
+ ## Release
+ 
+@@ -9,8 +9,8 @@ Updated: 2026-09-06T01:49:09+00:00
+ 
+ ## Git
+ 
+-- Commit: `e1074ce55569625f53042e40b2137f6bcbf5be88`
+-- Short: `e1074ce`
++- Commit: `018e753a3e4abc6942c3936887e79d7ca61e6ad9`
++- Short: `018e753`
+ - Mirror dirty files: 0
+ 
+ ## Services
+@@ -29,8 +29,8 @@ Updated: 2026-09-06T01:49:09+00:00
+ 
+ ## Runtime
+ 
+-- Countries: 53
+-- Publishable configs: 1308
++- Countries: 52
++- Publishable configs: 1282
+ 
+ ## Active development scripts
+ 
+@@ -40,4 +40,5 @@ observability-self-test.sh
+ phase6-pass1b-public-country-catalog-fix.sh
+ phase6-pass1b-recovery-diagnostic.sh
+ phase6-pass1-canonical-country-catalog-api.sh
++phase6-pass1c-repair-catalog-contract.sh
+ ```
+diff --git a/server/opt/config-location/app/country/catalog.py b/server/opt/config-location/app/country/catalog.py
+new file mode 100644
+index 0000000..2462c64
+--- /dev/null
++++ b/server/opt/config-location/app/country/catalog.py
+@@ -0,0 +1,135 @@
++from __future__ import annotations
++
++from collections import defaultdict
++from typing import Any
++
++from app.publish.filter import build_publish_snapshot
++from app.country.production_publish_projection import (
++    get_country_projection,
++)
++
++
++def _normalize_code(value: Any) -> str | None:
++    if not isinstance(value, str):
++        return None
++
++    value = value.strip().upper()
++
++    if len(value) != 2 or not value.isalpha():
++        return None
++
++    return value
++
++
++def build_country_catalog() -> dict[str, Any]:
++    snapshot = build_publish_snapshot()
++    projection = get_country_projection()
++
++    records = projection.get("records", {})
++
++    if not isinstance(records, dict):
++        records = {}
++
++    counts: dict[str, int] = defaultdict(int)
++    metadata: dict[str, dict[str, Any]] = {}
++
++    resolved = 0
++    unknown = 0
++    conflict = 0
++
++    for config in snapshot.configs:
++        if not isinstance(config, dict):
++            continue
++
++        config_id = config.get("id")
++
++        if not config_id:
++            unknown += 1
++            continue
++
++        row = records.get(str(config_id))
++
++        if not isinstance(row, dict):
++            unknown += 1
++            continue
++
++        state = str(
++            row.get("state", "unknown")
++        ).strip().lower()
++
++        if state == "conflict":
++            conflict += 1
++            continue
++
++        if state != "resolved":
++            unknown += 1
++            continue
++
++        code = _normalize_code(
++            row.get("country_code")
++        )
++
++        if code is None:
++            unknown += 1
++            continue
++
++        resolved += 1
++        counts[code] += 1
++
++        item = metadata.setdefault(
++            code,
++            {
++                "country_name": None,
++                "flag": None,
++            },
++        )
++
++        name = row.get("country_name")
++
++        if (
++            item["country_name"] is None
++            and isinstance(name, str)
++            and name.strip()
++        ):
++            item["country_name"] = name.strip()
++
++        flag = row.get("flag")
++
++        if (
++            item["flag"] is None
++            and isinstance(flag, str)
++            and flag.strip()
++        ):
++            item["flag"] = flag.strip()
++
++    countries = []
++
++    for code in sorted(counts):
++        meta = metadata.get(code, {})
++
++        countries.append(
++            {
++                "code": code,
++                "country_code": code,
++                "country_name": meta.get("country_name"),
++                "flag": meta.get("flag"),
++                "count": counts[code],
++                "subscription": f"/sub/country/{code}",
++            }
++        )
++
++    return {
++        "schema": 1,
++        "source": "canonical-projection-v2",
++        "mode": "production",
++        "publishable": snapshot.publishable,
++        "resolved": resolved,
++        "unknown": unknown,
++        "conflict": conflict,
++        "country_count": len(countries),
++        "countries": countries,
++        "special_routes": {
++            "unknown": "/sub/country/UNKNOWN",
++            "conflict": "/sub/country/CONFLICT",
++        },
++    }
