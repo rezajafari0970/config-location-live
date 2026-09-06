@@ -1,0 +1,7 @@
+[Unit]
+Description=Config Location Development Cleanup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/config-location-dev-cleanup
+User=root
