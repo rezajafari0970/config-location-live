@@ -1,0 +1,25 @@
+[main 9dca566] dev-evidence: 20 report files
+ 20 files changed, 856 insertions(+)
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/changed-files-stat.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/changed-files.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/checkpoint.log
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/full-diff.patch
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/git-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/git-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/git-status-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/git-status-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/live-run-id.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/live-sync.log
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/quick-check-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/quick-check.log
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/report-publish.log
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/result.json
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/script-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/script-output.log
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/services-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/services-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/status-after.json
+ create mode 100644 dev-observability/reports/phase6-pass2-public-country-catalog-auth-20260906-020028/status-before.json
+To github.com:rezajafari0970/config-location-live.git
+   2fac8c0..9dca566  main -> main
+REPORT_PUBLISH=PASS
