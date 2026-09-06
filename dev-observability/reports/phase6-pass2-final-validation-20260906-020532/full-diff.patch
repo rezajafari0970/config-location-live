@@ -1,0 +1,107 @@
+diff --git a/dev-observability/live/phase6-pass2-final-validation-20260906-020532/current.log b/dev-observability/live/phase6-pass2-final-validation-20260906-020532/current.log
+new file mode 100644
+index 0000000..7cd2ed3
+--- /dev/null
++++ b/dev-observability/live/phase6-pass2-final-validation-20260906-020532/current.log
+@@ -0,0 +1,47 @@
++================================================
++ PHASE 6 PASS 2 — FINAL VALIDATION
++================================================
++
++========== [1/7] SERVICE ==========
++PANEL=active
++
++========== [2/7] SOURCE AUTH CONTRACT ==========
++SOURCE_AUTH_CONTRACT=PASS
++
++========== [3/7] COMPILE ==========
++COMPILE=PASS
++
++========== [4/7] PUBLIC HTTP ==========
++CATALOG_HTTP=200
++AUTH_REDIRECT=NO
++PUBLIC_HTTP=PASS
++
++========== [5/7] JSON CONTRACT ==========
++PUBLISHABLE= 1337
++RESOLVED= 1147
++UNKNOWN= 190
++CONFLICT= 0
++COUNTRY_COUNT= 39
++JSON_CONTRACT=PASS
++
++========== [6/7] COMPLETE HTTP REGRESSION ==========
++ALL=200
++UNKNOWN=200
++CONFLICT=200
++INVALID=404
++STATUS=200
++CATALOG=200
++HTTP_REGRESSION=PASS
++
++========== [7/7] STABILITY ==========
++PANEL_STATE=active
++FINAL_CATALOG=200
++FINAL_SUB_ALL=200
++
++========================================
++ PHASE 6 PASS 2 COMPLETE
++========================================
++PUBLIC_COUNTRY_CATALOG=PASS
++AUTH_REDIRECT=REMOVED
++PRODUCTION_HEALTHY=YES
++PHASE6_PASS2_COMPLETE=YES
+diff --git a/manifests/source-sha256.txt b/manifests/source-sha256.txt
+index 338a817..28b3668 100644
+--- a/manifests/source-sha256.txt
++++ b/manifests/source-sha256.txt
+@@ -15572,7 +15572,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
+ 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
+ a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
+ da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+-9b8966f0744d569b159c69bc4c381b6dfd353ded1e8e0d7652589c8bfe8a7a65  server/opt/config-location/PROJECT-STATE.md
++9876fcfde5b869f4255a9a9ce1ae08717aec16c901ac1c4f70a94e3dd4fda21a  server/opt/config-location/PROJECT-STATE.md
+ 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
+ 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
+ 0e63c7cea5c2b60eab9f70ac997137377fdec436cd7d88c4d8b37577a0da6ed3  server/opt/config-location/scripts/detector-test.py
+diff --git a/server/opt/config-location/PROJECT-STATE.md b/server/opt/config-location/PROJECT-STATE.md
+index 8225b74..d8b3be8 100644
+--- a/server/opt/config-location/PROJECT-STATE.md
++++ b/server/opt/config-location/PROJECT-STATE.md
+@@ -1,6 +1,6 @@
+ # Config Location — Project State
+ 
+-Updated: 2026-09-06T02:02:17+00:00
++Updated: 2026-09-06T02:05:45+00:00
+ 
+ ## Release
+ 
+@@ -9,9 +9,9 @@ Updated: 2026-09-06T02:02:17+00:00
+ 
+ ## Git
+ 
+-- Commit: `9201729e22c0b096fc5e389baa14818b6a7863aa`
+-- Short: `9201729`
+-- Mirror dirty files: 0
++- Commit: `17df4254458e05dcc0f1a35e8e9ae88334137861`
++- Short: `17df425`
++- Mirror dirty files: 1
+ 
+ ## Services
+ 
+@@ -30,7 +30,7 @@ Updated: 2026-09-06T02:02:17+00:00
+ ## Runtime
+ 
+ - Countries: 53
+-- Publishable configs: 1316
++- Publishable configs: 1337
+ 
+ ## Active development scripts
+ 
+@@ -41,5 +41,6 @@ phase6-pass1b-public-country-catalog-fix.sh
+ phase6-pass1b-recovery-diagnostic.sh
+ phase6-pass1-canonical-country-catalog-api.sh
+ phase6-pass1c-repair-catalog-contract.sh
++phase6-pass2-final-validation.sh
+ phase6-pass2-public-country-catalog-auth.sh
+ ```
