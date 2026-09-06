@@ -1,0 +1,254 @@
+diff --git a/dev-observability/live/phase6-pass1b-recovery-diagnostic-20260906-014839/current.log b/dev-observability/live/phase6-pass1b-recovery-diagnostic-20260906-014839/current.log
+new file mode 100644
+index 0000000..953ec4b
+--- /dev/null
++++ b/dev-observability/live/phase6-pass1b-recovery-diagnostic-20260906-014839/current.log
+@@ -0,0 +1,194 @@
++================================================
++ PHASE 6 PASS 1B — RECOVERY DIAGNOSTIC
++================================================
++
++========== [1/8] PROCESSES ==========
++3626070 bash /usr/local/sbin/config-location-dev-run /root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh
++3628199 bash /root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh
++3628200 bash /usr/local/sbin/config-location-live-log-stream phase6-pass1b-recovery-diagnostic-20260906-014839 /root/dev-scripts/live/phase6-pass1b-recovery-diagnostic-20260906-014839/current.log 3628199
++3628201 tee -a /root/dev-scripts/live/phase6-pass1b-recovery-diagnostic-20260906-014839/current.log /root/dev-scripts/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/script-output.log
++3628202 tee -a /root/dev-scripts/live/phase6-pass1b-recovery-diagnostic-20260906-014839/current.log /root/dev-scripts/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/script-output.log
++
++========== [2/8] SERVICES ==========
++config-location-panel.service=activating
++config-location-country-worker.service=active
++config-location-country-event-consumer.service=active
++config-location-live-watch.service=active
++config-location-live-reconcile.timer=active
++
++========== [3/8] PANEL STATUS ==========
++● config-location-panel.service - Config Location Management Panel
++     Loaded: loaded (/etc/systemd/system/config-location-panel.service; enabled; preset: enabled)
++    Drop-In: /etc/systemd/system/config-location-panel.service.d
++             └─99-final.conf
++     Active: activating (auto-restart) (Result: exit-code) since Sun 2026-09-06 01:48:47 UTC; 2s ago
++ Invocation: 17e15abaecad4480a6cc5eca000f3b35
++    Process: 3628096 ExecStart=/opt/config-location/venv/bin/python -m app.panel.server (code=exited, status=1/FAILURE)
++   Main PID: 3628096 (code=exited, status=1/FAILURE)
++   Mem peak: 26.8M
++        CPU: 203ms
++
++========== [4/8] PANEL JOURNAL ==========
++Sep 06 01:48:20 serverprojects.ptr.network python[3624136]:     from app.country.catalog import (
++Sep 06 01:48:20 serverprojects.ptr.network python[3624136]:         build_country_catalog,
++Sep 06 01:48:20 serverprojects.ptr.network python[3624136]:     )
++Sep 06 01:48:20 serverprojects.ptr.network python[3624136]: ModuleNotFoundError: No module named 'app.country.catalog'
++Sep 06 01:48:20 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
++Sep 06 01:48:20 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
++Sep 06 01:48:23 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 77.
++Sep 06 01:48:23 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]: Traceback (most recent call last):
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]:   File "<frozen runpy>", line 198, in _run_module_as_main
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]:   File "<frozen runpy>", line 88, in _run_code
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]:     from app.publish.http import install_publish_routes
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]:     from app.country.catalog import (
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]:         build_country_catalog,
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]:     )
++Sep 06 01:48:24 serverprojects.ptr.network python[3624214]: ModuleNotFoundError: No module named 'app.country.catalog'
++Sep 06 01:48:24 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
++Sep 06 01:48:24 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
++Sep 06 01:48:27 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 78.
++Sep 06 01:48:27 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]: Traceback (most recent call last):
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]:   File "<frozen runpy>", line 198, in _run_module_as_main
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]:   File "<frozen runpy>", line 88, in _run_code
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]:     from app.publish.http import install_publish_routes
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]:     from app.country.catalog import (
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]:         build_country_catalog,
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]:     )
++Sep 06 01:48:27 serverprojects.ptr.network python[3624236]: ModuleNotFoundError: No module named 'app.country.catalog'
++Sep 06 01:48:27 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
++Sep 06 01:48:27 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
++Sep 06 01:48:30 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 79.
++Sep 06 01:48:30 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]: Traceback (most recent call last):
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]:   File "<frozen runpy>", line 198, in _run_module_as_main
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]:   File "<frozen runpy>", line 88, in _run_code
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]:     from app.publish.http import install_publish_routes
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]:     from app.country.catalog import (
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]:         build_country_catalog,
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]:     )
++Sep 06 01:48:30 serverprojects.ptr.network python[3624260]: ModuleNotFoundError: No module named 'app.country.catalog'
++Sep 06 01:48:31 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
++Sep 06 01:48:31 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
++Sep 06 01:48:34 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 80.
++Sep 06 01:48:34 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]: Traceback (most recent call last):
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]:   File "<frozen runpy>", line 198, in _run_module_as_main
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]:   File "<frozen runpy>", line 88, in _run_code
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]:     from app.publish.http import install_publish_routes
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]:     from app.country.catalog import (
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]:         build_country_catalog,
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]:     )
++Sep 06 01:48:34 serverprojects.ptr.network python[3624959]: ModuleNotFoundError: No module named 'app.country.catalog'
++Sep 06 01:48:34 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
++Sep 06 01:48:34 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
++Sep 06 01:48:37 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 81.
++Sep 06 01:48:37 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]: Traceback (most recent call last):
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]:   File "<frozen runpy>", line 198, in _run_module_as_main
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]:   File "<frozen runpy>", line 88, in _run_code
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]:     from app.publish.http import install_publish_routes
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]:     from app.country.catalog import (
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]:         build_country_catalog,
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]:     )
++Sep 06 01:48:37 serverprojects.ptr.network python[3625893]: ModuleNotFoundError: No module named 'app.country.catalog'
++Sep 06 01:48:37 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
++Sep 06 01:48:37 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
++Sep 06 01:48:40 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 82.
++Sep 06 01:48:40 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]: Traceback (most recent call last):
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]:   File "<frozen runpy>", line 198, in _run_module_as_main
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]:   File "<frozen runpy>", line 88, in _run_code
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]:     from app.publish.http import install_publish_routes
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]:     from app.country.catalog import (
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]:         build_country_catalog,
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]:     )
++Sep 06 01:48:40 serverprojects.ptr.network python[3626374]: ModuleNotFoundError: No module named 'app.country.catalog'
++Sep 06 01:48:41 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
++Sep 06 01:48:41 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
++Sep 06 01:48:44 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 83.
++Sep 06 01:48:44 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]: Traceback (most recent call last):
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]:   File "<frozen runpy>", line 198, in _run_module_as_main
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]:   File "<frozen runpy>", line 88, in _run_code
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]:     from app.publish.http import install_publish_routes
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]:     from app.country.catalog import (
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]:         build_country_catalog,
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]:     )
++Sep 06 01:48:44 serverprojects.ptr.network python[3627772]: ModuleNotFoundError: No module named 'app.country.catalog'
++Sep 06 01:48:44 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
++Sep 06 01:48:44 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
++Sep 06 01:48:47 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 84.
++Sep 06 01:48:47 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]: Traceback (most recent call last):
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]:   File "<frozen runpy>", line 198, in _run_module_as_main
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]:   File "<frozen runpy>", line 88, in _run_code
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]:     from app.publish.http import install_publish_routes
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]:     from app.country.catalog import (
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]:         build_country_catalog,
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]:     )
++Sep 06 01:48:47 serverprojects.ptr.network python[3628096]: ModuleNotFoundError: No module named 'app.country.catalog'
++Sep 06 01:48:47 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
++Sep 06 01:48:47 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
++Sep 06 01:48:50 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 85.
++Sep 06 01:48:50 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
++
++========== [5/8] SOURCE CONTRACT ==========
++--- http.py catalog references ---
++14:    build_country_catalog,
++182:async def country_catalog(
++189:            build_country_catalog()
++653:        "/api/countries",
++654:        country_catalog,
++
++--- catalog.py ---
++CATALOG_FILE=NO
++
++========== [6/8] COMPILE ==========
++[Errno 2] No such file or directory: '/opt/config-location/app/country/catalog.py'COMPILE_RC=1
++
++========== [7/8] HTTP ==========
++
++--- /sub/all ---
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 109: curl: command not found
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 114: sed: command not found
++
++--- /sub/country/UNKNOWN ---
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 109: curl: command not found
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 114: sed: command not found
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 114: sed: command not found
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 109: curl: command not found
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 109: curl: command not found
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 114: sed: command not found
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 109: curl: command not found
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 114: sed: command not found
++
++--- /sub/country/CONFLICT ---
++
++--- /api/publish/status ---
++
++--- /api/countries ---
++
++========== [8/8] RECONCILE ==========
++env: 'bash': No such file or directory
++env: use -[v]S to pass options in shebang lines
++/root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh: line 126: config-location-dev-status: command not found
++
++PHASE6_PASS1B_RECOVERY_DIAGNOSTIC_COMPLETE
+diff --git a/manifests/source-sha256.txt b/manifests/source-sha256.txt
+index efe6cce..ef58154 100644
+--- a/manifests/source-sha256.txt
++++ b/manifests/source-sha256.txt
+@@ -15571,7 +15571,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
+ 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
+ a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
+ da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+-1bc5ee3af33a1043f6a89b21ea905d51de9219db49f1498c536316b2cb78fef5  server/opt/config-location/PROJECT-STATE.md
++1940a8af679340d5f50896d51e2f81f7f8a65691a64b231e5c7d8558de0db89b  server/opt/config-location/PROJECT-STATE.md
+ 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
+ 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
+ 0e63c7cea5c2b60eab9f70ac997137377fdec436cd7d88c4d8b37577a0da6ed3  server/opt/config-location/scripts/detector-test.py
+diff --git a/server/opt/config-location/PROJECT-STATE.md b/server/opt/config-location/PROJECT-STATE.md
+index 9624f62..6da3728 100644
+--- a/server/opt/config-location/PROJECT-STATE.md
++++ b/server/opt/config-location/PROJECT-STATE.md
+@@ -1,6 +1,6 @@
+ # Config Location — Project State
+ 
+-Updated: 2026-09-06T01:47:38+00:00
++Updated: 2026-09-06T01:48:50+00:00
+ 
+ ## Release
+ 
+@@ -9,9 +9,9 @@ Updated: 2026-09-06T01:47:38+00:00
+ 
+ ## Git
+ 
+-- Commit: `c943ab948f1e76b869e4706684b8a0932474f7e0`
+-- Short: `c943ab9`
+-- Mirror dirty files: 1
++- Commit: `358b025f9819b8e04cd5b063a63827d1b8c0391f`
++- Short: `358b025`
++- Mirror dirty files: 0
+ 
+ ## Services
+ 
+@@ -30,7 +30,7 @@ Updated: 2026-09-06T01:47:38+00:00
+ ## Runtime
+ 
+ - Countries: 53
+-- Publishable configs: 1315
++- Publishable configs: 1310
+ 
+ ## Active development scripts
+ 
+@@ -38,5 +38,6 @@ Updated: 2026-09-06T01:47:38+00:00
+ live-stream-self-test.sh
+ observability-self-test.sh
+ phase6-pass1b-public-country-catalog-fix.sh
++phase6-pass1b-recovery-diagnostic.sh
+ phase6-pass1-canonical-country-catalog-api.sh
+ ```

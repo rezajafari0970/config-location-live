@@ -1,0 +1,20 @@
+========== COMPILE ==========
+COMPILE=PASS
+
+========== IMPORT ==========
+PUBLISHABLE=1308
+COUNTRIES=53
+IMPORT=PASS
+
+========== SERVICES ==========
+config-location-panel.service=activating
+config-location-country-worker.service=active
+config-location-country-event-consumer.service=active
+
+========== HTTP ==========
+SUB_ALL=000000
+UNKNOWN=000000
+CONFLICT=000000
+INVALID=000000
+
+QUICK_CHECK=FAIL

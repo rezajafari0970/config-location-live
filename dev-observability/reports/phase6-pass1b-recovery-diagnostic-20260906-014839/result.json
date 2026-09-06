@@ -1,0 +1,11 @@
+{
+  "script": "phase6-pass1b-recovery-diagnostic",
+  "started_at": "2026-09-06T01:48:50+00:00",
+  "finished_at": "2026-09-06T01:48:59+00:00",
+  "script_exit": 0,
+  "quick_check_exit": 1,
+  "git_before": "358b025f9819b8e04cd5b063a63827d1b8c0391f",
+  "git_after": "e1074ce55569625f53042e40b2137f6bcbf5be88",
+  "source_changed": true,
+  "result": "FAIL"
+}

@@ -1,0 +1,23 @@
+SKIP_SENSITIVE_SCRIPT=PANEL-A4-BROWSER-DATA-DIAG.sh
+SKIP_SENSITIVE_SCRIPT=fix20.6-universal-json.sh
+SKIP_SENSITIVE_SCRIPT=github-config.sh
+SKIP_SENSITIVE_SCRIPT=PANEL-A4-R4-STATE-READ-ACCESS-FIX.sh
+SKIP_SENSITIVE_SCRIPT=PANEL-A4-R5-RACE-SAFE-READ-ACL.sh
+SKIP_SENSITIVE_SCRIPT=HT4.2.sh
+SKIP_SENSITIVE_SCRIPT=install-config-location-full-dev-automation.sh
+SKIP_SENSITIVE_SCRIPT=setup-gdrive-snapshots.sh
+SKIP_SENSITIVE_SCRIPT=fix-gdrive-final.sh
+SKIP_SENSITIVE_SCRIPT=PANEL-A4-AUTH-HTTP-DIAG-R2.sh
+SKIP_SENSITIVE_SCRIPT=push-config-location-review.sh
+SKIP_SENSITIVE_SCRIPT=create-final-whole-project-gap-report.sh
+SKIP_SENSITIVE_SCRIPT=fix20.7c3-semantic-atomic.sh
+SKIP_SENSITIVE_SCRIPT=fix20.7c2-staged-runtime.sh
+SKIP_SENSITIVE_SCRIPT=fix20.7c-xray-capability-compatible.sh
+SKIP_SENSITIVE_SCRIPT=make-review-txt.sh
+SKIP_SENSITIVE_SCRIPT=finalize-gdrive-snapshots.sh
+SKIP_SENSITIVE_SCRIPT=fix20.7-xray-only-complete.sh
+SKIP_SENSITIVE_SCRIPT=setup-gdrive-snapshots-v2.sh
+[main e1074ce] live-sync: 1 changes — manifests/source-sha256.txt
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+To github.com:rezajafari0970/config-location-live.git
+   fbca92c..e1074ce  main -> main
