@@ -4,3 +4,32 @@
 ================================================
 
 ========== [1/10] PRECHECK ==========
+PRECHECK=PASS
+
+========== [2/10] BACKUP ==========
+BACKUP=PASS
+
+========== [3/10] CREATE CATALOG READ MODEL ==========
+CATALOG_MODULE=CREATED
+
+========== [4/10] PATCH HTTP API ==========
+HTTP_CATALOG_PATCH=PASS
+
+========== [5/10] COMPILE ==========
+COMPILE=PASS
+
+========== [6/10] UNIT CONTRACT ==========
+COUNTRY_COUNT= 42
+RESOLVED= 989
+UNKNOWN= 317
+CONFLICT= 0
+UNIT_CONTRACT=PASS
+
+========== [7/10] CONTROLLED RESTART ==========
+PANEL_RESTART=PASS
+
+========== [8/10] HTTP CATALOG REGRESSION ==========
+CATALOG_HTTP=302
+
+========== AUTOMATIC ROLLBACK ==========
+ROLLBACK=COMPLETE
