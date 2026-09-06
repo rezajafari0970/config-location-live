@@ -227,6 +227,7 @@ a4d39c7341d05608596c6b5a3760db5e0682c6235689007b8e87142a24b003d6  scripts/in-pro
 e27f0a9e127923ea699da31a7259ace946cf5f5e5dcbf76c194995e2b09fee08  scripts/in-progress/HT4.2-FAIL-DIAG.sh
 08488663bd809742ed629dc6c24133c15c1230a83fccef5a83b02674e91ea669  scripts/in-progress/install-config-location-agent.sh
 28edfc073684898babba01358d1bd07da43409fb484dae38fa7c22b67567bbb1  scripts/in-progress/install-config-location-devlog-sync.sh
+a0becc9d2a9e8c165d7d6ae33b88ebdaaf6f2ee3f4374865f3d9a59b5aa3f0ec  scripts/in-progress/install-config-location-dev-observability.sh
 db0ff08e1ddcc7a01e7a612b4437b4b227099ed43f2205a6b22057782c602985  scripts/in-progress/install-config-location.sh
 0cc53b1bb7c36389227a1601fdbbb6af6aa43c6ff350e00bf67bb6f976ad74d0  scripts/in-progress/install-dev-artifact-cache-policy-v1.sh
 20bab6ddaebb97cf1169d6fb145e00cd651c99f4a41ddc8a572010ef08a56e38  scripts/in-progress/install-dev-assistant-agent-v1.sh
