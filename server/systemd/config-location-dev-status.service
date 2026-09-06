@@ -1,0 +1,7 @@
+[Unit]
+Description=Config Location Development Status Snapshot
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/config-location-dev-status
+User=root
