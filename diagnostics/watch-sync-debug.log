@@ -1,0 +1,2926 @@
++ set -Eeuo pipefail
++ MIRROR=/root/config-location-live-git
++ PROJECT=/opt/config-location
++ LOCK=/run/config-location-live-sync.lock
++ exec
++ flock -w 20 9
++ cd /root/config-location-live-git
++ mkdir -p server/opt/config-location server/systemd scripts/in-progress manifests
++ rsync -a --delete --delete-excluded --exclude=.git/ --exclude=venv/ --exclude=.venv/ --exclude=env/ --exclude=__pycache__/ '--exclude=*.pyc' '--exclude=*.pyo' --exclude=.cache/ --exclude=.pytest_cache/ --exclude=.mypy_cache/ '--exclude=*.log' '--exclude=*.tmp' '--exclude=*.swp' '--exclude=*.swo' --exclude=.env '--exclude=.env.*' '--exclude=*.pem' '--exclude=*.key' '--exclude=*.p12' '--exclude=*.pfx' '--exclude=*.session' '--exclude=*.session-journal' /opt/config-location/ /root/config-location-live-git/server/opt/config-location/
++ TMP_SYSTEMD=/root/config-location-live-git/.systemd-next
++ rm -rf /root/config-location-live-git/.systemd-next
++ mkdir -p /root/config-location-live-git/.systemd-next
++ find /etc/systemd/system -maxdepth 1 '(' -type f -o -type l ')' '(' -name 'config-location-*' -o -name 'config-country-*' ')' -print0
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-lock-gc.timer
++ NAME=config-location-lock-gc.timer
++ '[' -L /etc/systemd/system/config-location-lock-gc.timer ']'
++ cp /etc/systemd/system/config-location-lock-gc.timer /root/config-location-live-git/.systemd-next/config-location-lock-gc.timer
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-country-publish-contract.service
++ NAME=config-location-country-publish-contract.service
++ '[' -L /etc/systemd/system/config-location-country-publish-contract.service ']'
++ cp /etc/systemd/system/config-location-country-publish-contract.service /root/config-location-live-git/.systemd-next/config-location-country-publish-contract.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-removal-wait.service
++ NAME=config-location-removal-wait.service
++ '[' -L /etc/systemd/system/config-location-removal-wait.service ']'
++ cp /etc/systemd/system/config-location-removal-wait.service /root/config-location-live-git/.systemd-next/config-location-removal-wait.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-code-scanner.timer
++ NAME=config-location-code-scanner.timer
++ '[' -L /etc/systemd/system/config-location-code-scanner.timer ']'
++ cp /etc/systemd/system/config-location-code-scanner.timer /root/config-location-live-git/.systemd-next/config-location-code-scanner.timer
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-lock-gc.service
++ NAME=config-location-lock-gc.service
++ '[' -L /etc/systemd/system/config-location-lock-gc.service ']'
++ cp /etc/systemd/system/config-location-lock-gc.service /root/config-location-live-git/.systemd-next/config-location-lock-gc.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-live-reconcile.timer
++ NAME=config-location-live-reconcile.timer
++ '[' -L /etc/systemd/system/config-location-live-reconcile.timer ']'
++ cp /etc/systemd/system/config-location-live-reconcile.timer /root/config-location-live-git/.systemd-next/config-location-live-reconcile.timer
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-code-scanner.service
++ NAME=config-location-code-scanner.service
++ '[' -L /etc/systemd/system/config-location-code-scanner.service ']'
++ cp /etc/systemd/system/config-location-code-scanner.service /root/config-location-live-git/.systemd-next/config-location-code-scanner.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-health-adaptive.service
++ NAME=config-location-health-adaptive.service
++ '[' -L /etc/systemd/system/config-location-health-adaptive.service ']'
++ cp /etc/systemd/system/config-location-health-adaptive.service /root/config-location-live-git/.systemd-next/config-location-health-adaptive.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-panel.service
++ NAME=config-location-panel.service
++ '[' -L /etc/systemd/system/config-location-panel.service ']'
++ cp /etc/systemd/system/config-location-panel.service /root/config-location-live-git/.systemd-next/config-location-panel.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-lifecycle-watchdog.service
++ NAME=config-location-lifecycle-watchdog.service
++ '[' -L /etc/systemd/system/config-location-lifecycle-watchdog.service ']'
++ cp /etc/systemd/system/config-location-lifecycle-watchdog.service /root/config-location-live-git/.systemd-next/config-location-lifecycle-watchdog.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-xray-log-cleanup.service
++ NAME=config-location-xray-log-cleanup.service
++ '[' -L /etc/systemd/system/config-location-xray-log-cleanup.service ']'
++ cp /etc/systemd/system/config-location-xray-log-cleanup.service /root/config-location-live-git/.systemd-next/config-location-xray-log-cleanup.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-health-history-gc.service
++ NAME=config-location-health-history-gc.service
++ '[' -L /etc/systemd/system/config-location-health-history-gc.service ']'
++ cp /etc/systemd/system/config-location-health-history-gc.service /root/config-location-live-git/.systemd-next/config-location-health-history-gc.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-xray-log-cleanup.timer
++ NAME=config-location-xray-log-cleanup.timer
++ '[' -L /etc/systemd/system/config-location-xray-log-cleanup.timer ']'
++ cp /etc/systemd/system/config-location-xray-log-cleanup.timer /root/config-location-live-git/.systemd-next/config-location-xray-log-cleanup.timer
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-devlog-collector.service
++ NAME=config-location-devlog-collector.service
++ '[' -L /etc/systemd/system/config-location-devlog-collector.service ']'
++ cp /etc/systemd/system/config-location-devlog-collector.service /root/config-location-live-git/.systemd-next/config-location-devlog-collector.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-live-reconcile.service
++ NAME=config-location-live-reconcile.service
++ '[' -L /etc/systemd/system/config-location-live-reconcile.service ']'
++ cp /etc/systemd/system/config-location-live-reconcile.service /root/config-location-live-git/.systemd-next/config-location-live-reconcile.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-retest.service
++ NAME=config-location-retest.service
++ '[' -L /etc/systemd/system/config-location-retest.service ']'
++ cp /etc/systemd/system/config-location-retest.service /root/config-location-live-git/.systemd-next/config-location-retest.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-health-history-gc.timer
++ NAME=config-location-health-history-gc.timer
++ '[' -L /etc/systemd/system/config-location-health-history-gc.timer ']'
++ cp /etc/systemd/system/config-location-health-history-gc.timer /root/config-location-live-git/.systemd-next/config-location-health-history-gc.timer
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-lifecycle-sync.service
++ NAME=config-location-lifecycle-sync.service
++ '[' -L /etc/systemd/system/config-location-lifecycle-sync.service ']'
++ cp /etc/systemd/system/config-location-lifecycle-sync.service /root/config-location-live-git/.systemd-next/config-location-lifecycle-sync.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-canary-readiness.service
++ NAME=config-location-canary-readiness.service
++ '[' -L /etc/systemd/system/config-location-canary-readiness.service ']'
++ cp /etc/systemd/system/config-location-canary-readiness.service /root/config-location-live-git/.systemd-next/config-location-canary-readiness.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-country-publish-contract.timer
++ NAME=config-location-country-publish-contract.timer
++ '[' -L /etc/systemd/system/config-location-country-publish-contract.timer ']'
++ cp /etc/systemd/system/config-location-country-publish-contract.timer /root/config-location-live-git/.systemd-next/config-location-country-publish-contract.timer
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-integrity-guard.service
++ NAME=config-location-integrity-guard.service
++ '[' -L /etc/systemd/system/config-location-integrity-guard.service ']'
++ cp /etc/systemd/system/config-location-integrity-guard.service /root/config-location-live-git/.systemd-next/config-location-integrity-guard.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-fetcher.service
++ NAME=config-location-fetcher.service
++ '[' -L /etc/systemd/system/config-location-fetcher.service ']'
++ cp /etc/systemd/system/config-location-fetcher.service /root/config-location-live-git/.systemd-next/config-location-fetcher.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-country-worker.service
++ NAME=config-location-country-worker.service
++ '[' -L /etc/systemd/system/config-location-country-worker.service ']'
++ cp /etc/systemd/system/config-location-country-worker.service /root/config-location-live-git/.systemd-next/config-location-country-worker.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-country-event-consumer.service
++ NAME=config-location-country-event-consumer.service
++ '[' -L /etc/systemd/system/config-location-country-event-consumer.service ']'
++ cp /etc/systemd/system/config-location-country-event-consumer.service /root/config-location-live-git/.systemd-next/config-location-country-event-consumer.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-dev-context-watcher.service
++ NAME=config-location-dev-context-watcher.service
++ '[' -L /etc/systemd/system/config-location-dev-context-watcher.service ']'
++ cp /etc/systemd/system/config-location-dev-context-watcher.service /root/config-location-live-git/.systemd-next/config-location-dev-context-watcher.service
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-integrity-guard.timer
++ NAME=config-location-integrity-guard.timer
++ '[' -L /etc/systemd/system/config-location-integrity-guard.timer ']'
++ cp /etc/systemd/system/config-location-integrity-guard.timer /root/config-location-live-git/.systemd-next/config-location-integrity-guard.timer
++ IFS=
++ read -r -d '' FILE
+++ basename /etc/systemd/system/config-location-live-watch.service
++ NAME=config-location-live-watch.service
++ '[' -L /etc/systemd/system/config-location-live-watch.service ']'
++ cp /etc/systemd/system/config-location-live-watch.service /root/config-location-live-git/.systemd-next/config-location-live-watch.service
++ IFS=
++ read -r -d '' FILE
++ rsync -a --delete /root/config-location-live-git/.systemd-next/ /root/config-location-live-git/server/systemd/
++ rm -rf /root/config-location-live-git/.systemd-next
++ TMP_SCRIPTS=/root/config-location-live-git/.scripts-next
++ rm -rf /root/config-location-live-git/.scripts-next
++ mkdir -p /root/config-location-live-git/.scripts-next
++ find /root -maxdepth 1 -type f -name '*.sh' -print0
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase12-location-intelligence-foundation.sh
++ NAME=phase12-location-intelligence-foundation.sh
++ case "$NAME" in
++ cp /root/phase12-location-intelligence-foundation.sh /root/config-location-live-git/.scripts-next/phase12-location-intelligence-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C12-RESULT.sh
++ NAME=FIX22K1C12-RESULT.sh
++ case "$NAME" in
++ cp /root/FIX22K1C12-RESULT.sh /root/config-location-live-git/.scripts-next/FIX22K1C12-RESULT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase5-post-closure-hardening-v2.sh
++ NAME=phase5-post-closure-hardening-v2.sh
++ case "$NAME" in
++ cp /root/phase5-post-closure-hardening-v2.sh /root/config-location-live-git/.scripts-next/phase5-post-closure-hardening-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-github-evidence-bridge.sh
++ NAME=setup-github-evidence-bridge.sh
++ case "$NAME" in
++ cp /root/setup-github-evidence-bridge.sh /root/config-location-live-git/.scripts-next/setup-github-evidence-bridge.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-config-location.sh
++ NAME=install-config-location.sh
++ case "$NAME" in
++ cp /root/install-config-location.sh /root/config-location-live-git/.scripts-next/install-config-location.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22D1.sh
++ NAME=FIX22D1.sh
++ case "$NAME" in
++ cp /root/FIX22D1.sh /root/config-location-live-git/.scripts-next/FIX22D1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.8AI.sh
++ NAME=FIX20.8AI.sh
++ case "$NAME" in
++ cp /root/FIX20.8AI.sh /root/config-location-live-git/.scripts-next/FIX20.8AI.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A7-R4-CANONICAL-STATUS-FIX.sh
++ NAME=PANEL-A7-R4-CANONICAL-STATUS-FIX.sh
++ case "$NAME" in
++ cp /root/PANEL-A7-R4-CANONICAL-STATUS-FIX.sh /root/config-location-live-git/.scripts-next/PANEL-A7-R4-CANONICAL-STATUS-FIX.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/server-failure-analysis.sh
++ NAME=server-failure-analysis.sh
++ case "$NAME" in
++ cp /root/server-failure-analysis.sh /root/config-location-live-git/.scripts-next/server-failure-analysis.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase19-distributed-foundation.sh
++ NAME=phase19-distributed-foundation.sh
++ case "$NAME" in
++ cp /root/phase19-distributed-foundation.sh /root/config-location-live-git/.scripts-next/phase19-distributed-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase8-xray-parser-foundation.sh
++ NAME=phase8-xray-parser-foundation.sh
++ case "$NAME" in
++ cp /root/phase8-xray-parser-foundation.sh /root/config-location-live-git/.scripts-next/phase8-xray-parser-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-2-fetch-backend-patch.sh
++ NAME=phase25-2-fetch-backend-patch.sh
++ case "$NAME" in
++ cp /root/phase25-2-fetch-backend-patch.sh /root/config-location-live-git/.scripts-next/phase25-2-fetch-backend-patch.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-final-regression.sh
++ NAME=install-phase1-final-regression.sh
++ case "$NAME" in
++ cp /root/install-phase1-final-regression.sh /root/config-location-live-git/.scripts-next/install-phase1-final-regression.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A4-COUNTRY-UI.sh
++ NAME=PANEL-A4-COUNTRY-UI.sh
++ case "$NAME" in
++ cp /root/PANEL-A4-COUNTRY-UI.sh /root/config-location-live-git/.scripts-next/PANEL-A4-COUNTRY-UI.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase14-smart-ranking-engine.sh
++ NAME=phase14-smart-ranking-engine.sh
++ case "$NAME" in
++ cp /root/phase14-smart-ranking-engine.sh /root/config-location-live-git/.scripts-next/phase14-smart-ranking-engine.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1B.sh
++ NAME=FIX22K1B.sh
++ case "$NAME" in
++ cp /root/FIX22K1B.sh /root/config-location-live-git/.scripts-next/FIX22K1B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-pass7-panel-runtime-recovery.sh
++ NAME=install-phase1-pass7-panel-runtime-recovery.sh
++ case "$NAME" in
++ cp /root/install-phase1-pass7-panel-runtime-recovery.sh /root/config-location-live-git/.scripts-next/install-phase1-pass7-panel-runtime-recovery.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C4.sh
++ NAME=FIX22K1C4.sh
++ case "$NAME" in
++ cp /root/FIX22K1C4.sh /root/config-location-live-git/.scripts-next/FIX22K1C4.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K2C-R2.sh
++ NAME=FIX22K2C-R2.sh
++ case "$NAME" in
++ cp /root/FIX22K2C-R2.sh /root/config-location-live-git/.scripts-next/FIX22K2C-R2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C11.sh
++ NAME=FIX22K1C11.sh
++ case "$NAME" in
++ cp /root/FIX22K1C11.sh /root/config-location-live-git/.scripts-next/FIX22K1C11.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass2-country-projection-design.sh
++ NAME=install-phase5-pass2-country-projection-design.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass2-country-projection-design.sh /root/config-location-live-git/.scripts-next/install-phase5-pass2-country-projection-design.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A4-R2-FINAL-VALIDATE.sh
++ NAME=PANEL-A4-R2-FINAL-VALIDATE.sh
++ case "$NAME" in
++ cp /root/PANEL-A4-R2-FINAL-VALIDATE.sh /root/config-location-live-git/.scripts-next/PANEL-A4-R2-FINAL-VALIDATE.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PUSH-XRAY-SOURCE-TO-GITHUB.sh
++ NAME=PUSH-XRAY-SOURCE-TO-GITHUB.sh
++ case "$NAME" in
++ cp /root/PUSH-XRAY-SOURCE-TO-GITHUB.sh /root/config-location-live-git/.scripts-next/PUSH-XRAY-SOURCE-TO-GITHUB.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/auto-real-source-snapshot.sh
++ NAME=auto-real-source-snapshot.sh
++ case "$NAME" in
++ cp /root/auto-real-source-snapshot.sh /root/config-location-live-git/.scripts-next/auto-real-source-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H6.sh
++ NAME=FIX22H6.sh
++ case "$NAME" in
++ cp /root/FIX22H6.sh /root/config-location-live-git/.scripts-next/FIX22H6.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A4-BROWSER-DATA-DIAG.sh
++ NAME=PANEL-A4-BROWSER-DATA-DIAG.sh
++ case "$NAME" in
++ cp /root/PANEL-A4-BROWSER-DATA-DIAG.sh /root/config-location-live-git/.scripts-next/PANEL-A4-BROWSER-DATA-DIAG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/extract-source-final-fixed.sh
++ NAME=extract-source-final-fixed.sh
++ case "$NAME" in
++ cp /root/extract-source-final-fixed.sh /root/config-location-live-git/.scripts-next/extract-source-final-fixed.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K3A.sh
++ NAME=FIX22K3A.sh
++ case "$NAME" in
++ cp /root/FIX22K3A.sh /root/config-location-live-git/.scripts-next/FIX22K3A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-fetch-complete-integration-plan.sh
++ NAME=phase25-fetch-complete-integration-plan.sh
++ case "$NAME" in
++ cp /root/phase25-fetch-complete-integration-plan.sh /root/config-location-live-git/.scripts-next/phase25-fetch-complete-integration-plan.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/full-development-intelligence-audit.sh
++ NAME=full-development-intelligence-audit.sh
++ case "$NAME" in
++ cp /root/full-development-intelligence-audit.sh /root/config-location-live-git/.scripts-next/full-development-intelligence-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-installer-migration-report.sh
++ NAME=create-installer-migration-report.sh
++ case "$NAME" in
++ cp /root/create-installer-migration-report.sh /root/config-location-live-git/.scripts-next/create-installer-migration-report.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/deploy-pipeline-v21-verifier.sh
++ NAME=deploy-pipeline-v21-verifier.sh
++ case "$NAME" in
++ cp /root/deploy-pipeline-v21-verifier.sh /root/config-location-live-git/.scripts-next/deploy-pipeline-v21-verifier.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass3c-stable-canonical-snapshot.sh
++ NAME=install-phase4-pass3c-stable-canonical-snapshot.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass3c-stable-canonical-snapshot.sh /root/config-location-live-git/.scripts-next/install-phase4-pass3c-stable-canonical-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/safe-production-snapshot-builder-fast.sh
++ NAME=safe-production-snapshot-builder-fast.sh
++ case "$NAME" in
++ cp /root/safe-production-snapshot-builder-fast.sh /root/config-location-live-git/.scripts-next/safe-production-snapshot-builder-fast.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase1-4-3-gitignore-repair.sh
++ NAME=phase1-4-3-gitignore-repair.sh
++ case "$NAME" in
++ cp /root/phase1-4-3-gitignore-repair.sh /root/config-location-live-git/.scripts-next/phase1-4-3-gitignore-repair.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-3-2-panel-upgrade-preparation.sh
++ NAME=phase25-3-2-panel-upgrade-preparation.sh
++ case "$NAME" in
++ cp /root/phase25-3-2-panel-upgrade-preparation.sh /root/config-location-live-git/.scripts-next/phase25-3-2-panel-upgrade-preparation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/final-tar-extractor.sh
++ NAME=final-tar-extractor.sh
++ case "$NAME" in
++ cp /root/final-tar-extractor.sh /root/config-location-live-git/.scripts-next/final-tar-extractor.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/upgrade-snapshot-upload.sh
++ NAME=upgrade-snapshot-upload.sh
++ case "$NAME" in
++ cp /root/upgrade-snapshot-upload.sh /root/config-location-live-git/.scripts-next/upgrade-snapshot-upload.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22F1D.sh
++ NAME=FIX22F1D.sh
++ case "$NAME" in
++ cp /root/FIX22F1D.sh /root/config-location-live-git/.scripts-next/FIX22F1D.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K4C-R2.sh
++ NAME=FIX22K4C-R2.sh
++ case "$NAME" in
++ cp /root/FIX22K4C-R2.sh /root/config-location-live-git/.scripts-next/FIX22K4C-R2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-runtime-pass2-report.sh
++ NAME=create-runtime-pass2-report.sh
++ case "$NAME" in
++ cp /root/create-runtime-pass2-report.sh /root/config-location-live-git/.scripts-next/create-runtime-pass2-report.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22-POSTK-XRAY-RETENTION-INTEGRATION-R2.sh
++ NAME=FIX22-POSTK-XRAY-RETENTION-INTEGRATION-R2.sh
++ case "$NAME" in
++ cp /root/FIX22-POSTK-XRAY-RETENTION-INTEGRATION-R2.sh /root/config-location-live-git/.scripts-next/FIX22-POSTK-XRAY-RETENTION-INTEGRATION-R2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass1-country-integration-contract.sh
++ NAME=install-phase5-pass1-country-integration-contract.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass1-country-integration-contract.sh /root/config-location-live-git/.scripts-next/install-phase5-pass1-country-integration-contract.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-config-location-agent.sh
++ NAME=install-config-location-agent.sh
++ case "$NAME" in
++ cp /root/install-config-location-agent.sh /root/config-location-live-git/.scripts-next/install-config-location-agent.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-snapshot-dev-context-bridge-v1.sh
++ NAME=install-snapshot-dev-context-bridge-v1.sh
++ case "$NAME" in
++ cp /root/install-snapshot-dev-context-bridge-v1.sh /root/config-location-live-git/.scripts-next/install-snapshot-dev-context-bridge-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass6-canary-harness-failclosed.sh
++ NAME=install-phase4-pass6-canary-harness-failclosed.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass6-canary-harness-failclosed.sh /root/config-location-live-git/.scripts-next/install-phase4-pass6-canary-harness-failclosed.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase2-config-model-audit.sh
++ NAME=phase2-config-model-audit.sh
++ case "$NAME" in
++ cp /root/phase2-config-model-audit.sh /root/config-location-live-git/.scripts-next/phase2-config-model-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-3-5-fetch-complete-finalization.sh
++ NAME=phase25-3-5-fetch-complete-finalization.sh
++ case "$NAME" in
++ cp /root/phase25-3-5-fetch-complete-finalization.sh /root/config-location-live-git/.scripts-next/phase25-3-5-fetch-complete-finalization.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9C2.sh
++ NAME=FIX20.9C2.sh
++ case "$NAME" in
++ cp /root/FIX20.9C2.sh /root/config-location-live-git/.scripts-next/FIX20.9C2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/build-real-source-final.sh
++ NAME=build-real-source-final.sh
++ case "$NAME" in
++ cp /root/build-real-source-final.sh /root/config-location-live-git/.scripts-next/build-real-source-final.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-developer-knowledge-pack.sh
++ NAME=create-developer-knowledge-pack.sh
++ case "$NAME" in
++ cp /root/create-developer-knowledge-pack.sh /root/config-location-live-git/.scripts-next/create-developer-knowledge-pack.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6c-publish-canary-observation.sh
++ NAME=install-phase5-pass6c-publish-canary-observation.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6c-publish-canary-observation.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6c-publish-canary-observation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22F1.sh
++ NAME=FIX22F1.sh
++ case "$NAME" in
++ cp /root/FIX22F1.sh /root/config-location-live-git/.scripts-next/FIX22F1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/cleanup-and-create-source-snapshot.sh
++ NAME=cleanup-and-create-source-snapshot.sh
++ case "$NAME" in
++ cp /root/cleanup-and-create-source-snapshot.sh /root/config-location-live-git/.scripts-next/cleanup-and-create-source-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-pipeline-v27.sh
++ NAME=setup-evidence-pipeline-v27.sh
++ case "$NAME" in
++ cp /root/setup-evidence-pipeline-v27.sh /root/config-location-live-git/.scripts-next/setup-evidence-pipeline-v27.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-A.sh
++ NAME=FIX22K1-CONSUMER-A.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-A.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase24-5-core-boundary-verification.sh
++ NAME=phase24-5-core-boundary-verification.sh
++ case "$NAME" in
++ cp /root/phase24-5-core-boundary-verification.sh /root/config-location-live-git/.scripts-next/phase24-5-core-boundary-verification.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-B-R4.sh
++ NAME=FIX22K1-CONSUMER-B-R4.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-B-R4.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-B-R4.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/evidence-artifact-gateway-v25-export.sh
++ NAME=evidence-artifact-gateway-v25-export.sh
++ case "$NAME" in
++ cp /root/evidence-artifact-gateway-v25-export.sh /root/config-location-live-git/.scripts-next/evidence-artifact-gateway-v25-export.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6d-production-publish-switch.sh
++ NAME=install-phase5-pass6d-production-publish-switch.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6d-production-publish-switch.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6d-production-publish-switch.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22F1B.sh
++ NAME=FIX22F1B.sh
++ case "$NAME" in
++ cp /root/FIX22F1B.sh /root/config-location-live-git/.scripts-next/FIX22F1B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22D2.sh
++ NAME=FIX22D2.sh
++ case "$NAME" in
++ cp /root/FIX22D2.sh /root/config-location-live-git/.scripts-next/FIX22D2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-3-1-panel-real-audit.sh
++ NAME=phase25-3-1-panel-real-audit.sh
++ case "$NAME" in
++ cp /root/phase25-3-1-panel-real-audit.sh /root/config-location-live-git/.scripts-next/phase25-3-1-panel-real-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C10-RESULT.sh
++ NAME=FIX22K1C10-RESULT.sh
++ case "$NAME" in
++ cp /root/FIX22K1C10-RESULT.sh /root/config-location-live-git/.scripts-next/FIX22K1C10-RESULT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/SYNC-CONSUMER-B-PIN.sh
++ NAME=SYNC-CONSUMER-B-PIN.sh
++ case "$NAME" in
++ cp /root/SYNC-CONSUMER-B-PIN.sh /root/config-location-live-git/.scripts-next/SYNC-CONSUMER-B-PIN.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/restore-git-remote-after-purge.sh
++ NAME=restore-git-remote-after-purge.sh
++ case "$NAME" in
++ cp /root/restore-git-remote-after-purge.sh /root/config-location-live-git/.scripts-next/restore-git-remote-after-purge.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/pack-only-source-code-final.sh
++ NAME=pack-only-source-code-final.sh
++ case "$NAME" in
++ cp /root/pack-only-source-code-final.sh /root/config-location-live-git/.scripts-next/pack-only-source-code-final.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase5-b1.sh
++ NAME=phase5-b1.sh
++ case "$NAME" in
++ cp /root/phase5-b1.sh /root/config-location-live-git/.scripts-next/phase5-b1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/ht0-config-location-audit.sh
++ NAME=ht0-config-location-audit.sh
++ case "$NAME" in
++ cp /root/ht0-config-location-audit.sh /root/config-location-live-git/.scripts-next/ht0-config-location-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/build-final-source-snapshot.sh
++ NAME=build-final-source-snapshot.sh
++ case "$NAME" in
++ cp /root/build-final-source-snapshot.sh /root/config-location-live-git/.scripts-next/build-final-source-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9C4.sh
++ NAME=FIX20.9C4.sh
++ case "$NAME" in
++ cp /root/FIX20.9C4.sh /root/config-location-live-git/.scripts-next/FIX20.9C4.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/pipeline-v28-two-phase.sh
++ NAME=pipeline-v28-two-phase.sh
++ case "$NAME" in
++ cp /root/pipeline-v28-two-phase.sh /root/config-location-live-git/.scripts-next/pipeline-v28-two-phase.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6e-country-route-observation.sh
++ NAME=install-phase5-pass6e-country-route-observation.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6e-country-route-observation.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6e-country-route-observation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7D-R1-DIAG.sh
++ NAME=FIX22K7D-R1-DIAG.sh
++ case "$NAME" in
++ cp /root/FIX22K7D-R1-DIAG.sh /root/config-location-live-git/.scripts-next/FIX22K7D-R1-DIAG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C7.sh
++ NAME=FIX22K1C7.sh
++ case "$NAME" in
++ cp /root/FIX22K1C7.sh /root/config-location-live-git/.scripts-next/FIX22K1C7.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21C.sh
++ NAME=FIX21C.sh
++ case "$NAME" in
++ cp /root/FIX21C.sh /root/config-location-live-git/.scripts-next/FIX21C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/make-phase5-full-snapshot.sh
++ NAME=make-phase5-full-snapshot.sh
++ case "$NAME" in
++ continue
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-runner-v5.sh
++ NAME=setup-evidence-runner-v5.sh
++ case "$NAME" in
++ cp /root/setup-evidence-runner-v5.sh /root/config-location-live-git/.scripts-next/setup-evidence-runner-v5.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/SUMMARY-K7D-R1.sh
++ NAME=SUMMARY-K7D-R1.sh
++ case "$NAME" in
++ cp /root/SUMMARY-K7D-R1.sh /root/config-location-live-git/.scripts-next/SUMMARY-K7D-R1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21B2.sh
++ NAME=FIX21B2.sh
++ case "$NAME" in
++ cp /root/FIX21B2.sh /root/config-location-live-git/.scripts-next/FIX21B2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix-phase1-4-4-filter-repo.sh
++ NAME=fix-phase1-4-4-filter-repo.sh
++ case "$NAME" in
++ cp /root/fix-phase1-4-4-filter-repo.sh /root/config-location-live-git/.scripts-next/fix-phase1-4-4-filter-repo.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase11.sh
++ NAME=config-manager-phase11.sh
++ case "$NAME" in
++ cp /root/config-manager-phase11.sh /root/config-location-live-git/.scripts-next/config-manager-phase11.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix-github-sync.sh
++ NAME=fix-github-sync.sh
++ case "$NAME" in
++ cp /root/fix-github-sync.sh /root/config-location-live-git/.scripts-next/fix-github-sync.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase20-production-deployment-foundation.sh
++ NAME=phase20-production-deployment-foundation.sh
++ case "$NAME" in
++ cp /root/phase20-production-deployment-foundation.sh /root/config-location-live-git/.scripts-next/phase20-production-deployment-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase11-source-snapshot-fix.sh
++ NAME=config-manager-phase11-source-snapshot-fix.sh
++ case "$NAME" in
++ cp /root/config-manager-phase11-source-snapshot-fix.sh /root/config-location-live-git/.scripts-next/config-manager-phase11-source-snapshot-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K2A.sh
++ NAME=FIX22K2A.sh
++ case "$NAME" in
++ cp /root/FIX22K2A.sh /root/config-location-live-git/.scripts-next/FIX22K2A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass3-canonical-safety-reconciliation.sh
++ NAME=install-phase4-pass3-canonical-safety-reconciliation.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass3-canonical-safety-reconciliation.sh /root/config-location-live-git/.scripts-next/install-phase4-pass3-canonical-safety-reconciliation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K0.sh
++ NAME=FIX22K0.sh
++ case "$NAME" in
++ cp /root/FIX22K0.sh /root/config-location-live-git/.scripts-next/FIX22K0.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix20.6-universal-json.sh
++ NAME=fix20.6-universal-json.sh
++ case "$NAME" in
++ cp /root/fix20.6-universal-json.sh /root/config-location-live-git/.scripts-next/fix20.6-universal-json.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K4C.sh
++ NAME=FIX22K4C.sh
++ case "$NAME" in
++ cp /root/FIX22K4C.sh /root/config-location-live-git/.scripts-next/FIX22K4C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9A2.sh
++ NAME=FIX20.9A2.sh
++ case "$NAME" in
++ cp /root/FIX20.9A2.sh /root/config-location-live-git/.scripts-next/FIX20.9A2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-central-settings.sh
++ NAME=install-phase1-central-settings.sh
++ case "$NAME" in
++ cp /root/install-phase1-central-settings.sh /root/config-location-live-git/.scripts-next/install-phase1-central-settings.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase16-lifecycle-engine-foundation.sh
++ NAME=phase16-lifecycle-engine-foundation.sh
++ case "$NAME" in
++ cp /root/phase16-lifecycle-engine-foundation.sh /root/config-location-live-git/.scripts-next/phase16-lifecycle-engine-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21D.sh
++ NAME=FIX21D.sh
++ case "$NAME" in
++ cp /root/FIX21D.sh /root/config-location-live-git/.scripts-next/FIX21D.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/snapshot-config-location.sh
++ NAME=snapshot-config-location.sh
++ case "$NAME" in
++ cp /root/snapshot-config-location.sh /root/config-location-live-git/.scripts-next/snapshot-config-location.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21C2.sh
++ NAME=FIX21C2.sh
++ case "$NAME" in
++ cp /root/FIX21C2.sh /root/config-location-live-git/.scripts-next/FIX21C2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/rebuild-small-production-snapshot.sh
++ NAME=rebuild-small-production-snapshot.sh
++ case "$NAME" in
++ cp /root/rebuild-small-production-snapshot.sh /root/config-location-live-git/.scripts-next/rebuild-small-production-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix-gdrive-auth.sh
++ NAME=fix-gdrive-auth.sh
++ case "$NAME" in
++ cp /root/fix-gdrive-auth.sh /root/config-location-live-git/.scripts-next/fix-gdrive-auth.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.8AJ.sh
++ NAME=FIX20.8AJ.sh
++ case "$NAME" in
++ cp /root/FIX20.8AJ.sh /root/config-location-live-git/.scripts-next/FIX20.8AJ.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22F1C.sh
++ NAME=FIX22F1C.sh
++ case "$NAME" in
++ cp /root/FIX22F1C.sh /root/config-location-live-git/.scripts-next/FIX22F1C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6d3a-snapshot-contract-discovery.sh
++ NAME=install-phase5-pass6d3a-snapshot-contract-discovery.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6d3a-snapshot-contract-discovery.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6d3a-snapshot-contract-discovery.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase2-pass3-control-hardening.sh
++ NAME=install-phase2-pass3-control-hardening.sh
++ case "$NAME" in
++ cp /root/install-phase2-pass3-control-hardening.sh /root/config-location-live-git/.scripts-next/install-phase2-pass3-control-hardening.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass2b-canonical-store-diagnosis.sh
++ NAME=install-phase3-pass2b-canonical-store-diagnosis.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass2b-canonical-store-diagnosis.sh /root/config-location-live-git/.scripts-next/install-phase3-pass2b-canonical-store-diagnosis.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21C3.sh
++ NAME=FIX21C3.sh
++ case "$NAME" in
++ cp /root/FIX21C3.sh /root/config-location-live-git/.scripts-next/FIX21C3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-pipeline-v22.sh
++ NAME=setup-evidence-pipeline-v22.sh
++ case "$NAME" in
++ cp /root/setup-evidence-pipeline-v22.sh /root/config-location-live-git/.scripts-next/setup-evidence-pipeline-v22.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/evidence-runtime-audit-v1.sh
++ NAME=evidence-runtime-audit-v1.sh
++ case "$NAME" in
++ cp /root/evidence-runtime-audit-v1.sh /root/config-location-live-git/.scripts-next/evidence-runtime-audit-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6d1-exact-publish-hook-discovery.sh
++ NAME=install-phase5-pass6d1-exact-publish-hook-discovery.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6d1-exact-publish-hook-discovery.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6d1-exact-publish-hook-discovery.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21B.sh
++ NAME=FIX21B.sh
++ case "$NAME" in
++ cp /root/FIX21B.sh /root/config-location-live-git/.scripts-next/FIX21B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-pipeline-v26.sh
++ NAME=setup-evidence-pipeline-v26.sh
++ case "$NAME" in
++ cp /root/setup-evidence-pipeline-v26.sh /root/config-location-live-git/.scripts-next/setup-evidence-pipeline-v26.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9B2.sh
++ NAME=FIX20.9B2.sh
++ case "$NAME" in
++ cp /root/FIX20.9B2.sh /root/config-location-live-git/.scripts-next/FIX20.9B2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21A5.sh
++ NAME=FIX21A5.sh
++ case "$NAME" in
++ cp /root/FIX21A5.sh /root/config-location-live-git/.scripts-next/FIX21A5.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase122-runtime-audit.sh
++ NAME=config-manager-phase122-runtime-audit.sh
++ case "$NAME" in
++ cp /root/config-manager-phase122-runtime-audit.sh /root/config-location-live-git/.scripts-next/config-manager-phase122-runtime-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/evidence-storage-manager-v04-verifier.sh
++ NAME=evidence-storage-manager-v04-verifier.sh
++ case "$NAME" in
++ cp /root/evidence-storage-manager-v04-verifier.sh /root/config-location-live-git/.scripts-next/evidence-storage-manager-v04-verifier.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22-POSTK-XRAY-RETENTION-INTEGRATION.sh
++ NAME=FIX22-POSTK-XRAY-RETENTION-INTEGRATION.sh
++ case "$NAME" in
++ cp /root/FIX22-POSTK-XRAY-RETENTION-INTEGRATION.sh /root/config-location-live-git/.scripts-next/FIX22-POSTK-XRAY-RETENTION-INTEGRATION.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass2-removal-plan-dryrun.sh
++ NAME=install-phase4-pass2-removal-plan-dryrun.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass2-removal-plan-dryrun.sh /root/config-location-live-git/.scripts-next/install-phase4-pass2-removal-plan-dryrun.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/ultimate-safe-snapshot-builder.sh
++ NAME=ultimate-safe-snapshot-builder.sh
++ case "$NAME" in
++ cp /root/ultimate-safe-snapshot-builder.sh /root/config-location-live-git/.scripts-next/ultimate-safe-snapshot-builder.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C2.sh
++ NAME=FIX22K1C2.sh
++ case "$NAME" in
++ cp /root/FIX22K1C2.sh /root/config-location-live-git/.scripts-next/FIX22K1C2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase21-2-8-core-integration-plan.sh
++ NAME=phase21-2-8-core-integration-plan.sh
++ case "$NAME" in
++ cp /root/phase21-2-8-core-integration-plan.sh /root/config-location-live-git/.scripts-next/phase21-2-8-core-integration-plan.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-pass3-settings-ui-fix.sh
++ NAME=install-phase1-pass3-settings-ui-fix.sh
++ case "$NAME" in
++ cp /root/install-phase1-pass3-settings-ui-fix.sh /root/config-location-live-git/.scripts-next/install-phase1-pass3-settings-ui-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K5A.sh
++ NAME=FIX22K5A.sh
++ case "$NAME" in
++ cp /root/FIX22K5A.sh /root/config-location-live-git/.scripts-next/FIX22K5A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-migrations-full-report.sh
++ NAME=create-migrations-full-report.sh
++ case "$NAME" in
++ cp /root/create-migrations-full-report.sh /root/config-location-live-git/.scripts-next/create-migrations-full-report.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-devlog-bridge-v3.sh
++ NAME=install-devlog-bridge-v3.sh
++ case "$NAME" in
++ cp /root/install-devlog-bridge-v3.sh /root/config-location-live-git/.scripts-next/install-devlog-bridge-v3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/POSTK-XRAY-CALLSITE-PIN.sh
++ NAME=POSTK-XRAY-CALLSITE-PIN.sh
++ case "$NAME" in
++ cp /root/POSTK-XRAY-CALLSITE-PIN.sh /root/config-location-live-git/.scripts-next/POSTK-XRAY-CALLSITE-PIN.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/evidence-storage-manager-v04.sh
++ NAME=evidence-storage-manager-v04.sh
++ case "$NAME" in
++ cp /root/evidence-storage-manager-v04.sh /root/config-location-live-git/.scripts-next/evidence-storage-manager-v04.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase21-1-core-integration-audit.sh
++ NAME=phase21-1-core-integration-audit.sh
++ case "$NAME" in
++ cp /root/phase21-1-core-integration-audit.sh /root/config-location-live-git/.scripts-next/phase21-1-core-integration-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/safe-cleanup-server.sh
++ NAME=safe-cleanup-server.sh
++ case "$NAME" in
++ cp /root/safe-cleanup-server.sh /root/config-location-live-git/.scripts-next/safe-cleanup-server.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22F2.sh
++ NAME=FIX22F2.sh
++ case "$NAME" in
++ cp /root/FIX22F2.sh /root/config-location-live-git/.scripts-next/FIX22F2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass0-lifecycle-removal-discovery.sh
++ NAME=install-phase4-pass0-lifecycle-removal-discovery.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass0-lifecycle-removal-discovery.sh /root/config-location-live-git/.scripts-next/install-phase4-pass0-lifecycle-removal-discovery.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass7-permanent-canary-readiness.sh
++ NAME=install-phase4-pass7-permanent-canary-readiness.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass7-permanent-canary-readiness.sh /root/config-location-live-git/.scripts-next/install-phase4-pass7-permanent-canary-readiness.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-full-source-code-review.sh
++ NAME=create-full-source-code-review.sh
++ case "$NAME" in
++ cp /root/create-full-source-code-review.sh /root/config-location-live-git/.scripts-next/create-full-source-code-review.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7C.sh
++ NAME=FIX22K7C.sh
++ case "$NAME" in
++ cp /root/FIX22K7C.sh /root/config-location-live-git/.scripts-next/FIX22K7C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22F1E.sh
++ NAME=FIX22F1E.sh
++ case "$NAME" in
++ cp /root/FIX22F1E.sh /root/config-location-live-git/.scripts-next/FIX22F1E.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7D-R3-STORE-OWNERSHIP.sh
++ NAME=FIX22K7D-R3-STORE-OWNERSHIP.sh
++ case "$NAME" in
++ cp /root/FIX22K7D-R3-STORE-OWNERSHIP.sh /root/config-location-live-git/.scripts-next/FIX22K7D-R3-STORE-OWNERSHIP.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/convert-audit-to-zstd.sh
++ NAME=convert-audit-to-zstd.sh
++ case "$NAME" in
++ cp /root/convert-audit-to-zstd.sh /root/config-location-live-git/.scripts-next/convert-audit-to-zstd.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass5-resource-guardian-integration.sh
++ NAME=install-phase3-pass5-resource-guardian-integration.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass5-resource-guardian-integration.sh /root/config-location-live-git/.scripts-next/install-phase3-pass5-resource-guardian-integration.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K2C.sh
++ NAME=FIX22K2C.sh
++ case "$NAME" in
++ cp /root/FIX22K2C.sh /root/config-location-live-git/.scripts-next/FIX22K2C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase13-iran-performance-intelligence.sh
++ NAME=phase13-iran-performance-intelligence.sh
++ case "$NAME" in
++ cp /root/phase13-iran-performance-intelligence.sh /root/config-location-live-git/.scripts-next/phase13-iran-performance-intelligence.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase4-resource-intelligence-engine.sh
++ NAME=phase4-resource-intelligence-engine.sh
++ case "$NAME" in
++ cp /root/phase4-resource-intelligence-engine.sh /root/config-location-live-git/.scripts-next/phase4-resource-intelligence-engine.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase5-final-identity-contract.sh
++ NAME=phase5-final-identity-contract.sh
++ case "$NAME" in
++ cp /root/phase5-final-identity-contract.sh /root/config-location-live-git/.scripts-next/phase5-final-identity-contract.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C6-RESULT.sh
++ NAME=FIX22K1C6-RESULT.sh
++ case "$NAME" in
++ cp /root/FIX22K1C6-RESULT.sh /root/config-location-live-git/.scripts-next/FIX22K1C6-RESULT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-final-integration-regression.sh
++ NAME=install-phase3-final-integration-regression.sh
++ case "$NAME" in
++ cp /root/install-phase3-final-integration-regression.sh /root/config-location-live-git/.scripts-next/install-phase3-final-integration-regression.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-6-fetch-live-validation.sh
++ NAME=phase25-6-fetch-live-validation.sh
++ case "$NAME" in
++ cp /root/phase25-6-fetch-live-validation.sh /root/config-location-live-git/.scripts-next/phase25-6-fetch-live-validation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K8C.sh
++ NAME=FIX22K8C.sh
++ case "$NAME" in
++ cp /root/FIX22K8C.sh /root/config-location-live-git/.scripts-next/FIX22K8C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/evidence-storage-manager-v04-v24.sh
++ NAME=evidence-storage-manager-v04-v24.sh
++ case "$NAME" in
++ cp /root/evidence-storage-manager-v04-v24.sh /root/config-location-live-git/.scripts-next/evidence-storage-manager-v04-v24.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-config-location-live-git-mirror.sh
++ NAME=install-config-location-live-git-mirror.sh
++ case "$NAME" in
++ continue
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7B.sh
++ NAME=FIX22K7B.sh
++ case "$NAME" in
++ cp /root/FIX22K7B.sh /root/config-location-live-git/.scripts-next/FIX22K7B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A8-1-SECURITY-NAV-AUDIT.sh
++ NAME=PANEL-A8-1-SECURITY-NAV-AUDIT.sh
++ case "$NAME" in
++ cp /root/PANEL-A8-1-SECURITY-NAV-AUDIT.sh /root/config-location-live-git/.scripts-next/PANEL-A8-1-SECURITY-NAV-AUDIT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A5-NAVIGATION-DETAIL.sh
++ NAME=PANEL-A5-NAVIGATION-DETAIL.sh
++ case "$NAME" in
++ cp /root/PANEL-A5-NAVIGATION-DETAIL.sh /root/config-location-live-git/.scripts-next/PANEL-A5-NAVIGATION-DETAIL.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-dev-assistant-agent-v1.sh
++ NAME=install-dev-assistant-agent-v1.sh
++ case "$NAME" in
++ cp /root/install-dev-assistant-agent-v1.sh /root/config-location-live-git/.scripts-next/install-dev-assistant-agent-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase05-fix.sh
++ NAME=config-manager-phase05-fix.sh
++ case "$NAME" in
++ cp /root/config-manager-phase05-fix.sh /root/config-location-live-git/.scripts-next/config-manager-phase05-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-R3-ERROR-DIAG.sh
++ NAME=FIX22K1-CONSUMER-R3-ERROR-DIAG.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-R3-ERROR-DIAG.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-R3-ERROR-DIAG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase2-pass4-audit-fix-and-regression.sh
++ NAME=install-phase2-pass4-audit-fix-and-regression.sh
++ case "$NAME" in
++ cp /root/install-phase2-pass4-audit-fix-and-regression.sh /root/config-location-live-git/.scripts-next/install-phase2-pass4-audit-fix-and-regression.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/optimize-config-location-snapshot.sh
++ NAME=optimize-config-location-snapshot.sh
++ case "$NAME" in
++ cp /root/optimize-config-location-snapshot.sh /root/config-location-live-git/.scripts-next/optimize-config-location-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-dev-assistant-v3.sh
++ NAME=install-dev-assistant-v3.sh
++ case "$NAME" in
++ cp /root/install-dev-assistant-v3.sh /root/config-location-live-git/.scripts-next/install-dev-assistant-v3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-1-fetcher-real-audit.sh
++ NAME=phase25-1-fetcher-real-audit.sh
++ case "$NAME" in
++ cp /root/phase25-1-fetcher-real-audit.sh /root/config-location-live-git/.scripts-next/phase25-1-fetcher-real-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22G2.sh
++ NAME=FIX22G2.sh
++ case "$NAME" in
++ cp /root/FIX22G2.sh /root/config-location-live-git/.scripts-next/FIX22G2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C5.sh
++ NAME=FIX22K1C5.sh
++ case "$NAME" in
++ cp /root/FIX22K1C5.sh /root/config-location-live-git/.scripts-next/FIX22K1C5.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K8A.sh
++ NAME=FIX22K8A.sh
++ case "$NAME" in
++ cp /root/FIX22K8A.sh /root/config-location-live-git/.scripts-next/FIX22K8A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/github-config.sh
++ NAME=github-config.sh
++ case "$NAME" in
++ cp /root/github-config.sh /root/config-location-live-git/.scripts-next/github-config.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase05-06-bootstrap.sh
++ NAME=config-manager-phase05-06-bootstrap.sh
++ case "$NAME" in
++ cp /root/config-manager-phase05-06-bootstrap.sh /root/config-location-live-git/.scripts-next/config-manager-phase05-06-bootstrap.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-pipeline-v21.sh
++ NAME=setup-evidence-pipeline-v21.sh
++ case "$NAME" in
++ cp /root/setup-evidence-pipeline-v21.sh /root/config-location-live-git/.scripts-next/setup-evidence-pipeline-v21.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase7-xray-classifier-foundation.sh
++ NAME=phase7-xray-classifier-foundation.sh
++ case "$NAME" in
++ cp /root/phase7-xray-classifier-foundation.sh /root/config-location-live-git/.scripts-next/phase7-xray-classifier-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K4B.sh
++ NAME=FIX22K4B.sh
++ case "$NAME" in
++ cp /root/FIX22K4B.sh /root/config-location-live-git/.scripts-next/FIX22K4B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/code-only-safe-extractor.sh
++ NAME=code-only-safe-extractor.sh
++ case "$NAME" in
++ cp /root/code-only-safe-extractor.sh /root/config-location-live-git/.scripts-next/code-only-safe-extractor.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/ui19.6b-settings-ux.sh
++ NAME=ui19.6b-settings-ux.sh
++ case "$NAME" in
++ cp /root/ui19.6b-settings-ux.sh /root/config-location-live-git/.scripts-next/ui19.6b-settings-ux.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-pass9-safe-renderer-recovery.sh
++ NAME=install-phase1-pass9-safe-renderer-recovery.sh
++ case "$NAME" in
++ cp /root/install-phase1-pass9-safe-renderer-recovery.sh /root/config-location-live-git/.scripts-next/install-phase1-pass9-safe-renderer-recovery.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-config-location-source-only.sh
++ NAME=create-config-location-source-only.sh
++ case "$NAME" in
++ cp /root/create-config-location-source-only.sh /root/config-location-live-git/.scripts-next/create-config-location-source-only.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/full-dr-snapshot-config-location.sh
++ NAME=full-dr-snapshot-config-location.sh
++ case "$NAME" in
++ cp /root/full-dr-snapshot-config-location.sh /root/config-location-live-git/.scripts-next/full-dr-snapshot-config-location.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7E.sh
++ NAME=FIX22K7E.sh
++ case "$NAME" in
++ cp /root/FIX22K7E.sh /root/config-location-live-git/.scripts-next/FIX22K7E.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase5-final-closure-rerun.sh
++ NAME=phase5-final-closure-rerun.sh
++ case "$NAME" in
++ cp /root/phase5-final-closure-rerun.sh /root/config-location-live-git/.scripts-next/phase5-final-closure-rerun.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21A3.sh
++ NAME=FIX21A3.sh
++ case "$NAME" in
++ cp /root/FIX21A3.sh /root/config-location-live-git/.scripts-next/FIX21A3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/MAKE-CONFIG-LOCATION-FINAL-FORENSIC-SNAPSHOT.sh
++ NAME=MAKE-CONFIG-LOCATION-FINAL-FORENSIC-SNAPSHOT.sh
++ case "$NAME" in
++ cp /root/MAKE-CONFIG-LOCATION-FINAL-FORENSIC-SNAPSHOT.sh /root/config-location-live-git/.scripts-next/MAKE-CONFIG-LOCATION-FINAL-FORENSIC-SNAPSHOT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase6-raw-storage-foundation.sh
++ NAME=phase6-raw-storage-foundation.sh
++ case "$NAME" in
++ cp /root/phase6-raw-storage-foundation.sh /root/config-location-live-git/.scripts-next/phase6-raw-storage-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-bootstrap-final.sh
++ NAME=config-manager-bootstrap-final.sh
++ case "$NAME" in
++ cp /root/config-manager-bootstrap-final.sh /root/config-location-live-git/.scripts-next/config-manager-bootstrap-final.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/HT4.2-ERROR-DETAIL.sh
++ NAME=HT4.2-ERROR-DETAIL.sh
++ case "$NAME" in
++ cp /root/HT4.2-ERROR-DETAIL.sh /root/config-location-live-git/.scripts-next/HT4.2-ERROR-DETAIL.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase23-fetch-integration.sh
++ NAME=phase23-fetch-integration.sh
++ case "$NAME" in
++ cp /root/phase23-fetch-integration.sh /root/config-location-live-git/.scripts-next/phase23-fetch-integration.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-final-fresh-country-projection-fix.sh
++ NAME=install-phase5-final-fresh-country-projection-fix.sh
++ case "$NAME" in
++ cp /root/install-phase5-final-fresh-country-projection-fix.sh /root/config-location-live-git/.scripts-next/install-phase5-final-fresh-country-projection-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C8.sh
++ NAME=FIX22K1C8.sh
++ case "$NAME" in
++ cp /root/FIX22K1C8.sh /root/config-location-live-git/.scripts-next/FIX22K1C8.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H1B.sh
++ NAME=FIX22H1B.sh
++ case "$NAME" in
++ cp /root/FIX22H1B.sh /root/config-location-live-git/.scripts-next/FIX22H1B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.8AH.sh
++ NAME=FIX20.8AH.sh
++ case "$NAME" in
++ cp /root/FIX20.8AH.sh /root/config-location-live-git/.scripts-next/FIX20.8AH.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/auto-extract-real-project.sh
++ NAME=auto-extract-real-project.sh
++ case "$NAME" in
++ cp /root/auto-extract-real-project.sh /root/config-location-live-git/.scripts-next/auto-extract-real-project.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22B.sh
++ NAME=FIX22B.sh
++ case "$NAME" in
++ cp /root/FIX22B.sh /root/config-location-live-git/.scripts-next/FIX22B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A4-R4-STATE-READ-ACCESS-FIX.sh
++ NAME=PANEL-A4-R4-STATE-READ-ACCESS-FIX.sh
++ case "$NAME" in
++ cp /root/PANEL-A4-R4-STATE-READ-ACCESS-FIX.sh /root/config-location-live-git/.scripts-next/PANEL-A4-R4-STATE-READ-ACCESS-FIX.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/extract-source-fixed.sh
++ NAME=extract-source-fixed.sh
++ case "$NAME" in
++ cp /root/extract-source-fixed.sh /root/config-location-live-git/.scripts-next/extract-source-fixed.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/extract-real-source-from-snapshot.sh
++ NAME=extract-real-source-from-snapshot.sh
++ case "$NAME" in
++ cp /root/extract-real-source-from-snapshot.sh /root/config-location-live-git/.scripts-next/extract-real-source-from-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass5b-resource-guardian-contract-fix.sh
++ NAME=install-phase3-pass5b-resource-guardian-contract-fix.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass5b-resource-guardian-contract-fix.sh /root/config-location-live-git/.scripts-next/install-phase3-pass5b-resource-guardian-contract-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass2a-retest-dryrun.sh
++ NAME=install-phase3-pass2a-retest-dryrun.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass2a-retest-dryrun.sh /root/config-location-live-git/.scripts-next/install-phase3-pass2a-retest-dryrun.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase24-parser-integration.sh
++ NAME=phase24-parser-integration.sh
++ case "$NAME" in
++ cp /root/phase24-parser-integration.sh /root/config-location-live-git/.scripts-next/phase24-parser-integration.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX-FINAL-FORENSIC-SNAPSHOT-RACE.sh
++ NAME=FIX-FINAL-FORENSIC-SNAPSHOT-RACE.sh
++ case "$NAME" in
++ cp /root/FIX-FINAL-FORENSIC-SNAPSHOT-RACE.sh /root/config-location-live-git/.scripts-next/FIX-FINAL-FORENSIC-SNAPSHOT-RACE.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.8AJ2.sh
++ NAME=FIX20.8AJ2.sh
++ case "$NAME" in
++ cp /root/FIX20.8AJ2.sh /root/config-location-live-git/.scripts-next/FIX20.8AJ2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K9B-R2.sh
++ NAME=FIX22K9B-R2.sh
++ case "$NAME" in
++ cp /root/FIX22K9B-R2.sh /root/config-location-live-git/.scripts-next/FIX22K9B-R2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-config-location-analysis.sh
++ NAME=create-config-location-analysis.sh
++ case "$NAME" in
++ cp /root/create-config-location-analysis.sh /root/config-location-live-git/.scripts-next/create-config-location-analysis.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K6A.sh
++ NAME=FIX22K6A.sh
++ case "$NAME" in
++ cp /root/FIX22K6A.sh /root/config-location-live-git/.scripts-next/FIX22K6A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix-devrun-v5-fast.sh
++ NAME=fix-devrun-v5-fast.sh
++ case "$NAME" in
++ cp /root/fix-devrun-v5-fast.sh /root/config-location-live-git/.scripts-next/fix-devrun-v5-fast.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9C1.sh
++ NAME=FIX20.9C1.sh
++ case "$NAME" in
++ cp /root/FIX20.9C1.sh /root/config-location-live-git/.scripts-next/FIX20.9C1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21A4.sh
++ NAME=FIX21A4.sh
++ case "$NAME" in
++ cp /root/FIX21A4.sh /root/config-location-live-git/.scripts-next/FIX21A4.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-config-location-master-audit.sh
++ NAME=create-config-location-master-audit.sh
++ case "$NAME" in
++ cp /root/create-config-location-master-audit.sh /root/config-location-live-git/.scripts-next/create-config-location-master-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass5-removal-execution-rollback-contract.sh
++ NAME=install-phase4-pass5-removal-execution-rollback-contract.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass5-removal-execution-rollback-contract.sh /root/config-location-live-git/.scripts-next/install-phase4-pass5-removal-execution-rollback-contract.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-devrun-v5.sh
++ NAME=install-devrun-v5.sh
++ case "$NAME" in
++ cp /root/install-devrun-v5.sh /root/config-location-live-git/.scripts-next/install-devrun-v5.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/MAKE-CONFIG-LOCATION-FULL-SNAPSHOT.sh
++ NAME=MAKE-CONFIG-LOCATION-FULL-SNAPSHOT.sh
++ case "$NAME" in
++ cp /root/MAKE-CONFIG-LOCATION-FULL-SNAPSHOT.sh /root/config-location-live-git/.scripts-next/MAKE-CONFIG-LOCATION-FULL-SNAPSHOT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K9B-R1-DIAG.sh
++ NAME=FIX22K9B-R1-DIAG.sh
++ case "$NAME" in
++ cp /root/FIX22K9B-R1-DIAG.sh /root/config-location-live-git/.scripts-next/FIX22K9B-R1-DIAG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A4-R5-RACE-SAFE-READ-ACL.sh
++ NAME=PANEL-A4-R5-RACE-SAFE-READ-ACL.sh
++ case "$NAME" in
++ cp /root/PANEL-A4-R5-RACE-SAFE-READ-ACL.sh /root/config-location-live-git/.scripts-next/PANEL-A4-R5-RACE-SAFE-READ-ACL.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase11-adaptive-health-scheduler.sh
++ NAME=phase11-adaptive-health-scheduler.sh
++ case "$NAME" in
++ cp /root/phase11-adaptive-health-scheduler.sh /root/config-location-live-git/.scripts-next/phase11-adaptive-health-scheduler.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass7-country-publish-hardening.sh
++ NAME=install-phase5-pass7-country-publish-hardening.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass7-country-publish-hardening.sh /root/config-location-live-git/.scripts-next/install-phase5-pass7-country-publish-hardening.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-5-fetch-production-validation.sh
++ NAME=phase25-5-fetch-production-validation.sh
++ case "$NAME" in
++ cp /root/phase25-5-fetch-production-validation.sh /root/config-location-live-git/.scripts-next/phase25-5-fetch-production-validation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/pack-tree-report.sh
++ NAME=pack-tree-report.sh
++ case "$NAME" in
++ cp /root/pack-tree-report.sh /root/config-location-live-git/.scripts-next/pack-tree-report.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7A.sh
++ NAME=FIX22K7A.sh
++ case "$NAME" in
++ cp /root/FIX22K7A.sh /root/config-location-live-git/.scripts-next/FIX22K7A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase9-xray-runtime-foundation.sh
++ NAME=phase9-xray-runtime-foundation.sh
++ case "$NAME" in
++ cp /root/phase9-xray-runtime-foundation.sh /root/config-location-live-git/.scripts-next/phase9-xray-runtime-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase17-publish-engine-foundation.sh
++ NAME=phase17-publish-engine-foundation.sh
++ case "$NAME" in
++ cp /root/phase17-publish-engine-foundation.sh /root/config-location-live-git/.scripts-next/phase17-publish-engine-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A7-R2-PUBLISH-STATUS-DIAG.sh
++ NAME=PANEL-A7-R2-PUBLISH-STATUS-DIAG.sh
++ case "$NAME" in
++ cp /root/PANEL-A7-R2-PUBLISH-STATUS-DIAG.sh /root/config-location-live-git/.scripts-next/PANEL-A7-R2-PUBLISH-STATUS-DIAG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass4-projection-contract-fix.sh
++ NAME=install-phase5-pass4-projection-contract-fix.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass4-projection-contract-fix.sh /root/config-location-live-git/.scripts-next/install-phase5-pass4-projection-contract-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/HT4.2.sh
++ NAME=HT4.2.sh
++ case "$NAME" in
++ cp /root/HT4.2.sh /root/config-location-live-git/.scripts-next/HT4.2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/XRAY-SANDBOX-LAUNCHER-DEVLOG.sh
++ NAME=XRAY-SANDBOX-LAUNCHER-DEVLOG.sh
++ case "$NAME" in
++ cp /root/XRAY-SANDBOX-LAUNCHER-DEVLOG.sh /root/config-location-live-git/.scripts-next/XRAY-SANDBOX-LAUNCHER-DEVLOG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase10-health-engine-foundation.sh
++ NAME=phase10-health-engine-foundation.sh
++ case "$NAME" in
++ cp /root/phase10-health-engine-foundation.sh /root/config-location-live-git/.scripts-next/phase10-health-engine-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22-POSTK-XRAY-LOG-RETENTION.sh
++ NAME=FIX22-POSTK-XRAY-LOG-RETENTION.sh
++ case "$NAME" in
++ cp /root/FIX22-POSTK-XRAY-LOG-RETENTION.sh /root/config-location-live-git/.scripts-next/FIX22-POSTK-XRAY-LOG-RETENTION.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6b-controlled-publish-canary.sh
++ NAME=install-phase5-pass6b-controlled-publish-canary.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6b-controlled-publish-canary.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6b-controlled-publish-canary.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-pipeline-v21-full.sh
++ NAME=setup-evidence-pipeline-v21-full.sh
++ case "$NAME" in
++ cp /root/setup-evidence-pipeline-v21-full.sh /root/config-location-live-git/.scripts-next/setup-evidence-pipeline-v21-full.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K5C.sh
++ NAME=FIX22K5C.sh
++ case "$NAME" in
++ cp /root/FIX22K5C.sh /root/config-location-live-git/.scripts-next/FIX22K5C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7D.sh
++ NAME=FIX22K7D.sh
++ case "$NAME" in
++ cp /root/FIX22K7D.sh /root/config-location-live-git/.scripts-next/FIX22K7D.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-live-project-snapshot.sh
++ NAME=create-live-project-snapshot.sh
++ case "$NAME" in
++ cp /root/create-live-project-snapshot.sh /root/config-location-live-git/.scripts-next/create-live-project-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/MAKE-CONFIG-LOCATION-FULL-MASTER-SNAPSHOT.sh
++ NAME=MAKE-CONFIG-LOCATION-FULL-MASTER-SNAPSHOT.sh
++ case "$NAME" in
++ cp /root/MAKE-CONFIG-LOCATION-FULL-MASTER-SNAPSHOT.sh /root/config-location-live-git/.scripts-next/MAKE-CONFIG-LOCATION-FULL-MASTER-SNAPSHOT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A6-EVENTBUS-FORENSIC.sh
++ NAME=PANEL-A6-EVENTBUS-FORENSIC.sh
++ case "$NAME" in
++ cp /root/PANEL-A6-EVENTBUS-FORENSIC.sh /root/config-location-live-git/.scripts-next/PANEL-A6-EVENTBUS-FORENSIC.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9E.sh
++ NAME=FIX20.9E.sh
++ case "$NAME" in
++ cp /root/FIX20.9E.sh /root/config-location-live-git/.scripts-next/FIX20.9E.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-2-4-fetcher-runtime-connect.sh
++ NAME=phase25-2-4-fetcher-runtime-connect.sh
++ case "$NAME" in
++ cp /root/phase25-2-4-fetcher-runtime-connect.sh /root/config-location-live-git/.scripts-next/phase25-2-4-fetcher-runtime-connect.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass0-country-resolution-discovery.sh
++ NAME=install-phase5-pass0-country-resolution-discovery.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass0-country-resolution-discovery.sh /root/config-location-live-git/.scripts-next/install-phase5-pass0-country-resolution-discovery.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/pipeline-migration-manager-v1.sh
++ NAME=pipeline-migration-manager-v1.sh
++ case "$NAME" in
++ cp /root/pipeline-migration-manager-v1.sh /root/config-location-live-git/.scripts-next/pipeline-migration-manager-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass5-panel-publish-shadow-integration.sh
++ NAME=install-phase5-pass5-panel-publish-shadow-integration.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass5-panel-publish-shadow-integration.sh /root/config-location-live-git/.scripts-next/install-phase5-pass5-panel-publish-shadow-integration.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase2-2-5-config-model-strategy.sh
++ NAME=phase2-2-5-config-model-strategy.sh
++ case "$NAME" in
++ cp /root/phase2-2-5-config-model-strategy.sh /root/config-location-live-git/.scripts-next/phase2-2-5-config-model-strategy.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K6B.sh
++ NAME=FIX22K6B.sh
++ case "$NAME" in
++ cp /root/FIX22K6B.sh /root/config-location-live-git/.scripts-next/FIX22K6B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/POSTK-XRAY-RETENTION-SUMMARY.sh
++ NAME=POSTK-XRAY-RETENTION-SUMMARY.sh
++ case "$NAME" in
++ cp /root/POSTK-XRAY-RETENTION-SUMMARY.sh /root/config-location-live-git/.scripts-next/POSTK-XRAY-RETENTION-SUMMARY.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase18-panel-control-plane-foundation.sh
++ NAME=phase18-panel-control-plane-foundation.sh
++ case "$NAME" in
++ cp /root/phase18-panel-control-plane-foundation.sh /root/config-location-live-git/.scripts-next/phase18-panel-control-plane-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/bootstrap-verification-wrapper-v1.sh
++ NAME=bootstrap-verification-wrapper-v1.sh
++ case "$NAME" in
++ cp /root/bootstrap-verification-wrapper-v1.sh /root/config-location-live-git/.scripts-next/bootstrap-verification-wrapper-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/final-clean-source-snapshot.sh
++ NAME=final-clean-source-snapshot.sh
++ case "$NAME" in
++ cp /root/final-clean-source-snapshot.sh /root/config-location-live-git/.scripts-next/final-clean-source-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-4-fetch-e2e-test.sh
++ NAME=phase25-4-fetch-e2e-test.sh
++ case "$NAME" in
++ cp /root/phase25-4-fetch-e2e-test.sh /root/config-location-live-git/.scripts-next/phase25-4-fetch-e2e-test.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass3-permanent-retest-service.sh
++ NAME=install-phase3-pass3-permanent-retest-service.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass3-permanent-retest-service.sh /root/config-location-live-git/.scripts-next/install-phase3-pass3-permanent-retest-service.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase0.sh
++ NAME=config-manager-phase0.sh
++ case "$NAME" in
++ cp /root/config-manager-phase0.sh /root/config-location-live-git/.scripts-next/config-manager-phase0.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-2-fetch-panel-integration-audit.sh
++ NAME=phase25-2-fetch-panel-integration-audit.sh
++ case "$NAME" in
++ cp /root/phase25-2-fetch-panel-integration-audit.sh /root/config-location-live-git/.scripts-next/phase25-2-fetch-panel-integration-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/build-production-source-clean.sh
++ NAME=build-production-source-clean.sh
++ case "$NAME" in
++ cp /root/build-production-source-clean.sh /root/config-location-live-git/.scripts-next/build-production-source-clean.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-dev-context-v1.sh
++ NAME=install-dev-context-v1.sh
++ case "$NAME" in
++ cp /root/install-dev-context-v1.sh /root/config-location-live-git/.scripts-next/install-dev-context-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase5-final-closure-churn-safe.sh
++ NAME=phase5-final-closure-churn-safe.sh
++ case "$NAME" in
++ cp /root/phase5-final-closure-churn-safe.sh /root/config-location-live-git/.scripts-next/phase5-final-closure-churn-safe.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/HT4.2-FAIL-DIAG.sh
++ NAME=HT4.2-FAIL-DIAG.sh
++ case "$NAME" in
++ cp /root/HT4.2-FAIL-DIAG.sh /root/config-location-live-git/.scripts-next/HT4.2-FAIL-DIAG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C3.sh
++ NAME=FIX22K1C3.sh
++ case "$NAME" in
++ cp /root/FIX22K1C3.sh /root/config-location-live-git/.scripts-next/FIX22K1C3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1A.sh
++ NAME=FIX22K1A.sh
++ case "$NAME" in
++ cp /root/FIX22K1A.sh /root/config-location-live-git/.scripts-next/FIX22K1A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K4A.sh
++ NAME=FIX22K4A.sh
++ case "$NAME" in
++ cp /root/FIX22K4A.sh /root/config-location-live-git/.scripts-next/FIX22K4A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass1-lifecycle-enforcement-contract.sh
++ NAME=install-phase4-pass1-lifecycle-enforcement-contract.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass1-lifecycle-enforcement-contract.sh /root/config-location-live-git/.scripts-next/install-phase4-pass1-lifecycle-enforcement-contract.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase1-4-2-git-cleanup.sh
++ NAME=phase1-4-2-git-cleanup.sh
++ case "$NAME" in
++ cp /root/phase1-4-2-git-cleanup.sh /root/config-location-live-git/.scripts-next/phase1-4-2-git-cleanup.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K5B.sh
++ NAME=FIX22K5B.sh
++ case "$NAME" in
++ cp /root/FIX22K5B.sh /root/config-location-live-git/.scripts-next/FIX22K5B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C9.sh
++ NAME=FIX22K1C9.sh
++ case "$NAME" in
++ cp /root/FIX22K1C9.sh /root/config-location-live-git/.scripts-next/FIX22K1C9.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/upgrade-config-location-agent-v2.sh
++ NAME=upgrade-config-location-agent-v2.sh
++ case "$NAME" in
++ cp /root/upgrade-config-location-agent-v2.sh /root/config-location-live-git/.scripts-next/upgrade-config-location-agent-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-aop-snapshot.sh
++ NAME=create-aop-snapshot.sh
++ case "$NAME" in
++ cp /root/create-aop-snapshot.sh /root/config-location-live-git/.scripts-next/create-aop-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-gdrive-storage-manager-v1.sh
++ NAME=install-gdrive-storage-manager-v1.sh
++ case "$NAME" in
++ cp /root/install-gdrive-storage-manager-v1.sh /root/config-location-live-git/.scripts-next/install-gdrive-storage-manager-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-pass2-v2.sh
++ NAME=install-phase1-pass2-v2.sh
++ case "$NAME" in
++ cp /root/install-phase1-pass2-v2.sh /root/config-location-live-git/.scripts-next/install-phase1-pass2-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/MAKE-CONFIG-LOCATION-PRE-PANEL-FULL-SNAPSHOT.sh
++ NAME=MAKE-CONFIG-LOCATION-PRE-PANEL-FULL-SNAPSHOT.sh
++ case "$NAME" in
++ cp /root/MAKE-CONFIG-LOCATION-PRE-PANEL-FULL-SNAPSHOT.sh /root/config-location-live-git/.scripts-next/MAKE-CONFIG-LOCATION-PRE-PANEL-FULL-SNAPSHOT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase0-dev-infrastructure-health-audit.sh
++ NAME=phase0-dev-infrastructure-health-audit.sh
++ case "$NAME" in
++ cp /root/phase0-dev-infrastructure-health-audit.sh /root/config-location-live-git/.scripts-next/phase0-dev-infrastructure-health-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/pack-archive-analysis-report.sh
++ NAME=pack-archive-analysis-report.sh
++ case "$NAME" in
++ cp /root/pack-archive-analysis-report.sh /root/config-location-live-git/.scripts-next/pack-archive-analysis-report.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9A.sh
++ NAME=FIX20.9A.sh
++ case "$NAME" in
++ cp /root/FIX20.9A.sh /root/config-location-live-git/.scripts-next/FIX20.9A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-pass6-settings-ownership-fix.sh
++ NAME=install-phase1-pass6-settings-ownership-fix.sh
++ case "$NAME" in
++ cp /root/install-phase1-pass6-settings-ownership-fix.sh /root/config-location-live-git/.scripts-next/install-phase1-pass6-settings-ownership-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix-gdrive-storage-manager.sh
++ NAME=fix-gdrive-storage-manager.sh
++ case "$NAME" in
++ cp /root/fix-gdrive-storage-manager.sh /root/config-location-live-git/.scripts-next/fix-gdrive-storage-manager.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-pipeline-v24.sh
++ NAME=setup-evidence-pipeline-v24.sh
++ case "$NAME" in
++ cp /root/setup-evidence-pipeline-v24.sh /root/config-location-live-git/.scripts-next/setup-evidence-pipeline-v24.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-safe-live-snapshot-v2.sh
++ NAME=create-safe-live-snapshot-v2.sh
++ case "$NAME" in
++ cp /root/create-safe-live-snapshot-v2.sh /root/config-location-live-git/.scripts-next/create-safe-live-snapshot-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/run-phase0-fixed.sh
++ NAME=run-phase0-fixed.sh
++ case "$NAME" in
++ cp /root/run-phase0-fixed.sh /root/config-location-live-git/.scripts-next/run-phase0-fixed.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A2-R1-VALIDATE.sh
++ NAME=PANEL-A2-R1-VALIDATE.sh
++ case "$NAME" in
++ cp /root/PANEL-A2-R1-VALIDATE.sh /root/config-location-live-git/.scripts-next/PANEL-A2-R1-VALIDATE.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.8AG.sh
++ NAME=FIX20.8AG.sh
++ case "$NAME" in
++ cp /root/FIX20.8AG.sh /root/config-location-live-git/.scripts-next/FIX20.8AG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/finalize-github-sync.sh
++ NAME=finalize-github-sync.sh
++ case "$NAME" in
++ cp /root/finalize-github-sync.sh /root/config-location-live-git/.scripts-next/finalize-github-sync.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K3B.sh
++ NAME=FIX22K3B.sh
++ case "$NAME" in
++ cp /root/FIX22K3B.sh /root/config-location-live-git/.scripts-next/FIX22K3B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/evidence-artifact-gateway-v251.sh
++ NAME=evidence-artifact-gateway-v251.sh
++ case "$NAME" in
++ cp /root/evidence-artifact-gateway-v251.sh /root/config-location-live-git/.scripts-next/evidence-artifact-gateway-v251.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6d3b-country-production-routes.sh
++ NAME=install-phase5-pass6d3b-country-production-routes.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6d3b-country-production-routes.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6d3b-country-production-routes.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C-AUDIT.sh
++ NAME=FIX22K1C-AUDIT.sh
++ case "$NAME" in
++ cp /root/FIX22K1C-AUDIT.sh /root/config-location-live-git/.scripts-next/FIX22K1C-AUDIT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase121-panel-modular.sh
++ NAME=config-manager-phase121-panel-modular.sh
++ case "$NAME" in
++ cp /root/config-manager-phase121-panel-modular.sh /root/config-location-live-git/.scripts-next/config-manager-phase121-panel-modular.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase2-1-artifact-size-fix.sh
++ NAME=phase2-1-artifact-size-fix.sh
++ case "$NAME" in
++ cp /root/phase2-1-artifact-size-fix.sh /root/config-location-live-git/.scripts-next/phase2-1-artifact-size-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-gdrive-snapshots.sh
++ NAME=setup-gdrive-snapshots.sh
++ case "$NAME" in
++ cp /root/setup-gdrive-snapshots.sh /root/config-location-live-git/.scripts-next/setup-gdrive-snapshots.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A7-R5-COHERENT-CANONICAL-STATUS.sh
++ NAME=PANEL-A7-R5-COHERENT-CANONICAL-STATUS.sh
++ case "$NAME" in
++ cp /root/PANEL-A7-R5-COHERENT-CANONICAL-STATUS.sh /root/config-location-live-git/.scripts-next/PANEL-A7-R5-COHERENT-CANONICAL-STATUS.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/extract-final-wildcard-project.sh
++ NAME=extract-final-wildcard-project.sh
++ case "$NAME" in
++ cp /root/extract-final-wildcard-project.sh /root/config-location-live-git/.scripts-next/extract-final-wildcard-project.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase0-rebuild.sh
++ NAME=config-manager-phase0-rebuild.sh
++ case "$NAME" in
++ cp /root/config-manager-phase0-rebuild.sh /root/config-location-live-git/.scripts-next/config-manager-phase0-rebuild.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix-gdrive-final.sh
++ NAME=fix-gdrive-final.sh
++ case "$NAME" in
++ cp /root/fix-gdrive-final.sh /root/config-location-live-git/.scripts-next/fix-gdrive-final.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H4.sh
++ NAME=FIX22H4.sh
++ case "$NAME" in
++ cp /root/FIX22H4.sh /root/config-location-live-git/.scripts-next/FIX22H4.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass5c-canonical-resources-binding.sh
++ NAME=install-phase3-pass5c-canonical-resources-binding.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass5c-canonical-resources-binding.sh /root/config-location-live-git/.scripts-next/install-phase3-pass5c-canonical-resources-binding.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase5-fetch-engine-foundation.sh
++ NAME=phase5-fetch-engine-foundation.sh
++ case "$NAME" in
++ cp /root/phase5-fetch-engine-foundation.sh /root/config-location-live-git/.scripts-next/phase5-fetch-engine-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-3-3-real-panel-ui-patch.sh
++ NAME=phase25-3-3-real-panel-ui-patch.sh
++ case "$NAME" in
++ cp /root/phase25-3-3-real-panel-ui-patch.sh /root/config-location-live-git/.scripts-next/phase25-3-3-real-panel-ui-patch.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H7.sh
++ NAME=FIX22H7.sh
++ case "$NAME" in
++ cp /root/FIX22H7.sh /root/config-location-live-git/.scripts-next/FIX22H7.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K9B.sh
++ NAME=FIX22K9B.sh
++ case "$NAME" in
++ cp /root/FIX22K9B.sh /root/config-location-live-git/.scripts-next/FIX22K9B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase1-4-4-git-history-purge.sh
++ NAME=phase1-4-4-git-history-purge.sh
++ case "$NAME" in
++ cp /root/phase1-4-4-git-history-purge.sh /root/config-location-live-git/.scripts-next/phase1-4-4-git-history-purge.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9C3.sh
++ NAME=FIX20.9C3.sh
++ case "$NAME" in
++ cp /root/FIX20.9C3.sh /root/config-location-live-git/.scripts-next/FIX20.9C3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase22-config-model-integration.sh
++ NAME=phase22-config-model-integration.sh
++ case "$NAME" in
++ cp /root/phase22-config-model-integration.sh /root/config-location-live-git/.scripts-next/phase22-config-model-integration.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6d2-publish-callgraph-contract.sh
++ NAME=install-phase5-pass6d2-publish-callgraph-contract.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6d2-publish-callgraph-contract.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6d2-publish-callgraph-contract.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass0-health-discovery.sh
++ NAME=install-phase3-pass0-health-discovery.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass0-health-discovery.sh /root/config-location-live-git/.scripts-next/install-phase3-pass0-health-discovery.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A4-R1-VALIDATE-ACTIVATE.sh
++ NAME=PANEL-A4-R1-VALIDATE-ACTIVATE.sh
++ case "$NAME" in
++ cp /root/PANEL-A4-R1-VALIDATE-ACTIVATE.sh /root/config-location-live-git/.scripts-next/PANEL-A4-R1-VALIDATE-ACTIVATE.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K3C.sh
++ NAME=FIX22K3C.sh
++ case "$NAME" in
++ cp /root/FIX22K3C.sh /root/config-location-live-git/.scripts-next/FIX22K3C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/analyze-archive-structure.sh
++ NAME=analyze-archive-structure.sh
++ case "$NAME" in
++ cp /root/analyze-archive-structure.sh /root/config-location-live-git/.scripts-next/analyze-archive-structure.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-3-4-apply-panel-ui-validation.sh
++ NAME=phase25-3-4-apply-panel-ui-validation.sh
++ case "$NAME" in
++ cp /root/phase25-3-4-apply-panel-ui-validation.sh /root/config-location-live-git/.scripts-next/phase25-3-4-apply-panel-ui-validation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/git-forensic-audit-v1.sh
++ NAME=git-forensic-audit-v1.sh
++ case "$NAME" in
++ cp /root/git-forensic-audit-v1.sh /root/config-location-live-git/.scripts-next/git-forensic-audit-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K9B-R3.sh
++ NAME=FIX22K9B-R3.sh
++ case "$NAME" in
++ cp /root/FIX22K9B-R3.sh /root/config-location-live-git/.scripts-next/FIX22K9B-R3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K4A-RESULT.sh
++ NAME=FIX22K4A-RESULT.sh
++ case "$NAME" in
++ cp /root/FIX22K4A-RESULT.sh /root/config-location-live-git/.scripts-next/FIX22K4A-RESULT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K9C.sh
++ NAME=FIX22K9C.sh
++ case "$NAME" in
++ cp /root/FIX22K9C.sh /root/config-location-live-git/.scripts-next/FIX22K9C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A7-PUBLISH-SUBSCRIPTIONS.sh
++ NAME=PANEL-A7-PUBLISH-SUBSCRIPTIONS.sh
++ case "$NAME" in
++ cp /root/PANEL-A7-PUBLISH-SUBSCRIPTIONS.sh /root/config-location-live-git/.scripts-next/PANEL-A7-PUBLISH-SUBSCRIPTIONS.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-3-5-panel-live-validation.sh
++ NAME=phase25-3-5-panel-live-validation.sh
++ case "$NAME" in
++ cp /root/phase25-3-5-panel-live-validation.sh /root/config-location-live-git/.scripts-next/phase25-3-5-panel-live-validation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-pass8-settings-renderer-fix.sh
++ NAME=install-phase1-pass8-settings-renderer-fix.sh
++ case "$NAME" in
++ cp /root/install-phase1-pass8-settings-renderer-fix.sh /root/config-location-live-git/.scripts-next/install-phase1-pass8-settings-renderer-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-2-3-1-patch-point-resolver.sh
++ NAME=phase25-2-3-1-patch-point-resolver.sh
++ case "$NAME" in
++ cp /root/phase25-2-3-1-patch-point-resolver.sh /root/config-location-live-git/.scripts-next/phase25-2-3-1-patch-point-resolver.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-github-auth.sh
++ NAME=setup-github-auth.sh
++ case "$NAME" in
++ cp /root/setup-github-auth.sh /root/config-location-live-git/.scripts-next/setup-github-auth.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix-phase1-pass2.sh
++ NAME=fix-phase1-pass2.sh
++ case "$NAME" in
++ cp /root/fix-phase1-pass2.sh /root/config-location-live-git/.scripts-next/fix-phase1-pass2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-dev-artifact-cache-policy-v1.sh
++ NAME=install-dev-artifact-cache-policy-v1.sh
++ case "$NAME" in
++ cp /root/install-dev-artifact-cache-policy-v1.sh /root/config-location-live-git/.scripts-next/install-dev-artifact-cache-policy-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/SHOW-K7D-R1-DIAG.sh
++ NAME=SHOW-K7D-R1-DIAG.sh
++ case "$NAME" in
++ cp /root/SHOW-K7D-R1-DIAG.sh /root/config-location-live-git/.scripts-next/SHOW-K7D-R1-DIAG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase0-auto.sh
++ NAME=config-manager-phase0-auto.sh
++ case "$NAME" in
++ cp /root/config-manager-phase0-auto.sh /root/config-location-live-git/.scripts-next/config-manager-phase0-auto.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-B-PIN.sh
++ NAME=FIX22K1-CONSUMER-B-PIN.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-B-PIN.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-B-PIN.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass0-compact-discovery.sh
++ NAME=install-phase3-pass0-compact-discovery.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass0-compact-discovery.sh /root/config-location-live-git/.scripts-next/install-phase3-pass0-compact-discovery.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass3b-safety-freshness-reconciliation.sh
++ NAME=install-phase4-pass3b-safety-freshness-reconciliation.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass3b-safety-freshness-reconciliation.sh /root/config-location-live-git/.scripts-next/install-phase4-pass3b-safety-freshness-reconciliation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22A.sh
++ NAME=FIX22A.sh
++ case "$NAME" in
++ cp /root/FIX22A.sh /root/config-location-live-git/.scripts-next/FIX22A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K4C-R2-RESULT.sh
++ NAME=FIX22K4C-R2-RESULT.sh
++ case "$NAME" in
++ cp /root/FIX22K4C-R2-RESULT.sh /root/config-location-live-git/.scripts-next/FIX22K4C-R2-RESULT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-final-integration-closure.sh
++ NAME=install-phase5-final-integration-closure.sh
++ case "$NAME" in
++ cp /root/install-phase5-final-integration-closure.sh /root/config-location-live-git/.scripts-next/install-phase5-final-integration-closure.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A3-COUNTRY-API.sh
++ NAME=PANEL-A3-COUNTRY-API.sh
++ case "$NAME" in
++ cp /root/PANEL-A3-COUNTRY-API.sh /root/config-location-live-git/.scripts-next/PANEL-A3-COUNTRY-API.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6d3-country-production-routes.sh
++ NAME=install-phase5-pass6d3-country-production-routes.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6d3-country-production-routes.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6d3-country-production-routes.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A4-AUTH-HTTP-DIAG-R2.sh
++ NAME=PANEL-A4-AUTH-HTTP-DIAG-R2.sh
++ case "$NAME" in
++ cp /root/PANEL-A4-AUTH-HTTP-DIAG-R2.sh /root/config-location-live-git/.scripts-next/PANEL-A4-AUTH-HTTP-DIAG-R2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-devrun-integration-v4.sh
++ NAME=install-devrun-integration-v4.sh
++ case "$NAME" in
++ cp /root/install-devrun-integration-v4.sh /root/config-location-live-git/.scripts-next/install-devrun-integration-v4.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase11-runtime-audit.sh
++ NAME=config-manager-phase11-runtime-audit.sh
++ case "$NAME" in
++ cp /root/config-manager-phase11-runtime-audit.sh /root/config-location-live-git/.scripts-next/config-manager-phase11-runtime-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/pack-config-reports.sh
++ NAME=pack-config-reports.sh
++ case "$NAME" in
++ cp /root/pack-config-reports.sh /root/config-location-live-git/.scripts-next/pack-config-reports.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A7-R3-CANONICAL-PUBLISH-DIAG.sh
++ NAME=PANEL-A7-R3-CANONICAL-PUBLISH-DIAG.sh
++ case "$NAME" in
++ cp /root/PANEL-A7-R3-CANONICAL-PUBLISH-DIAG.sh /root/config-location-live-git/.scripts-next/PANEL-A7-R3-CANONICAL-PUBLISH-DIAG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7D-R4-FAILSAFE.sh
++ NAME=FIX22K7D-R4-FAILSAFE.sh
++ case "$NAME" in
++ cp /root/FIX22K7D-R4-FAILSAFE.sh /root/config-location-live-git/.scripts-next/FIX22K7D-R4-FAILSAFE.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase1-core-architecture-audit.sh
++ NAME=phase1-core-architecture-audit.sh
++ case "$NAME" in
++ cp /root/phase1-core-architecture-audit.sh /root/config-location-live-git/.scripts-next/phase1-core-architecture-audit.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass2c-privileged-retest-dryrun.sh
++ NAME=install-phase3-pass2c-privileged-retest-dryrun.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass2c-privileged-retest-dryrun.sh /root/config-location-live-git/.scripts-next/install-phase3-pass2c-privileged-retest-dryrun.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-ultimate-project-intelligence.sh
++ NAME=create-ultimate-project-intelligence.sh
++ case "$NAME" in
++ cp /root/create-ultimate-project-intelligence.sh /root/config-location-live-git/.scripts-next/create-ultimate-project-intelligence.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-B-R3.sh
++ NAME=FIX22K1-CONSUMER-B-R3.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-B-R3.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-B-R3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/push-config-location-review.sh
++ NAME=push-config-location-review.sh
++ case "$NAME" in
++ cp /root/push-config-location-review.sh /root/config-location-live-git/.scripts-next/push-config-location-review.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase-name.sh
++ NAME=phase-name.sh
++ case "$NAME" in
++ cp /root/phase-name.sh /root/config-location-live-git/.scripts-next/phase-name.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-dev-context-aggregator-v1.sh
++ NAME=install-dev-context-aggregator-v1.sh
++ case "$NAME" in
++ cp /root/install-dev-context-aggregator-v1.sh /root/config-location-live-git/.scripts-next/install-dev-context-aggregator-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase2-pass2-safe-panel.sh
++ NAME=install-phase2-pass2-safe-panel.sh
++ case "$NAME" in
++ cp /root/install-phase2-pass2-safe-panel.sh /root/config-location-live-git/.scripts-next/install-phase2-pass2-safe-panel.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-C2.sh
++ NAME=FIX22K1-CONSUMER-C2.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-C2.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-C2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C10.sh
++ NAME=FIX22K1C10.sh
++ case "$NAME" in
++ cp /root/FIX22K1C10.sh /root/config-location-live-git/.scripts-next/FIX22K1C10.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9B.sh
++ NAME=FIX20.9B.sh
++ case "$NAME" in
++ cp /root/FIX20.9B.sh /root/config-location-live-git/.scripts-next/FIX20.9B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22C2.sh
++ NAME=FIX22C2.sh
++ case "$NAME" in
++ cp /root/FIX22C2.sh /root/config-location-live-git/.scripts-next/FIX22C2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-final-fix-settings-contract.sh
++ NAME=install-phase3-final-fix-settings-contract.sh
++ case "$NAME" in
++ cp /root/install-phase3-final-fix-settings-contract.sh /root/config-location-live-git/.scripts-next/install-phase3-final-fix-settings-contract.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-B-DIAG.sh
++ NAME=FIX22K1-CONSUMER-B-DIAG.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-B-DIAG.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-B-DIAG.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/auto-source-discovery-snapshot.sh
++ NAME=auto-source-discovery-snapshot.sh
++ case "$NAME" in
++ cp /root/auto-source-discovery-snapshot.sh /root/config-location-live-git/.scripts-next/auto-source-discovery-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22C1.sh
++ NAME=FIX22C1.sh
++ case "$NAME" in
++ cp /root/FIX22C1.sh /root/config-location-live-git/.scripts-next/FIX22C1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass2d-controlled-canary.sh
++ NAME=install-phase3-pass2d-controlled-canary.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass2d-controlled-canary.sh /root/config-location-live-git/.scripts-next/install-phase3-pass2d-controlled-canary.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C6.sh
++ NAME=FIX22K1C6.sh
++ case "$NAME" in
++ cp /root/FIX22K1C6.sh /root/config-location-live-git/.scripts-next/FIX22K1C6.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/evidence-storage-manager-v04-clean.sh
++ NAME=evidence-storage-manager-v04-clean.sh
++ case "$NAME" in
++ cp /root/evidence-storage-manager-v04-clean.sh /root/config-location-live-git/.scripts-next/evidence-storage-manager-v04-clean.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/find-real-tree.sh
++ NAME=find-real-tree.sh
++ case "$NAME" in
++ cp /root/find-real-tree.sh /root/config-location-live-git/.scripts-next/find-real-tree.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7D-R2.sh
++ NAME=FIX22K7D-R2.sh
++ case "$NAME" in
++ cp /root/FIX22K7D-R2.sh /root/config-location-live-git/.scripts-next/FIX22K7D-R2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22J-ALL.sh
++ NAME=FIX22J-ALL.sh
++ case "$NAME" in
++ cp /root/FIX22J-ALL.sh /root/config-location-live-git/.scripts-next/FIX22J-ALL.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/stream-clean-snapshot.sh
++ NAME=stream-clean-snapshot.sh
++ case "$NAME" in
++ cp /root/stream-clean-snapshot.sh /root/config-location-live-git/.scripts-next/stream-clean-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A2-R2-SCHEMA-FIX.sh
++ NAME=PANEL-A2-R2-SCHEMA-FIX.sh
++ case "$NAME" in
++ cp /root/PANEL-A2-R2-SCHEMA-FIX.sh /root/config-location-live-git/.scripts-next/PANEL-A2-R2-SCHEMA-FIX.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase11-source-snapshot-fix-v2.sh
++ NAME=config-manager-phase11-source-snapshot-fix-v2.sh
++ case "$NAME" in
++ cp /root/config-manager-phase11-source-snapshot-fix-v2.sh /root/config-location-live-git/.scripts-next/config-manager-phase11-source-snapshot-fix-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-final-whole-project-gap-report.sh
++ NAME=create-final-whole-project-gap-report.sh
++ case "$NAME" in
++ cp /root/create-final-whole-project-gap-report.sh /root/config-location-live-git/.scripts-next/create-final-whole-project-gap-report.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase1-4-5-6-core-intelligence-map.sh
++ NAME=phase1-4-5-6-core-intelligence-map.sh
++ case "$NAME" in
++ cp /root/phase1-4-5-6-core-intelligence-map.sh /root/config-location-live-git/.scripts-next/phase1-4-5-6-core-intelligence-map.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-FINAL.sh
++ NAME=FIX22K1-FINAL.sh
++ case "$NAME" in
++ cp /root/FIX22K1-FINAL.sh /root/config-location-live-git/.scripts-next/FIX22K1-FINAL.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-2-2-fetch-panel-safe-upgrade.sh
++ NAME=phase25-2-2-fetch-panel-safe-upgrade.sh
++ case "$NAME" in
++ cp /root/phase25-2-2-fetch-panel-safe-upgrade.sh /root/config-location-live-git/.scripts-next/phase25-2-2-fetch-panel-safe-upgrade.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix-dev-context-artifact-latest.sh
++ NAME=fix-dev-context-artifact-latest.sh
++ case "$NAME" in
++ cp /root/fix-dev-context-artifact-latest.sh /root/config-location-live-git/.scripts-next/fix-dev-context-artifact-latest.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase15-remark-intelligence-engine.sh
++ NAME=phase15-remark-intelligence-engine.sh
++ case "$NAME" in
++ cp /root/phase15-remark-intelligence-engine.sh /root/config-location-live-git/.scripts-next/phase15-remark-intelligence-engine.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/preflight-phase5-hardening-v2.sh
++ NAME=preflight-phase5-hardening-v2.sh
++ case "$NAME" in
++ cp /root/preflight-phase5-hardening-v2.sh /root/config-location-live-git/.scripts-next/preflight-phase5-hardening-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase2-final-regression.sh
++ NAME=install-phase2-final-regression.sh
++ case "$NAME" in
++ cp /root/install-phase2-final-regression.sh /root/config-location-live-git/.scripts-next/install-phase2-final-regression.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase25-2-3-2-safe-patch-engine.sh
++ NAME=phase25-2-3-2-safe-patch-engine.sh
++ case "$NAME" in
++ cp /root/phase25-2-3-2-safe-patch-engine.sh /root/config-location-live-git/.scripts-next/phase25-2-3-2-safe-patch-engine.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7F.sh
++ NAME=FIX22K7F.sh
++ case "$NAME" in
++ cp /root/FIX22K7F.sh /root/config-location-live-git/.scripts-next/FIX22K7F.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/evidence-storage-manager-v04-final.sh
++ NAME=evidence-storage-manager-v04-final.sh
++ case "$NAME" in
++ cp /root/evidence-storage-manager-v04-final.sh /root/config-location-live-git/.scripts-next/evidence-storage-manager-v04-final.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-A-RESULT.sh
++ NAME=FIX22K1-CONSUMER-A-RESULT.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-A-RESULT.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-A-RESULT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-final-source-snapshot.sh
++ NAME=create-final-source-snapshot.sh
++ case "$NAME" in
++ cp /root/create-final-source-snapshot.sh /root/config-location-live-git/.scripts-next/create-final-source-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/upload-snapshot-chunks.sh
++ NAME=upload-snapshot-chunks.sh
++ case "$NAME" in
++ cp /root/upload-snapshot-chunks.sh /root/config-location-live-git/.scripts-next/upload-snapshot-chunks.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-pipeline-v24-fixed.sh
++ NAME=setup-evidence-pipeline-v24-fixed.sh
++ case "$NAME" in
++ cp /root/setup-evidence-pipeline-v24-fixed.sh /root/config-location-live-git/.scripts-next/setup-evidence-pipeline-v24-fixed.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass4-adaptive-throughput.sh
++ NAME=install-phase3-pass4-adaptive-throughput.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass4-adaptive-throughput.sh /root/config-location-live-git/.scripts-next/install-phase3-pass4-adaptive-throughput.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H2.sh
++ NAME=FIX22H2.sh
++ case "$NAME" in
++ cp /root/FIX22H2.sh /root/config-location-live-git/.scripts-next/FIX22H2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K2B.sh
++ NAME=FIX22K2B.sh
++ case "$NAME" in
++ cp /root/FIX22K2B.sh /root/config-location-live-git/.scripts-next/FIX22K2B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix-phase1-3-analysis-path.sh
++ NAME=fix-phase1-3-analysis-path.sh
++ case "$NAME" in
++ cp /root/fix-phase1-3-analysis-path.sh /root/config-location-live-git/.scripts-next/fix-phase1-3-analysis-path.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K8B.sh
++ NAME=FIX22K8B.sh
++ case "$NAME" in
++ cp /root/FIX22K8B.sh /root/config-location-live-git/.scripts-next/FIX22K8B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/rebuild-final-source-only.sh
++ NAME=rebuild-final-source-only.sh
++ case "$NAME" in
++ cp /root/rebuild-final-source-only.sh /root/config-location-live-git/.scripts-next/rebuild-final-source-only.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K0-RESULT.sh
++ NAME=FIX22K0-RESULT.sh
++ case "$NAME" in
++ cp /root/FIX22K0-RESULT.sh /root/config-location-live-git/.scripts-next/FIX22K0-RESULT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/safe-convert-snapshot.sh
++ NAME=safe-convert-snapshot.sh
++ case "$NAME" in
++ cp /root/safe-convert-snapshot.sh /root/config-location-live-git/.scripts-next/safe-convert-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase1-core-architecture-analysis.sh
++ NAME=phase1-core-architecture-analysis.sh
++ case "$NAME" in
++ cp /root/phase1-core-architecture-analysis.sh /root/config-location-live-git/.scripts-next/phase1-core-architecture-analysis.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase1-3-architecture-normalizer.sh
++ NAME=phase1-3-architecture-normalizer.sh
++ case "$NAME" in
++ cp /root/phase1-3-architecture-normalizer.sh /root/config-location-live-git/.scripts-next/phase1-3-architecture-normalizer.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/source-wildcard-extractor.sh
++ NAME=source-wildcard-extractor.sh
++ case "$NAME" in
++ cp /root/source-wildcard-extractor.sh /root/config-location-live-git/.scripts-next/source-wildcard-extractor.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K6C.sh
++ NAME=FIX22K6C.sh
++ case "$NAME" in
++ cp /root/FIX22K6C.sh /root/config-location-live-git/.scripts-next/FIX22K6C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass3-country-authority-reconciliation.sh
++ NAME=install-phase5-pass3-country-authority-reconciliation.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass3-country-authority-reconciliation.sh /root/config-location-live-git/.scripts-next/install-phase5-pass3-country-authority-reconciliation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A1-FULL-AUDIT.sh
++ NAME=PANEL-A1-FULL-AUDIT.sh
++ case "$NAME" in
++ cp /root/PANEL-A1-FULL-AUDIT.sh /root/config-location-live-git/.scripts-next/PANEL-A1-FULL-AUDIT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K9D.sh
++ NAME=FIX22K9D.sh
++ case "$NAME" in
++ cp /root/FIX22K9D.sh /root/config-location-live-git/.scripts-next/FIX22K9D.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7D-R4.sh
++ NAME=FIX22K7D-R4.sh
++ case "$NAME" in
++ cp /root/FIX22K7D-R4.sh /root/config-location-live-git/.scripts-next/FIX22K7D-R4.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C13.sh
++ NAME=FIX22K1C13.sh
++ case "$NAME" in
++ cp /root/FIX22K1C13.sh /root/config-location-live-git/.scripts-next/FIX22K1C13.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22G1.sh
++ NAME=FIX22G1.sh
++ case "$NAME" in
++ cp /root/FIX22G1.sh /root/config-location-live-git/.scripts-next/FIX22G1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-pass4-permanent-removal-waiting.sh
++ NAME=install-phase4-pass4-permanent-removal-waiting.sh
++ case "$NAME" in
++ cp /root/install-phase4-pass4-permanent-removal-waiting.sh /root/config-location-live-git/.scripts-next/install-phase4-pass4-permanent-removal-waiting.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase122-ui-components.sh
++ NAME=config-manager-phase122-ui-components.sh
++ case "$NAME" in
++ cp /root/config-manager-phase122-ui-components.sh /root/config-location-live-git/.scripts-next/config-manager-phase122-ui-components.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H5.sh
++ NAME=FIX22H5.sh
++ case "$NAME" in
++ cp /root/FIX22H5.sh /root/config-location-live-git/.scripts-next/FIX22H5.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-config-location-github-sync.sh
++ NAME=setup-config-location-github-sync.sh
++ case "$NAME" in
++ cp /root/setup-config-location-github-sync.sh /root/config-location-live-git/.scripts-next/setup-config-location-github-sync.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/evidence-artifact-collector-v1.sh
++ NAME=evidence-artifact-collector-v1.sh
++ case "$NAME" in
++ cp /root/evidence-artifact-collector-v1.sh /root/config-location-live-git/.scripts-next/evidence-artifact-collector-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-prerequisites.sh
++ NAME=config-manager-prerequisites.sh
++ case "$NAME" in
++ cp /root/config-manager-prerequisites.sh /root/config-location-live-git/.scripts-next/config-manager-prerequisites.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K9A.sh
++ NAME=FIX22K9A.sh
++ case "$NAME" in
++ cp /root/FIX22K9A.sh /root/config-location-live-git/.scripts-next/FIX22K9A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/pack-321-final.sh
++ NAME=pack-321-final.sh
++ case "$NAME" in
++ cp /root/pack-321-final.sh /root/config-location-live-git/.scripts-next/pack-321-final.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H3.sh
++ NAME=FIX22H3.sh
++ case "$NAME" in
++ cp /root/FIX22H3.sh /root/config-location-live-git/.scripts-next/FIX22H3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-pass6a-panel-production-readmodel.sh
++ NAME=install-phase5-pass6a-panel-production-readmodel.sh
++ case "$NAME" in
++ cp /root/install-phase5-pass6a-panel-production-readmodel.sh /root/config-location-live-git/.scripts-next/install-phase5-pass6a-panel-production-readmodel.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase12-ui-foundation.sh
++ NAME=config-manager-phase12-ui-foundation.sh
++ case "$NAME" in
++ cp /root/config-manager-phase12-ui-foundation.sh /root/config-location-live-git/.scripts-next/config-manager-phase12-ui-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase05-environment-v2.sh
++ NAME=config-manager-phase05-environment-v2.sh
++ case "$NAME" in
++ cp /root/config-manager-phase05-environment-v2.sh /root/config-location-live-git/.scripts-next/config-manager-phase05-environment-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21A2.sh
++ NAME=FIX21A2.sh
++ case "$NAME" in
++ cp /root/FIX21A2.sh /root/config-location-live-git/.scripts-next/FIX21A2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K2A-RESULT.sh
++ NAME=FIX22K2A-RESULT.sh
++ case "$NAME" in
++ cp /root/FIX22K2A-RESULT.sh /root/config-location-live-git/.scripts-next/FIX22K2A-RESULT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/HT17-FINAL.sh
++ NAME=HT17-FINAL.sh
++ case "$NAME" in
++ cp /root/HT17-FINAL.sh /root/config-location-live-git/.scripts-next/HT17-FINAL.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A7-R1-FIX-VALIDATE.sh
++ NAME=PANEL-A7-R1-FIX-VALIDATE.sh
++ case "$NAME" in
++ cp /root/PANEL-A7-R1-FIX-VALIDATE.sh /root/config-location-live-git/.scripts-next/PANEL-A7-R1-FIX-VALIDATE.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-source-only-snapshot.sh
++ NAME=create-source-only-snapshot.sh
++ case "$NAME" in
++ cp /root/create-source-only-snapshot.sh /root/config-location-live-git/.scripts-next/create-source-only-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-config-location-live-mirror-v2.sh
++ NAME=install-config-location-live-mirror-v2.sh
++ case "$NAME" in
++ continue
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7D-R2-FAILSAFE.sh
++ NAME=FIX22K7D-R2-FAILSAFE.sh
++ case "$NAME" in
++ cp /root/FIX22K7D-R2-FAILSAFE.sh /root/config-location-live-git/.scripts-next/FIX22K7D-R2-FAILSAFE.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-final-atomic-pipeline-writer-contract.sh
++ NAME=install-phase5-final-atomic-pipeline-writer-contract.sh
++ case "$NAME" in
++ cp /root/install-phase5-final-atomic-pipeline-writer-contract.sh /root/config-location-live-git/.scripts-next/install-phase5-final-atomic-pipeline-writer-contract.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-pass5-lock-ownership-fix.sh
++ NAME=install-phase1-pass5-lock-ownership-fix.sh
++ case "$NAME" in
++ cp /root/install-phase1-pass5-lock-ownership-fix.sh /root/config-location-live-git/.scripts-next/install-phase1-pass5-lock-ownership-fix.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H1A2.sh
++ NAME=FIX22H1A2.sh
++ case "$NAME" in
++ cp /root/FIX22H1A2.sh /root/config-location-live-git/.scripts-next/FIX22H1A2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A4-R3-FINAL-VALIDATE.sh
++ NAME=PANEL-A4-R3-FINAL-VALIDATE.sh
++ case "$NAME" in
++ cp /root/PANEL-A4-R3-FINAL-VALIDATE.sh /root/config-location-live-git/.scripts-next/PANEL-A4-R3-FINAL-VALIDATE.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-C.sh
++ NAME=FIX22K1-CONSUMER-C.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-C.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K8D.sh
++ NAME=FIX22K8D.sh
++ case "$NAME" in
++ cp /root/FIX22K8D.sh /root/config-location-live-git/.scripts-next/FIX22K8D.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-engineering-intelligence-pack.sh
++ NAME=create-engineering-intelligence-pack.sh
++ case "$NAME" in
++ cp /root/create-engineering-intelligence-pack.sh /root/config-location-live-git/.scripts-next/create-engineering-intelligence-pack.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FINALIZE-PRE-PANEL-SNAPSHOT.sh
++ NAME=FINALIZE-PRE-PANEL-SNAPSHOT.sh
++ case "$NAME" in
++ cp /root/FINALIZE-PRE-PANEL-SNAPSHOT.sh /root/config-location-live-git/.scripts-next/FINALIZE-PRE-PANEL-SNAPSHOT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-C2-R2.sh
++ NAME=FIX22K1-CONSUMER-C2-R2.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-C2-R2.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-C2-R2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix20.7c3-semantic-atomic.sh
++ NAME=fix20.7c3-semantic-atomic.sh
++ case "$NAME" in
++ cp /root/fix20.7c3-semantic-atomic.sh /root/config-location-live-git/.scripts-next/fix20.7c3-semantic-atomic.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21E.sh
++ NAME=FIX21E.sh
++ case "$NAME" in
++ cp /root/FIX21E.sh /root/config-location-live-git/.scripts-next/FIX21E.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/stable-real-source-snapshot.sh
++ NAME=stable-real-source-snapshot.sh
++ case "$NAME" in
++ cp /root/stable-real-source-snapshot.sh /root/config-location-live-git/.scripts-next/stable-real-source-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix20.7c2-staged-runtime.sh
++ NAME=fix20.7c2-staged-runtime.sh
++ case "$NAME" in
++ cp /root/fix20.7c2-staged-runtime.sh /root/config-location-live-git/.scripts-next/fix20.7c2-staged-runtime.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-pass4-settings-ui-recovery.sh
++ NAME=install-phase1-pass4-settings-ui-recovery.sh
++ case "$NAME" in
++ cp /root/install-phase1-pass4-settings-ui-recovery.sh /root/config-location-live-git/.scripts-next/install-phase1-pass4-settings-ui-recovery.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H1C.sh
++ NAME=FIX22H1C.sh
++ case "$NAME" in
++ cp /root/FIX22H1C.sh /root/config-location-live-git/.scripts-next/FIX22H1C.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/collect-dev-audit-to-only-source.sh
++ NAME=collect-dev-audit-to-only-source.sh
++ case "$NAME" in
++ cp /root/collect-dev-audit-to-only-source.sh /root/config-location-live-git/.scripts-next/collect-dev-audit-to-only-source.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-source-only-v2.sh
++ NAME=create-source-only-v2.sh
++ case "$NAME" in
++ cp /root/create-source-only-v2.sh /root/config-location-live-git/.scripts-next/create-source-only-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C12.sh
++ NAME=FIX22K1C12.sh
++ case "$NAME" in
++ cp /root/FIX22K1C12.sh /root/config-location-live-git/.scripts-next/FIX22K1C12.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase3-config-manager-foundation.sh
++ NAME=phase3-config-manager-foundation.sh
++ case "$NAME" in
++ cp /root/phase3-config-manager-foundation.sh /root/config-location-live-git/.scripts-next/phase3-config-manager-foundation.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase2-control-plane.sh
++ NAME=install-phase2-control-plane.sh
++ case "$NAME" in
++ cp /root/install-phase2-control-plane.sh /root/config-location-live-git/.scripts-next/install-phase2-control-plane.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-migration-search-report.sh
++ NAME=create-migration-search-report.sh
++ case "$NAME" in
++ cp /root/create-migration-search-report.sh /root/config-location-live-git/.scripts-next/create-migration-search-report.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-B-R2.sh
++ NAME=FIX22K1-CONSUMER-B-R2.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-B-R2.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-B-R2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase1-pass2.sh
++ NAME=install-phase1-pass2.sh
++ case "$NAME" in
++ cp /root/install-phase1-pass2.sh /root/config-location-live-git/.scripts-next/install-phase1-pass2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A2-COUNTRY-READ-MODEL.sh
++ NAME=PANEL-A2-COUNTRY-READ-MODEL.sh
++ case "$NAME" in
++ cp /root/PANEL-A2-COUNTRY-READ-MODEL.sh /root/config-location-live-git/.scripts-next/PANEL-A2-COUNTRY-READ-MODEL.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22E.sh
++ NAME=FIX22E.sh
++ case "$NAME" in
++ cp /root/FIX22E.sh /root/config-location-live-git/.scripts-next/FIX22E.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K4B-PIN.sh
++ NAME=FIX22K4B-PIN.sh
++ case "$NAME" in
++ cp /root/FIX22K4B-PIN.sh /root/config-location-live-git/.scripts-next/FIX22K4B-PIN.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7D-R4-R2.sh
++ NAME=FIX22K7D-R4-R2.sh
++ case "$NAME" in
++ cp /root/FIX22K7D-R4-R2.sh /root/config-location-live-git/.scripts-next/FIX22K7D-R4-R2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX20.9D.sh
++ NAME=FIX20.9D.sh
++ case "$NAME" in
++ cp /root/FIX20.9D.sh /root/config-location-live-git/.scripts-next/FIX20.9D.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase3-pass1-retest-contract.sh
++ NAME=install-phase3-pass1-retest-contract.sh
++ case "$NAME" in
++ cp /root/install-phase3-pass1-retest-contract.sh /root/config-location-live-git/.scripts-next/install-phase3-pass1-retest-contract.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21A.sh
++ NAME=FIX21A.sh
++ case "$NAME" in
++ cp /root/FIX21A.sh /root/config-location-live-git/.scripts-next/FIX21A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K7D-R3B-WRITER-PIN.sh
++ NAME=FIX22K7D-R3B-WRITER-PIN.sh
++ case "$NAME" in
++ cp /root/FIX22K7D-R3B-WRITER-PIN.sh /root/config-location-live-git/.scripts-next/FIX22K7D-R3B-WRITER-PIN.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/PANEL-A1-SOURCE-DUMP.sh
++ NAME=PANEL-A1-SOURCE-DUMP.sh
++ case "$NAME" in
++ cp /root/PANEL-A1-SOURCE-DUMP.sh /root/config-location-live-git/.scripts-next/PANEL-A1-SOURCE-DUMP.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-config-location-devlog-sync.sh
++ NAME=install-config-location-devlog-sync.sh
++ case "$NAME" in
++ cp /root/install-config-location-devlog-sync.sh /root/config-location-live-git/.scripts-next/install-config-location-devlog-sync.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-ultimate-engineering-intelligence-v2.sh
++ NAME=create-ultimate-engineering-intelligence-v2.sh
++ case "$NAME" in
++ cp /root/create-ultimate-engineering-intelligence-v2.sh /root/config-location-live-git/.scripts-next/create-ultimate-engineering-intelligence-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase05-v3.sh
++ NAME=config-manager-phase05-v3.sh
++ case "$NAME" in
++ cp /root/config-manager-phase05-v3.sh /root/config-location-live-git/.scripts-next/config-manager-phase05-v3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-source-only-final.sh
++ NAME=create-source-only-final.sh
++ case "$NAME" in
++ cp /root/create-source-only-final.sh /root/config-location-live-git/.scripts-next/create-source-only-final.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase5-final-country-runtime-permission-contract.sh
++ NAME=install-phase5-final-country-runtime-permission-contract.sh
++ case "$NAME" in
++ cp /root/install-phase5-final-country-runtime-permission-contract.sh /root/config-location-live-git/.scripts-next/install-phase5-final-country-runtime-permission-contract.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/diagnose-settings-500.sh
++ NAME=diagnose-settings-500.sh
++ case "$NAME" in
++ cp /root/diagnose-settings-500.sh /root/config-location-live-git/.scripts-next/diagnose-settings-500.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-pipeline-v23.sh
++ NAME=setup-evidence-pipeline-v23.sh
++ case "$NAME" in
++ cp /root/setup-evidence-pipeline-v23.sh /root/config-location-live-git/.scripts-next/setup-evidence-pipeline-v23.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix20.7c-xray-capability-compatible.sh
++ NAME=fix20.7c-xray-capability-compatible.sh
++ case "$NAME" in
++ cp /root/fix20.7c-xray-capability-compatible.sh /root/config-location-live-git/.scripts-next/fix20.7c-xray-capability-compatible.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/final-code-only-snapshot.sh
++ NAME=final-code-only-snapshot.sh
++ case "$NAME" in
++ cp /root/final-code-only-snapshot.sh /root/config-location-live-git/.scripts-next/final-code-only-snapshot.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase06-baseline.sh
++ NAME=config-manager-phase06-baseline.sh
++ case "$NAME" in
++ cp /root/config-manager-phase06-baseline.sh /root/config-location-live-git/.scripts-next/config-manager-phase06-baseline.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22H1A.sh
++ NAME=FIX22H1A.sh
++ case "$NAME" in
++ cp /root/FIX22H1A.sh /root/config-location-live-git/.scripts-next/FIX22H1A.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/cleanup-snapshot-space.sh
++ NAME=cleanup-snapshot-space.sh
++ case "$NAME" in
++ cp /root/cleanup-snapshot-space.sh /root/config-location-live-git/.scripts-next/cleanup-snapshot-space.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1-CONSUMER-B.sh
++ NAME=FIX22K1-CONSUMER-B.sh
++ case "$NAME" in
++ cp /root/FIX22K1-CONSUMER-B.sh /root/config-location-live-git/.scripts-next/FIX22K1-CONSUMER-B.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/create-project-brain-v3.sh
++ NAME=create-project-brain-v3.sh
++ case "$NAME" in
++ cp /root/create-project-brain-v3.sh /root/config-location-live-git/.scripts-next/create-project-brain-v3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22C3.sh
++ NAME=FIX22C3.sh
++ case "$NAME" in
++ cp /root/FIX22C3.sh /root/config-location-live-git/.scripts-next/FIX22C3.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-phase4-final-integration-regression.sh
++ NAME=install-phase4-final-integration-regression.sh
++ case "$NAME" in
++ cp /root/install-phase4-final-integration-regression.sh /root/config-location-live-git/.scripts-next/install-phase4-final-integration-regression.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/make-review-txt.sh
++ NAME=make-review-txt.sh
++ case "$NAME" in
++ cp /root/make-review-txt.sh /root/config-location-live-git/.scripts-next/make-review-txt.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-dev-execution-evidence-v1.sh
++ NAME=install-dev-execution-evidence-v1.sh
++ case "$NAME" in
++ cp /root/install-dev-execution-evidence-v1.sh /root/config-location-live-git/.scripts-next/install-dev-execution-evidence-v1.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/finalize-gdrive-snapshots.sh
++ NAME=finalize-gdrive-snapshots.sh
++ case "$NAME" in
++ cp /root/finalize-gdrive-snapshots.sh /root/config-location-live-git/.scripts-next/finalize-gdrive-snapshots.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/fix20.7-xray-only-complete.sh
++ NAME=fix20.7-xray-only-complete.sh
++ case "$NAME" in
++ cp /root/fix20.7-xray-only-complete.sh /root/config-location-live-git/.scripts-next/fix20.7-xray-only-complete.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-gdrive-snapshots-v2.sh
++ NAME=setup-gdrive-snapshots-v2.sh
++ case "$NAME" in
++ cp /root/setup-gdrive-snapshots-v2.sh /root/config-location-live-git/.scripts-next/setup-gdrive-snapshots-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/setup-evidence-pipeline-v2.sh
++ NAME=setup-evidence-pipeline-v2.sh
++ case "$NAME" in
++ cp /root/setup-evidence-pipeline-v2.sh /root/config-location-live-git/.scripts-next/setup-evidence-pipeline-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX22K1C-RESULT.sh
++ NAME=FIX22K1C-RESULT.sh
++ case "$NAME" in
++ cp /root/FIX22K1C-RESULT.sh /root/config-location-live-git/.scripts-next/FIX22K1C-RESULT.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/install-dev-exec-v2.sh
++ NAME=install-dev-exec-v2.sh
++ case "$NAME" in
++ cp /root/install-dev-exec-v2.sh /root/config-location-live-git/.scripts-next/install-dev-exec-v2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/phase5-post-closure-hardening-all.sh
++ NAME=phase5-post-closure-hardening-all.sh
++ case "$NAME" in
++ cp /root/phase5-post-closure-hardening-all.sh /root/config-location-live-git/.scripts-next/phase5-post-closure-hardening-all.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/FIX21E2.sh
++ NAME=FIX21E2.sh
++ case "$NAME" in
++ cp /root/FIX21E2.sh /root/config-location-live-git/.scripts-next/FIX21E2.sh
++ IFS=
++ read -r -d '' FILE
+++ basename /root/config-manager-phase05-environment.sh
++ NAME=config-manager-phase05-environment.sh
++ case "$NAME" in
++ cp /root/config-manager-phase05-environment.sh /root/config-location-live-git/.scripts-next/config-manager-phase05-environment.sh
++ IFS=
++ read -r -d '' FILE
++ rsync -a --delete /root/config-location-live-git/.scripts-next/ /root/config-location-live-git/scripts/in-progress/
++ rm -rf /root/config-location-live-git/.scripts-next
++ cat
+++ date -Is
+++ hostname
++ find server/opt/config-location -type f -not -path '*/.git/*' -print0
++ sort -z
++ xargs -0 sha256sum
++ find scripts/in-progress -type f -print0
++ sort -z
++ xargs -0 sha256sum
+++ find server scripts -type f '(' -name .env -o -name '.env.*' -o -name '*.pem' -o -name '*.key' -o -name '*.p12' -o -name '*.pfx' -o -name '*.session' -o -name '*.session-journal' ')' -print
++ SENSITIVE=
++ '[' -n '' ']'
++ git add -A
++ git diff --cached --quiet
+++ git diff --cached --name-only
+++ wc -l
++ COUNT=16101
+++ git diff --cached --name-only
+++ head -n 8
+++ tr '\n' ' '
++ FIRST='.gitignore README.md manifests/in-progress-scripts-sha256.txt manifests/live-state.txt manifests/source-sha256.txt scripts/in-progress/FINALIZE-PRE-PANEL-SNAPSHOT.sh scripts/in-progress/FIX-FINAL-FORENSIC-SNAPSHOT-RACE.sh scripts/in-progress/FIX20.8AG.sh '
