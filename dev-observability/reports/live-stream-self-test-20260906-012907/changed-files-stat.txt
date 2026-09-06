@@ -1,0 +1,4 @@
+ .../live/live-stream-self-test-20260906-012907/current.log    |  4 ++++
+ manifests/source-sha256.txt                                   |  2 +-
+ server/opt/config-location/PROJECT-STATE.md                   | 11 ++++++-----
+ 3 files changed, 11 insertions(+), 6 deletions(-)
