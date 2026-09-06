@@ -1,0 +1,11 @@
+{
+  "script": "live-stream-self-test",
+  "started_at": "2026-09-06T01:29:20+00:00",
+  "finished_at": "2026-09-06T01:29:33+00:00",
+  "script_exit": 0,
+  "quick_check_exit": 0,
+  "git_before": "9c032890264bdd4771db4c2be28f0f289aeeb7b3",
+  "git_after": "d4398a18d4af4630257895f9b6db3638f98c77ae",
+  "source_changed": true,
+  "result": "PASS"
+}
