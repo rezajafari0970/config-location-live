@@ -303,6 +303,7 @@ a493eafba90c33e86fb04d9c8c98120df9910b0bf0c1f43ed367e6b53602cddd  scripts/in-pro
 1a09a5a61f3fda3fa0609be1a267f6e0b6c80ebc56c57f1ea4ad593e462817c3  scripts/in-progress/install-phase5-pass6e-country-route-observation.sh
 e440f182c2b0f953e4f7fcf997bca8163bd1d6c6696d0c74d735f9aa919621e0  scripts/in-progress/install-phase5-pass7-country-publish-hardening.sh
 e7254dd9d4734ad91296174596f6c5e6745bbccae74eac3729113f6ea8cbb490  scripts/in-progress/install-snapshot-dev-context-bridge-v1.sh
+7960ef4c992110b86b33ef68691d633fef96d6498c634ec3b62eb60049ddebdf  scripts/in-progress/make-config-location-audit-snapshot-v2.sh
 e65fe6d07564b377de3113ebefe80bf80c4816ff616dd4965440953fb452d9ff  scripts/in-progress/MAKE-CONFIG-LOCATION-FINAL-FORENSIC-SNAPSHOT.sh
 b19592a20e157bfd451102c5f6af963f9110213e14c0962ba8e4396c7d29fdad  scripts/in-progress/MAKE-CONFIG-LOCATION-FULL-MASTER-SNAPSHOT.sh
 c391434a166a98e0041cd62acef475f942a0e9e73509eaa1e66fc47f04ed0e12  scripts/in-progress/MAKE-CONFIG-LOCATION-FULL-SNAPSHOT.sh
