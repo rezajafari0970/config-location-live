@@ -1,0 +1,25 @@
+[main 10fdcfb] dev-evidence: 21 report files
+ 21 files changed, 1143 insertions(+)
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/changed-files-stat.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/changed-files.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/checkpoint.log
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/full-diff.patch
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/git-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/git-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/git-status-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/git-status-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/live-run-id.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/live-sync.log
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/quick-check-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/quick-check.log
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/report-publish.log
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/result.json
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/script-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/script-output.log
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/services-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/services-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/status-after.json
+ create mode 100644 dev-observability/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/status-before.json
+To github.com:rezajafari0970/config-location-live.git
+   e1074ce..10fdcfb  main -> main
+REPORT_PUBLISH=PASS
