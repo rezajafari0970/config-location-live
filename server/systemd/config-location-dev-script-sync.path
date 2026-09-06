@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch Config Location Development Scripts
+
+[Path]
+PathChanged=/root/dev-scripts/in-progress
+PathModified=/root/dev-scripts/in-progress
+
+[Install]
+WantedBy=multi-user.target
