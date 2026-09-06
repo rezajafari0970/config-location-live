@@ -4,3 +4,7 @@
 ================================================
 
 ========== [1/8] PRECHECK ==========
+CATALOG_BEFORE=200
+
+========== AUTOMATIC ROLLBACK ==========
+ROLLBACK=COMPLETE
