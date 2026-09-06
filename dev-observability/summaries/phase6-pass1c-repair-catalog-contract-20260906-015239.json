@@ -1,0 +1,11 @@
+{
+  "script": "phase6-pass1c-repair-catalog-contract",
+  "started_at": "2026-09-06T01:52:49+00:00",
+  "finished_at": "2026-09-06T01:52:58+00:00",
+  "script_exit": 127,
+  "quick_check_exit": 0,
+  "git_before": "018e753a3e4abc6942c3936887e79d7ca61e6ad9",
+  "git_after": "fcb203c64a04fa51f428aa9f8ac35394f944128d",
+  "source_changed": true,
+  "result": "FAIL"
+}
