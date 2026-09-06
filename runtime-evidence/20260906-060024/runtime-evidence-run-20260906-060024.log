@@ -1,0 +1,182 @@
+============================================================
+ CONFIG LOCATION RUNTIME EVIDENCE RUN
+============================================================
+STARTED_AT=2026-09-06T06:00:24+00:00
+LOG=/root/631/runtime-evidence-run-20260906-060024.log
+
+============================================================
+[1/8] PRECHECK
+============================================================
+PROJECT=/opt/config-location
+DEST=/root/631
+MODE=READ_ONLY
+PRECHECK=PASS
+
+============================================================
+[2/8] SYSTEMD
+============================================================
+SYSTEMD=PASS
+
+============================================================
+[3/8] JOURNALS
+============================================================
+JOURNALS=PASS
+
+============================================================
+[4/8] STATE MAP
+============================================================
+STATE_MAP=PASS
+
+============================================================
+[5/8] PERMISSIONS
+============================================================
+PERMISSIONS=PASS
+
+============================================================
+[6/8] SANITIZED STATE SAMPLES
+============================================================
+SANITIZE=/var/lib/config-location/health-scheduler/state.json
+SANITIZE=/var/lib/config-location/integrity/xray-runtime/capability-matrix.json
+SANITIZED_SAMPLES=PASS
+
+============================================================
+[7/8] RUNTIME CONTRACT
+============================================================
+health=200
+publish_status=200
+countries=200
+sub_all=200
+country_unknown=200
+country_invalid=404
+RUNTIME_CONTRACT=PASS
+
+============================================================
+[8/8] FINALIZE EVIDENCE
+============================================================
+PRIVATE_KEY_AUDIT=PASS
+PROXY_URI_AUDIT=PASS
+TRUNCATING_LARGE_EVIDENCE_FILE=/tmp/tmp.lwFcdnMQR3/config-location-runtime-evidence/state/filesystem-map.txt size=263874
+CONFIG_LOCATION_RUNTIME_EVIDENCE
+
+created_at=2026-09-06T06:01:31+00:00
+hostname=serverprojects.ptr.network
+project=/opt/config-location
+
+mode=READ_ONLY
+files=74
+total_bytes=341603
+systemd_contracts=34
+journal_files=8
+sanitized_samples=4
+
+COLLECTED:
+systemd units/runtime contracts
+bounded recent journals
+state filesystem structure only
+permissions/ACL
+sanitized representative states
+ports/processes
+timers
+runtime versions
+read-only HTTP probes
+service-user readability
+
+NOT_COLLECTED:
+raw VPN configs
+subscription bodies
+private keys
+passwords
+tokens
+cookies/sessions
+full /var/lib state
+full journals
+source mutation
+service restart
+Fetch Now
+Health execution
+
+REDACTION:
+private-key marker audit=PASS
+proxy URI audit=PASS
+
+========== CREATE ARCHIVE ==========
+/root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.tar.zst: 409600 bytes 
+/root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.tar.zst: OK
+
+============================================================
+ CONFIG LOCATION RUNTIME EVIDENCE READY
+============================================================
+ARCHIVE=/root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.tar.zst
+ARCHIVE_SIZE=36K
+SHA256=/root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.tar.zst.sha256
+MANIFEST=/root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.manifest.txt
+FILE_HASHES=/root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.files.sha256
+INFO=/root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.info.txt
+
+EVIDENCE_FILES=74
+EVIDENCE_BYTES=341603
+
+UPLOAD THESE 5 FILES:
+1) /root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.tar.zst
+2) /root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.tar.zst.sha256
+3) /root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.manifest.txt
+4) /root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.files.sha256
+5) /root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.info.txt
+
+CONFIG_LOCATION_RUNTIME_EVIDENCE=SUCCESS
+
+============================================================
+[8/8] FINALIZE EVIDENCE
+============================================================
+PRIVATE_KEY_AUDIT=PASS
+PROXY_URI_AUDIT=PASS
+CONFIG_LOCATION_RUNTIME_EVIDENCE
+
+created_at=2026-09-06T06:01:35+00:00
+hostname=serverprojects.ptr.network
+project=/opt/config-location
+
+mode=READ_ONLY
+files=74
+total_bytes=341603
+systemd_contracts=34
+journal_files=8
+sanitized_samples=4
+
+COLLECTED:
+systemd units/runtime contracts
+bounded recent journals
+state filesystem structure only
+permissions/ACL
+sanitized representative states
+ports/processes
+timers
+runtime versions
+read-only HTTP probes
+service-user readability
+
+NOT_COLLECTED:
+raw VPN configs
+subscription bodies
+private keys
+passwords
+tokens
+cookies/sessions
+full /var/lib state
+full journals
+source mutation
+service restart
+Fetch Now
+Health execution
+
+REDACTION:
+private-key marker audit=PASS
+proxy URI audit=PASS
+
+========== CREATE ARCHIVE ==========
+zstd: /root/631/CONFIG-LOCATION-RUNTIME-EVIDENCE-20260906-060024.tar.zst already exists; not overwritten  
+
+RUNTIME_EVIDENCE_EXIT=1
+RUNTIME_EVIDENCE_RESULT=FAIL
+SCRIPT_PRESERVED=YES
+LOG_PRESERVED=/root/631/runtime-evidence-run-20260906-060024.log

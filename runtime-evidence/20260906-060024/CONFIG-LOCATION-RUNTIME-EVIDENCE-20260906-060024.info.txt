@@ -1,0 +1,42 @@
+CONFIG_LOCATION_RUNTIME_EVIDENCE
+
+created_at=2026-09-06T06:01:35+00:00
+hostname=serverprojects.ptr.network
+project=/opt/config-location
+
+mode=READ_ONLY
+files=74
+total_bytes=341603
+systemd_contracts=34
+journal_files=8
+sanitized_samples=4
+
+COLLECTED:
+systemd units/runtime contracts
+bounded recent journals
+state filesystem structure only
+permissions/ACL
+sanitized representative states
+ports/processes
+timers
+runtime versions
+read-only HTTP probes
+service-user readability
+
+NOT_COLLECTED:
+raw VPN configs
+subscription bodies
+private keys
+passwords
+tokens
+cookies/sessions
+full /var/lib state
+full journals
+source mutation
+service restart
+Fetch Now
+Health execution
+
+REDACTION:
+private-key marker audit=PASS
+proxy URI audit=PASS
