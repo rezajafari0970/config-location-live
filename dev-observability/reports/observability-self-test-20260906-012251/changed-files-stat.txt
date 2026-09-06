@@ -1,0 +1,3 @@
+ manifests/source-sha256.txt                 |  2 +-
+ server/opt/config-location/PROJECT-STATE.md | 11 ++++++-----
+ 2 files changed, 7 insertions(+), 6 deletions(-)

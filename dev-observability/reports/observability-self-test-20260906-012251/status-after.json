@@ -1,0 +1,28 @@
+{
+  "updated_at": "2026-09-06T01:23:14.850120+00:00",
+  "project": "config-location",
+  "phase5": "PRODUCTION_COMPLETE",
+  "ready_for_phase6": true,
+  "git": {
+    "commit": "33cc3d4ab1d880d9ec768bac4586c63b4652d786",
+    "short": "33cc3d4",
+    "dirty_files": 0
+  },
+  "services": {
+    "panel": "active",
+    "country_worker": "active",
+    "country_event_consumer": "active",
+    "live_watch": "active",
+    "live_reconcile": "active"
+  },
+  "endpoints": {
+    "sub_all": 200,
+    "unknown": 200,
+    "conflict": 200
+  },
+  "runtime": {
+    "countries": 53,
+    "publishable": 1300
+  }
+}
+DEV_STATUS=UPDATED

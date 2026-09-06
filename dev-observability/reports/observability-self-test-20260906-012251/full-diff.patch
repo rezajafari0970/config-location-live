@@ -1,0 +1,50 @@
+diff --git a/manifests/source-sha256.txt b/manifests/source-sha256.txt
+index b3b5495..3dd2736 100644
+--- a/manifests/source-sha256.txt
++++ b/manifests/source-sha256.txt
+@@ -15570,7 +15570,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
+ 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
+ a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
+ da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+-290a2f9372eec916f77c306de87ac2514a88e2b8274ac2ef3dbce653323c695f  server/opt/config-location/PROJECT-STATE.md
++0ee604b407d27335aacbefc2c1fa96cc6c356d0e5ee4199f2e44ac10143206e3  server/opt/config-location/PROJECT-STATE.md
+ 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
+ 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
+ 0e63c7cea5c2b60eab9f70ac997137377fdec436cd7d88c4d8b37577a0da6ed3  server/opt/config-location/scripts/detector-test.py
+diff --git a/server/opt/config-location/PROJECT-STATE.md b/server/opt/config-location/PROJECT-STATE.md
+index 2e39667..a32f898 100644
+--- a/server/opt/config-location/PROJECT-STATE.md
++++ b/server/opt/config-location/PROJECT-STATE.md
+@@ -1,6 +1,6 @@
+ # Config Location — Project State
+ 
+-Updated: 2026-09-06T01:20:21+00:00
++Updated: 2026-09-06T01:23:02+00:00
+ 
+ ## Release
+ 
+@@ -9,8 +9,8 @@ Updated: 2026-09-06T01:20:21+00:00
+ 
+ ## Git
+ 
+-- Commit: `fa30ca45d65503a1a20311d2291681d92038c8e8`
+-- Short: `fa30ca4`
++- Commit: `cab274157a742cecf0089d4bce4b2e01bc806d80`
++- Short: `cab2741`
+ - Mirror dirty files: 0
+ 
+ ## Services
+@@ -29,10 +29,11 @@ Updated: 2026-09-06T01:20:21+00:00
+ 
+ ## Runtime
+ 
+-- Countries: 52
+-- Publishable configs: 1306
++- Countries: 53
++- Publishable configs: 1302
+ 
+ ## Active development scripts
+ 
+ ```
++observability-self-test.sh
+ ```
