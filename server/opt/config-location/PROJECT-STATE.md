@@ -1,6 +1,6 @@
 # Config Location — Project State
 
-Updated: 2026-09-06T01:29:45+00:00
+Updated: 2026-09-06T01:37:38+00:00
 
 ## Release
 
@@ -9,9 +9,9 @@ Updated: 2026-09-06T01:29:45+00:00
 
 ## Git
 
-- Commit: `d4398a18d4af4630257895f9b6db3638f98c77ae`
-- Short: `d4398a1`
-- Mirror dirty files: 0
+- Commit: `0ee1899f6c171f1e903b91f74b3f9f410a2c46f3`
+- Short: `0ee1899`
+- Mirror dirty files: 1
 
 ## Services
 
@@ -30,11 +30,12 @@ Updated: 2026-09-06T01:29:45+00:00
 ## Runtime
 
 - Countries: 52
-- Publishable configs: 1304
+- Publishable configs: 1298
 
 ## Active development scripts
 
 ```
 live-stream-self-test.sh
 observability-self-test.sh
+phase6-pass0-country-catalog-discovery.sh
 ```
