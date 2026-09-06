@@ -1,6 +1,6 @@
 # Config Location — Project State
 
-Updated: 2026-09-06T01:48:50+00:00
+Updated: 2026-09-06T01:49:09+00:00
 
 ## Release
 
@@ -9,8 +9,8 @@ Updated: 2026-09-06T01:48:50+00:00
 
 ## Git
 
-- Commit: `358b025f9819b8e04cd5b063a63827d1b8c0391f`
-- Short: `358b025`
+- Commit: `e1074ce55569625f53042e40b2137f6bcbf5be88`
+- Short: `e1074ce`
 - Mirror dirty files: 0
 
 ## Services
@@ -30,7 +30,7 @@ Updated: 2026-09-06T01:48:50+00:00
 ## Runtime
 
 - Countries: 53
-- Publishable configs: 1310
+- Publishable configs: 1308
 
 ## Active development scripts
 
