@@ -1,0 +1,149 @@
+========== TEST FILE ==========
+-rw-r--r-- 1 root root 64 Sep  6 01:00 /opt/config-location/LIVE-MIRROR-TEST.txt
+
+========== WATCH ==========
+○ config-location-live-watch.service - Config Location Real-Time GitHub Mirror
+     Loaded: loaded (/etc/systemd/system/config-location-live-watch.service; enabled; preset: enabled)
+     Active: inactive (dead) since Sun 2026-09-06 00:58:06 UTC; 6min ago
+   Duration: 5.808s
+ Invocation: a852079c1ad24cf5b1b020773355d136
+    Process: 3473624 ExecStart=/usr/local/sbin/config-location-live-watch (code=killed, signal=TERM)
+   Main PID: 3473624 (code=killed, signal=TERM)
+   Mem peak: 17.3M
+        CPU: 2.607s
+
+Sep 06 00:58:00 serverprojects.ptr.network systemd[1]: config-location-live-watch.service: Scheduled restart job, restart counter is at 10.
+Sep 06 00:58:00 serverprojects.ptr.network systemd[1]: Started config-location-live-watch.service - Config Location Real-Time GitHub Mirror.
+Sep 06 00:58:06 serverprojects.ptr.network systemd[1]: Stopping config-location-live-watch.service - Config Location Real-Time GitHub Mirror...
+Sep 06 00:58:06 serverprojects.ptr.network systemd[1]: config-location-live-watch.service: Deactivated successfully.
+Sep 06 00:58:06 serverprojects.ptr.network systemd[1]: Stopped config-location-live-watch.service - Config Location Real-Time GitHub Mirror.
+Sep 06 00:58:06 serverprojects.ptr.network systemd[1]: config-location-live-watch.service: Consumed 2.607s CPU time over 8.044s wall clock time, 17.3M memory peak.
+
+========== WATCH LOG ==========
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:            path: scripts/in-progress/fix-gdrive-final.sh:8
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:            path: scripts/in-progress/setup-gdrive-snapshots-v2.sh:10
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:            path: scripts/in-progress/setup-gdrive-snapshots.sh:9
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:        https://github.com/rezajafari0970/config-location-live/security/secret-scanning/unblock-secret/3IvruzPKpcveSjaKxT9m1o8XTrx
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:       —— Google OAuth Client Secret ————————————————————————
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:        locations:
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:            path: scripts/in-progress/finalize-gdrive-snapshots.sh:11
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:            path: scripts/in-progress/fix-gdrive-final.sh:9
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:            path: scripts/in-progress/setup-gdrive-snapshots-v2.sh:11
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:            path: scripts/in-progress/setup-gdrive-snapshots.sh:10
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:        https://github.com/rezajafari0970/config-location-live/security/secret-scanning/unblock-secret/3IvruwyyStBb9uh5iQNLGUdhhX0
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: remote:
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: To github.com:rezajafari0970/config-location-live.git
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]:  ! [remote rejected] main -> main (push declined due to repository rule violations)
+Sep 06 00:57:41 serverprojects.ptr.network config-location-live-watch[3472080]: error: failed to push some refs to 'github.com:rezajafari0970/config-location-live.git'
+Sep 06 00:57:42 serverprojects.ptr.network config-location-live-watch[3472235]: From github.com:rezajafari0970/config-location-live
+Sep 06 00:57:42 serverprojects.ptr.network config-location-live-watch[3472235]:  * branch            main       -> FETCH_HEAD
+Sep 06 00:57:42 serverprojects.ptr.network config-location-live-watch[3472251]: Current branch main is up to date.
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote: error: GH013: Repository rule violations found for refs/heads/main.
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote: - GITHUB PUSH PROTECTION
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:   —————————————————————————————————————————
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:     Resolve the following violations before pushing again
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:     - Push cannot contain secrets
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:      (?) Learn how to resolve a blocked push
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:       —— GitHub Personal Access Token ——————————————————————
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:        locations:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:            path: scripts/in-progress/github-config.sh:3
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:        https://github.com/rezajafari0970/config-location-live/security/secret-scanning/unblock-secret/3IvruzN4jeLq0kH3Rqto0wC2pYW
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:       —— Google OAuth Client ID ————————————————————————————
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:        locations:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:            path: scripts/in-progress/finalize-gdrive-snapshots.sh:10
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:            path: scripts/in-progress/fix-gdrive-final.sh:8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:            path: scripts/in-progress/setup-gdrive-snapshots-v2.sh:10
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:            path: scripts/in-progress/setup-gdrive-snapshots.sh:9
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:        https://github.com/rezajafari0970/config-location-live/security/secret-scanning/unblock-secret/3IvruzPKpcveSjaKxT9m1o8XTrx
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:       —— Google OAuth Client Secret ————————————————————————
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:        locations:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:            path: scripts/in-progress/finalize-gdrive-snapshots.sh:11
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:            path: scripts/in-progress/fix-gdrive-final.sh:9
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:            path: scripts/in-progress/setup-gdrive-snapshots-v2.sh:11
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:          - commit: a0e09bf8cda297123f7e6996142861d1a78a26e8
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:            path: scripts/in-progress/setup-gdrive-snapshots.sh:10
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:        https://github.com/rezajafari0970/config-location-live/security/secret-scanning/unblock-secret/3IvruwyyStBb9uh5iQNLGUdhhX0
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: remote:
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: To github.com:rezajafari0970/config-location-live.git
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]:  ! [remote rejected] main -> main (push declined due to repository rule violations)
+Sep 06 00:57:47 serverprojects.ptr.network config-location-live-watch[3472274]: error: failed to push some refs to 'github.com:rezajafari0970/config-location-live.git'
+Sep 06 00:57:58 serverprojects.ptr.network config-location-live-watch[3472298]: Failed to watch /root; upper limit on inotify watches reached!
+Sep 06 00:57:58 serverprojects.ptr.network config-location-live-watch[3472298]: Please increase the amount of inotify watches allowed per user via `/proc/sys/fs/inotify/max_user_watches'.
+Sep 06 00:57:58 serverprojects.ptr.network systemd[1]: config-location-live-watch.service: Main process exited, code=exited, status=1/FAILURE
+Sep 06 00:57:58 serverprojects.ptr.network systemd[1]: config-location-live-watch.service: Failed with result 'exit-code'.
+Sep 06 00:57:58 serverprojects.ptr.network systemd[1]: config-location-live-watch.service: Consumed 12.655s CPU time over 42.957s wall clock time, 410.2M memory peak.
+Sep 06 00:58:00 serverprojects.ptr.network systemd[1]: config-location-live-watch.service: Scheduled restart job, restart counter is at 10.
+Sep 06 00:58:00 serverprojects.ptr.network systemd[1]: Started config-location-live-watch.service - Config Location Real-Time GitHub Mirror.
+Sep 06 00:58:06 serverprojects.ptr.network systemd[1]: Stopping config-location-live-watch.service - Config Location Real-Time GitHub Mirror...
+Sep 06 00:58:06 serverprojects.ptr.network systemd[1]: config-location-live-watch.service: Deactivated successfully.
+Sep 06 00:58:06 serverprojects.ptr.network systemd[1]: Stopped config-location-live-watch.service - Config Location Real-Time GitHub Mirror.
+Sep 06 00:58:06 serverprojects.ptr.network systemd[1]: config-location-live-watch.service: Consumed 2.607s CPU time over 8.044s wall clock time, 17.3M memory peak.
+
+========== MANUAL SYNC ==========
+SKIP_SENSITIVE_SCRIPT=PANEL-A4-BROWSER-DATA-DIAG.sh
+SKIP_SENSITIVE_SCRIPT=fix20.6-universal-json.sh
+SKIP_SENSITIVE_SCRIPT=github-config.sh
+SKIP_SENSITIVE_SCRIPT=PANEL-A4-R4-STATE-READ-ACCESS-FIX.sh
+SKIP_SENSITIVE_SCRIPT=PANEL-A4-R5-RACE-SAFE-READ-ACL.sh
+SKIP_SENSITIVE_SCRIPT=HT4.2.sh
+SKIP_SENSITIVE_SCRIPT=setup-gdrive-snapshots.sh
+SKIP_SENSITIVE_SCRIPT=fix-gdrive-final.sh
+SKIP_SENSITIVE_SCRIPT=PANEL-A4-AUTH-HTTP-DIAG-R2.sh
+SKIP_SENSITIVE_SCRIPT=push-config-location-review.sh
+SKIP_SENSITIVE_SCRIPT=create-final-whole-project-gap-report.sh
+SKIP_SENSITIVE_SCRIPT=fix20.7c3-semantic-atomic.sh
+SKIP_SENSITIVE_SCRIPT=fix20.7c2-staged-runtime.sh
+SKIP_SENSITIVE_SCRIPT=fix20.7c-xray-capability-compatible.sh
+SKIP_SENSITIVE_SCRIPT=make-review-txt.sh
+SKIP_SENSITIVE_SCRIPT=finalize-gdrive-snapshots.sh
+SKIP_SENSITIVE_SCRIPT=fix20.7-xray-only-complete.sh
+SKIP_SENSITIVE_SCRIPT=setup-gdrive-snapshots-v2.sh
+SYNC_EXIT=0
+
+========== GIT ==========
+56a6fce (HEAD -> main, origin/main, origin/HEAD) diagnostic: live mirror watcher sync debug
+bd41ebd live-sync: 2 changes — manifests/source-sha256.txt server/opt/config-location/LIVE-MIRROR-TEST.txt
+0683a04 live-sync: 16081 changes — manifests/in-progress-scripts-sha256.txt manifests/live-state.txt manifests/source-sha256.txt scripts/in-progress/FINALIZE-PRE-PANEL-SNAPSHOT.sh scripts/in-progress/FIX-FINAL-FORENSIC-SNAPSHOT-RACE.sh scripts/in-progress/FIX20.8AG.sh scripts/in-progress/FIX20.8AH.sh scripts/in-progress/FIX20.8AI.sh
+6854a7a Initial commit
