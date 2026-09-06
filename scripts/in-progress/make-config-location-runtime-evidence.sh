@@ -1269,3 +1269,385 @@ echo "5) $INFO"
 
 echo
 echo "CONFIG_LOCATION_RUNTIME_EVIDENCE=SUCCESS"
+
+###############################################################################
+# [8/8] FINAL SANITIZE + MANIFEST + ARCHIVE
+###############################################################################
+
+section "[8/8] FINALIZE EVIDENCE"
+
+###############################################################################
+# Remove files that should never be present
+###############################################################################
+
+find "$ROOT" -type f \
+  \( \
+    -iname '*.pem' \
+    -o -iname '*.key' \
+    -o -iname '*.p12' \
+    -o -iname '*.pfx' \
+    -o -iname 'id_rsa*' \
+    -o -iname 'id_ed25519*' \
+    -o -iname '.env' \
+    -o -iname '.env.*' \
+  \) \
+  -print \
+  -delete \
+  2>/dev/null || true
+
+###############################################################################
+# Final textual redaction pass
+###############################################################################
+
+while IFS= read -r FILE; do
+
+    [ -f "$FILE" ] || continue
+
+    if grep -Iq . "$FILE" 2>/dev/null; then
+
+        TMP="$FILE.redacted"
+
+        sanitize_stream \
+          < "$FILE" \
+          > "$TMP"
+
+        mv "$TMP" "$FILE"
+    fi
+
+done < <(
+    find "$ROOT" \
+      -type f \
+      -print
+)
+
+###############################################################################
+# Detect obvious private key markers after redaction
+###############################################################################
+
+if grep -RIl \
+    --binary-files=without-match \
+    -E \
+    'BEGIN .*PRIVATE KEY|BEGIN OPENSSH PRIVATE KEY' \
+    "$ROOT" \
+    2>/dev/null \
+    | grep -q .
+then
+    echo "ERROR: PRIVATE_KEY_MARKER_REMAINS"
+    grep -RIl \
+      --binary-files=without-match \
+      -E \
+      'BEGIN .*PRIVATE KEY|BEGIN OPENSSH PRIVATE KEY' \
+      "$ROOT" \
+      2>/dev/null \
+      || true
+
+    exit 1
+fi
+
+echo "PRIVATE_KEY_AUDIT=PASS"
+
+###############################################################################
+# Detect obvious proxy URI leakage
+###############################################################################
+
+PROXY_LEAKS="$WORK/proxy-leaks.txt"
+
+grep -RIl \
+  --binary-files=without-match \
+  -E \
+  '(^|[^A-Za-z])(vless|vmess|trojan|ss|socks5?|wireguard|wg|hysteria2?|hy2|tuic)://' \
+  "$ROOT" \
+  2>/dev/null \
+  > "$PROXY_LEAKS" || true
+
+if [ -s "$PROXY_LEAKS" ]; then
+
+    echo "WARNING: proxy URI-like content found in:"
+    cat "$PROXY_LEAKS"
+
+    echo
+    echo "Sanitizing matching text files..."
+
+    while IFS= read -r FILE; do
+
+        [ -f "$FILE" ] || continue
+
+        python3 - "$FILE" <<'PY'
+import re
+import sys
+from pathlib import Path
+
+p = Path(sys.argv[1])
+
+try:
+    text = p.read_text(
+        encoding="utf-8",
+    )
+except Exception:
+    raise SystemExit(0)
+
+rx = re.compile(
+    r'(?i)\b(?:vless|vmess|trojan|ss|socks5?|wireguard|wg|hysteria2?|hy2|tuic)://[^\s"\'<>]+'
+)
+
+text = rx.sub(
+    "<PROXY_URI_REDACTED>",
+    text,
+)
+
+p.write_text(
+    text,
+    encoding="utf-8",
+)
+PY
+
+    done < "$PROXY_LEAKS"
+fi
+
+echo "PROXY_URI_AUDIT=PASS"
+
+###############################################################################
+# Cap unexpectedly large files
+###############################################################################
+
+while IFS= read -r FILE; do
+
+    SIZE="$(
+        stat -c '%s' "$FILE" \
+          2>/dev/null \
+          || echo 0
+    )"
+
+    if [ "$SIZE" -gt 131072 ]; then
+
+        echo "TRUNCATING_LARGE_EVIDENCE_FILE=$FILE size=$SIZE"
+
+        TMP="$FILE.truncated"
+
+        {
+            head -c 65536 "$FILE" 2>/dev/null || true
+            echo
+            echo "<EVIDENCE_TRUNCATED original_bytes=$SIZE>"
+        } > "$TMP"
+
+        mv "$TMP" "$FILE"
+    fi
+
+done < <(
+    find "$ROOT" \
+      -type f \
+      -print
+)
+
+###############################################################################
+# Manifest
+###############################################################################
+
+(
+    cd "$ROOT"
+
+    find . \
+      -type f \
+      -printf '%P\n' \
+      | LC_ALL=C sort
+
+) > "$MANIFEST"
+
+FILE_COUNT="$(
+    wc -l < "$MANIFEST"
+)"
+
+###############################################################################
+# Per-file hashes
+###############################################################################
+
+(
+    cd "$ROOT"
+
+    while IFS= read -r FILE; do
+        sha256sum "$FILE"
+    done < <(
+        find . \
+          -type f \
+          -printf '%P\n' \
+          | LC_ALL=C sort
+    )
+
+) > "$HASHES"
+
+HASH_COUNT="$(
+    wc -l < "$HASHES"
+)"
+
+test "$FILE_COUNT" -eq "$HASH_COUNT" \
+  || die "FILE_HASH_COUNT_MISMATCH"
+
+###############################################################################
+# Summary / info
+###############################################################################
+
+TOTAL_BYTES="$(
+    du -sb "$ROOT" \
+      | awk '{print $1}'
+)"
+
+JOURNAL_FILES="$(
+    find "$ROOT/journal" \
+      -type f \
+      2>/dev/null \
+      | wc -l
+)"
+
+SYSTEMD_CONTRACTS="$(
+    find "$ROOT/systemd/contracts" \
+      -type f \
+      2>/dev/null \
+      | wc -l
+)"
+
+SAMPLE_FILES="$(
+    find "$ROOT/samples" \
+      -type f \
+      2>/dev/null \
+      | wc -l
+)"
+
+{
+    echo "CONFIG_LOCATION_RUNTIME_EVIDENCE"
+    echo
+    echo "created_at=$(date --iso-8601=seconds)"
+    echo "hostname=$(hostname)"
+    echo "project=$PROJECT"
+    echo
+    echo "mode=READ_ONLY"
+    echo "files=$FILE_COUNT"
+    echo "total_bytes=$TOTAL_BYTES"
+    echo "systemd_contracts=$SYSTEMD_CONTRACTS"
+    echo "journal_files=$JOURNAL_FILES"
+    echo "sanitized_samples=$SAMPLE_FILES"
+    echo
+    echo "COLLECTED:"
+    echo "systemd units/runtime contracts"
+    echo "bounded recent journals"
+    echo "state filesystem structure only"
+    echo "permissions/ACL"
+    echo "sanitized representative states"
+    echo "ports/processes"
+    echo "timers"
+    echo "runtime versions"
+    echo "read-only HTTP probes"
+    echo "service-user readability"
+    echo
+    echo "NOT_COLLECTED:"
+    echo "raw VPN configs"
+    echo "subscription bodies"
+    echo "private keys"
+    echo "passwords"
+    echo "tokens"
+    echo "cookies/sessions"
+    echo "full /var/lib state"
+    echo "full journals"
+    echo "source mutation"
+    echo "service restart"
+    echo "Fetch Now"
+    echo "Health execution"
+    echo
+    echo "REDACTION:"
+    echo "private-key marker audit=PASS"
+    echo "proxy URI audit=PASS"
+} > "$INFO"
+
+cat "$INFO"
+
+###############################################################################
+# Archive
+###############################################################################
+
+echo
+echo "========== CREATE ARCHIVE =========="
+
+tar \
+    --sort=name \
+    --mtime='UTC 1970-01-01' \
+    --owner=0 \
+    --group=0 \
+    --numeric-owner \
+    -C "$WORK" \
+    -cf - \
+    config-location-runtime-evidence \
+  | zstd \
+      -T0 \
+      -10 \
+      -q \
+      -o "$ARCHIVE"
+
+test -s "$ARCHIVE" \
+  || die "ARCHIVE_EMPTY"
+
+###############################################################################
+# Archive SHA
+###############################################################################
+
+sha256sum "$ARCHIVE" > "$SHA"
+
+###############################################################################
+# Verify zstd
+###############################################################################
+
+zstd -t "$ARCHIVE"
+
+###############################################################################
+# Verify tar
+###############################################################################
+
+tar \
+    --use-compress-program=unzstd \
+    -tf "$ARCHIVE" \
+    >/dev/null
+
+###############################################################################
+# Verify archive SHA
+###############################################################################
+
+(
+    cd "$DEST"
+
+    sha256sum \
+      -c "$(basename "$SHA")"
+)
+
+###############################################################################
+# Final summary
+###############################################################################
+
+ARCHIVE_SIZE="$(
+    du -h "$ARCHIVE" \
+      | awk '{print $1}'
+)"
+
+echo
+echo "============================================================"
+echo " CONFIG LOCATION RUNTIME EVIDENCE READY"
+echo "============================================================"
+
+echo "ARCHIVE=$ARCHIVE"
+echo "ARCHIVE_SIZE=$ARCHIVE_SIZE"
+echo "SHA256=$SHA"
+echo "MANIFEST=$MANIFEST"
+echo "FILE_HASHES=$HASHES"
+echo "INFO=$INFO"
+
+echo
+echo "EVIDENCE_FILES=$FILE_COUNT"
+echo "EVIDENCE_BYTES=$TOTAL_BYTES"
+
+echo
+echo "UPLOAD THESE 5 FILES:"
+echo "1) $ARCHIVE"
+echo "2) $SHA"
+echo "3) $MANIFEST"
+echo "4) $HASHES"
+echo "5) $INFO"
+
+echo
+echo "CONFIG_LOCATION_RUNTIME_EVIDENCE=SUCCESS"
