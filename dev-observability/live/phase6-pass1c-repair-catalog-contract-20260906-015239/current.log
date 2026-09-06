@@ -15,3 +15,21 @@ BASELINE_CAPTURED=YES
 CATALOG_RESTORED=YES
 
 ========== [3/9] HTTP CONTRACT RECONCILE ==========
+HTTP_CONTRACT_RECONCILE=PASS
+
+========== [4/9] COMPILE + IMPORT ==========
+COUNTRY_COUNT= 42
+PUBLISHABLE= 1282
+IMPORT_CONTRACT=PASS
+COMPILE=PASS
+
+========== [5/9] RESTART ==========
+READY_TRY=1 STATE=active HTTP=000
+READY_TRY=2 STATE=active HTTP=200
+PANEL_READY=PASS
+
+========== [6/9] CORE REGRESSION ==========
+ALL=
+
+========== ROLLBACK ==========
+/root/dev-scripts/in-progress/phase6-pass1c-repair-catalog-contract.sh: line 43: cp: command not found
