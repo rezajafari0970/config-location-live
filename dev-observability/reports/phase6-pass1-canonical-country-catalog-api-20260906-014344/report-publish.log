@@ -1,0 +1,25 @@
+[main 164be42] dev-evidence: 20 report files
+ 20 files changed, 1503 insertions(+)
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/changed-files-stat.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/changed-files.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/checkpoint.log
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/full-diff.patch
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/git-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/git-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/git-status-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/git-status-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/live-run-id.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/live-sync.log
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/quick-check-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/quick-check.log
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/report-publish.log
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/result.json
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/script-exit-code.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/script-output.log
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/services-after.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/services-before.txt
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/status-after.json
+ create mode 100644 dev-observability/reports/phase6-pass1-canonical-country-catalog-api-20260906-014344/status-before.json
+To github.com:rezajafari0970/config-location-live.git
+   818a379..164be42  main -> main
+REPORT_PUBLISH=PASS
