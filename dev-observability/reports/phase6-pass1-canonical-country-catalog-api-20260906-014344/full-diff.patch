@@ -1,0 +1,796 @@
+diff --git a/dev-observability/live/phase6-pass1-canonical-country-catalog-api-20260906-014344/current.log b/dev-observability/live/phase6-pass1-canonical-country-catalog-api-20260906-014344/current.log
+new file mode 100644
+index 0000000..1f0422a
+--- /dev/null
++++ b/dev-observability/live/phase6-pass1-canonical-country-catalog-api-20260906-014344/current.log
+@@ -0,0 +1,35 @@
++================================================
++ PHASE 6 PASS 1
++ CANONICAL DYNAMIC COUNTRY CATALOG API
++================================================
++
++========== [1/10] PRECHECK ==========
++PRECHECK=PASS
++
++========== [2/10] BACKUP ==========
++BACKUP=PASS
++
++========== [3/10] CREATE CATALOG READ MODEL ==========
++CATALOG_MODULE=CREATED
++
++========== [4/10] PATCH HTTP API ==========
++HTTP_CATALOG_PATCH=PASS
++
++========== [5/10] COMPILE ==========
++COMPILE=PASS
++
++========== [6/10] UNIT CONTRACT ==========
++COUNTRY_COUNT= 42
++RESOLVED= 989
++UNKNOWN= 317
++CONFLICT= 0
++UNIT_CONTRACT=PASS
++
++========== [7/10] CONTROLLED RESTART ==========
++PANEL_RESTART=PASS
++
++========== [8/10] HTTP CATALOG REGRESSION ==========
++CATALOG_HTTP=302
++
++========== AUTOMATIC ROLLBACK ==========
++ROLLBACK=COMPLETE
+diff --git a/manifests/source-sha256.txt b/manifests/source-sha256.txt
+index c0ff5c8..98543d2 100644
+--- a/manifests/source-sha256.txt
++++ b/manifests/source-sha256.txt
+@@ -1,3 +1,4 @@
++de46fc3b63f6a398b5a526a195a77dc8f4e4d42972f88ab15fbb7e7661df6804  server/opt/config-location/302
+ 83094babfbd79d5083460d06d5ca4c2c745db7564a7bfdc3f13abfdad733e260  server/opt/config-location/app/control/api.py
+ 4643fd9033cb32d628946005fc67777ebb92355605870cc8a8e82709bf13cd5a  server/opt/config-location/app/control/audit.py
+ de80b361b0bb21909d69b0dfb60fbeef08cf4060a50e04d3e402987a71fd974d  server/opt/config-location/app/control/executor.py
+@@ -173,7 +174,7 @@ a7f1fddbe433d801f108f39cd8e303eb1495e46450b5d8027815c27c3838b3c2  server/opt/con
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  server/opt/config-location/app/parser/__init__.py
+ db1b8e37a373d328bf8f2b79f6f4f05dbcb08c65c1e59833bb94d645f788e947  server/opt/config-location/app/parser/universal_json.py
+ 060507dd06483d79ccbac12bbc9912c0fb40d84a4028e76425a0e7e1696c1aa4  server/opt/config-location/app/publish/filter.py
+-de46fc3b63f6a398b5a526a195a77dc8f4e4d42972f88ab15fbb7e7661df6804  server/opt/config-location/app/publish/http.py
++eccb0024b82153ddaaa801398d9a15c7132ed47c11410d93fa84971f4d68a1ae  server/opt/config-location/app/publish/http.py
+ c8b03a25c5b6d03a183e2ab6b4145a786208a84e70f73016cc5cbc4ebfd1536a  server/opt/config-location/app/publish/__init__.py
+ 06d5f5008fc12e26cbd72cc7bb1548f919c51f5e09585bfa9b24bbfcb16a3b4a  server/opt/config-location/app/publish/selftest.py
+ 53fe4d479579329a8ec055dce5e29a24b7a07bc44e4a982184c4df8a053bfd3b  server/opt/config-location/app/settings/engine.py
+@@ -15570,7 +15571,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
+ 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
+ a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
+ da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+-7e222e8a82bce4883076b92b1e8b97cae09ab4c94ae6763da9d40e233d66b446  server/opt/config-location/PROJECT-STATE.md
++f07bbf623cb6d50615f59f5e56d0784896bb07815f1c421269718534cc0b9df4  server/opt/config-location/PROJECT-STATE.md
+ 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
+ 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
+ 0e63c7cea5c2b60eab9f70ac997137377fdec436cd7d88c4d8b37577a0da6ed3  server/opt/config-location/scripts/detector-test.py
+diff --git a/server/opt/config-location/302 b/server/opt/config-location/302
+new file mode 100644
+index 0000000..4b7123a
+--- /dev/null
++++ b/server/opt/config-location/302
+@@ -0,0 +1,600 @@
++from __future__ import annotations
++
++from aiohttp import web
++
++from .filter import (
++    build_publish_snapshot,
++)
++
++from app.country.production_publish_projection import (
++    get_country_projection,
++)
++
++
++def _subscription_text(
++    config_type: str | None = None,
++) -> tuple[str, dict]:
++
++    snapshot = build_publish_snapshot(
++        config_type=config_type
++    )
++
++    lines = []
++
++    for record in snapshot.configs:
++
++        raw = record.get(
++            "raw"
++        )
++
++        if not isinstance(
++            raw,
++            str,
++        ):
++            continue
++
++        lines.append(
++            raw
++        )
++
++
++    text = "\n".join(
++        lines
++    )
++
++
++    if text:
++        text += "\n"
++
++
++    metadata = {
++        "policy_available":
++            snapshot.policy_available,
++
++        "total_configs":
++            snapshot.total_configs,
++
++        "publishable":
++            snapshot.publishable,
++
++        "suppressed":
++            snapshot.suppressed,
++
++        "missing_policy_record":
++            snapshot.missing_policy_record,
++
++        "corrupt_configs":
++            snapshot.corrupt_configs,
++
++        "config_type":
++            config_type,
++    }
++
++
++    return (
++        text,
++        metadata,
++    )
++
++
++async def subscription_all(
++    request: web.Request,
++):
++
++    text, metadata = (
++        _subscription_text()
++    )
++
++
++    return web.Response(
++        text=text,
++        content_type="text/plain",
++        charset="utf-8",
++        headers={
++            "Cache-Control":
++                "no-store",
++
++            "X-Config-Policy":
++                "health-lifecycle",
++
++            "X-Config-Publishable":
++                str(
++                    metadata[
++                        "publishable"
++                    ]
++                ),
++
++            "X-Config-Suppressed":
++                str(
++                    metadata[
++                        "suppressed"
++                    ]
++                ),
++
++            "X-Config-Corrupt":
++                str(
++                    metadata[
++                        "corrupt_configs"
++                    ]
++                ),
++        },
++    )
++
++
++async def subscription_type(
++    request: web.Request,
++):
++
++    config_type = str(
++        request.match_info.get(
++            "config_type",
++            "",
++        )
++    ).strip().lower()
++
++
++    if not config_type:
++        raise web.HTTPNotFound()
++
++
++    text, metadata = (
++        _subscription_text(
++            config_type
++        )
++    )
++
++
++    return web.Response(
++        text=text,
++        content_type="text/plain",
++        charset="utf-8",
++        headers={
++            "Cache-Control":
++                "no-store",
++
++            "X-Config-Policy":
++                "health-lifecycle",
++
++            "X-Config-Type":
++                config_type,
++
++            "X-Config-Publishable":
++                str(
++                    metadata[
++                        "publishable"
++                    ]
++                ),
++
++            "X-Config-Corrupt":
++                str(
++                    metadata[
++                        "corrupt_configs"
++                    ]
++                ),
++        },
++    )
++
++
++async def publish_status(
++    request: web.Request,
++):
++
++    snapshot = (
++        build_publish_snapshot()
++    )
++
++
++    return web.json_response(
++        {
++            "mode":
++                "production-output-filter",
++
++            "policy_available":
++                snapshot.policy_available,
++
++            "total_configs":
++                snapshot.total_configs,
++
++            "policy_tracked":
++                snapshot.policy_tracked,
++
++            "publishable":
++                snapshot.publishable,
++
++            "suppressed":
++                snapshot.suppressed,
++
++            "missing_policy_record":
++                snapshot.missing_policy_record,
++
++            "corrupt_configs":
++                snapshot.corrupt_configs,
++
++            "allowed_states": [
++                "healthy",
++                "recovered",
++            ],
++
++            "production_delete":
++                False,
++        }
++    )
++
++
++def _available_country_codes(
++    projection: dict,
++) -> set[str]:
++
++    codes = set()
++
++
++    for row in (
++        projection
++        .get(
++            "records",
++            {},
++        )
++        .values()
++    ):
++
++        if not isinstance(
++            row,
++            dict,
++        ):
++            continue
++
++
++        if row.get(
++            "state"
++        ) != "resolved":
++            continue
++
++
++        code = row.get(
++            "country_code"
++        )
++
++
++        if not isinstance(
++            code,
++            str,
++        ):
++            continue
++
++
++        code = (
++            code.strip().upper()
++        )
++
++
++        if (
++            len(code) == 2
++            and code.isalpha()
++        ):
++
++            codes.add(
++                code
++            )
++
++
++    return codes
++
++
++def _country_subscription_text(
++    country_code: str,
++) -> tuple[
++    str,
++    object,
++    int,
++]:
++
++    wanted = str(
++        country_code
++        or ""
++    ).strip().upper()
++
++
++    if wanted == "UNKNOWN":
++
++        wanted_mode = "UNKNOWN"
++
++    elif wanted == "CONFLICT":
++
++        wanted_mode = "CONFLICT"
++
++    elif (
++        len(wanted) == 2
++        and wanted.isalpha()
++    ):
++
++        wanted_mode = "COUNTRY"
++
++    else:
++
++        raise KeyError(
++            "invalid_country"
++        )
++
++
++    projection = (
++        get_country_projection()
++    )
++
++
++    snapshot = (
++        build_publish_snapshot()
++    )
++
++
++    if wanted_mode == "COUNTRY":
++
++        if (
++            wanted
++            not in _available_country_codes(
++                projection
++            )
++        ):
++
++            raise KeyError(
++                "country_not_present"
++            )
++
++
++    selected = []
++
++
++    for record in snapshot.configs:
++
++        if not isinstance(
++            record,
++            dict,
++        ):
++            continue
++
++
++        cid = record.get(
++            "id"
++        )
++
++
++        if not cid:
++            continue
++
++
++        row = (
++            projection
++            .get(
++                "records",
++                {},
++            )
++            .get(
++                str(cid)
++            )
++        )
++
++
++        if not isinstance(
++            row,
++            dict,
++        ):
++
++            state = "unknown"
++            code = None
++
++        else:
++
++            state = str(
++                row.get(
++                    "state",
++                    "unknown",
++                )
++            )
++
++
++            code = row.get(
++                "country_code"
++            )
++
++
++            if isinstance(
++                code,
++                str,
++            ):
++
++                code = (
++                    code
++                    .strip()
++                    .upper()
++                )
++
++
++        if wanted_mode == "UNKNOWN":
++
++            match = (
++                state == "unknown"
++            )
++
++        elif wanted_mode == "CONFLICT":
++
++            match = (
++                state == "conflict"
++            )
++
++        else:
++
++            match = (
++                state == "resolved"
++                and code == wanted
++            )
++
++
++        if not match:
++            continue
++
++
++        raw = record.get(
++            "raw"
++        )
++
++
++        if not isinstance(
++            raw,
++            str,
++        ):
++            continue
++
++
++        # Raw preservation contract:
++        # never call strip() on config payload.
++        if raw == "":
++            continue
++
++
++        selected.append(
++            raw
++        )
++
++
++    return (
++        "\n".join(
++            selected
++        ),
++        snapshot,
++        len(selected),
++    )
++
++
++async def subscription_country(
++    request: web.Request,
++):
++
++    country_code = str(
++        request.match_info.get(
++            "country_code",
++            "",
++        )
++    ).strip().upper()
++
++
++    if (
++        country_code
++        not in {
++            "UNKNOWN",
++            "CONFLICT",
++        }
++        and (
++            len(country_code) != 2
++            or not country_code.isalpha()
++        )
++    ):
++
++        raise web.HTTPNotFound()
++
++
++    try:
++
++        (
++            text,
++            snapshot,
++            count,
++        ) = _country_subscription_text(
++            country_code
++        )
++
++
++    except KeyError:
++
++        raise web.HTTPNotFound()
++
++
++    except Exception:
++
++        raise web.HTTPServiceUnavailable(
++            headers={
++                "Cache-Control":
++                    "no-store",
++
++                "Retry-After":
++                    "5",
++
++                "X-Country-Source":
++                    "canonical-projection-v2",
++
++                "X-Country-Contract":
++                    "unavailable",
++            }
++        )
++
++
++    return web.Response(
++        text=text,
++        content_type="text/plain",
++        charset="utf-8",
++        headers={
++            "Cache-Control":
++                "no-store",
++
++            "X-Config-Policy":
++                "health-lifecycle",
++
++            "X-Config-Country":
++                country_code,
++
++            "X-Config-Publishable":
++                str(
++                    snapshot.publishable
++                ),
++
++            "X-Config-Country-Count":
++                str(
++                    count
++                ),
++
++            "X-Config-Corrupt":
++                str(
++                    snapshot.corrupt_configs
++                ),
++
++            "X-Country-Source":
++                "canonical-projection-v2",
++
++            "X-Country-Contract":
++                "healthy",
++        },
++    )
++
++
++def install_publish_routes(
++    app: web.Application,
++) -> None:
++
++    if app.get(
++        "_ht18_publish_installed"
++    ):
++        return
++
++
++    app[
++        "_ht18_publish_installed"
++    ] = True
++
++
++    app.router.add_get(
++        "/sub/all",
++        subscription_all,
++    )
++
++    app.router.add_get(
++        "/sub/country/{country_code}",
++        subscription_country,
++    )
++
++    app.router.add_get(
++        "/sub/{config_type}",
++        subscription_type,
++    )
++
++    app.router.add_get(
++        "/api/publish/status",
++        publish_status,
++    )
+diff --git a/server/opt/config-location/PROJECT-STATE.md b/server/opt/config-location/PROJECT-STATE.md
+index dec6029..3778435 100644
+--- a/server/opt/config-location/PROJECT-STATE.md
++++ b/server/opt/config-location/PROJECT-STATE.md
+@@ -1,6 +1,6 @@
+ # Config Location — Project State
+ 
+-Updated: 2026-09-06T01:38:11+00:00
++Updated: 2026-09-06T01:43:55+00:00
+ 
+ ## Release
+ 
+@@ -9,8 +9,8 @@ Updated: 2026-09-06T01:38:11+00:00
+ 
+ ## Git
+ 
+-- Commit: `a65a3e868fb601781b095bb93bf743f84f367638`
+-- Short: `a65a3e8`
++- Commit: `6f2f0761aedb7fb8605d17a26e2bd8afbcc2975f`
++- Short: `6f2f076`
+ - Mirror dirty files: 0
+ 
+ ## Services
+@@ -30,11 +30,12 @@ Updated: 2026-09-06T01:38:11+00:00
+ ## Runtime
+ 
+ - Countries: 53
+-- Publishable configs: 1311
++- Publishable configs: 1306
+ 
+ ## Active development scripts
+ 
+ ```
+ live-stream-self-test.sh
+ observability-self-test.sh
++phase6-pass1-canonical-country-catalog-api.sh
+ ```
+diff --git a/server/opt/config-location/app/publish/http.py b/server/opt/config-location/app/publish/http.py
+index 4b7123a..7e36994 100644
+--- a/server/opt/config-location/app/publish/http.py
++++ b/server/opt/config-location/app/publish/http.py
+@@ -10,6 +10,10 @@ from app.country.production_publish_projection import (
+     get_country_projection,
+ )
+ 
++from app.country.catalog import (
++    build_country_catalog,
++)
++
+ 
+ def _subscription_text(
+     config_type: str | None = None,
+@@ -175,6 +179,57 @@ async def subscription_type(
+     )
+ 
+ 
++async def country_catalog(
++    request: web.Request,
++):
++
++    try:
++
++        catalog = (
++            build_country_catalog()
++        )
++
++    except Exception:
++
++        raise web.HTTPServiceUnavailable(
++            headers={
++                "Cache-Control":
++                    "no-store",
++
++                "Retry-After":
++                    "5",
++
++                "X-Country-Source":
++                    "canonical-projection-v2",
++
++                "X-Country-Catalog-Contract":
++                    "unavailable",
++            }
++        )
++
++
++    return web.json_response(
++        catalog,
++        headers={
++            "Cache-Control":
++                "no-store",
++
++            "X-Country-Source":
++                "canonical-projection-v2",
++
++            "X-Country-Catalog-Contract":
++                "healthy",
++
++            "X-Country-Count":
++                str(
++                    catalog[
++                        "country_count"
++                    ]
++                ),
++        },
++    )
++
++
+ async def publish_status(
+     request: web.Request,
+ ):
+@@ -594,6 +649,11 @@ def install_publish_routes(
+         subscription_type,
+     )
+ 
++    app.router.add_get(
++        "/api/countries",
++        country_catalog,
++    )
++
+     app.router.add_get(
+         "/api/publish/status",
+         publish_status,

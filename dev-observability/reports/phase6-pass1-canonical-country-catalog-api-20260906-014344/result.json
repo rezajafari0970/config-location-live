@@ -1,0 +1,11 @@
+{
+  "script": "phase6-pass1-canonical-country-catalog-api",
+  "started_at": "2026-09-06T01:43:55+00:00",
+  "finished_at": "2026-09-06T01:44:05+00:00",
+  "script_exit": 1,
+  "quick_check_exit": 1,
+  "git_before": "6f2f0761aedb7fb8605d17a26e2bd8afbcc2975f",
+  "git_after": "818a3792e850720b27b8bfc94721e7d18e2e77bf",
+  "source_changed": true,
+  "result": "FAIL"
+}
