@@ -1,0 +1,14 @@
+================================================
+ PHASE 6 PASS 1B — RECOVERY DIAGNOSTIC
+================================================
+
+========== [1/8] PROCESSES ==========
+3626070 bash /usr/local/sbin/config-location-dev-run /root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh
+3628199 bash /root/dev-scripts/in-progress/phase6-pass1b-recovery-diagnostic.sh
+3628200 bash /usr/local/sbin/config-location-live-log-stream phase6-pass1b-recovery-diagnostic-20260906-014839 /root/dev-scripts/live/phase6-pass1b-recovery-diagnostic-20260906-014839/current.log 3628199
+3628201 tee -a /root/dev-scripts/live/phase6-pass1b-recovery-diagnostic-20260906-014839/current.log /root/dev-scripts/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/script-output.log
+3628202 tee -a /root/dev-scripts/live/phase6-pass1b-recovery-diagnostic-20260906-014839/current.log /root/dev-scripts/reports/phase6-pass1b-recovery-diagnostic-20260906-014839/script-output.log
+
+========== [2/8] SERVICES ==========
+config-location-panel.service=activating
+config-location-country-worker.service=
