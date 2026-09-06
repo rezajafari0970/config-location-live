@@ -1,6 +1,6 @@
 # Config Location — Project State
 
-Updated: 2026-09-06T01:20:21+00:00
+Updated: 2026-09-06T01:23:02+00:00
 
 ## Release
 
@@ -9,8 +9,8 @@ Updated: 2026-09-06T01:20:21+00:00
 
 ## Git
 
-- Commit: `fa30ca45d65503a1a20311d2291681d92038c8e8`
-- Short: `fa30ca4`
+- Commit: `cab274157a742cecf0089d4bce4b2e01bc806d80`
+- Short: `cab2741`
 - Mirror dirty files: 0
 
 ## Services
@@ -29,10 +29,11 @@ Updated: 2026-09-06T01:20:21+00:00
 
 ## Runtime
 
-- Countries: 52
-- Publishable configs: 1306
+- Countries: 53
+- Publishable configs: 1302
 
 ## Active development scripts
 
 ```
+observability-self-test.sh
 ```
