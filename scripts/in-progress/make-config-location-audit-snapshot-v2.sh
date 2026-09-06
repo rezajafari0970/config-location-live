@@ -364,7 +364,6 @@ root = Path(sys.argv[1])
 
 sensitive_key = re.compile(
     r"""
-    (?ix)
     (
       password
       |passwd
@@ -379,12 +378,12 @@ sensitive_key = re.compile(
       |session
       |credential
     )
-    """
+    """,
+    re.IGNORECASE | re.VERBOSE,
 )
 
 assign = re.compile(
     r"""
-    (?ix)
     ^
     (?P<prefix>\s*
       ["']?
@@ -398,7 +397,8 @@ assign = re.compile(
     )
     (?P<value>.+)
     $
-    """
+    """,
+    re.IGNORECASE | re.VERBOSE,
 )
 
 for path in root.rglob("*"):
