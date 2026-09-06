@@ -1,0 +1,11 @@
+{
+  "script": "phase6-pass2-public-country-catalog-auth",
+  "started_at": "2026-09-06T02:01:57+00:00",
+  "finished_at": "2026-09-06T02:02:06+00:00",
+  "script_exit": 1,
+  "quick_check_exit": 0,
+  "git_before": "1c5429976eb3ff98c93791bc6e1ccb12961b853e",
+  "git_after": "9201729e22c0b096fc5e389baa14818b6a7863aa",
+  "source_changed": true,
+  "result": "FAIL"
+}
