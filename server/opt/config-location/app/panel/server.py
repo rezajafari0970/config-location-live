@@ -292,6 +292,7 @@ async def auth_middleware(
             "/login",
             "/health",
             "/api/publish/status",
+            "/api/countries",
         }
         or request.path.startswith(
             "/devlog/"
