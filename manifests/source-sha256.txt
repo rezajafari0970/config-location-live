@@ -15601,7 +15601,7 @@ fceffd6e6f1d4a5227f4727b887011ae45a9a88574279e517b9c573f8015338a  server/opt/con
 84f37bd4a65e7a284cdc41de44c93eb627fdf2f85cd3324a6beb4c8b54fa5407  server/opt/config-location/manifests/phase-2A2-settings-engine-hardening-evidence.txt
 9d31a701006e25879fec5d4e411e97f3bb4bea0d485cf8ea8b45860145233199  server/opt/config-location/manifests/phase-2A3-settings-panel-api-freeze-evidence.txt
 e81db0c2d1ef65f874649c6b7780748148a8ea4252994bf77e8019554bf32bae  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-audit.txt
-fbf55fb8fd3cc080986e718c76f08066dfce71f132cef5a04933b8957c9482b8  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-progress.txt
+ef0b0b3d8c922df0b15e5fa211dd9bf90b09c5ab07f1f1c509ea6228445fdfd3  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-progress.txt
 40fdea2e2b12a04202a7a4e6ef02930b1a46219f4a4c4018b9933da59ef4aa78  server/opt/config-location/manifests/settings-freeze-v2.txt
 b485ee8ca5fb02f51ad5aa30546ccefb64cecc7df3316ab27f7ce75ce2305f9e  server/opt/config-location/PROJECT-STATE.md
 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
