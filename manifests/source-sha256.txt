@@ -15588,11 +15588,13 @@ a1498b5e7645ca34ddd6c7ebaf0be5ff5c04d2a7ad951f9524aaf9ff16da1a19  server/opt/con
 e4de891ac8f58d4fb6b00c4a26cf99621a8307557ec073a519a320b0fe32738f  server/opt/config-location/manifests/core-fix-part3-v1-final-evidence.txt
 6212f2a255b6d45901a5a3561a5b390459ce295a0867bdb2b6eeee12e3c126a9  server/opt/config-location/manifests/core-fix-part3-v2-final-evidence.txt
 e1dd710de0041fa69f3a2b12bde641b8bc13e3b46522d019a4a2756647f703f2  server/opt/config-location/manifests/core-freeze-v1.txt
+59e69016ce47c4b1256c35dbf0ab07423c10c54f35e5847b8daebd2def881a5b  server/opt/config-location/manifests/core-freeze-v2.txt
 323808a1be19d556a1e838bff8df93e6fdd79368ee7ac6b79f8dc854f20305e9  server/opt/config-location/manifests/core-hardening-final-A-v1-evidence.txt
 0420fb5c42d8c81cdcf573c219811fb476b6459443421a25258d51fc1418e8c9  server/opt/config-location/manifests/core-hardening-final-B-v1-debug-evidence.txt
 7c7523bc63154c569dfca98757d5b9ce274e6ed12cd29620e1b8d792cd98ae61  server/opt/config-location/manifests/core-hardening-final-B-v1-evidence.txt
 fceffd6e6f1d4a5227f4727b887011ae45a9a88574279e517b9c573f8015338a  server/opt/config-location/manifests/core-hardening-final-B-v2-evidence.txt
-02d79c29b2bfa98afcdb72404f4dcde5bc6e91cb49c1ce0de05ff506908f9eff  server/opt/config-location/manifests/core-hardening-progress-v2.txt
+15f4881875bf0aaf201b61d1f4f2a738ec302ac7c6952b3733142dde3b12a4a6  server/opt/config-location/manifests/core-hardening-final-C-v2-evidence.txt
+cbe88bdadb2869c1d9cd190d25d41a8aa3997bb81930f3acfb5526638f544968  server/opt/config-location/manifests/core-hardening-progress-v2.txt
 b485ee8ca5fb02f51ad5aa30546ccefb64cecc7df3316ab27f7ce75ce2305f9e  server/opt/config-location/PROJECT-STATE.md
 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
