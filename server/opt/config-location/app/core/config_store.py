@@ -412,6 +412,20 @@ def upsert_config(
         fingerprint
     ):
 
+        if is_source_deleted(
+            source_id
+        ):
+            return (
+                {
+                    "id": fingerprint,
+                    "source_ids": [],
+                    "ignored_deleted_source": True,
+                    "stale_write_blocked_inside_config_lock":
+                        True,
+                },
+                False,
+            )
+
         if path.exists():
 
             try:
@@ -565,6 +579,156 @@ def config_stats():
     }
 
 
+def _delete_config_unlocked(
+    fingerprint: str,
+    *,
+    reason: str,
+    actor: str = "core",
+    metadata: dict | None = None,
+):
+    fingerprint = _validate_fingerprint(
+        fingerprint
+    )
+
+    path = _path(
+        fingerprint
+    )
+
+    result = {
+        "fingerprint": fingerprint,
+        "status": "missing",
+        "deleted": False,
+        "already_missing": False,
+        "reason": str(reason),
+        "actor": str(actor),
+        "metadata":
+            dict(metadata)
+            if isinstance(metadata, dict)
+            else {},
+        "deleted_at": None,
+    }
+
+
+    if not path.exists():
+
+        result[
+            "already_missing"
+        ] = True
+
+        return result
+
+
+    archive_latest_before_config_delete(
+        fingerprint,
+        reason=str(reason),
+    )
+
+
+    try:
+
+        path.unlink()
+
+        _fsync_directory(
+            path.parent
+        )
+
+    except FileNotFoundError:
+
+        result[
+            "already_missing"
+        ] = True
+
+        return result
+
+
+    result[
+        "status"
+    ] = "deleted"
+
+    result[
+        "deleted"
+    ] = True
+
+    result[
+        "deleted_at"
+    ] = now_iso()
+
+
+    return result
+
+
+def delete_config(
+    fingerprint: str,
+    *,
+    reason: str,
+    actor: str = "core",
+    metadata: dict | None = None,
+):
+    fingerprint = _validate_fingerprint(
+        fingerprint
+    )
+
+    with _lock(
+        fingerprint
+    ):
+        return _delete_config_unlocked(
+            fingerprint,
+            reason=reason,
+            actor=actor,
+            metadata=metadata,
+        )
+
+
+def delete_configs(
+    fingerprints,
+    *,
+    reason: str,
+    actor: str = "core",
+    metadata: dict | None = None,
+):
+    values = sorted(
+        _validate_fingerprint_set(
+            fingerprints
+        )
+    )
+
+    results = []
+
+    for fingerprint in values:
+
+        results.append(
+            delete_config(
+                fingerprint,
+                reason=reason,
+                actor=actor,
+                metadata=metadata,
+            )
+        )
+
+
+    return {
+        "requested": len(values),
+
+        "deleted": sum(
+            1
+            for item in results
+            if item.get(
+                "deleted"
+            )
+        ),
+
+        "already_missing": sum(
+            1
+            for item in results
+            if item.get(
+                "already_missing"
+            )
+        ),
+
+        "results": results,
+    }
+
+
 def detach_source_from_configs(source_id: str):
     """
     Remove a source from Config ownership while holding
@@ -661,21 +825,20 @@ def detach_source_from_configs(source_id: str):
 
             else:
 
-                archive_latest_before_config_delete(
+                deletion = _delete_config_unlocked(
                     path.stem,
                     reason="detach_source_last_owner",
+                    actor="source_manager",
+                    metadata={
+                        "source_id":
+                            source_id,
+                    },
                 )
 
-                try:
-                    path.unlink()
-
-                    _fsync_directory(
-                        path.parent
-                    )
+                if deletion.get(
+                    "deleted"
+                ):
                     deleted += 1
-
-                except FileNotFoundError:
-                    pass
 
     remove_source_snapshot(
         source_id
@@ -789,21 +952,20 @@ def detach_sources_from_configs(source_ids):
 
             else:
 
-                archive_latest_before_config_delete(
+                deletion = _delete_config_unlocked(
                     path.stem,
                     reason="detach_sources_last_owner",
+                    actor="source_manager",
+                    metadata={
+                        "source_ids":
+                            sorted(ids),
+                    },
                 )
 
-                try:
-                    path.unlink()
-
-                    _fsync_directory(
-                        path.parent
-                    )
+                if deletion.get(
+                    "deleted"
+                ):
                     deleted += 1
-
-                except FileNotFoundError:
-                    pass
 
     remove_source_snapshots(
         ids
@@ -1131,6 +1293,19 @@ def sync_source_snapshot(
         source_id
     ):
 
+        if is_source_deleted(
+            source_id
+        ):
+            result[
+                "source_deleted"
+            ] = True
+
+            result[
+                "stale_snapshot_blocked_inside_lock"
+            ] = True
+
+            return result
+
         previous = _read_source_snapshot_unlocked(
             source_id
         )
@@ -1249,24 +1424,22 @@ def sync_source_snapshot(
 
                 else:
 
-                    try:
-                        archive_latest_before_config_delete(
-                            path.stem,
-                            reason="source_snapshot_last_owner",
-                        )
+                    deletion = _delete_config_unlocked(
+                        fingerprint,
+                        reason="source_snapshot_last_owner",
+                        actor="source_snapshot",
+                        metadata={
+                            "source_id":
+                                source_id,
+                        },
+                    )
 
-                        path.unlink()
-
-                        _fsync_directory(
-                            path.parent
-                        )
-
+                    if deletion.get(
+                        "deleted"
+                    ):
                         result[
                             "deleted"
                         ] += 1
-
-                    except FileNotFoundError:
-                        pass
 
         _write_source_snapshot_unlocked(
             source_id,
@@ -1281,8 +1454,7 @@ def sync_source_snapshot(
 
 def delete_all_configs():
     """
-    Delete every Config under the same per-config lock
-    domain used by upsert and ownership reconciliation.
+    Delete all Configs through the canonical deletion API.
     """
 
     delete_all_source_snapshots()
@@ -1295,31 +1467,25 @@ def delete_all_configs():
         )
     ):
 
-        fingerprint = path.stem
+        fingerprint = _validate_fingerprint(
+            path.stem
+        )
 
         with _lock(
             fingerprint
         ):
 
-            if not path.exists():
-                continue
-
-            archive_latest_before_config_delete(
+            result = _delete_config_unlocked(
                 fingerprint,
                 reason="delete_all_configs",
+                actor="core",
             )
 
-            try:
-                path.unlink()
-
-                _fsync_directory(
-                    path.parent
-                )
-
+            if result.get(
+                "deleted"
+            ):
                 deleted += 1
 
-            except FileNotFoundError:
-                pass
 
     return deleted
 
