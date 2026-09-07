@@ -1,0 +1,88 @@
+CONFIG LOCATION — CORE FIX PART 2/3 DEBUG EVIDENCE
+
+generated_utc=2026-09-07T04:45:53Z
+
+execution_directory=/root/3333/core-fix-part2-v1-20260907-044344
+execution_marker=ROLLED_BACK
+
+live_verdict=FAIL
+
+CORE-03_ipv6_normalization=FAIL
+CORE-05_corrupt_config_quarantine=FAIL
+CORE-06_snapshot_locking=FAIL
+CORE-07_deletion_journal=FAIL
+CORE-07_deleted_source_tombstone=FAIL
+CORE-07_delete_all_config_locking=FAIL
+
+syntax=PASS
+imports=PASS
+
+fetcher_service=active
+panel_service=active
+panel_health_http=200
+
+SOURCE_SHA256:
+45959977c88310145758e6fd963441aba6748271c8c4e963130a95bdac67bf87  /opt/config-location/app/core/source_manager.py
+9a9afecf2e6c1a4bcf3d71c8d1d9ff6b75b8ae2051553c7e7fcecaaf4a53de60  /opt/config-location/app/core/config_store.py
+
+================================================================
+LAST 300 LINES OF PART-2 EXECUTION
+================================================================
+
+
+================================================================
+STEP 01/14 — PREFLIGHT
+================================================================
+PREFLIGHT PASS
+
+================================================================
+STEP 02/14 — EXACT BACKUP
+================================================================
+45959977c88310145758e6fd963441aba6748271c8c4e963130a95bdac67bf87  /opt/config-location/app/core/source_manager.py
+9a9afecf2e6c1a4bcf3d71c8d1d9ff6b75b8ae2051553c7e7fcecaaf4a53de60  /opt/config-location/app/core/config_store.py
+BACKUP=/root/3333/core-fix-part2-v1-20260907-044344/backup
+
+================================================================
+STEP 03/14 — STAGING
+================================================================
+STAGING PASS
+
+================================================================
+STEP 04/14 — CORE-03 IPv6 URL NORMALIZATION
+================================================================
+CORE-03 PATCH PASS
+
+================================================================
+STEP 05/14 — CORE-05 CORRUPT CONFIG QUARANTINE
+================================================================
+CORE-05 FOUNDATION PATCH PASS
+
+================================================================
+STEP 06/14 — CORE-05 FAIL-CLOSED UPSERT RECOVERY
+================================================================
+CORE-05 UPSERT PATCH PASS
+
+================================================================
+STEP 07/14 — CORE-06 SNAPSHOT LOCK SYMMETRY
+================================================================
+CORE-06 PATCH PASS
+
+================================================================
+STEP 08/14 — CORE-07 DELETED-SOURCE GUARDS
+================================================================
+Traceback (most recent call last):
+  File "<stdin>", line 83, in <module>
+RuntimeError: CORE-07 bulk snapshot cleanup anchor missing
+
+ERROR DETECTED — rc=1
+
+================================================================
+ROLLBACK START
+================================================================
+
+Triggering GitHub Live Sync...
+Using helper: /usr/local/sbin/config-location-live-fast-sync
+
+================================================================
+ROLLBACK COMPLETE
+================================================================
