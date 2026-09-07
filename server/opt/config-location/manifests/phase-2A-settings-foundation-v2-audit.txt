@@ -1,0 +1,667 @@
+CONFIG LOCATION — PHASE 2A SETTINGS FOUNDATION V2 AUDIT
+
+generated_utc=2026-09-07T06:40:31Z
+
+status=PASS
+
+scope=settings-engine+migration+selftest+panel-settings+all-callers
+
+production_fetcher=active
+production_panel=active
+production_health_http=200
+
+================================================================
+PRODUCTION SETTINGS
+================================================================
+SETTINGS_VALID=YES
+SETTINGS_PATH=/var/lib/config-location/settings/settings.json
+SCHEMA_VERSION=1
+REVISION=11
+UPDATED_BY=panel-form
+CHECKSUM=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+HISTORY_COUNT=10
+
+FEATURES:
+  config_lifetime=False
+  country_remark=False
+  definitive_unhealthy_removal=False
+  fair_rotation=False
+  health_retest=False
+  publish_country_routes=False
+  resource_guardian=False
+  retention_manager=False
+  source_intelligence=False
+
+TOP_LEVEL_KEYS:
+  adaptive_health
+  cleanup
+  config_lifetime
+  country
+  features
+  fetcher
+  health
+  health_retest
+  meta
+  publish
+  removal
+  resources
+  schema_version
+  source_intelligence
+
+FULL_SETTINGS_JSON:
+{
+  "adaptive_health": {
+    "adaptive_mode": true,
+    "batch": {
+      "max": 3000,
+      "min": 50,
+      "target_cycle_seconds": 180
+    },
+    "execution": {
+      "download_timeout": 6.0,
+      "minimum_wave": 5,
+      "resample_after_wave": true,
+      "runtime_retries": 3,
+      "startup_timeout": 6.0,
+      "upload_payload_bytes": 65536,
+      "upload_timeout": 6.0,
+      "wave_max": 100
+    },
+    "network_guard": {
+      "correlated_failure_ratio": 0.7,
+      "critical_direct_success_ratio": 0.34,
+      "enabled": true,
+      "fallback_health_budget_mbps": 80,
+      "latency_degraded_multiplier": 2.5,
+      "max_health_link_fraction": 0.2,
+      "minimum_direct_success_ratio": 0.67,
+      "probe_timeout_seconds": 3
+    },
+    "project_guard": {
+      "candidate_ports": [
+        80,
+        1010,
+        4040
+      ],
+      "services": [
+        "config-location-panel.service",
+        "config-location-fetcher.service"
+      ]
+    },
+    "server_guard": {
+      "critical_cpu_percent": 94.0,
+      "estimated_ram_per_worker_mb": 32,
+      "max_cpu_percent": 82.0,
+      "max_fd_percent": 70.0,
+      "max_health_xray": 200,
+      "reserve_ram_mb": 1536,
+      "target_cpu_percent": 60.0
+    },
+    "workers": {
+      "hard_max": 200,
+      "min": 5,
+      "soft_max": 100
+    }
+  },
+  "cleanup": {
+    "audit_retention_days": 7,
+    "default_retention_days": 7,
+    "devlog_retention_days": 7,
+    "failed_xray_retention_days": 14,
+    "successful_xray_retention_days": 3,
+    "temporary_retention_days": 7
+  },
+  "config_lifetime": {
+    "max_age_hours": 72
+  },
+  "country": {
+    "canonical_language": "en",
+    "remark_format": "{flag} {country}",
+    "unknown_flag": "❓",
+    "unknown_name": "Unknown",
+    "use_official_short_name": true
+  },
+  "features": {
+    "config_lifetime": false,
+    "country_remark": false,
+    "definitive_unhealthy_removal": false,
+    "fair_rotation": false,
+    "health_retest": false,
+    "publish_country_routes": false,
+    "resource_guardian": false,
+    "retention_manager": false,
+    "source_intelligence": false
+  },
+  "fetcher": {
+    "connect_timeout_seconds": 8,
+    "enabled": true,
+    "global_concurrency": 20,
+    "max_redirects": 5,
+    "max_response_bytes": 10485760,
+    "read_timeout_seconds": 15,
+    "total_timeout_seconds": 30
+  },
+  "health": {
+    "batch_size": 1000,
+    "download_timeout": 6,
+    "max_workers": 50,
+    "runtime_retry_count": 3,
+    "startup_timeout": 6,
+    "upload_payload_bytes": 65536,
+    "upload_timeout": 6
+  },
+  "health_retest": {
+    "interval_seconds": 420,
+    "maximum_interval_seconds": 86400,
+    "minimum_interval_seconds": 60
+  },
+  "meta": {
+    "created_at": "2026-09-04T14:14:13Z",
+    "revision": 11,
+    "updated_at": "2026-09-04T22:45:34Z",
+    "updated_by": "panel-form"
+  },
+  "publish": {
+    "country_routes": true,
+    "fair_rotation_default_ed": 80,
+    "panel_port": 4040,
+    "preserve_original_raw": true,
+    "protocol_routes": true,
+    "public_port": 80,
+    "remark_transform_on_output": true
+  },
+  "removal": {
+    "preserve_forensic_record": true,
+    "remove_definitive_unhealthy": true,
+    "remove_infrastructure_errors": false
+  },
+  "resources": {
+    "cpu_critical_percent": 99.0,
+    "cpu_warning_percent": 98.0,
+    "disk_critical_percent": 99.0,
+    "disk_warning_percent": 98.0,
+    "inode_critical_percent": 90.0,
+    "inode_warning_percent": 75.0,
+    "max_health_xray": 200,
+    "ram_critical_percent": 99.0,
+    "ram_warning_percent": 98.0
+  },
+  "schema_version": 1,
+  "source_intelligence": {
+    "dashboard_alerts": true,
+    "healthy_window_hours": 12,
+    "minimum_tested_configs": 1
+  }
+}
+
+================================================================
+SETTINGS CALLER MAP
+================================================================
+===== IMPORTS OF app.settings =====
+/opt/config-location/app/panel/settings_ui.py:8:from app.settings.engine import (
+/opt/config-location/app/health/retest/worker.py:14:from app.settings.engine import get_settings
+/opt/config-location/app/health/retest/eligibility.py:7:from app.settings.engine import get_settings
+/opt/config-location/app/health/retest/privileged_plan.py:8:from app.settings.engine import get_settings
+/opt/config-location/app/settings/__init__.py:1:from app.settings.engine import (
+/opt/config-location/app/settings/migrate.py:7:from app.settings.engine import (
+/opt/config-location/app/settings/selftest.py:7:from app.settings.engine import (
+
+===== get_settings CALLERS =====
+/opt/config-location/app/panel/settings_ui.py:45:                get_settings(),
+/opt/config-location/app/panel/settings_ui.py:271:    settings = get_settings()
+/opt/config-location/app/health/retest/worker.py:235:    settings = get_settings()
+/opt/config-location/app/health/retest/eligibility.py:160:    settings = get_settings()
+/opt/config-location/app/health/retest/privileged_plan.py:60:    settings = get_settings()
+/opt/config-location/app/settings/engine.py:1166:def get_settings() -> dict:
+
+===== update_settings CALLERS =====
+/opt/config-location/app/panel/settings_ui.py:72:        updated = update_settings(
+/opt/config-location/app/panel/settings_ui.py:247:        update_settings(
+/opt/config-location/app/settings/engine.py:1170:def update_settings(
+
+===== get_settings_status CALLERS =====
+/opt/config-location/app/panel/settings_ui.py:47:                get_settings_status(),
+/opt/config-location/app/panel/settings_ui.py:82:                    get_settings_status(),
+/opt/config-location/app/panel/settings_ui.py:272:    status = get_settings_status()
+/opt/config-location/app/settings/engine.py:1182:def get_settings_status() -> dict:
+
+===== SettingsStore DIRECT USERS =====
+/opt/config-location/app/settings/migrate.py:158:    obj = STORE.initialize(
+/opt/config-location/app/settings/migrate.py:184:        STORE.path,
+/opt/config-location/app/settings/engine.py:712:class SettingsStore:
+/opt/config-location/app/settings/engine.py:1163:STORE = SettingsStore()
+/opt/config-location/app/settings/engine.py:1167:    return STORE.read()
+/opt/config-location/app/settings/engine.py:1176:    return STORE.update(
+/opt/config-location/app/settings/engine.py:1183:    return STORE.status()
+/opt/config-location/app/settings/selftest.py:8:    SettingsStore,
+/opt/config-location/app/settings/selftest.py:19:        store = SettingsStore(
+
+================================================================
+SETTING KEY CONSUMER MATRIX
+================================================================
+LEAF_SETTING_CONSUMER_MATRIX
+
+cleanup.audit_retention_days
+  NO_EXTERNAL_CONSUMER
+
+cleanup.default_retention_days
+  CONSUMER app/panel/settings_ui.py
+
+cleanup.devlog_retention_days
+  NO_EXTERNAL_CONSUMER
+
+cleanup.failed_xray_retention_days
+  NO_EXTERNAL_CONSUMER
+
+cleanup.successful_xray_retention_days
+  NO_EXTERNAL_CONSUMER
+
+cleanup.temporary_retention_days
+  NO_EXTERNAL_CONSUMER
+
+config_lifetime.max_age_hours
+  CONSUMER app/panel/settings_ui.py
+
+country.canonical_language
+  NO_EXTERNAL_CONSUMER
+
+country.remark_format
+  CONSUMER app/panel/settings_ui.py
+
+country.unknown_flag
+  NO_EXTERNAL_CONSUMER
+
+country.unknown_name
+  CONSUMER app/panel/settings_ui.py
+
+country.use_official_short_name
+  NO_EXTERNAL_CONSUMER
+
+features.config_lifetime
+  CONSUMER app/panel/settings_ui.py
+
+features.country_remark
+  NO_EXTERNAL_CONSUMER
+
+features.definitive_unhealthy_removal
+  NO_EXTERNAL_CONSUMER
+
+features.fair_rotation
+  NO_EXTERNAL_CONSUMER
+
+features.health_retest
+  CONSUMER app/health/retest/eligibility.py
+  CONSUMER app/health/retest/privileged_plan.py
+  CONSUMER app/panel/settings_ui.py
+  CONSUMER app/settings/selftest.py
+
+features.publish_country_routes
+  NO_EXTERNAL_CONSUMER
+
+features.resource_guardian
+  NO_EXTERNAL_CONSUMER
+
+features.retention_manager
+  NO_EXTERNAL_CONSUMER
+
+features.source_intelligence
+  CONSUMER app/panel/settings_ui.py
+  CONSUMER app/settings/selftest.py
+
+fetcher.connect_timeout_seconds
+  CONSUMER app/settings/migrate.py
+
+fetcher.enabled
+  CONSUMER app/core/source_manager.py
+  CONSUMER app/fetcher/engine.py
+  CONSUMER app/panel/server.py
+  CONSUMER app/parser/universal_json.py
+  CONSUMER app/settings/migrate.py
+
+fetcher.global_concurrency
+  CONSUMER app/settings/migrate.py
+
+fetcher.max_redirects
+  CONSUMER app/settings/migrate.py
+
+fetcher.max_response_bytes
+  CONSUMER app/settings/migrate.py
+
+fetcher.read_timeout_seconds
+  CONSUMER app/settings/migrate.py
+
+fetcher.total_timeout_seconds
+  CONSUMER app/settings/migrate.py
+
+health.batch_size
+  CONSUMER app/health/settings.py
+  CONSUMER app/settings/migrate.py
+
+health.download_timeout
+  CONSUMER app/health/core/adaptive_runner.py
+  CONSUMER app/health/core/always_on_adaptive.py
+  CONSUMER app/health/core/continuous_adaptive_runner.py
+  CONSUMER app/health/panel_adaptive.py
+  CONSUMER app/health/settings.py
+  CONSUMER app/settings/migrate.py
+
+health.max_workers
+  CONSUMER app/health/settings.py
+  CONSUMER app/settings/migrate.py
+
+health.runtime_retry_count
+  CONSUMER app/health/settings.py
+  CONSUMER app/settings/migrate.py
+
+health.startup_timeout
+  CONSUMER app/health/core/adaptive_runner.py
+  CONSUMER app/health/core/always_on_adaptive.py
+  CONSUMER app/health/core/continuous_adaptive_runner.py
+  CONSUMER app/health/panel_adaptive.py
+  CONSUMER app/health/settings.py
+  CONSUMER app/settings/migrate.py
+
+health.upload_payload_bytes
+  CONSUMER app/health/core/adaptive_runner.py
+  CONSUMER app/health/core/continuous_adaptive_runner.py
+  CONSUMER app/health/settings.py
+  CONSUMER app/settings/migrate.py
+
+health.upload_timeout
+  CONSUMER app/health/core/adaptive_runner.py
+  CONSUMER app/health/core/always_on_adaptive.py
+  CONSUMER app/health/core/continuous_adaptive_runner.py
+  CONSUMER app/health/panel_adaptive.py
+  CONSUMER app/health/settings.py
+  CONSUMER app/settings/migrate.py
+
+health_retest.interval_seconds
+  CONSUMER app/health/retest/eligibility.py
+  CONSUMER app/health/retest/privileged_plan.py
+  CONSUMER app/panel/settings_ui.py
+  CONSUMER app/settings/selftest.py
+
+health_retest.maximum_interval_seconds
+  NO_EXTERNAL_CONSUMER
+
+health_retest.minimum_interval_seconds
+  NO_EXTERNAL_CONSUMER
+
+meta.created_at
+  CONSUMER app/core/events.py
+  CONSUMER app/core/source_manager.py
+  CONSUMER app/integrity/health_history_gc.py
+  CONSUMER app/integrity/lock_gc.py
+  CONSUMER app/panel/operations_read_model.py
+
+meta.revision
+  CONSUMER app/panel/settings_ui.py
+  CONSUMER app/settings/migrate.py
+  CONSUMER app/settings/selftest.py
+
+meta.updated_at
+  CONSUMER app/core/config_store.py
+  CONSUMER app/core/source_manager.py
+  CONSUMER app/country/publish_contract_guard.py
+  CONSUMER app/country/worker.py
+  CONSUMER app/health/lifecycle/canary_readiness_controller.py
+  CONSUMER app/health/lifecycle/consecutive.py
+  CONSUMER app/health/lifecycle/removal_wait_worker.py
+  CONSUMER app/health/lifecycle/stale_watchdog.py
+  CONSUMER app/health/lifecycle/sync_daemon.py
+  CONSUMER app/health/lifecycle/write_control.py
+  CONSUMER app/health/retest/eligibility.py
+  CONSUMER app/health/retest/worker.py
+
+meta.updated_by
+  CONSUMER app/settings/migrate.py
+
+publish.country_routes
+  NO_EXTERNAL_CONSUMER
+
+publish.fair_rotation_default_ed
+  CONSUMER app/panel/settings_ui.py
+
+publish.panel_port
+  NO_EXTERNAL_CONSUMER
+
+publish.preserve_original_raw
+  NO_EXTERNAL_CONSUMER
+
+publish.protocol_routes
+  NO_EXTERNAL_CONSUMER
+
+publish.public_port
+  CONSUMER app/panel/settings_ui.py
+
+publish.remark_transform_on_output
+  NO_EXTERNAL_CONSUMER
+
+removal.preserve_forensic_record
+  NO_EXTERNAL_CONSUMER
+
+removal.remove_definitive_unhealthy
+  NO_EXTERNAL_CONSUMER
+
+removal.remove_infrastructure_errors
+  NO_EXTERNAL_CONSUMER
+
+resources.cpu_critical_percent
+  CONSUMER app/health/retest/worker.py
+  CONSUMER app/panel/settings_ui.py
+  CONSUMER app/settings/migrate.py
+
+resources.cpu_warning_percent
+  CONSUMER app/health/retest/worker.py
+  CONSUMER app/panel/settings_ui.py
+
+resources.disk_critical_percent
+  CONSUMER app/health/retest/worker.py
+  CONSUMER app/panel/settings_ui.py
+  CONSUMER app/settings/selftest.py
+
+resources.disk_warning_percent
+  CONSUMER app/health/retest/worker.py
+  CONSUMER app/panel/settings_ui.py
+  CONSUMER app/settings/selftest.py
+
+resources.inode_critical_percent
+  NO_EXTERNAL_CONSUMER
+
+resources.inode_warning_percent
+  NO_EXTERNAL_CONSUMER
+
+resources.max_health_xray
+  CONSUMER app/health/core/adaptive_controller.py
+  CONSUMER app/health/panel_adaptive.py
+  CONSUMER app/settings/migrate.py
+
+resources.ram_critical_percent
+  CONSUMER app/health/retest/worker.py
+  CONSUMER app/panel/settings_ui.py
+
+resources.ram_warning_percent
+  CONSUMER app/health/retest/worker.py
+  CONSUMER app/panel/settings_ui.py
+
+schema_version
+  CONSUMER app/country/country_identity.py
+  CONSUMER app/country/event_bus.py
+  CONSUMER app/country/event_consumer.py
+  CONSUMER app/country/geo_cache.py
+  CONSUMER app/country/geo_intelligence.py
+  CONSUMER app/country/hard_recovery.py
+  CONSUMER app/country/models.py
+  CONSUMER app/country/pipeline.py
+  CONSUMER app/country/temporal.py
+  CONSUMER app/country/worker.py
+  CONSUMER app/health/lifecycle/consecutive.py
+  CONSUMER app/health/lifecycle/enforcement.py
+  CONSUMER app/health/lifecycle/engine.py
+  CONSUMER app/health/lifecycle/policy.py
+  CONSUMER app/health/lifecycle/safety_gates.py
+  CONSUMER app/health/lifecycle/stale_watchdog.py
+  CONSUMER app/health/lifecycle/sync_daemon.py
+  CONSUMER app/health/storage/json_store.py
+  CONSUMER app/integrity/health_history_gc.py
+  CONSUMER app/integrity/lock_gc.py
+  CONSUMER app/integrity/referential_guard.py
+  CONSUMER app/integrity/store_health.py
+  CONSUMER app/observability/lifecycle.py
+  CONSUMER app/panel/settings_ui.py
+  CONSUMER app/settings/migrate.py
+  CONSUMER app/settings/selftest.py
+  CONSUMER app/xray_log_retention.py
+
+source_intelligence.dashboard_alerts
+  NO_EXTERNAL_CONSUMER
+
+source_intelligence.healthy_window_hours
+  CONSUMER app/panel/settings_ui.py
+  CONSUMER app/settings/selftest.py
+
+source_intelligence.minimum_tested_configs
+  NO_EXTERNAL_CONSUMER
+
+================================================================
+LEGACY / ENVIRONMENT
+================================================================
+===== LEGACY SETTINGS FILE REFERENCES =====
+/opt/config-location/app/health/core/adaptive_controller.py:17:    "/etc/config-location/health-adaptive.json"
+/opt/config-location/app/health/panel_adaptive.py:15:    "health-adaptive.json"
+/opt/config-location/app/health/settings.py:9:    "/etc/config-location/health-settings.json"
+/opt/config-location/app/settings/migrate.py:15:    "config-location/settings.json"
+/opt/config-location/app/settings/migrate.py:20:    "health-settings.json"
+/opt/config-location/app/settings/migrate.py:25:    "health-adaptive.json"
+
+===== SETTINGS-RELATED ENVIRONMENT =====
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.fetcher.engine ; ignore_errors=no ; start_time=[Mon 2026-09-07 06:34:26 UTC] ; stop_time=[n/a] ; pid=3426844 ; code=(null) ; status=0/0 }
+Environment=
+User=configloc
+Group=configloc
+
+ExecStart={ path=/opt/config-location/venv/bin/python ; argv[]=/opt/config-location/venv/bin/python -m app.panel.server ; ignore_errors=no ; start_time=[Mon 2026-09-07 06:34:27 UTC] ; stop_time=[n/a] ; pid=3426854 ; code=(null) ; status=0/0 }
+Environment=
+EnvironmentFiles=/etc/config-location/panel.env (ignore_errors=no)
+User=configloc
+Group=configloc
+
+===== SERVICE DEFINITIONS =====
+# /etc/systemd/system/config-location-fetcher.service
+[Unit]
+Description=Config Location Fetch Engine
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+User=configloc
+Group=configloc
+
+WorkingDirectory=/opt/config-location
+
+ExecStart=/opt/config-location/venv/bin/python -m app.fetcher.engine
+
+Restart=always
+RestartSec=3
+
+TimeoutStartSec=30
+TimeoutStopSec=20
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+
+ReadWritePaths=/var/lib/config-location
+ReadWritePaths=/var/log/config-location
+
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/config-location-fetcher.service.d/99-final.conf
+[Service]
+ExecStart=
+ExecStart=/opt/config-location/venv/bin/python -m app.fetcher.engine
+WorkingDirectory=/opt/config-location
+
+RuntimeDirectory=config-location
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=yes
+
+# /etc/systemd/system/config-location-panel.service
+[Unit]
+Description=Config Location Management Panel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+User=configloc
+Group=configloc
+
+WorkingDirectory=/opt/config-location
+
+EnvironmentFile=/etc/config-location/panel.env
+
+ExecStart=/opt/config-location/venv/bin/python -m app.panel.server
+
+Restart=always
+RestartSec=3
+
+TimeoutStartSec=30
+TimeoutStopSec=15
+
+KillSignal=SIGTERM
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+ProtectSystem=full
+ProtectHome=true
+
+ReadWritePaths=/var/lib/config-location
+ReadWritePaths=/var/log/config-location
+ReadWritePaths=/run/config-location
+
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+RestrictSUIDSGID=true
+
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/config-location-panel.service.d/99-final.conf
+[Service]
+ExecStart=
+ExecStart=/opt/config-location/venv/bin/python -m app.panel.server
+WorkingDirectory=/opt/config-location
+
+RuntimeDirectory=config-location
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=yes
+
+================================================================
+FAILURE MODES
+================================================================
+unknown_top_level|ACCEPTED|dict|
+unknown_feature_key|ACCEPTED|dict|
+missing_health_retest_section|REJECTED|KeyError|'health_retest'
+invalid_threshold_relation|REJECTED|ValueError|cpu warning must be below critical
+corrupt_settings_json_read|REJECTED|JSONDecodeError|Expecting value: line 1 column 11 (char 10)
+
+================================================================
+SOURCE SHA256
+================================================================
+885f282f85918fe25cadac2ad65e2ec89eab1221df224385f4e346b30ef87427  /opt/config-location/app/settings/__init__.py
+53fe4d479579329a8ec055dce5e29a24b7a07bc44e4a982184c4df8a053bfd3b  /opt/config-location/app/settings/engine.py
+fb8d73d20f4ff3831f06a75d35f24481ce4acedca07a47206cf632627dd72a24  /opt/config-location/app/settings/migrate.py
+f3718ee273135e27916fee6994d87c0f451e7122dddf6c7669b7023329909348  /opt/config-location/app/settings/selftest.py
+7af5434b23888d04eefb1cea3481751b1670c4030af7405f42272374f2b42667  /opt/config-location/app/panel/settings_ui.py
