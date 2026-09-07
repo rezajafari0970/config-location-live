@@ -39,6 +39,11 @@ def archive_latest_before_config_delete(
     )
 
 
+from .events import (
+    safe_emit_event,
+)
+
+
 from .identifiers import (
     validate_fingerprint
         as _validate_fingerprint,
@@ -166,6 +171,20 @@ def _quarantine_corrupt_config(
             "quarantined_at": now_iso(),
             "original_path": str(path),
             "quarantine_path": str(target),
+        },
+    )
+
+    safe_emit_event(
+        "config.quarantined",
+        entity="config",
+        entity_id=fingerprint,
+        severity="error",
+        actor="config_store",
+        message="Corrupt Config record moved to quarantine.",
+        data={
+            "reason": str(reason),
+            "quarantine_path":
+                str(target),
         },
     )
 
@@ -399,6 +418,21 @@ def upsert_config(
     if is_source_deleted(
         source_id
     ):
+
+        safe_emit_event(
+            "config.stale_write_blocked",
+            entity="config",
+            entity_id=fingerprint,
+            severity="warning",
+            actor="config_store",
+            message="Config write blocked for deleted Source.",
+            data={
+                "source_id": source_id,
+                "lock_phase":
+                    "before_config_lock",
+            },
+        )
+
         return (
             {
                 "id": fingerprint,
@@ -415,6 +449,21 @@ def upsert_config(
         if is_source_deleted(
             source_id
         ):
+
+            safe_emit_event(
+                "config.stale_write_blocked",
+                entity="config",
+                entity_id=fingerprint,
+                severity="warning",
+                actor="config_store",
+                message="Stale in-flight Config write blocked inside Config lock.",
+                data={
+                    "source_id": source_id,
+                    "lock_phase":
+                        "inside_config_lock",
+                },
+            )
+
             return (
                 {
                     "id": fingerprint,
@@ -652,6 +701,25 @@ def _delete_config_unlocked(
     result[
         "deleted_at"
     ] = now_iso()
+
+
+    safe_emit_event(
+        "config.deleted",
+        entity="config",
+        entity_id=fingerprint,
+        severity="info",
+        actor=actor,
+        message="Config deleted through canonical Core deletion API.",
+        data={
+            "reason":
+                str(reason),
+
+            "metadata":
+                result[
+                    "metadata"
+                ],
+        },
+    )
 
 
     return result
@@ -1303,6 +1371,19 @@ def sync_source_snapshot(
             result[
                 "stale_snapshot_blocked_inside_lock"
             ] = True
+
+            safe_emit_event(
+                "source.snapshot_stale_write_blocked",
+                entity="source",
+                entity_id=source_id,
+                severity="warning",
+                actor="config_store",
+                message="Stale Source snapshot update blocked inside snapshot lock.",
+                data={
+                    "current_count":
+                        len(current),
+                },
+            )
 
             return result
 

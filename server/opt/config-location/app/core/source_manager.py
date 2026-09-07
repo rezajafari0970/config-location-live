@@ -20,6 +20,16 @@ from .storage import (
 )
 
 
+from .events import (
+    safe_emit_event,
+)
+
+from .mutation import (
+    mutation_result,
+    mutation_error,
+)
+
+
 from app.core.config_store import (
     detach_source_from_configs,
     detach_sources_from_configs,
@@ -140,6 +150,25 @@ def _quarantine_source_registry(
         },
     )
 
+    safe_emit_event(
+        "source.registry_quarantined",
+        entity="source_registry",
+        severity="critical",
+        actor="source_manager",
+        message="Source Registry was quarantined and blocked.",
+        data={
+            "reason":
+                str(reason),
+
+            "quarantine_path":
+                (
+                    str(target)
+                    if target
+                    else None
+                ),
+        },
+    )
+
     return target
 
 
@@ -184,6 +213,25 @@ def _quarantine_delete_journal(
                 if target
                 else None,
             "blocked_at": now_iso(),
+        },
+    )
+
+    safe_emit_event(
+        "source.deletion_journal_quarantined",
+        entity="source_deletion_journal",
+        severity="critical",
+        actor="source_manager",
+        message="Source deletion journal was quarantined and blocked.",
+        data={
+            "reason":
+                str(reason),
+
+            "quarantine_path":
+                (
+                    str(target)
+                    if target
+                    else None
+                ),
         },
     )
 
@@ -436,6 +484,24 @@ def _recover_pending_source_deletion_unlocked():
         )
 
     _clear_delete_journal()
+
+    safe_emit_event(
+        "source.deletion_recovered",
+        entity="source",
+        severity="warning",
+        actor="source_manager",
+        message="Interrupted Source deletion transaction was recovered.",
+        data={
+            "operation":
+                operation,
+
+            "source_ids":
+                sorted(values),
+
+            "absent_source_ids":
+                sorted(absent),
+        },
+    )
 
     return True
 
@@ -829,6 +895,20 @@ def delete_source(source_id: str):
 
 
         _clear_delete_journal()
+
+
+        safe_emit_event(
+            "source.deleted",
+            entity="source",
+            entity_id=source_id,
+            severity="info",
+            actor="source_manager",
+            message="Source deleted successfully.",
+            data={
+                "operation":
+                    "delete_source",
+            },
+        )
 
 
         return True
@@ -1320,3 +1400,194 @@ def delete_all_sources():
 
         raise
 
+
+
+# ============================================================
+# PANEL / CONTROL-PLANE STRUCTURED MUTATION CONTRACT
+# ============================================================
+
+def delete_source_result(
+    source_id: str,
+    *,
+    actor: str = "panel",
+    reason: str = "source_delete_requested",
+):
+    """
+    Structured control-plane wrapper.
+
+    Existing delete_source() remains bool-compatible.
+    """
+
+    try:
+
+        changed = bool(
+            delete_source(
+                source_id
+            )
+        )
+
+
+        result = mutation_result(
+            "delete_source",
+            entity="source",
+            entity_id=source_id,
+            status=(
+                "deleted"
+                if changed
+                else "not_found"
+            ),
+            changed=changed,
+            actor=actor,
+            reason=reason,
+        )
+
+
+        safe_emit_event(
+            "source.delete_result",
+            entity="source",
+            entity_id=source_id,
+            severity=(
+                "info"
+                if changed
+                else "warning"
+            ),
+            actor=actor,
+            message="Structured Source deletion result.",
+            data=result,
+        )
+
+
+        return result
+
+
+    except Exception as exc:
+
+        result = mutation_error(
+            "delete_source",
+            entity="source",
+            entity_id=source_id,
+            actor=actor,
+            reason=reason,
+            error=(
+                type(exc).__name__
+                + ":"
+                + str(exc)
+            ),
+        )
+
+
+        safe_emit_event(
+            "source.delete_failed",
+            entity="source",
+            entity_id=source_id,
+            severity="error",
+            actor=actor,
+            message="Structured Source deletion failed.",
+            data=result,
+        )
+
+
+        return result
+
+
+def delete_sources_result(
+    source_ids,
+    *,
+    actor: str = "panel",
+    reason: str = "bulk_source_delete_requested",
+):
+    values = sorted({
+        str(x)
+        for x in source_ids
+        if x
+    })
+
+
+    try:
+
+        deleted = int(
+            delete_sources(
+                values
+            )
+        )
+
+
+        return mutation_result(
+            "delete_sources",
+            entity="source",
+            status="completed",
+            changed=bool(
+                deleted
+            ),
+            actor=actor,
+            reason=reason,
+            data={
+                "requested":
+                    len(values),
+
+                "deleted":
+                    deleted,
+            },
+        )
+
+
+    except Exception as exc:
+
+        return mutation_error(
+            "delete_sources",
+            entity="source",
+            actor=actor,
+            reason=reason,
+            error=(
+                type(exc).__name__
+                + ":"
+                + str(exc)
+            ),
+            data={
+                "requested":
+                    len(values),
+            },
+        )
+
+
+def delete_all_sources_result(
+    *,
+    actor: str = "panel",
+    reason: str = "delete_all_sources_requested",
+):
+    try:
+
+        deleted = int(
+            delete_all_sources()
+        )
+
+
+        return mutation_result(
+            "delete_all_sources",
+            entity="source",
+            status="completed",
+            changed=bool(
+                deleted
+            ),
+            actor=actor,
+            reason=reason,
+            data={
+                "deleted":
+                    deleted,
+            },
+        )
+
+
+    except Exception as exc:
+
+        return mutation_error(
+            "delete_all_sources",
+            entity="source",
+            actor=actor,
+            reason=reason,
+            error=(
+                type(exc).__name__
+                + ":"
+                + str(exc)
+            ),
+        )
