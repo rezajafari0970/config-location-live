@@ -108,6 +108,20 @@ def _atomic_write(
             path
         )
 
+        dir_fd = os.open(
+            str(path.parent),
+            os.O_DIRECTORY,
+        )
+
+        try:
+            os.fsync(
+                dir_fd
+            )
+        finally:
+            os.close(
+                dir_fd
+            )
+
     finally:
         if os.path.exists(
             tmp
@@ -261,22 +275,13 @@ def config_stats():
 
 def detach_source_from_configs(source_id: str):
     """
-    Remove one source ID from every stored config.
-
-    Rules:
-    - If other source_ids remain, keep the config.
-    - If no source remains, delete the config file.
-
-    Returns:
-        {
-            scanned,
-            detached,
-            deleted,
-            kept
-        }
+    Remove a source from Config ownership while holding
+    the same per-config lock used by upsert/reconciliation.
     """
 
-    source_id = str(source_id or "").strip()
+    source_id = str(
+        source_id or ""
+    ).strip()
 
     if not source_id:
         return {
@@ -291,71 +296,90 @@ def detach_source_from_configs(source_id: str):
     deleted = 0
     kept = 0
 
-    for path in list(CONFIG_DIR.glob("*.json")):
+    for path in list(
+        CONFIG_DIR.glob(
+            "*.json"
+        )
+    ):
 
         scanned += 1
 
-        try:
-            record = json.loads(
-                path.read_text(
-                    encoding="utf-8"
-                )
-            )
-        except Exception:
-            continue
+        with _lock(
+            path.stem
+        ):
 
-        if not isinstance(record, dict):
-            continue
-
-        current_sources = record.get(
-            "source_ids",
-            []
-        )
-
-        if not isinstance(current_sources, list):
-            current_sources = []
-
-        if source_id not in current_sources:
-            continue
-
-        detached += 1
-
-        new_sources = [
-            sid
-            for sid in current_sources
-            if str(sid) != source_id
-        ]
-
-        if new_sources:
-
-            record["source_ids"] = sorted(
-                set(
-                    str(x)
-                    for x in new_sources
-                    if x
-                )
-            )
-
-            _atomic_write(
-                path,
-                record
-            )
-
-            kept += 1
-
-        else:
+            if not path.exists():
+                continue
 
             try:
+                record = json.loads(
+                    path.read_text(
+                        encoding="utf-8"
+                    )
+                )
+            except Exception:
+                continue
+
+            if not isinstance(
+                record,
+                dict
+            ):
+                continue
+
+            sources = record.get(
+                "source_ids",
+                []
+            )
+
+            if not isinstance(
+                sources,
+                list
+            ):
+                sources = []
+
+            source_set = {
+                str(x)
+                for x in sources
+                if x
+            }
+
+            if source_id not in source_set:
+                continue
+
+            detached += 1
+
+            source_set.discard(
+                source_id
+            )
+
+            if source_set:
+
+                record[
+                    "source_ids"
+                ] = sorted(
+                    source_set
+                )
+
+                _atomic_write(
+                    path,
+                    record
+                )
+
+                kept += 1
+
+            else:
+
                 archive_latest_before_config_delete(
                     path.stem,
                     reason="detach_source_last_owner",
                 )
 
-                path.unlink()
-                deleted += 1
+                try:
+                    path.unlink()
+                    deleted += 1
 
-            except FileNotFoundError:
-                pass
+                except FileNotFoundError:
+                    pass
 
     remove_source_snapshot(
         source_id
@@ -368,12 +392,9 @@ def detach_source_from_configs(source_id: str):
         "kept": kept,
     }
 
-
 def detach_sources_from_configs(source_ids):
     """
-    Bulk version of detach_source_from_configs().
-
-    A config survives if at least one source_id remains.
+    Bulk ownership detach under the per-config lock.
     """
 
     ids = {
@@ -395,75 +416,94 @@ def detach_sources_from_configs(source_ids):
     deleted = 0
     kept = 0
 
-    for path in list(CONFIG_DIR.glob("*.json")):
+    for path in list(
+        CONFIG_DIR.glob(
+            "*.json"
+        )
+    ):
 
         scanned += 1
 
-        try:
-            record = json.loads(
-                path.read_text(
-                    encoding="utf-8"
-                )
-            )
-        except Exception:
-            continue
-
-        if not isinstance(record, dict):
-            continue
-
-        current_sources = record.get(
-            "source_ids",
-            []
-        )
-
-        if not isinstance(current_sources, list):
-            current_sources = []
-
-        old_set = {
-            str(x)
-            for x in current_sources
-            if x
-        }
-
-        if not (
-            old_set
-            & ids
+        with _lock(
+            path.stem
         ):
-            continue
 
-        detached += 1
-
-        new_set = (
-            old_set
-            - ids
-        )
-
-        if new_set:
-
-            record["source_ids"] = sorted(
-                new_set
-            )
-
-            _atomic_write(
-                path,
-                record
-            )
-
-            kept += 1
-
-        else:
+            if not path.exists():
+                continue
 
             try:
+                record = json.loads(
+                    path.read_text(
+                        encoding="utf-8"
+                    )
+                )
+            except Exception:
+                continue
+
+            if not isinstance(
+                record,
+                dict
+            ):
+                continue
+
+            sources = record.get(
+                "source_ids",
+                []
+            )
+
+            if not isinstance(
+                sources,
+                list
+            ):
+                sources = []
+
+            old_set = {
+                str(x)
+                for x in sources
+                if x
+            }
+
+            if not (
+                old_set
+                & ids
+            ):
+                continue
+
+            detached += 1
+
+            new_set = (
+                old_set
+                - ids
+            )
+
+            if new_set:
+
+                record[
+                    "source_ids"
+                ] = sorted(
+                    new_set
+                )
+
+                _atomic_write(
+                    path,
+                    record
+                )
+
+                kept += 1
+
+            else:
+
                 archive_latest_before_config_delete(
                     path.stem,
                     reason="detach_sources_last_owner",
                 )
 
-                path.unlink()
-                deleted += 1
+                try:
+                    path.unlink()
+                    deleted += 1
 
-            except FileNotFoundError:
-                pass
+                except FileNotFoundError:
+                    pass
 
     return {
         "scanned": scanned,
@@ -471,8 +511,6 @@ def detach_sources_from_configs(source_ids):
         "deleted": deleted,
         "kept": kept,
     }
-
-
 
 def _source_snapshot_path(
     source_id: str

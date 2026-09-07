@@ -56,34 +56,104 @@ def lock_for(
             LOCKS
             / f"runtime-{source_id}.lock"
         ),
-        timeout=10,
+        timeout=30,
     )
 
 
-def read_runtime(
-    source_id: str
+def _read_runtime_unlocked(
+    path: Path
 ):
-    path = path_for(
-        source_id
-    )
 
     if not path.exists():
         return {}
 
     try:
-        return json.loads(
+
+        obj = json.loads(
             path.read_text(
                 encoding="utf-8"
             )
         )
+
+        if isinstance(
+            obj,
+            dict
+        ):
+            return obj
+
     except Exception:
-        return {}
+        pass
+
+    return {}
 
 
-def write_runtime(
-    source_id: str,
-    data: dict
+def _write_runtime_unlocked(
+    path: Path,
+    data: dict,
 ):
+
+    fd, tmp = tempfile.mkstemp(
+        dir=str(
+            path.parent
+        ),
+        prefix=f".{path.name}.",
+        suffix=".tmp",
+    )
+
+    try:
+
+        with os.fdopen(
+            fd,
+            "w",
+            encoding="utf-8",
+        ) as f:
+
+            json.dump(
+                data,
+                f,
+                ensure_ascii=False,
+                indent=2,
+            )
+
+            f.flush()
+
+            os.fsync(
+                f.fileno()
+            )
+
+        os.replace(
+            tmp,
+            path
+        )
+
+        dir_fd = os.open(
+            str(path.parent),
+            os.O_DIRECTORY,
+        )
+
+        try:
+            os.fsync(
+                dir_fd
+            )
+        finally:
+            os.close(
+                dir_fd
+            )
+
+    finally:
+
+        if os.path.exists(
+            tmp
+        ):
+            os.unlink(
+                tmp
+            )
+
+
+def read_runtime(
+    source_id: str
+):
+
     path = path_for(
         source_id
     )
@@ -91,61 +161,53 @@ def write_runtime(
     with lock_for(
         source_id
     ):
-        fd, tmp = tempfile.mkstemp(
-            dir=str(
-                path.parent
-            ),
-            prefix=f".{path.name}.",
-            suffix=".tmp",
+        return _read_runtime_unlocked(
+            path
         )
 
-        try:
-            with os.fdopen(
-                fd,
-                "w",
-                encoding="utf-8"
-            ) as f:
-                json.dump(
-                    data,
-                    f,
-                    ensure_ascii=False,
-                    indent=2,
-                )
 
-                f.flush()
-                os.fsync(
-                    f.fileno()
-                )
+def write_runtime(
+    source_id: str,
+    data: dict
+):
 
-            os.replace(
-                tmp,
-                path
-            )
+    path = path_for(
+        source_id
+    )
 
-        finally:
-            if os.path.exists(
-                tmp
-            ):
-                os.unlink(
-                    tmp
-                )
+    with lock_for(
+        source_id
+    ):
+        _write_runtime_unlocked(
+            path,
+            data,
+        )
 
 
 def update_runtime(
     source_id: str,
     **changes,
 ):
-    data = read_runtime(
+
+    path = path_for(
         source_id
     )
 
-    data.update(
-        changes
-    )
+    with lock_for(
+        source_id
+    ):
 
-    write_runtime(
-        source_id,
-        data
-    )
+        data = _read_runtime_unlocked(
+            path
+        )
 
-    return data
+        data.update(
+            changes
+        )
+
+        _write_runtime_unlocked(
+            path,
+            data,
+        )
+
+        return data
