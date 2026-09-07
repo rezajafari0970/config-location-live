@@ -1,0 +1,22 @@
+CONFIG LOCATION — CONTROL PLANE V2 PART 2
+generated_utc=2026-09-07T15:46:25Z
+status=PASS
+CP2-04_all_control_endpoints_authenticated=PASS
+CP2-05_multi_service_status=PASS
+CP2-06_project_only_restart=PASS
+CP2-07_core_status_events_bridge=PASS
+CP2-08_settings_status_capabilities_bridge=PASS
+CP2-09_resource_status=PASS
+CP2-10_maintenance_preview=PASS
+CP2-11_maintenance_confirm_guard=PASS
+CP2-12_standard_error_contract=PASS
+CP2-13_success_failure_audit=PASS
+CP2-14_privilege_least_scope=PASS
+panel_user=configloc
+panel_service=active
+panel_health_http=200
+SOURCE_SHA256:
+05397ed7638fd2c18d3e233ae83ec5e36d8d914d7c2d58ffc5287861a7e88d36  /opt/config-location/app/control/api.py
+d994f7b8dba756800dd7f3741f445febd5d41b96a21c2df9e0eed0edcfb368c7  /opt/config-location/app/control/executor.py
+9f8f28dcbbd978fc872e111272a55e6d6a0e5b690c415ab7f4115931a148a130  /opt/config-location/app/control/security.py
+872caad69dc4adea0593fe889af0afca20097cdf7d34ae9d0583889531856d54  /opt/config-location/app/control/audit.py
