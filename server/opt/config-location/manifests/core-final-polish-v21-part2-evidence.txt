@@ -1,0 +1,30 @@
+CONFIG LOCATION — CORE FINAL POLISH V2.1 — PART 2
+
+generated_utc=2026-09-07T06:34:28Z
+
+status=PASS
+
+polish_part_1=PASS
+polish_part_2=PASS
+
+P2-01_safe_event_retention_api=PASS
+P2-02_dashboard_status_precision=PASS
+P2-03_event_retention_failure_injection=PASS
+P2-04_status_precision_failure_injection=PASS
+P2-05_full_core_regression=PASS
+
+installed_bytes_match_tested_staging=YES
+
+production_fetcher=active
+production_panel=active
+production_health_http=200
+
+SOURCE_SHA256:
+c73b673cefed32a512679d3443d2fb3d68bbfc8249972fabcb70999a602530d4  /opt/config-location/app/core/identifiers.py
+d8d5eb5d9f4c90d7ed2928e9ae10f84ba22ae7aaa66177a62d9cc53f7033a516  /opt/config-location/app/core/storage.py
+d5208f4f9c78b777d7537ac9fcc97bb1861ec564e305d15edf3e96e69bdcec47  /opt/config-location/app/core/source_runtime.py
+c2d22cdd1deed6ba651dcebad7b694629a6912a89d154887ad47135b846547e3  /opt/config-location/app/core/config_store.py
+078515999eea8726ecb4873d2cbed4eb379f6cfa281ced870eb1c9638916282d  /opt/config-location/app/core/source_manager.py
+8739b2fe6627202b6c3158f1e7ba916de577cba1b96892b936b327b56e9fe462  /opt/config-location/app/core/events.py
+3c664982e69656c4480e806f4da01a422e745089ba9819504927370411556c34  /opt/config-location/app/core/status.py
+2168ea3210f5232bcc572d7908102afd76d444446ff30db9b6ee214dab374b11  /opt/config-location/app/core/mutation.py
