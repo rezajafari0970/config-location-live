@@ -1,0 +1,13 @@
+CONFIG LOCATION — UNIFIED PANEL SHELL
+generated_utc=2026-09-07T16:01:00Z
+part1_shell_foundation=PASS
+shared_renderer=READY
+dashboard_shell=READY
+responsive_navigation=READY
+settings_migration=NEXT
+country_migration=NEXT
+publish_migration=NEXT
+config_detail_migration=NEXT
+operations_ui_cleanup=PENDING
+lifecycle_ui_cleanup=PENDING
+next_phase=UNIFIED-PANEL-SHELL-PART2
