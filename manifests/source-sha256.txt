@@ -15580,6 +15580,7 @@ efec5714ee123ae31a2a6b8927b503c424f68b20a6148fe510abc21e551db230  server/opt/con
 b40a3cdfb37a4da0a10861a03048b89e821ad5ad13edf4fbcb19053d798e824d  server/opt/config-location/manifests/core-fix-part2-v2-debug-evidence.txt
 a1498b5e7645ca34ddd6c7ebaf0be5ff5c04d2a7ad951f9524aaf9ff16da1a19  server/opt/config-location/manifests/core-fix-part2-v2-final-evidence.txt
 0774f0d0ffa5767baa28b1a9f08096a6cca62dc260398166b2d76b531b5b4c3f  server/opt/config-location/manifests/core-fix-part2-v3-final-evidence.txt
+e4de891ac8f58d4fb6b00c4a26cf99621a8307557ec073a519a320b0fe32738f  server/opt/config-location/manifests/core-fix-part3-v1-final-evidence.txt
 b485ee8ca5fb02f51ad5aa30546ccefb64cecc7df3316ab27f7ce75ce2305f9e  server/opt/config-location/PROJECT-STATE.md
 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
