@@ -44,6 +44,31 @@ QUARANTINE_DIR = (
     / "quarantine"
 )
 
+CONFIG_QUARANTINE_DIR = (
+    QUARANTINE_DIR
+    / "corrupt-configs"
+)
+
+SNAPSHOT_QUARANTINE_DIR = (
+    QUARANTINE_DIR
+    / "source-snapshots"
+)
+
+RUNTIME_QUARANTINE_DIR = (
+    QUARANTINE_DIR
+    / "source-runtime"
+)
+
+SOURCE_REGISTRY_QUARANTINE_DIR = (
+    QUARANTINE_DIR
+    / "source-registry"
+)
+
+DELETION_JOURNAL_QUARANTINE_DIR = (
+    QUARANTINE_DIR
+    / "source-deletion-journal"
+)
+
 STATE_DIR = (
     DATA
     / "state"
@@ -83,24 +108,60 @@ def _read_json_safe(
         )
 
     except Exception:
+
         return None
+
 
     return obj
 
 
-def _count_json(
+def _count_files(
     path: Path,
+    pattern: str = "*",
 ):
     if not path.exists():
         return 0
 
     return sum(
         1
-        for item in path.rglob(
-            "*.json"
+        for item in path.glob(
+            pattern
         )
         if item.is_file()
     )
+
+
+def _count_incidents(
+    path: Path,
+):
+    """
+    Count quarantined payload incidents, excluding
+    sidecar .meta.json evidence files.
+    """
+
+    if not path.exists():
+        return 0
+
+
+    count = 0
+
+
+    for item in path.iterdir():
+
+        if not item.is_file():
+            continue
+
+
+        if item.name.endswith(
+            ".meta.json"
+        ):
+            continue
+
+
+        count += 1
+
+
+    return count
 
 
 def _source_registry_status():
@@ -142,6 +203,7 @@ def _source_registry_status():
             result[
                 "source_count"
             ] = 0
+
 
         return result
 
@@ -186,10 +248,51 @@ def _source_registry_status():
     return result
 
 
+def _quarantine_status():
+
+    result = {
+        "config_incidents":
+            _count_incidents(
+                CONFIG_QUARANTINE_DIR
+            ),
+
+        "snapshot_incidents":
+            _count_incidents(
+                SNAPSHOT_QUARANTINE_DIR
+            ),
+
+        "runtime_incidents":
+            _count_incidents(
+                RUNTIME_QUARANTINE_DIR
+            ),
+
+        "source_registry_incidents":
+            _count_incidents(
+                SOURCE_REGISTRY_QUARANTINE_DIR
+            ),
+
+        "deletion_journal_incidents":
+            _count_incidents(
+                DELETION_JOURNAL_QUARANTINE_DIR
+            ),
+    }
+
+
+    result[
+        "total_incidents"
+    ] = sum(
+        result.values()
+    )
+
+
+    return result
+
+
 def get_core_status(
     *,
     event_limit: int = 20,
 ):
+
     registry = (
         _source_registry_status()
     )
@@ -222,50 +325,44 @@ def get_core_status(
     }
 
 
+    quarantine = (
+        _quarantine_status()
+    )
+
+
     config_count = (
-        sum(
-            1
-            for path in CONFIG_DIR.glob(
-                "*.json"
-            )
-            if path.is_file()
+        _count_files(
+            CONFIG_DIR,
+            "*.json",
         )
-        if CONFIG_DIR.exists()
-        else 0
     )
 
 
     snapshot_count = (
-        sum(
-            1
-            for path in SNAPSHOT_DIR.glob(
-                "*.json"
-            )
-            if path.is_file()
+        _count_files(
+            SNAPSHOT_DIR,
+            "*.json",
         )
-        if SNAPSHOT_DIR.exists()
-        else 0
     )
 
 
     tombstone_count = (
-        sum(
-            1
-            for path in TOMBSTONE_DIR.glob(
-                "*.json"
-            )
-            if path.is_file()
+        _count_files(
+            TOMBSTONE_DIR,
+            "*.json",
         )
-        if TOMBSTONE_DIR.exists()
-        else 0
     )
 
 
-    quarantine_count = (
-        _count_json(
-            QUARANTINE_DIR
-        )
-    )
+    events = {
+        "stats":
+            event_stats(),
+
+        "recent":
+            list_events(
+                limit=event_limit
+            ),
+    }
 
 
     problems = []
@@ -307,8 +404,54 @@ def get_core_status(
         )
 
 
+    if quarantine[
+        "config_incidents"
+    ] > 0:
+
+        problems.append(
+            "config_quarantine_present"
+        )
+
+
+    if quarantine[
+        "snapshot_incidents"
+    ] > 0:
+
+        problems.append(
+            "snapshot_quarantine_present"
+        )
+
+
+    if quarantine[
+        "runtime_incidents"
+    ] > 0:
+
+        problems.append(
+            "runtime_quarantine_present"
+        )
+
+
+    if quarantine[
+        "source_registry_incidents"
+    ] > 0:
+
+        problems.append(
+            "source_registry_quarantine_present"
+        )
+
+
+    if quarantine[
+        "deletion_journal_incidents"
+    ] > 0:
+
+        problems.append(
+            "deletion_journal_quarantine_present"
+        )
+
+
     return {
-        "generated_at": now_iso(),
+        "generated_at":
+            now_iso(),
 
         "healthy":
             not bool(
@@ -336,21 +479,12 @@ def get_core_status(
                 tombstone_count,
         },
 
-        "quarantine": {
-            "json_files":
-                quarantine_count,
-        },
+        "quarantine":
+            quarantine,
 
         "deletion_journal":
             deletion_journal,
 
-        "events": {
-            "stats":
-                event_stats(),
-
-            "recent":
-                list_events(
-                    limit=event_limit
-                ),
-        },
+        "events":
+            events,
     }
