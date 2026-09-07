@@ -2,13 +2,15 @@ CONFIG LOCATION — CORE FINAL POLISH V2.1
 
 core_freeze_v2=PASS
 polish_part_1=PASS
+polish_part_2=PASS
+core_freeze_v2_1=PASS
 
-P1-01_source_registry_identity_uniqueness=PASS
-P1-02_canonical_config_reader=PASS
-P1-03_snapshot_corruption_quarantine=PASS
-P1-04_runtime_corruption_evidence=PASS
-P1-05_deletion_journal_read_consistency=PASS
+core_status=READY
+core_events=READY
+core_event_retention=READY
+core_mutation_contract=READY
+core_quarantine_visibility=READY
 
-next_part=CORE-FINAL-POLISH-V21-PART2-STATUS-EVENT-RETENTION-FREEZE
+next_phase=SETTINGS-CONTROL-PLANE-UNIFIED-PANEL
 
-generated_utc=2026-09-07T06:25:23Z
+generated_utc=2026-09-07T06:34:28Z
