@@ -1,0 +1,25 @@
+CONFIG LOCATION — CORE HARDENING FINAL PASS — PART A V1
+
+generated_utc=2026-09-07T05:28:11Z
+
+execution_directory=/root/3333/core-hardening-final-A-v1-20260907-052636
+execution_marker=PASS
+live_verdict=PASS
+
+A-01_source_registry_fail_closed=PASS
+A-02_source_registry_quarantine=PASS
+A-03_shared_identifier_contract=PASS
+A-04_source_runtime_validation=PASS
+A-05_canonical_lowercase_fingerprint=PASS
+A-06_delete_directory_fsync=PASS
+
+fetcher_service=active
+panel_service=active
+panel_health_http=200
+
+SOURCE_SHA256:
+d8d5eb5d9f4c90d7ed2928e9ae10f84ba22ae7aaa66177a62d9cc53f7033a516  /opt/config-location/app/core/storage.py
+c73b673cefed32a512679d3443d2fb3d68bbfc8249972fabcb70999a602530d4  /opt/config-location/app/core/identifiers.py
+f76afd46ab69d19da2b9b779a3515991075a36c3b919818fca2265d7a829a882  /opt/config-location/app/core/source_runtime.py
+d57524d1a68e07d2a45eb7a3a209cf6302c29f4625aa873059749cd58e7372ac  /opt/config-location/app/core/source_manager.py
+ee2eb99317ceee8a422736712a54c818e3f2ab78080df09026170b203ddb8ed1  /opt/config-location/app/core/config_store.py
