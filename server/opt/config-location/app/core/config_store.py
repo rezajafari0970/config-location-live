@@ -30,6 +30,17 @@ SOURCE_SNAPSHOT_DIR = (
     DATA / "source-snapshots"
 )
 
+CORRUPT_CONFIG_DIR = (
+    DATA
+    / "quarantine"
+    / "corrupt-configs"
+)
+
+SOURCE_TOMBSTONE_DIR = (
+    DATA
+    / "source-tombstones"
+)
+
 CONFIG_DIR.mkdir(
     parents=True,
     exist_ok=True
@@ -44,6 +55,193 @@ SOURCE_SNAPSHOT_DIR.mkdir(
     parents=True,
     exist_ok=True
 )
+
+CORRUPT_CONFIG_DIR.mkdir(
+    parents=True,
+    exist_ok=True
+)
+
+SOURCE_TOMBSTONE_DIR.mkdir(
+    parents=True,
+    exist_ok=True
+)
+
+
+def _fsync_directory(
+    path: Path
+):
+    fd = os.open(
+        str(path),
+        os.O_DIRECTORY,
+    )
+
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
+def _quarantine_corrupt_config(
+    path: Path,
+    fingerprint: str,
+    reason: str,
+):
+    """
+    Preserve the exact broken record before creating
+    a replacement record.
+    """
+
+    timestamp = datetime.now(
+        timezone.utc
+    ).strftime(
+        "%Y%m%dT%H%M%S.%fZ"
+    )
+
+    target = (
+        CORRUPT_CONFIG_DIR
+        / (
+            f"{fingerprint}."
+            f"{timestamp}."
+            f"{os.getpid()}."
+            "corrupt.json"
+        )
+    )
+
+    os.replace(
+        path,
+        target,
+    )
+
+    _fsync_directory(
+        path.parent
+    )
+
+    _fsync_directory(
+        target.parent
+    )
+
+    _atomic_write(
+        target.with_suffix(
+            target.suffix
+            + ".meta.json"
+        ),
+        {
+            "fingerprint": fingerprint,
+            "reason": str(reason),
+            "quarantined_at": now_iso(),
+            "original_path": str(path),
+            "quarantine_path": str(target),
+        },
+    )
+
+    return target
+
+
+def _config_record_is_valid(
+    record,
+    fingerprint: str,
+):
+    return (
+        isinstance(record, dict)
+        and bool(record)
+        and str(
+            record.get(
+                "id",
+                ""
+            )
+        ) == str(
+            fingerprint
+        )
+        and isinstance(
+            record.get(
+                "source_ids"
+            ),
+            list
+        )
+        and isinstance(
+            record.get(
+                "raw"
+            ),
+            str
+        )
+        and isinstance(
+            record.get(
+                "type"
+            ),
+            str
+        )
+    )
+
+
+def _source_tombstone_path(
+    source_id: str
+):
+    return (
+        SOURCE_TOMBSTONE_DIR
+        / f"{source_id}.json"
+    )
+
+
+def mark_source_deleted(
+    source_id: str,
+    reason: str = "source_deleted",
+):
+    source_id = str(
+        source_id or ""
+    ).strip()
+
+    if not source_id:
+        return False
+
+    _atomic_write(
+        _source_tombstone_path(
+            source_id
+        ),
+        {
+            "source_id": source_id,
+            "deleted_at": now_iso(),
+            "reason": str(reason),
+        },
+    )
+
+    return True
+
+
+def clear_source_deleted(
+    source_id: str
+):
+    path = _source_tombstone_path(
+        str(
+            source_id
+        ).strip()
+    )
+
+    try:
+        path.unlink()
+
+        _fsync_directory(
+            path.parent
+        )
+
+        return True
+
+    except FileNotFoundError:
+        return False
+
+
+def is_source_deleted(
+    source_id: str
+):
+    source_id = str(
+        source_id or ""
+    ).strip()
+
+    return bool(
+        source_id
+        and _source_tombstone_path(
+            source_id
+        ).exists()
+    )
 
 
 def now_iso():
@@ -143,18 +341,59 @@ def upsert_config(
         fingerprint
     )
 
+    # Prevent a fetch response that was already in-flight
+    # from resurrecting ownership after Source deletion.
+    if is_source_deleted(
+        source_id
+    ):
+        return (
+            {
+                "id": fingerprint,
+                "source_ids": [],
+                "ignored_deleted_source": True,
+            },
+            False,
+        )
+
     with _lock(
         fingerprint
     ):
+
         if path.exists():
+
             try:
                 record = json.loads(
                     path.read_text(
                         encoding="utf-8"
                     )
                 )
-            except Exception:
+
+            except Exception as exc:
+
+                _quarantine_corrupt_config(
+                    path,
+                    fingerprint,
+                    "json_decode_error:"
+                    + type(exc).__name__,
+                )
+
                 record = {}
+
+            else:
+
+                if not _config_record_is_valid(
+                    record,
+                    fingerprint,
+                ):
+
+                    _quarantine_corrupt_config(
+                        path,
+                        fingerprint,
+                        "invalid_config_record_schema",
+                    )
+
+                    record = {}
+
         else:
             record = {}
 
@@ -505,6 +744,10 @@ def detach_sources_from_configs(source_ids):
                 except FileNotFoundError:
                     pass
 
+    remove_source_snapshots(
+        ids
+    )
+
     return {
         "scanned": scanned,
         "detached": detached,
@@ -541,16 +784,9 @@ def _source_snapshot_lock(
     )
 
 
-def read_source_snapshot(
+def _read_source_snapshot_unlocked(
     source_id: str
 ):
-    """
-    Return the last authoritative config fingerprint
-    snapshot for one source.
-
-    None means no baseline exists yet.
-    """
-
     path = _source_snapshot_path(
         source_id
     )
@@ -564,6 +800,7 @@ def read_source_snapshot(
                 encoding="utf-8"
             )
         )
+
     except Exception:
         return None
 
@@ -590,14 +827,28 @@ def read_source_snapshot(
     }
 
 
-def write_source_snapshot(
+def read_source_snapshot(
+    source_id: str
+):
+    source_id = str(
+        source_id or ""
+    ).strip()
+
+    if not source_id:
+        return None
+
+    with _source_snapshot_lock(
+        source_id
+    ):
+        return _read_source_snapshot_unlocked(
+            source_id
+        )
+
+
+def _write_source_snapshot_unlocked(
     source_id: str,
     fingerprints,
 ):
-    source_id = str(
-        source_id
-    ).strip()
-
     values = sorted({
         str(x).strip()
         for x in fingerprints
@@ -621,7 +872,29 @@ def write_source_snapshot(
     return data
 
 
-def remove_source_snapshot(
+def write_source_snapshot(
+    source_id: str,
+    fingerprints,
+):
+    source_id = str(
+        source_id or ""
+    ).strip()
+
+    if not source_id:
+        raise ValueError(
+            "source_id is required"
+        )
+
+    with _source_snapshot_lock(
+        source_id
+    ):
+        return _write_source_snapshot_unlocked(
+            source_id,
+            fingerprints,
+        )
+
+
+def _remove_source_snapshot_unlocked(
     source_id: str
 ):
     path = _source_snapshot_path(
@@ -630,9 +903,33 @@ def remove_source_snapshot(
 
     try:
         path.unlink()
+
+        _fsync_directory(
+            path.parent
+        )
+
         return True
+
     except FileNotFoundError:
         return False
+
+
+def remove_source_snapshot(
+    source_id: str
+):
+    source_id = str(
+        source_id or ""
+    ).strip()
+
+    if not source_id:
+        return False
+
+    with _source_snapshot_lock(
+        source_id
+    ):
+        return _remove_source_snapshot_unlocked(
+            source_id
+        )
 
 
 def remove_source_snapshots(
@@ -640,15 +937,20 @@ def remove_source_snapshots(
 ):
     removed = 0
 
-    for source_id in {
+    for source_id in sorted({
         str(x).strip()
         for x in source_ids
         if str(x).strip()
-    }:
-        if remove_source_snapshot(
+    }):
+
+        with _source_snapshot_lock(
             source_id
         ):
-            removed += 1
+
+            if _remove_source_snapshot_unlocked(
+                source_id
+            ):
+                removed += 1
 
     return removed
 
@@ -656,19 +958,25 @@ def remove_source_snapshots(
 def delete_all_source_snapshots():
     removed = 0
 
-    for path in list(
+    for path in sorted(
         SOURCE_SNAPSHOT_DIR.glob(
             "*.json"
-        )
+        ),
+        key=lambda p: p.name,
     ):
-        try:
-            path.unlink()
-            removed += 1
-        except FileNotFoundError:
-            pass
+
+        source_id = path.stem
+
+        with _source_snapshot_lock(
+            source_id
+        ):
+
+            if _remove_source_snapshot_unlocked(
+                source_id
+            ):
+                removed += 1
 
     return removed
-
 
 def sync_source_snapshot(
     source_id: str,
@@ -740,6 +1048,15 @@ def sync_source_snapshot(
     if not source_id:
         return result
 
+    if is_source_deleted(
+        source_id
+    ):
+        result[
+            "source_deleted"
+        ] = True
+
+        return result
+
     if not authoritative:
         return result
 
@@ -747,7 +1064,7 @@ def sync_source_snapshot(
         source_id
     ):
 
-        previous = read_source_snapshot(
+        previous = _read_source_snapshot_unlocked(
             source_id
         )
 
@@ -755,7 +1072,7 @@ def sync_source_snapshot(
         # establish baseline only.
         if previous is None:
 
-            write_source_snapshot(
+            _write_source_snapshot_unlocked(
                 source_id,
                 current
             )
@@ -880,7 +1197,7 @@ def sync_source_snapshot(
                     except FileNotFoundError:
                         pass
 
-        write_source_snapshot(
+        _write_source_snapshot_unlocked(
             source_id,
             current
         )
@@ -893,8 +1210,8 @@ def sync_source_snapshot(
 
 def delete_all_configs():
     """
-    Delete every stored config.
-    Used when all sources are deleted.
+    Delete every Config under the same per-config lock
+    domain used by upsert and ownership reconciliation.
     """
 
     delete_all_source_snapshots()
@@ -902,18 +1219,36 @@ def delete_all_configs():
     deleted = 0
 
     for path in list(
-        CONFIG_DIR.glob("*.json")
+        CONFIG_DIR.glob(
+            "*.json"
+        )
     ):
-        try:
+
+        fingerprint = path.stem
+
+        with _lock(
+            fingerprint
+        ):
+
+            if not path.exists():
+                continue
+
             archive_latest_before_config_delete(
-                path.stem,
+                fingerprint,
                 reason="delete_all_configs",
             )
 
-            path.unlink()
-            deleted += 1
+            try:
+                path.unlink()
 
-        except FileNotFoundError:
-            pass
+                _fsync_directory(
+                    path.parent
+                )
+
+                deleted += 1
+
+            except FileNotFoundError:
+                pass
 
     return deleted
+
