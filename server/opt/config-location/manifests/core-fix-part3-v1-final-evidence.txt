@@ -1,0 +1,28 @@
+CONFIG LOCATION — CORE FIX PART 3/3 V1 FINAL EVIDENCE
+
+generated_utc=2026-09-07T04:59:33Z
+
+execution_directory=/root/3333/core-fix-part3-v1-20260907-045756
+execution_marker=ROLLED_BACK
+live_verdict=ROLLED_BACK
+
+CORE-01_source_db_transaction_lock=PASS
+CORE-02_config_detach_lock=PASS
+CORE-03_ipv6_normalization=PASS
+CORE-04_source_runtime_atomic_rmw=PASS
+CORE-05_corrupt_config_quarantine=PASS
+CORE-06_snapshot_locking=PASS
+CORE-07_recoverable_deletion=PASS
+CORE-08_directory_fsync=PASS
+CORE-09_identifier_validation=FAIL
+CORE-10_integrity_lazy_adapter=FAIL
+
+fetcher_service=active
+panel_service=active
+panel_health_http=200
+
+SOURCE_SHA256:
+0b87a1946be5f2b0afc2c2b5397bff87f6bb04af62631baf507e3ed6c84097d8  /opt/config-location/app/core/source_manager.py
+c1049ab923ebf9b6d05ea414e02c62a23b8528d40ea751f4967931ca39008707  /opt/config-location/app/core/config_store.py
+527479f0ea3ecbb4ecb284c6e2a7b04255c23d66e2ffc0b1ec74479e593258f5  /opt/config-location/app/core/source_runtime.py
+df80a662b18b9015bb78068cedd0a7361df4f81612610f9663ca9eb3b442fff1  /opt/config-location/app/core/storage.py
