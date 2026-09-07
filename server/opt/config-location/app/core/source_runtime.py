@@ -14,6 +14,14 @@ from .identifiers import (
         as _validate_source_id,
 )
 
+from .storage import (
+    quarantine_file,
+)
+
+from .events import (
+    safe_emit_event,
+)
+
 
 DATA = Path(
     "/var/lib/config-location"
@@ -27,12 +35,23 @@ LOCKS = (
     DATA / "locks"
 )
 
+RUNTIME_QUARANTINE = (
+    DATA
+    / "quarantine"
+    / "source-runtime"
+)
+
 RUNTIME.mkdir(
     parents=True,
     exist_ok=True
 )
 
 LOCKS.mkdir(
+    parents=True,
+    exist_ok=True
+)
+
+RUNTIME_QUARANTINE.mkdir(
     parents=True,
     exist_ok=True
 )
@@ -80,6 +99,7 @@ def _read_runtime_unlocked(
     if not path.exists():
         return {}
 
+
     try:
 
         obj = json.loads(
@@ -88,17 +108,94 @@ def _read_runtime_unlocked(
             )
         )
 
+
         if isinstance(
             obj,
             dict
         ):
             return obj
 
+
+        reason = (
+            "runtime_not_dict"
+        )
+
+
+    except Exception as exc:
+
+        reason = (
+            "runtime_json_error:"
+            + type(exc).__name__
+        )
+
+
+    # Runtime state is recoverable, but corruption must
+    # never be silently indistinguishable from no state.
+    try:
+
+        name = path.name
+
+        source_id = (
+            name[
+                len("source-"):
+                -len(".json")
+            ]
+            if (
+                name.startswith(
+                    "source-"
+                )
+                and name.endswith(
+                    ".json"
+                )
+            )
+            else None
+        )
+
+
+        target = quarantine_file(
+            path,
+            RUNTIME_QUARANTINE,
+            reason=reason,
+            metadata={
+                "component":
+                    "source_runtime",
+
+                "source_id":
+                    source_id,
+            },
+        )
+
+
+        safe_emit_event(
+            "source.runtime_quarantined",
+            entity="source",
+            entity_id=source_id,
+            severity="warning",
+            actor="source_runtime",
+            message="Corrupt Source runtime state moved to quarantine.",
+            data={
+                "reason":
+                    reason,
+
+                "quarantine_path":
+                    (
+                        str(target)
+                        if target
+                        else None
+                    ),
+            },
+        )
+
+
     except Exception:
+
+        # Runtime state itself remains recoverable.
+        # Do not break Fetcher solely because evidence
+        # collection failed.
         pass
 
-    return {}
 
+    return {}
 
 def _write_runtime_unlocked(
     path: Path,
