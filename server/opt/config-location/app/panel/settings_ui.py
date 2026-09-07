@@ -1,23 +1,35 @@
 from __future__ import annotations
-from app.panel.page_renderer import page
 
+import html
 import json
 
 from aiohttp import web
 
-from app.settings.engine import (
+from app.panel.page_renderer import (
+    page,
+)
+
+from app.settings import (
+    SettingsCorruptError,
+    SettingsFeatureNotWiredError,
+    SettingsRevisionConflictError,
+    get_feature_runtime_contracts,
+    get_setting_runtime_contracts,
     get_settings,
     get_settings_status,
+    prune_settings_history,
     update_settings,
 )
 
 
-def _esc(value) -> str:
-
-    import html
+def _esc(
+    value,
+) -> str:
 
     return html.escape(
-        str(value)
+        str(
+            value
+        )
     )
 
 
@@ -26,80 +38,407 @@ def _minutes(
 ) -> int:
 
     try:
+
         return max(
             1,
-            int(seconds) // 60,
+            int(
+                seconds
+            )
+            // 60,
         )
+
     except Exception:
+
         return 5
 
 
+def _json_headers():
+    return {
+        "Cache-Control":
+            "no-store",
+    }
+
+
+def _error_response(
+    error: str,
+    *,
+    status: int,
+    code: str,
+    extra: dict | None = None,
+):
+
+    body = {
+        "ok": False,
+        "error":
+            str(
+                error
+            ),
+        "code":
+            str(
+                code
+            ),
+    }
+
+
+    if isinstance(
+        extra,
+        dict,
+    ):
+
+        body.update(
+            extra
+        )
+
+
+    return web.json_response(
+        body,
+        status=status,
+        headers=_json_headers(),
+    )
+
+
+def _parse_revision(
+    value,
+) -> int:
+
+    try:
+
+        revision = int(
+            value
+        )
+
+    except (
+        TypeError,
+        ValueError,
+    ):
+
+        raise ValueError(
+            "expected_revision is required and must be integer"
+        )
+
+
+    if revision < 0:
+
+        raise ValueError(
+            "expected_revision must be >= 0"
+        )
+
+
+    return revision
+
+
+# ============================================================
+# API — READ
+# ============================================================
+
 async def api_settings(
+    request,
+):
+
+    try:
+
+        return web.json_response(
+            {
+                "ok": True,
+
+                "settings":
+                    get_settings(),
+
+                "status":
+                    get_settings_status(),
+
+                "feature_contracts":
+                    get_feature_runtime_contracts(),
+
+                "setting_contracts":
+                    get_setting_runtime_contracts(),
+            },
+            headers=_json_headers(),
+        )
+
+    except SettingsCorruptError as exc:
+
+        return _error_response(
+            str(
+                exc
+            ),
+            status=503,
+            code="settings_store_blocked",
+            extra={
+                "status":
+                    get_settings_status(),
+            },
+        )
+
+
+async def api_settings_status(
     request,
 ):
 
     return web.json_response(
         {
             "ok": True,
-            "settings":
-                get_settings(),
             "status":
                 get_settings_status(),
         },
-        headers={
-            "Cache-Control":
-                "no-store",
-        },
+        headers=_json_headers(),
     )
 
+
+async def api_settings_capabilities(
+    request,
+):
+
+    return web.json_response(
+        {
+            "ok": True,
+
+            "features":
+                get_feature_runtime_contracts(),
+
+            "settings":
+                get_setting_runtime_contracts(),
+        },
+        headers=_json_headers(),
+    )
+
+
+async def api_settings_history_preview(
+    request,
+):
+
+    try:
+
+        max_entries = int(
+            request.rel_url.query.get(
+                "max_entries",
+                50,
+            )
+        )
+
+
+        max_age_raw = (
+            request.rel_url.query.get(
+                "max_age_days"
+            )
+        )
+
+
+        max_age_days = (
+            int(
+                max_age_raw
+            )
+            if max_age_raw
+            not in (
+                None,
+                "",
+            )
+            else None
+        )
+
+
+        result = prune_settings_history(
+            max_entries=max_entries,
+            max_age_days=max_age_days,
+            dry_run=True,
+        )
+
+
+        return web.json_response(
+            {
+                "ok": True,
+                "preview":
+                    result,
+            },
+            headers=_json_headers(),
+        )
+
+
+    except ValueError as exc:
+
+        return _error_response(
+            str(
+                exc
+            ),
+            status=400,
+            code="invalid_retention_request",
+        )
+
+
+# ============================================================
+# API — UPDATE WITH CAS
+# ============================================================
 
 async def api_settings_update(
     request,
 ):
 
     try:
+
         obj = await request.json()
+
 
         if not isinstance(
             obj,
             dict,
         ):
+
             raise ValueError(
-                "JSON body must "
-                "be object"
+                "JSON body must be object"
             )
 
-        updated = update_settings(
-            obj,
-            updated_by="panel-api",
+
+        if "expected_revision" not in obj:
+
+            raise ValueError(
+                "expected_revision is required"
+            )
+
+
+        expected_revision = (
+            _parse_revision(
+                obj.get(
+                    "expected_revision"
+                )
+            )
         )
+
+
+        if "patch" in obj:
+
+            patch = obj.get(
+                "patch"
+            )
+
+
+            if not isinstance(
+                patch,
+                dict,
+            ):
+
+                raise ValueError(
+                    "patch must be object"
+                )
+
+
+            unknown_envelope = (
+                set(
+                    obj.keys()
+                )
+                - {
+                    "expected_revision",
+                    "patch",
+                }
+            )
+
+
+            if unknown_envelope:
+
+                raise ValueError(
+                    "unknown API envelope key(s): "
+                    + ", ".join(
+                        sorted(
+                            unknown_envelope
+                        )
+                    )
+                )
+
+
+        else:
+
+            patch = {
+                key: value
+                for key, value
+                in obj.items()
+                if key
+                != "expected_revision"
+            }
+
+
+        updated = update_settings(
+            patch,
+            updated_by="panel-api",
+            expected_revision=
+                expected_revision,
+        )
+
 
         return web.json_response(
             {
                 "ok": True,
-                "settings": updated,
+
+                "settings":
+                    updated,
+
                 "status":
                     get_settings_status(),
             },
-            headers={
-                "Cache-Control":
-                    "no-store",
+            headers=_json_headers(),
+        )
+
+
+    except SettingsRevisionConflictError as exc:
+
+        return _error_response(
+            str(
+                exc
+            ),
+            status=409,
+            code="settings_revision_conflict",
+            extra={
+                "status":
+                    get_settings_status(),
             },
         )
+
+
+    except SettingsFeatureNotWiredError as exc:
+
+        return _error_response(
+            str(
+                exc
+            ),
+            status=409,
+            code="feature_not_wired",
+            extra={
+                "feature_contracts":
+                    get_feature_runtime_contracts(),
+            },
+        )
+
+
+    except SettingsCorruptError as exc:
+
+        return _error_response(
+            str(
+                exc
+            ),
+            status=503,
+            code="settings_store_blocked",
+            extra={
+                "status":
+                    get_settings_status(),
+            },
+        )
+
 
     except (
         ValueError,
         json.JSONDecodeError,
     ) as exc:
 
-        return web.json_response(
-            {
-                "ok": False,
-                "error": str(exc),
-            },
+        return _error_response(
+            str(
+                exc
+            ),
             status=400,
+            code="invalid_settings_request",
         )
 
+
+# ============================================================
+# FORM — CAS
+# ============================================================
 
 async def settings_save(
     request,
@@ -109,35 +448,54 @@ async def settings_save(
         HTTPFound,
     )
 
+
     data = await request.post()
+
 
     def intval(
         name,
         default,
     ):
+
         value = data.get(
             name,
             default,
         )
 
         return int(
-            str(value).strip()
+            str(
+                value
+            ).strip()
         )
+
 
     def floatval(
         name,
         default,
     ):
+
         value = data.get(
             name,
             default,
         )
 
         return float(
-            str(value).strip()
+            str(
+                value
+            ).strip()
         )
 
+
     try:
+
+        expected_revision = (
+            _parse_revision(
+                data.get(
+                    "expected_revision"
+                )
+            )
+        )
+
 
         patch = {
             "source_intelligence": {
@@ -244,38 +602,245 @@ async def settings_save(
             },
         }
 
+
         update_settings(
             patch,
             updated_by="panel-form",
+            expected_revision=
+                expected_revision,
         )
+
+
+    except SettingsRevisionConflictError:
+
+        raise HTTPFound(
+            "/settings?"
+            "error="
+            "تنظیمات در یک درخواست دیگر تغییر کرده است؛ "
+            "صفحه را دوباره بارگذاری کنید."
+        )
+
+
+    except SettingsFeatureNotWiredError as exc:
+
+        raise HTTPFound(
+            "/settings?error="
+            + str(
+                exc
+            )
+        )
+
+
+    except SettingsCorruptError:
+
+        raise HTTPFound(
+            "/settings?"
+            "error="
+            "Settings Store در وضعیت Blocked قرار دارد."
+        )
+
 
     except Exception as exc:
 
         raise HTTPFound(
             "/settings?error="
-            + str(exc)
+            + str(
+                exc
+            )
         )
+
 
     raise HTTPFound(
         "/settings?saved=1"
     )
 
 
+# ============================================================
+# HTML HELPERS
+# ============================================================
+
+def _state_badge(
+    state: str,
+) -> str:
+
+    state = str(
+        state
+    )
+
+
+    if state == "wired":
+
+        return (
+            '<span style="'
+            'display:inline-block;'
+            'padding:4px 9px;'
+            'border-radius:999px;'
+            'background:#dcfce7;'
+            'color:#166534;'
+            'font-size:12px;'
+            'font-weight:700">'
+            'WIRED'
+            '</span>'
+        )
+
+
+    if state == "implemented":
+
+        return (
+            '<span style="'
+            'display:inline-block;'
+            'padding:4px 9px;'
+            'border-radius:999px;'
+            'background:#dbeafe;'
+            'color:#1d4ed8;'
+            'font-size:12px;'
+            'font-weight:700">'
+            'IMPLEMENTED'
+            '</span>'
+        )
+
+
+    return (
+        '<span style="'
+        'display:inline-block;'
+        'padding:4px 9px;'
+        'border-radius:999px;'
+        'background:#f1f5f9;'
+        'color:#475569;'
+        'font-size:12px;'
+        'font-weight:700">'
+        'SCAFFOLD'
+        '</span>'
+    )
+
+
+def _feature_rows(
+    feature_contracts: dict,
+) -> str:
+
+    rows = []
+
+
+    for key in sorted(
+        feature_contracts
+    ):
+
+        contract = (
+            feature_contracts[
+                key
+            ]
+        )
+
+
+        state = str(
+            contract.get(
+                "state",
+                "scaffold",
+            )
+        )
+
+
+        reason = str(
+            contract.get(
+                "reason",
+                "",
+            )
+        )
+
+
+        rows.append(
+            f"""
+<tr>
+<td dir="ltr">
+{_esc(key)}
+</td>
+<td>
+{_state_badge(state)}
+</td>
+<td style="color:#64748b">
+{_esc(reason)}
+</td>
+</tr>
+"""
+        )
+
+
+    return "".join(
+        rows
+    )
+
+
+# ============================================================
+# PAGE
+# ============================================================
+
 async def settings_page(
     request,
 ):
 
-    # Lazy import avoids module cycle.
-    # page renderer dependency removed from settings_ui
+    try:
 
-    settings = get_settings()
-    status = get_settings_status()
+        settings = get_settings()
+
+        status = get_settings_status()
+
+
+    except SettingsCorruptError as exc:
+
+        content = f"""
+<div class="card">
+
+<h2>
+⚠️ Central Settings Blocked
+</h2>
+
+<div class="notice error">
+{_esc(exc)}
+</div>
+
+<p>
+Settings Store به دلیل تشخیص corruption در حالت Fail-Closed قرار گرفته است.
+تا Recovery معتبر انجام نشود، ذخیره تنظیمات مجاز نیست.
+</p>
+
+<a
+ class="button secondary"
+ href="/"
+>
+بازگشت به Dashboard
+</a>
+
+</div>
+"""
+
+        return page(
+            "Central Settings — Blocked",
+            content,
+        )
+
+
+    feature_contracts = (
+        get_feature_runtime_contracts()
+    )
+
+    setting_contracts = (
+        get_setting_runtime_contracts()
+    )
+
+
+    revision = int(
+        status[
+            "revision"
+        ]
+    )
+
 
     source_window = settings[
         "source_intelligence"
     ][
         "healthy_window_hours"
     ]
+
 
     retest_minutes = _minutes(
         settings[
@@ -285,11 +850,13 @@ async def settings_page(
         ]
     )
 
+
     lifetime = settings[
         "config_lifetime"
     ][
         "max_age_hours"
     ]
+
 
     cleanup = settings[
         "cleanup"
@@ -297,19 +864,24 @@ async def settings_page(
         "default_retention_days"
     ]
 
+
     resources = settings[
         "resources"
     ]
+
 
     country = settings[
         "country"
     ]
 
+
     publish = settings[
         "publish"
     ]
 
+
     notice = ""
+
 
     if request.query.get(
         "saved"
@@ -317,13 +889,15 @@ async def settings_page(
 
         notice = """
 <div class="notice success">
-تنظیمات با موفقیت و به‌صورت Atomic ذخیره شد.
+تنظیمات با موفقیت و با کنترل Revision ذخیره شد.
 </div>
 """
+
 
     error = request.query.get(
         "error"
     )
+
 
     if error:
 
@@ -333,21 +907,63 @@ async def settings_page(
 </div>
 """
 
+
+    feature_rows = (
+        _feature_rows(
+            feature_contracts
+        )
+    )
+
+
+    wired_count = sum(
+        1
+        for item
+        in feature_contracts.values()
+        if item.get(
+            "state"
+        )
+        == "wired"
+    )
+
+
+    scaffold_count = sum(
+        1
+        for item
+        in feature_contracts.values()
+        if item.get(
+            "state"
+        )
+        == "scaffold"
+    )
+
+
+    setting_wired_count = sum(
+        1
+        for item
+        in setting_contracts.values()
+        if item.get(
+            "state"
+        )
+        == "wired"
+    )
+
+
     content = f"""
 {notice}
 
 <div class="card">
 
 <h2>
-⚙️ تنظیمات مرکزی پروژه
+⚙️ Settings Foundation V2
 </h2>
 
 <p style="color:#64748b;line-height:1.9">
-این صفحه Source of Truth تنظیمات نسل جدید پروژه است.
-در Phase 1 تنظیمات به‌صورت Versioned و Crash-Safe ذخیره
-می‌شوند. اتصال Retest، Lifetime، Source Intelligence،
-Publish v2 و Resource Guardian در مراحل بعد انجام می‌شود.
+Central Settings اکنون Source of Truth رسمی پروژه است.
+ذخیره تنظیمات با Revision/CAS انجام می‌شود و قابلیت‌هایی
+که Runtime آنها هنوز متصل نشده است با وضعیت SCAFFOLD
+نمایش داده می‌شوند.
 </p>
+
 
 <div class="grid">
 
@@ -355,22 +971,25 @@ Publish v2 و Resource Guardian در مراحل بعد انجام می‌شود.
 <strong>
 Schema {status["schema_version"]}
 </strong>
-نسخه تنظیمات
+Schema Version
 </div>
+
 
 <div class="stat">
 <strong>
-Revision {status["revision"]}
+Revision {revision}
 </strong>
 Revision فعلی
 </div>
+
 
 <div class="stat">
 <strong>
 {status["history_count"]}
 </strong>
-نسخه‌های History
+History
 </div>
+
 
 <div class="stat">
 <strong style="font-size:12px;word-break:break-all">
@@ -378,6 +997,83 @@ Revision فعلی
 </strong>
 Checksum
 </div>
+
+
+<div class="stat">
+<strong>
+{wired_count}
+</strong>
+Featureهای Wired
+</div>
+
+
+<div class="stat">
+<strong>
+{scaffold_count}
+</strong>
+Featureهای Scaffold
+</div>
+
+
+<div class="stat">
+<strong>
+{setting_wired_count}
+</strong>
+Settingهای Runtime Wired
+</div>
+
+
+<div class="stat">
+
+<strong>
+{
+    "BLOCKED"
+    if status["blocked"]
+    else "READY"
+}
+</strong>
+
+Settings Store
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+🧩 Runtime Capability Map
+</h2>
+
+<p style="color:#64748b;line-height:1.9">
+WIRED یعنی Runtime واقعاً Central Settings را مصرف می‌کند.
+SCAFFOLD یعنی قرارداد تنظیمات آماده است اما موتور مربوطه
+هنوز نباید از پنل فعال شود.
+</p>
+
+
+<div style="overflow:auto">
+
+<table>
+
+<thead>
+<tr>
+<th>Feature</th>
+<th>Status</th>
+<th>Runtime Contract</th>
+</tr>
+</thead>
+
+<tbody>
+
+{feature_rows}
+
+</tbody>
+
+</table>
 
 </div>
 
@@ -389,14 +1085,29 @@ Checksum
  action="/settings/save"
 >
 
+
+<input
+ type="hidden"
+ name="expected_revision"
+ value="{revision}"
+>
+
+
 <div class="card">
 
 <h2>
 🧠 Source Intelligence
+{_state_badge(
+    feature_contracts[
+        "source_intelligence"
+    ][
+        "state"
+    ]
+)}
 </h2>
 
 <label>
-پنجره بررسی Source بدون کانفیگ سالم
+پنجره Source بدون کانفیگ سالم
 </label>
 
 <input
@@ -409,7 +1120,8 @@ Checksum
 >
 
 <small>
-بر حسب ساعت — مقدار هدف فعلی: 12 ساعت
+بر حسب ساعت. ذخیره مقدار مجاز است؛
+فعال‌سازی موتور Source Intelligence تا زمان Wired شدن انجام نمی‌شود.
 </small>
 
 </div>
@@ -419,6 +1131,13 @@ Checksum
 
 <h2>
 ❤️ Health Retest
+{_state_badge(
+    feature_contracts[
+        "health_retest"
+    ][
+        "state"
+    ]
+)}
 </h2>
 
 <label>
@@ -435,7 +1154,7 @@ Checksum
 >
 
 <small>
-بر حسب دقیقه؛ مثلاً 5 یا 20 دقیقه.
+بر حسب دقیقه. این بخش Runtime Wired است.
 </small>
 
 </div>
@@ -445,6 +1164,13 @@ Checksum
 
 <h2>
 ⏳ Config Lifetime
+{_state_badge(
+    feature_contracts[
+        "config_lifetime"
+    ][
+        "state"
+    ]
+)}
 </h2>
 
 <label>
@@ -461,7 +1187,7 @@ Checksum
 >
 
 <small>
-بر حسب ساعت؛ مقدار هدف فعلی: 48 ساعت.
+بر حسب ساعت. موتور Lifetime هنوز Scaffold است.
 </small>
 
 </div>
@@ -471,6 +1197,13 @@ Checksum
 
 <h2>
 🌍 Country / Remark
+{_state_badge(
+    feature_contracts[
+        "country_remark"
+    ][
+        "state"
+    ]
+)}
 </h2>
 
 <label>
@@ -483,6 +1216,7 @@ Checksum
  value="{_esc(country["unknown_name"])}"
  required
 >
+
 
 <label>
 Remark Format
@@ -506,7 +1240,14 @@ Remark Format
 <div class="card">
 
 <h2>
-📡 Subscription
+📡 Subscription / Publish
+{_state_badge(
+    feature_contracts[
+        "publish_country_routes"
+    ][
+        "state"
+    ]
+)}
 </h2>
 
 <label>
@@ -521,6 +1262,7 @@ Public Port
  value="{publish["public_port"]}"
  required
 >
+
 
 <label>
 Default ED
@@ -541,7 +1283,14 @@ Default ED
 <div class="card">
 
 <h2>
-🧹 Cleanup
+🧹 Cleanup / Retention
+{_state_badge(
+    feature_contracts[
+        "retention_manager"
+    ][
+        "state"
+    ]
+)}
 </h2>
 
 <label>
@@ -558,7 +1307,7 @@ Retention پیش‌فرض
 >
 
 <small>
-بر حسب روز؛ مقدار هدف فعلی: 7 روز.
+بر حسب روز. Retention Manager هنوز Scaffold است.
 </small>
 
 </div>
@@ -567,69 +1316,112 @@ Retention پیش‌فرض
 <div class="card">
 
 <h2>
-🖥 Resource Guardian
+🖥 Resource Thresholds
+{_state_badge(
+    feature_contracts[
+        "resource_guardian"
+    ][
+        "state"
+    ]
+)}
 </h2>
+
 
 <div class="grid">
 
 <div>
-<label>CPU Warning %</label>
+
+<label>
+CPU Warning %
+</label>
+
 <input
  type="number"
  step="0.1"
  name="cpu_warning"
  value="{resources["cpu_warning_percent"]}"
 >
+
 </div>
 
+
 <div>
-<label>CPU Critical %</label>
+
+<label>
+CPU Critical %
+</label>
+
 <input
  type="number"
  step="0.1"
  name="cpu_critical"
  value="{resources["cpu_critical_percent"]}"
 >
+
 </div>
 
+
 <div>
-<label>RAM Warning %</label>
+
+<label>
+RAM Warning %
+</label>
+
 <input
  type="number"
  step="0.1"
  name="ram_warning"
  value="{resources["ram_warning_percent"]}"
 >
+
 </div>
 
+
 <div>
-<label>RAM Critical %</label>
+
+<label>
+RAM Critical %
+</label>
+
 <input
  type="number"
  step="0.1"
  name="ram_critical"
  value="{resources["ram_critical_percent"]}"
 >
+
 </div>
 
+
 <div>
-<label>Disk Warning %</label>
+
+<label>
+Disk Warning %
+</label>
+
 <input
  type="number"
  step="0.1"
  name="disk_warning"
  value="{resources["disk_warning_percent"]}"
 >
+
 </div>
 
+
 <div>
-<label>Disk Critical %</label>
+
+<label>
+Disk Critical %
+</label>
+
 <input
  type="number"
  step="0.1"
  name="disk_critical"
  value="{resources["disk_critical_percent"]}"
 >
+
 </div>
 
 </div>
@@ -646,6 +1438,7 @@ Retention پیش‌فرض
 ذخیره تنظیمات
 </button>
 
+
 <a
  class="button secondary"
  href="/"
@@ -661,25 +1454,92 @@ Retention پیش‌فرض
 <div class="card">
 
 <h2>
-🔒 وضعیت Activation
+🔐 Concurrency Protection
 </h2>
 
 <p style="line-height:1.9;color:#64748b">
-Phase 1 فقط Foundation را فعال کرده است.
-هیچ Health Retest، حذف خودکار، Lifetime،
-Country Remark یا Port 80 جدید در این مرحله
-بدون مرحله مربوطه فعال نمی‌شود.
-این رفتار برای جلوگیری از تغییر ناگهانی Production عمدی است.
+
+این فرم با Revision
+
+<strong>
+{revision}
+</strong>
+
+بارگذاری شده است.
+
+اگر قبل از ذخیره، درخواست دیگری Settings را تغییر دهد،
+CAS اجازه overwrite کردن تغییر جدید را نمی‌دهد و باید صفحه
+دوباره بارگذاری شود.
+
 </p>
 
 </div>
+
+
+<div class="card">
+
+<h2>
+🗄 Settings Store
+</h2>
+
+<table>
+
+<tbody>
+
+<tr>
+<td>Source of Truth</td>
+<td>
+<strong>
+{_esc(status["source_of_truth"])}
+</strong>
+</td>
+</tr>
+
+<tr>
+<td>Legacy Config</td>
+<td>
+{_esc(status["legacy_inputs"])}
+</td>
+</tr>
+
+<tr>
+<td>History Limit</td>
+<td>
+{_esc(status["history_limit"])}
+</td>
+</tr>
+
+<tr>
+<td>Blocked</td>
+<td>
+{_esc(status["blocked"])}
+</td>
+</tr>
+
+<tr>
+<td>Valid</td>
+<td>
+{_esc(status["valid"])}
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
 """
+
 
     return page(
         "Central Settings",
         content,
     )
 
+
+# ============================================================
+# ROUTES
+# ============================================================
 
 def install_settings_routes(
     app,
@@ -689,30 +1549,55 @@ def install_settings_routes(
         "_configloc_settings_routes"
     )
 
+
     if app.get(
         marker
     ):
+
         return
+
 
     app.router.add_get(
         "/settings",
         settings_page,
     )
 
+
     app.router.add_post(
         "/settings/save",
         settings_save,
     )
+
 
     app.router.add_get(
         "/api/settings",
         api_settings,
     )
 
+
     app.router.add_post(
         "/api/settings",
         api_settings_update,
     )
+
+
+    app.router.add_get(
+        "/api/settings/status",
+        api_settings_status,
+    )
+
+
+    app.router.add_get(
+        "/api/settings/capabilities",
+        api_settings_capabilities,
+    )
+
+
+    app.router.add_get(
+        "/api/settings/history/preview",
+        api_settings_history_preview,
+    )
+
 
     app[
         marker
