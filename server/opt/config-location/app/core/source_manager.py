@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import uuid
+from functools import wraps
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
+
+from filelock import FileLock
 
 from .storage import read_json, atomic_write_json
 
@@ -17,6 +20,33 @@ from app.core.config_store import (
 
 
 SOURCE_FILE = Path("/var/lib/config-location/sources/sources.json")
+
+SOURCE_TRANSACTION_LOCK = Path(
+    "/var/lib/config-location/locks/"
+    "source-manager-transaction.lock"
+)
+
+
+def _source_transaction(func):
+
+    @wraps(func)
+    def wrapped(*args, **kwargs):
+
+        SOURCE_TRANSACTION_LOCK.parent.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        with FileLock(
+            str(SOURCE_TRANSACTION_LOCK),
+            timeout=60,
+        ):
+            return func(
+                *args,
+                **kwargs,
+            )
+
+    return wrapped
 
 
 def now_iso():
@@ -103,6 +133,7 @@ def get_source(source_id: str):
     return None
 
 
+@_source_transaction
 def add_source(
     url: str,
     name: str = "",
@@ -179,6 +210,7 @@ def add_source(
     return source, False
 
 
+@_source_transaction
 def edit_source(
     source_id: str,
     url: str,
@@ -232,6 +264,7 @@ def edit_source(
     return target
 
 
+@_source_transaction
 def delete_source(source_id: str):
     """
     Delete one source.
@@ -276,6 +309,7 @@ def delete_source(source_id: str):
 
 
 
+@_source_transaction
 def set_enabled(source_id: str, enabled: bool):
     data = _load()
 
@@ -308,6 +342,7 @@ def stats():
     }
 
 
+@_source_transaction
 def add_sources_bulk(
     urls,
     interval=60,
@@ -556,6 +591,7 @@ def add_sources_bulk(
     }
 
 
+@_source_transaction
 def delete_sources(source_ids):
     """
     Delete multiple sources atomically.
@@ -612,6 +648,7 @@ def delete_sources(source_ids):
 
 
 
+@_source_transaction
 def delete_all_sources():
     """
     Delete all configured sources.
