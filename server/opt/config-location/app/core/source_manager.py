@@ -14,6 +14,7 @@ from .storage import (
     read_json_strict,
     atomic_write_json,
     quarantine_file,
+    fsync_directory,
     JsonCorruptError,
     JsonReadError,
 )
@@ -40,6 +41,23 @@ SOURCE_DELETE_JOURNAL = Path(
     "/var/lib/config-location/state/"
     "pending-source-deletion.json"
 )
+
+SOURCE_DELETE_JOURNAL_QUARANTINE_DIR = Path(
+    "/var/lib/config-location/quarantine/"
+    "source-deletion-journal"
+)
+
+SOURCE_DELETE_JOURNAL_BLOCK_MARKER = Path(
+    "/var/lib/config-location/state/"
+    "source-deletion-journal-blocked.json"
+)
+
+
+class SourceDeletionJournalCorruptError(
+    RuntimeError
+):
+    pass
+
 
 SOURCE_REGISTRY_QUARANTINE_DIR = Path(
     "/var/lib/config-location/quarantine/"
@@ -143,32 +161,209 @@ def _write_delete_journal(
     )
 
 
+def _quarantine_delete_journal(
+    reason: str,
+):
+    target = quarantine_file(
+        SOURCE_DELETE_JOURNAL,
+        SOURCE_DELETE_JOURNAL_QUARANTINE_DIR,
+        reason=reason,
+        metadata={
+            "component":
+                "source-deletion-journal",
+        },
+    )
+
+    atomic_write_json(
+        SOURCE_DELETE_JOURNAL_BLOCK_MARKER,
+        {
+            "blocked": True,
+            "reason": str(reason),
+            "quarantine_path":
+                str(target)
+                if target
+                else None,
+            "blocked_at": now_iso(),
+        },
+    )
+
+    return target
+
+
+def _prepare_source_deletion(
+    operation: str,
+    source_ids,
+):
+    values = sorted({
+        str(x).strip()
+        for x in source_ids
+        if str(x).strip()
+    })
+
+
+    if not values:
+        return []
+
+
+    # Journal FIRST.
+    _write_delete_journal(
+        operation,
+        values,
+    )
+
+
+    marked = []
+
+
+    try:
+
+        for source_id in values:
+
+            mark_source_deleted(
+                source_id,
+                reason=operation,
+            )
+
+            marked.append(
+                source_id
+            )
+
+
+    except Exception:
+
+        for source_id in marked:
+
+            try:
+                clear_source_deleted(
+                    source_id
+                )
+            except Exception:
+                pass
+
+
+        _clear_delete_journal()
+
+        raise
+
+
+    return values
+
+
 def _read_delete_journal():
+
+    if SOURCE_DELETE_JOURNAL_BLOCK_MARKER.exists():
+
+        raise SourceDeletionJournalCorruptError(
+            "source_deletion_journal_blocked"
+        )
+
+
     if not SOURCE_DELETE_JOURNAL.exists():
         return None
 
-    data = read_json(
-        SOURCE_DELETE_JOURNAL,
-        None,
-    )
+
+    try:
+
+        data = read_json_strict(
+            SOURCE_DELETE_JOURNAL,
+            None,
+        )
+
+    except JsonCorruptError as exc:
+
+        target = _quarantine_delete_journal(
+            "json_decode_error"
+        )
+
+        raise SourceDeletionJournalCorruptError(
+            "source_deletion_journal_corrupt:"
+            + str(target)
+        ) from exc
+
+
+    except JsonReadError as exc:
+
+        raise SourceDeletionJournalCorruptError(
+            "source_deletion_journal_read_failed"
+        ) from exc
+
 
     if not isinstance(
         data,
         dict
     ):
-        return None
+
+        target = _quarantine_delete_journal(
+            "invalid_journal_schema"
+        )
+
+        raise SourceDeletionJournalCorruptError(
+            "source_deletion_journal_invalid_schema:"
+            + str(target)
+        )
+
+
+    operation = str(
+        data.get(
+            "operation",
+            ""
+        )
+    )
+
+
+    if operation not in {
+        "delete_source",
+        "delete_sources",
+        "delete_all",
+    }:
+
+        target = _quarantine_delete_journal(
+            "invalid_journal_operation"
+        )
+
+        raise SourceDeletionJournalCorruptError(
+            "source_deletion_journal_invalid_operation:"
+            + str(target)
+        )
+
+
+    ids = data.get(
+        "source_ids"
+    )
+
+
+    if not isinstance(
+        ids,
+        list
+    ):
+
+        target = _quarantine_delete_journal(
+            "invalid_source_ids_schema"
+        )
+
+        raise SourceDeletionJournalCorruptError(
+            "source_deletion_journal_invalid_ids:"
+            + str(target)
+        )
+
 
     return data
 
-
 def _clear_delete_journal():
+
     try:
+
         SOURCE_DELETE_JOURNAL.unlink()
+
+        fsync_directory(
+            SOURCE_DELETE_JOURNAL.parent
+        )
+
         return True
 
     except FileNotFoundError:
-        return False
 
+        return False
 
 def _recover_pending_source_deletion_unlocked():
 
@@ -246,6 +441,12 @@ def _recover_pending_source_deletion_unlocked():
 
 
 def recover_pending_source_deletions():
+
+    if SOURCE_DELETE_JOURNAL_BLOCK_MARKER.exists():
+
+        raise SourceDeletionJournalCorruptError(
+            "source_deletion_journal_blocked"
+        )
 
     if not SOURCE_DELETE_JOURNAL.exists():
         return False
@@ -577,10 +778,6 @@ def delete_source(source_id: str):
 
     data = _load()
 
-    old_len = len(
-        data["sources"]
-    )
-
     new_sources = [
         source
         for source in data[
@@ -593,22 +790,25 @@ def delete_source(source_id: str):
         ) != source_id
     ]
 
+
     if len(
         new_sources
-    ) == old_len:
+    ) == len(
+        data[
+            "sources"
+        ]
+    ):
         return False
 
-    mark_source_deleted(
-        source_id,
-        reason="delete_source",
-    )
 
-    _write_delete_journal(
+    _prepare_source_deletion(
         "delete_source",
         [source_id],
     )
 
+
     registry_saved = False
+
 
     try:
 
@@ -622,23 +822,32 @@ def delete_source(source_id: str):
 
         registry_saved = True
 
+
         detach_source_from_configs(
             source_id
         )
 
+
         _clear_delete_journal()
 
+
         return True
+
 
     except Exception:
 
         if not registry_saved:
 
-            clear_source_deleted(
-                source_id
-            )
+            try:
 
-            _clear_delete_journal()
+                clear_source_deleted(
+                    source_id
+                )
+
+            finally:
+
+                _clear_delete_journal()
+
 
         raise
 
@@ -934,10 +1143,13 @@ def delete_sources(source_ids):
         if source_id
     }
 
+
     if not ids:
         return 0
 
+
     data = _load()
+
 
     existing_ids = {
         str(
@@ -950,27 +1162,27 @@ def delete_sources(source_ids):
         ]
     }
 
+
     actual_ids = (
         ids
         & existing_ids
     )
 
+
     if not actual_ids:
         return 0
 
-    for source_id in actual_ids:
 
-        mark_source_deleted(
-            source_id,
-            reason="delete_sources",
+    prepared = set(
+        _prepare_source_deletion(
+            "delete_sources",
+            actual_ids,
         )
-
-    _write_delete_journal(
-        "delete_sources",
-        actual_ids,
     )
 
+
     registry_saved = False
+
 
     try:
 
@@ -985,8 +1197,9 @@ def delete_sources(source_ids):
                 source.get(
                     "id"
                 )
-            ) not in actual_ids
+            ) not in prepared
         ]
+
 
         _save(
             data
@@ -994,27 +1207,36 @@ def delete_sources(source_ids):
 
         registry_saved = True
 
+
         detach_sources_from_configs(
-            actual_ids
+            prepared
         )
+
 
         _clear_delete_journal()
 
+
         return len(
-            actual_ids
+            prepared
         )
+
 
     except Exception:
 
         if not registry_saved:
 
-            for source_id in actual_ids:
+            try:
 
-                clear_source_deleted(
-                    source_id
-                )
+                for source_id in prepared:
 
-            _clear_delete_journal()
+                    clear_source_deleted(
+                        source_id
+                    )
+
+            finally:
+
+                _clear_delete_journal()
+
 
         raise
 
@@ -1024,7 +1246,8 @@ def delete_all_sources():
 
     data = _load()
 
-    actual_ids = {
+
+    ids = {
         str(
             source.get(
                 "id"
@@ -1038,22 +1261,21 @@ def delete_all_sources():
         )
     }
 
-    if not actual_ids:
+
+    if not ids:
         return 0
 
-    for source_id in actual_ids:
 
-        mark_source_deleted(
-            source_id,
-            reason="delete_all_sources",
+    prepared = set(
+        _prepare_source_deletion(
+            "delete_all",
+            ids,
         )
-
-    _write_delete_journal(
-        "delete_all",
-        actual_ids,
     )
 
+
     registry_saved = False
+
 
     try:
 
@@ -1067,25 +1289,34 @@ def delete_all_sources():
 
         registry_saved = True
 
+
         delete_all_configs()
+
 
         _clear_delete_journal()
 
+
         return len(
-            actual_ids
+            prepared
         )
+
 
     except Exception:
 
         if not registry_saved:
 
-            for source_id in actual_ids:
+            try:
 
-                clear_source_deleted(
-                    source_id
-                )
+                for source_id in prepared:
 
-            _clear_delete_journal()
+                    clear_source_deleted(
+                        source_id
+                    )
+
+            finally:
+
+                _clear_delete_journal()
+
 
         raise
 
