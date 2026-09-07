@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import os
-import re
 import tempfile
 
 from datetime import datetime, timezone
@@ -40,61 +39,14 @@ def archive_latest_before_config_delete(
     )
 
 
-_FINGERPRINT_RE = re.compile(
-    r"^[0-9A-Fa-f]{64}$"
+from .identifiers import (
+    validate_fingerprint
+        as _validate_fingerprint,
+    validate_source_id
+        as _validate_source_id,
+    validate_fingerprint_set
+        as _validate_fingerprint_set,
 )
-
-_SOURCE_ID_RE = re.compile(
-    r"^[A-Za-z0-9]"
-    r"[A-Za-z0-9._:-]{0,127}$"
-)
-
-
-def _validate_fingerprint(
-    fingerprint,
-):
-    value = str(
-        fingerprint
-        or ""
-    ).strip()
-
-    if not _FINGERPRINT_RE.fullmatch(
-        value
-    ):
-        raise ValueError(
-            "invalid_fingerprint"
-        )
-
-    return value
-
-
-def _validate_source_id(
-    source_id,
-):
-    value = str(
-        source_id
-        or ""
-    ).strip()
-
-    if not _SOURCE_ID_RE.fullmatch(
-        value
-    ):
-        raise ValueError(
-            "invalid_source_id"
-        )
-
-    return value
-
-
-def _validate_fingerprint_set(
-    values,
-):
-    return {
-        _validate_fingerprint(
-            value
-        )
-        for value in values
-    }
 
 
 DATA = Path(
@@ -716,6 +668,10 @@ def detach_source_from_configs(source_id: str):
 
                 try:
                     path.unlink()
+
+                    _fsync_directory(
+                        path.parent
+                    )
                     deleted += 1
 
                 except FileNotFoundError:
@@ -840,6 +796,10 @@ def detach_sources_from_configs(source_ids):
 
                 try:
                     path.unlink()
+
+                    _fsync_directory(
+                        path.parent
+                    )
                     deleted += 1
 
                 except FileNotFoundError:
@@ -1296,6 +1256,10 @@ def sync_source_snapshot(
                         )
 
                         path.unlink()
+
+                        _fsync_directory(
+                            path.parent
+                        )
 
                         result[
                             "deleted"
