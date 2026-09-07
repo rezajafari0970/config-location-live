@@ -1,7 +1,7 @@
 de46fc3b63f6a398b5a526a195a77dc8f4e4d42972f88ab15fbb7e7661df6804  server/opt/config-location/302
-83094babfbd79d5083460d06d5ca4c2c745db7564a7bfdc3f13abfdad733e260  server/opt/config-location/app/control/api.py
+05397ed7638fd2c18d3e233ae83ec5e36d8d914d7c2d58ffc5287861a7e88d36  server/opt/config-location/app/control/api.py
 872caad69dc4adea0593fe889af0afca20097cdf7d34ae9d0583889531856d54  server/opt/config-location/app/control/audit.py
-2e2d6fb6d352dcc706a8085158d952153ac00bb81680afc6ab5c651b048d1f4a  server/opt/config-location/app/control/executor.py
+d994f7b8dba756800dd7f3741f445febd5d41b96a21c2df9e0eed0edcfb368c7  server/opt/config-location/app/control/executor.py
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  server/opt/config-location/app/control/__init__.py
 9f8f28dcbbd978fc872e111272a55e6d6a0e5b690c415ab7f4115931a148a130  server/opt/config-location/app/control/security.py
 c2d22cdd1deed6ba651dcebad7b694629a6912a89d154887ad47135b846547e3  server/opt/config-location/app/core/config_store.py
@@ -15576,8 +15576,10 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
 a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
 da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+fa04081171e8262a25af39b332cc1a5e4f5db186fc8f2994f7eb6ada6882e594  server/opt/config-location/manifests/control-plane-freeze-v2.txt
 45fb04e3c745d6325b45c42f9779bcb90fa39ea08f251ad31728810f2c2c0a92  server/opt/config-location/manifests/control-plane-v2-part1-evidence.txt
-0e70af068fb7384abe5f91ea57802cda8673711d18927fd8ae7e4278eb311467  server/opt/config-location/manifests/control-plane-v2-progress.txt
+560335027f05a85e940f170f2f7fb4e6fa39e8ed5cf261356a65155949a1a4f7  server/opt/config-location/manifests/control-plane-v2-part2-evidence.txt
+a384dcad1b92263b9795d9e94779303cfbd74b69cd17cfa992d91bb5c3dd3e47  server/opt/config-location/manifests/control-plane-v2-progress.txt
 1c5536eeb73888641ae89083bf3cf813cfaf14d7c8722239e00a04d61b0ab516  server/opt/config-location/manifests/core-final-polish-v21-part1-evidence.txt
 ca742f4a3fe5544f704be6cbee8e92b801d466202e0974855e56549af9ca8484  server/opt/config-location/manifests/core-final-polish-v21-part2-evidence.txt
 9fda75b559ea18463d73881a79aad6ead10ca2191a99a38957cb4546139a36dc  server/opt/config-location/manifests/core-fix-part1-runtime-status.txt
