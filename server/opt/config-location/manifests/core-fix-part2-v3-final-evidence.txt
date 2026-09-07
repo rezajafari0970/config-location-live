@@ -1,0 +1,22 @@
+CONFIG LOCATION — CORE FIX PART 2/3 V3 FINAL EVIDENCE
+
+generated_utc=2026-09-07T04:53:53Z
+
+execution_directory=/root/3333/core-fix-part2-v3-20260907-045258
+execution_marker=PASS
+live_verdict=PASS
+
+CORE-03_ipv6_normalization=PASS
+CORE-05_corrupt_config_quarantine=PASS
+CORE-06_snapshot_locking=PASS
+CORE-07_deletion_journal=PASS
+CORE-07_deleted_source_tombstone=PASS
+CORE-07_delete_all_config_locking=PASS
+
+fetcher_service=active
+panel_service=active
+panel_health_http=200
+
+SOURCE_SHA256:
+0b87a1946be5f2b0afc2c2b5397bff87f6bb04af62631baf507e3ed6c84097d8  /opt/config-location/app/core/source_manager.py
+c1049ab923ebf9b6d05ea414e02c62a23b8528d40ea751f4967931ca39008707  /opt/config-location/app/core/config_store.py
