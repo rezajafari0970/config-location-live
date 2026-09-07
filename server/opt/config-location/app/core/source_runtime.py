@@ -9,6 +9,11 @@ from pathlib import Path
 
 from filelock import FileLock
 
+from .identifiers import (
+    validate_source_id
+        as _validate_source_id,
+)
+
 
 DATA = Path(
     "/var/lib/config-location"
@@ -42,6 +47,10 @@ def now_iso():
 def path_for(
     source_id: str
 ):
+    source_id = _validate_source_id(
+        source_id
+    )
+
     return (
         RUNTIME
         / f"source-{source_id}.json"
@@ -51,6 +60,10 @@ def path_for(
 def lock_for(
     source_id: str
 ):
+    source_id = _validate_source_id(
+        source_id
+    )
+
     return FileLock(
         str(
             LOCKS
