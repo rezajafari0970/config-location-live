@@ -15576,6 +15576,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
 a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
 da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+1c5536eeb73888641ae89083bf3cf813cfaf14d7c8722239e00a04d61b0ab516  server/opt/config-location/manifests/core-final-polish-v21-part1-evidence.txt
 9fda75b559ea18463d73881a79aad6ead10ca2191a99a38957cb4546139a36dc  server/opt/config-location/manifests/core-fix-part1-runtime-status.txt
 add2a8260f93214de6bf37a0a9a80a5266d636db20994d1dcf0c2fd8a5a03960  server/opt/config-location/manifests/core-fix-part1-v2-final-evidence.txt
 66717705e40a5a9860a0a83ce03d36ac1cbcd867d9830fe7739ca538e4bbf94c  server/opt/config-location/manifests/core-fix-part1-v3-final-evidence.txt
@@ -15594,7 +15595,7 @@ e1dd710de0041fa69f3a2b12bde641b8bc13e3b46522d019a4a2756647f703f2  server/opt/con
 7c7523bc63154c569dfca98757d5b9ce274e6ed12cd29620e1b8d792cd98ae61  server/opt/config-location/manifests/core-hardening-final-B-v1-evidence.txt
 fceffd6e6f1d4a5227f4727b887011ae45a9a88574279e517b9c573f8015338a  server/opt/config-location/manifests/core-hardening-final-B-v2-evidence.txt
 15f4881875bf0aaf201b61d1f4f2a738ec302ac7c6952b3733142dde3b12a4a6  server/opt/config-location/manifests/core-hardening-final-C-v2-evidence.txt
-cbe88bdadb2869c1d9cd190d25d41a8aa3997bb81930f3acfb5526638f544968  server/opt/config-location/manifests/core-hardening-progress-v2.txt
+e9260b83b580146e79ad468a405c58d03f0a47afc1e14b6e5561ee09105c68e9  server/opt/config-location/manifests/core-hardening-progress-v2.txt
 b485ee8ca5fb02f51ad5aa30546ccefb64cecc7df3316ab27f7ce75ce2305f9e  server/opt/config-location/PROJECT-STATE.md
 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
