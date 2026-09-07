@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import uuid
 from functools import wraps
 from datetime import datetime, timezone
@@ -15,6 +16,8 @@ from app.core.config_store import (
     detach_source_from_configs,
     detach_sources_from_configs,
     delete_all_configs,
+    mark_source_deleted,
+    clear_source_deleted,
 )
 
 
@@ -25,6 +28,149 @@ SOURCE_TRANSACTION_LOCK = Path(
     "/var/lib/config-location/locks/"
     "source-manager-transaction.lock"
 )
+
+SOURCE_DELETE_JOURNAL = Path(
+    "/var/lib/config-location/state/"
+    "pending-source-deletion.json"
+)
+
+
+def _write_delete_journal(
+    operation: str,
+    source_ids,
+):
+    atomic_write_json(
+        SOURCE_DELETE_JOURNAL,
+        {
+            "operation": str(operation),
+            "source_ids": sorted({
+                str(x).strip()
+                for x in source_ids
+                if str(x).strip()
+            }),
+            "created_at": now_iso(),
+        },
+    )
+
+
+def _read_delete_journal():
+    if not SOURCE_DELETE_JOURNAL.exists():
+        return None
+
+    data = read_json(
+        SOURCE_DELETE_JOURNAL,
+        None,
+    )
+
+    if not isinstance(
+        data,
+        dict
+    ):
+        return None
+
+    return data
+
+
+def _clear_delete_journal():
+    try:
+        SOURCE_DELETE_JOURNAL.unlink()
+        return True
+
+    except FileNotFoundError:
+        return False
+
+
+def _recover_pending_source_deletion_unlocked():
+
+    journal = _read_delete_journal()
+
+    if not journal:
+        return False
+
+    values = {
+        str(x).strip()
+        for x in journal.get(
+            "source_ids",
+            []
+        )
+        if str(x).strip()
+    }
+
+    operation = str(
+        journal.get(
+            "operation",
+            ""
+        )
+    )
+
+    data = _load()
+
+    live_ids = {
+        str(
+            source.get(
+                "id"
+            )
+        )
+        for source in data[
+            "sources"
+        ]
+    }
+
+    absent = (
+        values
+        - live_ids
+    )
+
+    for source_id in absent:
+
+        mark_source_deleted(
+            source_id,
+            reason="deletion_recovery",
+        )
+
+    if (
+        operation == "delete_all"
+        and not live_ids
+    ):
+
+        delete_all_configs()
+
+    elif absent:
+
+        detach_sources_from_configs(
+            absent
+        )
+
+    for source_id in (
+        values
+        & live_ids
+    ):
+
+        clear_source_deleted(
+            source_id
+        )
+
+    _clear_delete_journal()
+
+    return True
+
+
+def recover_pending_source_deletions():
+
+    if not SOURCE_DELETE_JOURNAL.exists():
+        return False
+
+    SOURCE_TRANSACTION_LOCK.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    with FileLock(
+        str(SOURCE_TRANSACTION_LOCK),
+        timeout=60,
+    ):
+
+        return _recover_pending_source_deletion_unlocked()
 
 
 def _source_transaction(func):
@@ -41,6 +187,9 @@ def _source_transaction(func):
             str(SOURCE_TRANSACTION_LOCK),
             timeout=60,
         ):
+
+            _recover_pending_source_deletion_unlocked()
+
             return func(
                 *args,
                 **kwargs,
@@ -67,6 +216,14 @@ def normalize_url(url: str) -> str:
     scheme = parsed.scheme.lower()
     hostname = parsed.hostname.lower()
 
+    # urlsplit().hostname strips brackets around IPv6
+    # literals.  Restore them before rebuilding netloc.
+    host_for_netloc = (
+        f"[{hostname}]"
+        if ":" in hostname
+        else hostname
+    )
+
     port = parsed.port
 
     if port:
@@ -76,9 +233,13 @@ def normalize_url(url: str) -> str:
             scheme == "https" and port == 443
         )
 
-        netloc = hostname if default else f"{hostname}:{port}"
+        netloc = (
+            host_for_netloc
+            if default
+            else f"{host_for_netloc}:{port}"
+        )
     else:
-        netloc = hostname
+        netloc = host_for_netloc
 
     if parsed.username or parsed.password:
         raise ValueError("Credentials inside source URLs are not allowed.")
@@ -116,6 +277,10 @@ def _save(data):
 
 
 def list_sources():
+
+    if SOURCE_DELETE_JOURNAL.exists():
+        recover_pending_source_deletions()
+
     data = _load()
 
     return sorted(
@@ -266,13 +431,6 @@ def edit_source(
 
 @_source_transaction
 def delete_source(source_id: str):
-    """
-    Delete one source.
-
-    Config ownership is updated automatically:
-    - configs belonging only to this source are deleted
-    - shared configs remain with their other source_ids
-    """
 
     source_id = str(
         source_id
@@ -284,29 +442,66 @@ def delete_source(source_id: str):
         data["sources"]
     )
 
-    data["sources"] = [
+    new_sources = [
         source
-        for source in data["sources"]
+        for source in data[
+            "sources"
+        ]
         if str(
-            source.get("id")
+            source.get(
+                "id"
+            )
         ) != source_id
     ]
 
     if len(
-        data["sources"]
+        new_sources
     ) == old_len:
         return False
 
-    _save(
-        data
+    mark_source_deleted(
+        source_id,
+        reason="delete_source",
     )
 
-    detach_source_from_configs(
-        source_id
+    _write_delete_journal(
+        "delete_source",
+        [source_id],
     )
 
-    return True
+    registry_saved = False
 
+    try:
+
+        data[
+            "sources"
+        ] = new_sources
+
+        _save(
+            data
+        )
+
+        registry_saved = True
+
+        detach_source_from_configs(
+            source_id
+        )
+
+        _clear_delete_journal()
+
+        return True
+
+    except Exception:
+
+        if not registry_saved:
+
+            clear_source_deleted(
+                source_id
+            )
+
+            _clear_delete_journal()
+
+        raise
 
 
 @_source_transaction
@@ -593,12 +788,6 @@ def add_sources_bulk(
 
 @_source_transaction
 def delete_sources(source_ids):
-    """
-    Delete multiple sources atomically.
-
-    Configs shared with surviving sources are kept.
-    Orphan configs are deleted.
-    """
 
     ids = {
         str(source_id)
@@ -613,9 +802,13 @@ def delete_sources(source_ids):
 
     existing_ids = {
         str(
-            source.get("id")
+            source.get(
+                "id"
+            )
         )
-        for source in data["sources"]
+        for source in data[
+            "sources"
+        ]
     }
 
     actual_ids = (
@@ -626,50 +819,134 @@ def delete_sources(source_ids):
     if not actual_ids:
         return 0
 
-    data["sources"] = [
-        source
-        for source in data["sources"]
-        if str(
-            source.get("id")
-        ) not in actual_ids
-    ]
+    for source_id in actual_ids:
 
-    _save(
-        data
+        mark_source_deleted(
+            source_id,
+            reason="delete_sources",
+        )
+
+    _write_delete_journal(
+        "delete_sources",
+        actual_ids,
     )
 
-    detach_sources_from_configs(
-        actual_ids
-    )
+    registry_saved = False
 
-    return len(
-        actual_ids
-    )
+    try:
 
+        data[
+            "sources"
+        ] = [
+            source
+            for source in data[
+                "sources"
+            ]
+            if str(
+                source.get(
+                    "id"
+                )
+            ) not in actual_ids
+        ]
+
+        _save(
+            data
+        )
+
+        registry_saved = True
+
+        detach_sources_from_configs(
+            actual_ids
+        )
+
+        _clear_delete_journal()
+
+        return len(
+            actual_ids
+        )
+
+    except Exception:
+
+        if not registry_saved:
+
+            for source_id in actual_ids:
+
+                clear_source_deleted(
+                    source_id
+                )
+
+            _clear_delete_journal()
+
+        raise
 
 
 @_source_transaction
 def delete_all_sources():
-    """
-    Delete all configured sources.
-
-    With no sources remaining, every collected
-    config becomes orphaned and is removed.
-    """
 
     data = _load()
 
-    deleted = len(
-        data["sources"]
+    actual_ids = {
+        str(
+            source.get(
+                "id"
+            )
+        )
+        for source in data[
+            "sources"
+        ]
+        if source.get(
+            "id"
+        )
+    }
+
+    if not actual_ids:
+        return 0
+
+    for source_id in actual_ids:
+
+        mark_source_deleted(
+            source_id,
+            reason="delete_all_sources",
+        )
+
+    _write_delete_journal(
+        "delete_all",
+        actual_ids,
     )
 
-    data["sources"] = []
+    registry_saved = False
 
-    _save(
-        data
-    )
+    try:
 
-    delete_all_configs()
+        data[
+            "sources"
+        ] = []
 
-    return deleted
+        _save(
+            data
+        )
+
+        registry_saved = True
+
+        delete_all_configs()
+
+        _clear_delete_journal()
+
+        return len(
+            actual_ids
+        )
+
+    except Exception:
+
+        if not registry_saved:
+
+            for source_id in actual_ids:
+
+                clear_source_deleted(
+                    source_id
+                )
+
+            _clear_delete_journal()
+
+        raise
 
