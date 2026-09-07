@@ -29,6 +29,11 @@ from .mutation import (
     mutation_error,
 )
 
+from .identifiers import (
+    validate_source_id
+        as _validate_source_id,
+)
+
 
 from app.core.config_store import (
     detach_source_from_configs,
@@ -105,6 +110,10 @@ def _validate_source_registry(
     ):
         return False
 
+
+    seen_ids = set()
+
+
     for source in sources:
 
         if not isinstance(
@@ -113,16 +122,31 @@ def _validate_source_registry(
         ):
             return False
 
-        if not str(
-            source.get(
-                "id",
-                ""
+
+        try:
+
+            source_id = _validate_source_id(
+                source.get(
+                    "id"
+                )
             )
-        ).strip():
+
+        except ValueError:
+
             return False
 
-    return True
 
+        if source_id in seen_ids:
+
+            return False
+
+
+        seen_ids.add(
+            source_id
+        )
+
+
+    return True
 
 def _quarantine_source_registry(
     reason: str,
@@ -684,7 +708,11 @@ def _save(data):
 
 def list_sources():
 
-    if SOURCE_DELETE_JOURNAL.exists():
+    if (
+        SOURCE_DELETE_JOURNAL.exists()
+        or
+        SOURCE_DELETE_JOURNAL_BLOCK_MARKER.exists()
+    ):
         recover_pending_source_deletions()
 
     data = _load()
