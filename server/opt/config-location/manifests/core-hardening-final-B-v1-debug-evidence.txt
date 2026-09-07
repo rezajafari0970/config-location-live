@@ -1,0 +1,609 @@
+CONFIG LOCATION — CORE HARDENING PART B V1 DEBUG EVIDENCE
+
+generated_utc=2026-09-07T05:36:53Z
+
+execution_directory=/root/3333/core-hardening-final-B-v1-20260907-053426
+execution_marker=ROLLED_BACK
+
+current_fetcher_service=active
+current_panel_service=active
+current_panel_health_http=200
+
+CURRENT_CORE_SHA256:
+c73b673cefed32a512679d3443d2fb3d68bbfc8249972fabcb70999a602530d4  /opt/config-location/app/core/identifiers.py
+d8d5eb5d9f4c90d7ed2928e9ae10f84ba22ae7aaa66177a62d9cc53f7033a516  /opt/config-location/app/core/storage.py
+f76afd46ab69d19da2b9b779a3515991075a36c3b919818fca2265d7a829a882  /opt/config-location/app/core/source_runtime.py
+d57524d1a68e07d2a45eb7a3a209cf6302c29f4625aa873059749cd58e7372ac  /opt/config-location/app/core/source_manager.py
+ee2eb99317ceee8a422736712a54c818e3f2ab78080df09026170b203ddb8ed1  /opt/config-location/app/core/config_store.py
+
+================================================================
+PART-B FAILURE REGION
+================================================================
+
+===== STEP MARKERS =====
+3:STEP 01/14 — PREFLIGHT / PART-A BASELINE
+5:PART-A BASELINE = PASS
+8:STEP 02/14 — EXACT BACKUP
+15:STEP 03/14 — STAGING
+17:STAGING PASS
+20:STEP 04/14 — B-01 CLOSE STALE FETCH RACE
+22:B-01 CONFIG LOCK TOMBSTONE RECHECK = PASS
+25:STEP 05/14 — B-02 CLOSE STALE SNAPSHOT RACE
+27:B-02 SNAPSHOT LOCK TOMBSTONE RECHECK = PASS
+30:STEP 06/14 — B-05 CANONICAL CONFIG DELETION API
+32:B-05 CANONICAL DELETE API = PASS
+35:STEP 07/14 — B-06 ROUTE EXISTING DELETIONS THROUGH CANONICAL PRIMITIVE
+44:ROLLBACK START
+51:ROLLBACK COMPLETE
+
+===== ERRORS =====
+37:Traceback (most recent call last):
+39:RuntimeError: snapshot deletion block shape changed
+41:ERROR DETECTED — rc=1
+
+===== LAST 700 LINES =====
+
+================================================================
+STEP 01/14 — PREFLIGHT / PART-A BASELINE
+================================================================
+PART-A BASELINE = PASS
+
+================================================================
+STEP 02/14 — EXACT BACKUP
+================================================================
+d57524d1a68e07d2a45eb7a3a209cf6302c29f4625aa873059749cd58e7372ac  /opt/config-location/app/core/source_manager.py
+ee2eb99317ceee8a422736712a54c818e3f2ab78080df09026170b203ddb8ed1  /opt/config-location/app/core/config_store.py
+BACKUP=/root/3333/core-hardening-final-B-v1-20260907-053426/backup
+
+================================================================
+STEP 03/14 — STAGING
+================================================================
+STAGING PASS
+
+================================================================
+STEP 04/14 — B-01 CLOSE STALE FETCH RACE
+================================================================
+B-01 CONFIG LOCK TOMBSTONE RECHECK = PASS
+
+================================================================
+STEP 05/14 — B-02 CLOSE STALE SNAPSHOT RACE
+================================================================
+B-02 SNAPSHOT LOCK TOMBSTONE RECHECK = PASS
+
+================================================================
+STEP 06/14 — B-05 CANONICAL CONFIG DELETION API
+================================================================
+B-05 CANONICAL DELETE API = PASS
+
+================================================================
+STEP 07/14 — B-06 ROUTE EXISTING DELETIONS THROUGH CANONICAL PRIMITIVE
+================================================================
+Traceback (most recent call last):
+  File "<stdin>", line 167, in <module>
+RuntimeError: snapshot deletion block shape changed
+
+ERROR DETECTED — rc=1
+
+================================================================
+ROLLBACK START
+================================================================
+
+Triggering GitHub Live Sync...
+Using helper: /usr/local/sbin/config-location-live-fast-sync
+
+================================================================
+ROLLBACK COMPLETE
+================================================================
+
+================================================================
+FETCHER JOURNAL
+================================================================
+
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     return runner.run(main)
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:            ~~~~~~~~~~^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     return self._loop.run_until_complete(task)
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     return future.result()
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:            ~~~~~~~~~~~~~^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/opt/config-location/app/fetcher/engine.py", line 1713, in main
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     write_status(
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         status="starting",
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         ^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ...<6 lines>...
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         error=None,
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         ^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     )
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/opt/config-location/app/fetcher/engine.py", line 200, in write_status
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     tmp.write_text(
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ~~~~~~~~~~~~~~^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         json.dumps(
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         ^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ...<4 lines>...
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         encoding="utf-8",
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     )
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     ^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network python[2824079]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/state/fetcher-status.tmp'
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:07+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Failed with result 'exit-code'.
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Scheduled restart job, restart counter is at 33.
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]: Traceback (most recent call last):
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/opt/config-location/app/fetcher/engine.py", line 1770, in <module>
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     asyncio.run(
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ~~~~~~~~~~~^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         main()
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     )
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/asyncio/runners.py", line 204, in run
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     return runner.run(main)
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:            ~~~~~~~~~~^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     return self._loop.run_until_complete(task)
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     return future.result()
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:            ~~~~~~~~~~~~~^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/opt/config-location/app/fetcher/engine.py", line 1713, in main
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     write_status(
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         status="starting",
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ...<6 lines>...
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         error=None,
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     )
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/opt/config-location/app/fetcher/engine.py", line 200, in write_status
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     tmp.write_text(
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ~~~~~~~~~~~~~~^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         json.dumps(
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ...<4 lines>...
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         encoding="utf-8",
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     )
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     ^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network python[2824104]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/state/fetcher-status.tmp'
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:10+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Failed with result 'exit-code'.
+2026-09-04T03:29:13+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Scheduled restart job, restart counter is at 34.
+2026-09-04T03:29:13+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]: Traceback (most recent call last):
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/opt/config-location/app/fetcher/engine.py", line 1770, in <module>
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     asyncio.run(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         main()
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/asyncio/runners.py", line 204, in run
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     return runner.run(main)
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:            ~~~~~~~~~~^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     return self._loop.run_until_complete(task)
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     return future.result()
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:            ~~~~~~~~~~~~~^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/opt/config-location/app/fetcher/engine.py", line 1713, in main
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     write_status(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         status="starting",
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ...<6 lines>...
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         error=None,
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/opt/config-location/app/fetcher/engine.py", line 200, in write_status
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     tmp.write_text(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ~~~~~~~~~~~~~~^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         json.dumps(
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ...<4 lines>...
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         encoding="utf-8",
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     )
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     ^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network python[2824201]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/state/fetcher-status.tmp'
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:14+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Failed with result 'exit-code'.
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Scheduled restart job, restart counter is at 35.
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]: Traceback (most recent call last):
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/opt/config-location/app/fetcher/engine.py", line 1770, in <module>
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     asyncio.run(
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ~~~~~~~~~~~^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         main()
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     )
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/asyncio/runners.py", line 204, in run
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     return runner.run(main)
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:            ~~~~~~~~~~^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     return self._loop.run_until_complete(task)
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     return future.result()
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:            ~~~~~~~~~~~~~^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/opt/config-location/app/fetcher/engine.py", line 1713, in main
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     write_status(
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ~~~~~~~~~~~~^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         status="starting",
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ...<6 lines>...
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         error=None,
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     )
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/opt/config-location/app/fetcher/engine.py", line 200, in write_status
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     tmp.write_text(
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ~~~~~~~~~~~~~~^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         json.dumps(
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ...<4 lines>...
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         encoding="utf-8",
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:         ^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     )
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     ^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 810, in write_text
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:   File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:     return io.open(self, mode, buffering, encoding, errors, newline)
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]:            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network python[2824226]: OSError: [Errno 28] No space left on device: '/var/lib/config-location/state/fetcher-status.tmp'
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-04T03:29:17+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Failed with result 'exit-code'.
+2026-09-04T03:29:20+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Scheduled restart job, restart counter is at 36.
+2026-09-04T03:29:20+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T04:15:39+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-04T04:15:48+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-04T04:15:48+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T04:15:48+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 16min 10.088s CPU time over 46min 30.997s wall clock time, 118.5M memory peak.
+2026-09-04T04:55:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T04:58:52+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 1min 16.721s CPU time over 3min 42.773s wall clock time, 73M memory peak.
+-- Boot bcb9d6788c764b2c95278c64275a70fb --
+2026-09-04T05:05:52+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T05:09:28+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-04T05:09:29+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-04T05:09:29+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-04T05:09:29+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 1min 6.508s CPU time over 3min 37.204s wall clock time, 101.4M memory peak.
+-- Boot f3fa9875c78246aa9993fbfc333329cf --
+2026-09-04T05:09:38+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+-- Boot f264121c6bed46ce850fe07638a9aee5 --
+2026-09-04T05:11:34+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:24:57+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-07T04:24:58+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-07T04:24:58+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:24:58+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 1d 6h 43min 21.170s CPU time over 2d 23h 13min 24.349s wall clock time, 1001.1M memory peak.
+2026-09-07T04:24:58+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:34:11+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-07T04:34:12+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-07T04:34:12+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:34:12+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 3min 50.336s CPU time over 9min 13.521s wall clock time, 113.1M memory peak.
+2026-09-07T04:34:12+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:45:15+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-07T04:45:15+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-07T04:45:15+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:45:15+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 1min 15.524s CPU time over 11min 3.284s wall clock time, 87.6M memory peak.
+2026-09-07T04:45:15+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:49:21+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 5.280s CPU time over 4min 6.586s wall clock time, 38.2M memory peak.
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:53:51+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 5.483s CPU time over 4min 29.994s wall clock time, 37.5M memory peak.
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:59:27+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-07T04:59:27+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-07T04:59:27+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T04:59:27+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 8.108s CPU time over 5min 35.526s wall clock time, 42.1M memory peak.
+2026-09-07T04:59:27+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T05:07:55+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-07T05:07:55+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-07T05:07:55+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T05:07:55+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 11.923s CPU time over 8min 28.087s wall clock time, 39.6M memory peak.
+2026-09-07T05:07:55+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T05:28:08+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 28.398s CPU time over 20min 13.425s wall clock time, 56.5M memory peak.
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T05:35:57+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-fetcher.service - Config Location Fetch Engine...
+2026-09-07T05:35:58+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Deactivated successfully.
+2026-09-07T05:35:58+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-fetcher.service - Config Location Fetch Engine.
+2026-09-07T05:35:58+00:00 serverprojects.ptr.network systemd[1]: config-location-fetcher.service: Consumed 12.458s CPU time over 7min 49.251s wall clock time, 43.9M memory peak.
+2026-09-07T05:35:58+00:00 serverprojects.ptr.network systemd[1]: Started config-location-fetcher.service - Config Location Fetch Engine.
+
+================================================================
+PANEL JOURNAL
+================================================================
+
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 142.
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]: Traceback (most recent call last):
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:     from app.country.catalog import (
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:         build_country_catalog,
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]:     )
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network python[3642866]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:06+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 143.
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]: Traceback (most recent call last):
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:     from app.country.catalog import (
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:         build_country_catalog,
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]:     )
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network python[3642902]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:09+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:12+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 144.
+2026-09-06T01:52:12+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]: Traceback (most recent call last):
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:     from app.country.catalog import (
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:         build_country_catalog,
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]:     )
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network python[3642970]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:13+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 145.
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]: Traceback (most recent call last):
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:     from app.country.catalog import (
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:         build_country_catalog,
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]:     )
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network python[3643059]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:16+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 146.
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]: Traceback (most recent call last):
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:     from app.country.catalog import (
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:         build_country_catalog,
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]:     )
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network python[3643264]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:20+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 147.
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]: Traceback (most recent call last):
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:     from app.country.catalog import (
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:         build_country_catalog,
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]:     )
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network python[3643288]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:23+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 148.
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]: Traceback (most recent call last):
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:     from app.country.catalog import (
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:         build_country_catalog,
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]:     )
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network python[3643308]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:27+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 149.
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]: Traceback (most recent call last):
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:     from app.country.catalog import (
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:         build_country_catalog,
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]:     )
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network python[3643428]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:30+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:33+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 150.
+2026-09-06T01:52:33+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]: Traceback (most recent call last):
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:     from app.country.catalog import (
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:         build_country_catalog,
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]:     )
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network python[3643673]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:34+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 151.
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]: Traceback (most recent call last):
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:     from app.country.catalog import (
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:         build_country_catalog,
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]:     )
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network python[3644860]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:37+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 152.
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]: Traceback (most recent call last):
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:     from app.country.catalog import (
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:         build_country_catalog,
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]:     )
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network python[3645718]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:40+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:43+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 153.
+2026-09-06T01:52:43+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]: Traceback (most recent call last):
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:     from app.country.catalog import (
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:         build_country_catalog,
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]:     )
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network python[3646900]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:44+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 154.
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]: Traceback (most recent call last):
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:   File "<frozen runpy>", line 88, in _run_code
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:   File "/opt/config-location/app/panel/server.py", line 45, in <module>
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:     from app.publish.http import install_publish_routes
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:   File "/opt/config-location/app/publish/http.py", line 13, in <module>
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:     from app.country.catalog import (
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:         build_country_catalog,
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]:     )
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network python[3647042]: ModuleNotFoundError: No module named 'app.country.catalog'
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Main process exited, code=exited, status=1/FAILURE
+2026-09-06T01:52:47+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Failed with result 'exit-code'.
+2026-09-06T01:52:50+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Scheduled restart job, restart counter is at 155.
+2026-09-06T01:52:50+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network python[3647288]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network python[3647288]: (Press CTRL+C to quit)
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-06T01:52:51+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network python[3647394]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network python[3647394]: (Press CTRL+C to quit)
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Consumed 33.034s CPU time over 7min 51.519s wall clock time, 107.2M memory peak.
+2026-09-06T02:00:42+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:34:12+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-07T04:34:12+00:00 serverprojects.ptr.network python[3679246]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-07T04:34:12+00:00 serverprojects.ptr.network python[3679246]: (Press CTRL+C to quit)
+2026-09-07T04:34:13+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-07T04:34:13+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:34:13+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Consumed 2h 1min 21.060s CPU time over 1d 2h 33min 30.303s wall clock time, 159.5M memory peak.
+2026-09-07T04:34:13+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:45:15+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-07T04:45:15+00:00 serverprojects.ptr.network python[3141664]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-07T04:45:15+00:00 serverprojects.ptr.network python[3141664]: (Press CTRL+C to quit)
+2026-09-07T04:45:16+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-07T04:45:16+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:45:16+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Consumed 19.921s CPU time over 11min 2.938s wall clock time, 170.8M memory peak.
+2026-09-07T04:45:16+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network python[3166741]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network python[3166741]: (Press CTRL+C to quit)
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:49:22+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network python[3176091]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network python[3176091]: (Press CTRL+C to quit)
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:53:52+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:59:27+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-07T04:59:27+00:00 serverprojects.ptr.network python[3186978]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-07T04:59:27+00:00 serverprojects.ptr.network python[3186978]: (Press CTRL+C to quit)
+2026-09-07T04:59:28+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-07T04:59:28+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-07T04:59:28+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-07T05:07:56+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-07T05:07:56+00:00 serverprojects.ptr.network python[3199287]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-07T05:07:56+00:00 serverprojects.ptr.network python[3199287]: (Press CTRL+C to quit)
+2026-09-07T05:07:56+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-07T05:07:56+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-07T05:07:56+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Consumed 1.832s CPU time over 8min 28.118s wall clock time, 36.5M memory peak.
+2026-09-07T05:07:56+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network python[3217767]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network python[3217767]: (Press CTRL+C to quit)
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Consumed 2.712s CPU time over 20min 13.449s wall clock time, 45.2M memory peak.
+2026-09-07T05:28:09+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
+2026-09-07T05:35:58+00:00 serverprojects.ptr.network python[3266196]: ======== Running on http://0.0.0.0:4040 ========
+2026-09-07T05:35:58+00:00 serverprojects.ptr.network python[3266196]: (Press CTRL+C to quit)
+2026-09-07T05:35:58+00:00 serverprojects.ptr.network systemd[1]: Stopping config-location-panel.service - Config Location Management Panel...
+2026-09-07T05:35:59+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Deactivated successfully.
+2026-09-07T05:35:59+00:00 serverprojects.ptr.network systemd[1]: Stopped config-location-panel.service - Config Location Management Panel.
+2026-09-07T05:35:59+00:00 serverprojects.ptr.network systemd[1]: config-location-panel.service: Consumed 1.718s CPU time over 7min 49.433s wall clock time, 37.8M memory peak.
+2026-09-07T05:35:59+00:00 serverprojects.ptr.network systemd[1]: Started config-location-panel.service - Config Location Management Panel.
