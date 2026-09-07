@@ -171,7 +171,7 @@ f1a9b8d281e52f0829198fc71336eac48ae82509704921a8fdc2db607b7f5300  server/opt/con
 89cf435f002a03ce8f6f518afe85bd582b542e4aa5334227837c8febd6a994cf  server/opt/config-location/app/panel/server.py.bak.stage2-panel-fix.20260829-011404
 39591655913342e89b6109d3b9fea7ed74e33dd2c5fd547e78802441c549685d  server/opt/config-location/app/panel/server.py.bak.status.20260829-010714
 91e3770e2ef45d7778ae86792d6d2a5d4fad7abd74da233ade3de96b7d990e6c  server/opt/config-location/app/panel/server.py.before-devlog-20260830-232435
-7af5434b23888d04eefb1cea3481751b1670c4030af7405f42272374f2b42667  server/opt/config-location/app/panel/settings_ui.py
+bd06566ab8259deccaf25da7580a344c8beaaa5d6c21347e531bba7336b8e457  server/opt/config-location/app/panel/settings_ui.py
 dd77c2df29927028b62f2f4f2590ead97aa7ea53f232c2613ea73545441041d7  server/opt/config-location/app/panel/ui_renderer.py
 ae1e049611a080ea8daea57820070d3329998b6ca41513e7229e764afbe40668  server/opt/config-location/app/parser/detector.py
 a7f1fddbe433d801f108f39cd8e303eb1495e46450b5d8027815c27c3838b3c2  server/opt/config-location/app/parser/detector.py.bak.20260829-011909
@@ -15599,8 +15599,10 @@ fceffd6e6f1d4a5227f4727b887011ae45a9a88574279e517b9c573f8015338a  server/opt/con
 15f4881875bf0aaf201b61d1f4f2a738ec302ac7c6952b3733142dde3b12a4a6  server/opt/config-location/manifests/core-hardening-final-C-v2-evidence.txt
 8759c1e100e2f028ca6fe490dbbe4e8ef1f14a82131a72eafc0e0de689715333  server/opt/config-location/manifests/core-hardening-progress-v2.txt
 84f37bd4a65e7a284cdc41de44c93eb627fdf2f85cd3324a6beb4c8b54fa5407  server/opt/config-location/manifests/phase-2A2-settings-engine-hardening-evidence.txt
+9d31a701006e25879fec5d4e411e97f3bb4bea0d485cf8ea8b45860145233199  server/opt/config-location/manifests/phase-2A3-settings-panel-api-freeze-evidence.txt
 e81db0c2d1ef65f874649c6b7780748148a8ea4252994bf77e8019554bf32bae  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-audit.txt
 fbf55fb8fd3cc080986e718c76f08066dfce71f132cef5a04933b8957c9482b8  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-progress.txt
+40fdea2e2b12a04202a7a4e6ef02930b1a46219f4a4c4018b9933da59ef4aa78  server/opt/config-location/manifests/settings-freeze-v2.txt
 b485ee8ca5fb02f51ad5aa30546ccefb64cecc7df3316ab27f7ce75ce2305f9e  server/opt/config-location/PROJECT-STATE.md
 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
 440c20bec49c91b24a0847b7bb499446135863964ff5136ab9824de1d5b24a5a  server/opt/config-location/scripts/configlocctl.py
