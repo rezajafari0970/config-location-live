@@ -1,0 +1,37 @@
+CONFIG LOCATION — CORE HARDENING FINAL PASS — PART C V2
+
+generated_utc=2026-09-07T05:51:25Z
+
+status=PASS
+execution_directory=/root/3333/core-hardening-final-C-v2-resume-20260907-054952
+resumed_from=/root/3333/core-hardening-final-C-v1-20260907-054702
+
+previous_failure_reason=bash_UID_readonly_variable
+previous_failure_injection=PASS
+tested_staging_reused=YES
+installed_bytes_match_tested_staging=YES
+
+part_A=PASS
+part_B=PASS
+part_C=PASS
+
+C-01_durable_event_contract=PASS
+C-02_core_observability_contract=PASS
+C-03_mutation_result_contract=PASS
+C-04_critical_event_wiring=PASS
+C-05_full_failure_injection_regression=PASS
+C-06_core_freeze_v2=PASS
+
+fetcher_service=active
+panel_service=active
+panel_health_http=200
+
+SOURCE_SHA256:
+c73b673cefed32a512679d3443d2fb3d68bbfc8249972fabcb70999a602530d4  /opt/config-location/app/core/identifiers.py
+d8d5eb5d9f4c90d7ed2928e9ae10f84ba22ae7aaa66177a62d9cc53f7033a516  /opt/config-location/app/core/storage.py
+f76afd46ab69d19da2b9b779a3515991075a36c3b919818fca2265d7a829a882  /opt/config-location/app/core/source_runtime.py
+f565a9450bc13ae0e868556a90a4108b9c2f1f7bb044d8a3e70502e9d7268946  /opt/config-location/app/core/source_manager.py
+f24419e47fd9003defefe4d9c6f22e16cb6dfeaec5b6fdd1da339d42b7f2fbbd  /opt/config-location/app/core/config_store.py
+6804caa7ed3cd1ddd8be8b9ba3a0e434306a157bd04504a2912ccdf2fd78d912  /opt/config-location/app/core/events.py
+67fdc5a51807306d936f764c9ff5d05c163ca066779b4f6922a7844258155d15  /opt/config-location/app/core/status.py
+2168ea3210f5232bcc572d7908102afd76d444446ff30db9b6ee214dab374b11  /opt/config-location/app/core/mutation.py
