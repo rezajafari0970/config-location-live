@@ -43,6 +43,10 @@ from .events import (
     safe_emit_event,
 )
 
+from .storage import (
+    quarantine_file,
+)
+
 
 from .identifiers import (
     validate_fingerprint
@@ -81,6 +85,14 @@ SOURCE_TOMBSTONE_DIR = (
     / "source-tombstones"
 )
 
+CORRUPT_SNAPSHOT_DIR = (
+    DATA
+    / "quarantine"
+    / "source-snapshots"
+)
+
+_SNAPSHOT_CORRUPT = object()
+
 CONFIG_DIR.mkdir(
     parents=True,
     exist_ok=True
@@ -102,6 +114,11 @@ CORRUPT_CONFIG_DIR.mkdir(
 )
 
 SOURCE_TOMBSTONE_DIR.mkdir(
+    parents=True,
+    exist_ok=True
+)
+
+CORRUPT_SNAPSHOT_DIR.mkdir(
     parents=True,
     exist_ok=True
 )
@@ -395,6 +412,65 @@ def _atomic_write(
             )
 
 
+def _read_config_record_unlocked(
+    path: Path,
+    fingerprint: str,
+):
+    """
+    Canonical Config record reader.
+
+    Caller must hold the Config lock for mutation paths.
+
+    Existing corrupt/malformed records are always
+    quarantined instead of silently disappearing.
+    """
+
+    fingerprint = _validate_fingerprint(
+        fingerprint
+    )
+
+
+    if not path.exists():
+        return None
+
+
+    try:
+
+        record = json.loads(
+            path.read_text(
+                encoding="utf-8"
+            )
+        )
+
+    except Exception as exc:
+
+        _quarantine_corrupt_config(
+            path,
+            fingerprint,
+            "json_decode_error:"
+            + type(exc).__name__,
+        )
+
+        return None
+
+
+    if not _config_record_is_valid(
+        record,
+        fingerprint,
+    ):
+
+        _quarantine_corrupt_config(
+            path,
+            fingerprint,
+            "invalid_config_record_schema",
+        )
+
+        return None
+
+
+    return record
+
+
 def upsert_config(
     item: dict,
     source_id: str,
@@ -475,42 +551,12 @@ def upsert_config(
                 False,
             )
 
-        if path.exists():
+        record = _read_config_record_unlocked(
+            path,
+            fingerprint,
+        )
 
-            try:
-                record = json.loads(
-                    path.read_text(
-                        encoding="utf-8"
-                    )
-                )
-
-            except Exception as exc:
-
-                _quarantine_corrupt_config(
-                    path,
-                    fingerprint,
-                    "json_decode_error:"
-                    + type(exc).__name__,
-                )
-
-                record = {}
-
-            else:
-
-                if not _config_record_is_valid(
-                    record,
-                    fingerprint,
-                ):
-
-                    _quarantine_corrupt_config(
-                        path,
-                        fingerprint,
-                        "invalid_config_record_schema",
-                    )
-
-                    record = {}
-
-        else:
+        if record is None:
             record = {}
 
         created = not bool(
@@ -570,25 +616,40 @@ def upsert_config(
 def list_configs():
     result = []
 
-    for path in CONFIG_DIR.glob(
-        "*.json"
+    for path in list(
+        CONFIG_DIR.glob(
+            "*.json"
+        )
     ):
+
         try:
-            obj = json.loads(
-                path.read_text(
-                    encoding="utf-8"
-                )
+
+            fingerprint = _validate_fingerprint(
+                path.stem
             )
 
-            if isinstance(
-                obj,
-                dict
-            ):
-                result.append(
-                    obj
-                )
-        except Exception:
+        except ValueError:
+
+            # Non-SHA filename is not a valid Config record.
             continue
+
+
+        with _lock(
+            fingerprint
+        ):
+
+            record = _read_config_record_unlocked(
+                path,
+                fingerprint,
+            )
+
+
+            if record is not None:
+
+                result.append(
+                    record
+                )
+
 
     result.sort(
         key=lambda x:
@@ -600,7 +661,6 @@ def list_configs():
     )
 
     return result
-
 
 def config_stats():
     total = 0
@@ -835,19 +895,12 @@ def detach_source_from_configs(source_id: str):
             if not path.exists():
                 continue
 
-            try:
-                record = json.loads(
-                    path.read_text(
-                        encoding="utf-8"
-                    )
-                )
-            except Exception:
-                continue
+            record = _read_config_record_unlocked(
+                path,
+                path.stem,
+            )
 
-            if not isinstance(
-                record,
-                dict
-            ):
+            if record is None:
                 continue
 
             sources = record.get(
@@ -958,19 +1011,12 @@ def detach_sources_from_configs(source_ids):
             if not path.exists():
                 continue
 
-            try:
-                record = json.loads(
-                    path.read_text(
-                        encoding="utf-8"
-                    )
-                )
-            except Exception:
-                continue
+            record = _read_config_record_unlocked(
+                path,
+                path.stem,
+            )
 
-            if not isinstance(
-                record,
-                dict
-            ):
+            if record is None:
                 continue
 
             sources = record.get(
@@ -1075,6 +1121,49 @@ def _source_snapshot_lock(
     )
 
 
+def _quarantine_corrupt_snapshot(
+    path: Path,
+    source_id: str,
+    reason: str,
+):
+    target = quarantine_file(
+        path,
+        CORRUPT_SNAPSHOT_DIR,
+        reason=reason,
+        metadata={
+            "component":
+                "source_snapshot",
+
+            "source_id":
+                source_id,
+        },
+    )
+
+
+    safe_emit_event(
+        "source.snapshot_quarantined",
+        entity="source",
+        entity_id=source_id,
+        severity="error",
+        actor="config_store",
+        message="Corrupt Source snapshot moved to quarantine.",
+        data={
+            "reason":
+                str(reason),
+
+            "quarantine_path":
+                (
+                    str(target)
+                    if target
+                    else None
+                ),
+        },
+    )
+
+
+    return target
+
+
 def _read_source_snapshot_unlocked(
     source_id: str
 ):
@@ -1082,45 +1171,79 @@ def _read_source_snapshot_unlocked(
         source_id
     )
 
+
     if not path.exists():
         return None
 
+
     try:
+
         obj = json.loads(
             path.read_text(
                 encoding="utf-8"
             )
         )
 
-    except Exception:
-        return None
+    except Exception as exc:
+
+        _quarantine_corrupt_snapshot(
+            path,
+            source_id,
+            "json_decode_error:"
+            + type(exc).__name__,
+        )
+
+        return _SNAPSHOT_CORRUPT
+
 
     if not isinstance(
         obj,
         dict
     ):
-        return None
+
+        _quarantine_corrupt_snapshot(
+            path,
+            source_id,
+            "invalid_snapshot_schema",
+        )
+
+        return _SNAPSHOT_CORRUPT
+
 
     values = obj.get(
         "fingerprints"
     )
 
+
     if not isinstance(
         values,
         list
     ):
-        return None
+
+        _quarantine_corrupt_snapshot(
+            path,
+            source_id,
+            "invalid_snapshot_fingerprints",
+        )
+
+        return _SNAPSHOT_CORRUPT
+
 
     try:
+
         return _validate_fingerprint_set(
             values
         )
 
     except ValueError:
-        # Invalid snapshot cannot be trusted as an
-        # authoritative deletion baseline.
-        return None
 
+        _quarantine_corrupt_snapshot(
+            path,
+            source_id,
+            "invalid_snapshot_fingerprint",
+        )
+
+        return _SNAPSHOT_CORRUPT
 
 def read_source_snapshot(
     source_id: str
@@ -1135,9 +1258,14 @@ def read_source_snapshot(
     with _source_snapshot_lock(
         source_id
     ):
-        return _read_source_snapshot_unlocked(
+        result = _read_source_snapshot_unlocked(
             source_id
         )
+
+        if result is _SNAPSHOT_CORRUPT:
+            return None
+
+        return result
 
 
 def _write_source_snapshot_unlocked(
@@ -1391,6 +1519,18 @@ def sync_source_snapshot(
             source_id
         )
 
+        if previous is _SNAPSHOT_CORRUPT:
+
+            result[
+                "snapshot_corrupt"
+            ] = True
+
+            result[
+                "snapshot_updated"
+            ] = False
+
+            return result
+
         # First authoritative cycle:
         # establish baseline only.
         if previous is None:
@@ -1443,19 +1583,12 @@ def sync_source_snapshot(
                 if not path.exists():
                     continue
 
-                try:
-                    record = json.loads(
-                        path.read_text(
-                            encoding="utf-8"
-                        )
-                    )
-                except Exception:
-                    continue
+                record = _read_config_record_unlocked(
+                    path,
+                    fingerprint,
+                )
 
-                if not isinstance(
-                    record,
-                    dict
-                ):
+                if record is None:
                     continue
 
                 sources = record.get(
