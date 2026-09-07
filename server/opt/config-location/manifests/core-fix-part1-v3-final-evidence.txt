@@ -1,0 +1,23 @@
+CONFIG LOCATION — CORE FIX PART 1/3 V3 FINAL EVIDENCE
+
+generated_utc=2026-09-07T04:34:18Z
+
+execution_directory=/root/3333/core-fix-part1-v3-20260907-043239
+execution_marker=PASS
+
+live_verdict=PASS
+
+CORE-01_source_db_transaction_lock=PASS
+CORE-02_config_detach_lock=PASS
+CORE-04_source_runtime_atomic_rmw=PASS
+CORE-08_config_store_directory_fsync=PASS
+CORE-08_source_runtime_directory_fsync=PASS
+
+fetcher_service=active
+panel_service=active
+panel_health_http=200
+
+SOURCE_SHA256:
+45959977c88310145758e6fd963441aba6748271c8c4e963130a95bdac67bf87  /opt/config-location/app/core/source_manager.py
+9a9afecf2e6c1a4bcf3d71c8d1d9ff6b75b8ae2051553c7e7fcecaaf4a53de60  /opt/config-location/app/core/config_store.py
+527479f0ea3ecbb4ecb284c6e2a7b04255c23d66e2ffc0b1ec74479e593258f5  /opt/config-location/app/core/source_runtime.py
