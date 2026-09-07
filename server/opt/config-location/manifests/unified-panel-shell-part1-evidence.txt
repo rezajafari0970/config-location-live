@@ -1,0 +1,23 @@
+CONFIG LOCATION — UNIFIED PANEL SHELL PART 1/3
+generated_utc=2026-09-07T16:01:00Z
+status=PASS
+UPS1-01_shared_renderer=PASS
+UPS1-02_dashboard_delegation=PASS
+UPS1-03_single_navigation_contract=PASS
+UPS1-04_mobile_responsive_contract=PASS
+UPS1-05_login_no_header_contract=PASS
+UPS1-06_operations_not_in_shell_navigation=PASS
+UPS1-07_lifecycle_not_in_shell_navigation=PASS
+UPS1-08_atomic_install=PASS
+UPS1-09_settings_immutable=PASS
+UPS1-10_control_plane_freeze_preserved=PASS
+settings_revision_before=11
+settings_revision_after=11
+settings_checksum_before=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+settings_checksum_after=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+panel_service=active
+fetcher_service=active
+panel_health_http=200
+renderer_sha256=6538bfd821736d782f7dd4626b61a5d8ab196e024b98ddad712c6f0d702b9455
+server_sha256=dccef2094c7d1247b8c5ed60d954a5fa141e088b2966591a8fe276f54646913a
+next_phase=UNIFIED-PANEL-SHELL-PART2
