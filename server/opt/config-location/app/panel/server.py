@@ -15,6 +15,7 @@ from urllib.parse import urlencode
 
 from aiohttp import web
 from app.control.api import install_control_routes
+from app.panel.page_renderer import page as unified_shell_page
 
 from app.panel.country_ui import (
     country_page,
@@ -326,6 +327,14 @@ def page(
     content,
     show_header=True
 ):
+    # UNIFIED_PANEL_SHELL_V1_DASHBOARD_DELEGATION
+    return unified_shell_page(
+        title,
+        content,
+        show_header=show_header,
+        port=PORT,
+    )
+
     header = ""
 
     if show_header:
