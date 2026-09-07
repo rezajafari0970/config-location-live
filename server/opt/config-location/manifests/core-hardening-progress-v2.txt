@@ -1,6 +1,7 @@
 CONFIG LOCATION — CORE HARDENING FINAL PASS
 
 part_A=PASS
+part_B=PASS
 
 A-01_source_registry_fail_closed=PASS
 A-02_source_registry_quarantine=PASS
@@ -9,6 +10,13 @@ A-04_source_runtime_validation=PASS
 A-05_canonical_lowercase_fingerprint=PASS
 A-06_delete_directory_fsync=PASS
 
-next_part=PART-B-RACE-DELETION-CANONICAL-API
+B-01_config_lock_tombstone_recheck=PASS
+B-02_snapshot_lock_tombstone_recheck=PASS
+B-03_deletion_journal_fail_closed=PASS
+B-04_crash_safe_source_deletion=PASS
+B-05_canonical_config_delete_api=PASS
+B-06_existing_delete_paths_canonicalized=PASS
 
-generated_utc=2026-09-07T05:28:11Z
+next_part=PART-C-OBSERVABILITY-EVENTS-MUTATION-RESULTS-FAULT-INJECTION-FREEZE-V2
+
+generated_utc=2026-09-07T05:40:59Z
