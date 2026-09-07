@@ -338,3 +338,186 @@ def event_stats():
 
 
     return result
+
+
+def prune_events(
+    *,
+    before_epoch: float | None = None,
+    max_age_seconds: int | None = None,
+    dry_run: bool = False,
+):
+    """
+    Safely prune Core event files.
+
+    Retention Manager / Panel maintenance should call this
+    API instead of deleting EVENT_ROOT files directly.
+
+    Exactly one of before_epoch or max_age_seconds is used.
+    If both are provided, the stricter/older cutoff wins.
+    """
+
+    now = time.time()
+
+    cutoffs = []
+
+
+    if before_epoch is not None:
+
+        cutoffs.append(
+            float(
+                before_epoch
+            )
+        )
+
+
+    if max_age_seconds is not None:
+
+        max_age_seconds = int(
+            max_age_seconds
+        )
+
+        if max_age_seconds < 0:
+
+            raise ValueError(
+                "max_age_seconds_must_be_non_negative"
+            )
+
+
+        cutoffs.append(
+            now
+            - max_age_seconds
+        )
+
+
+    if not cutoffs:
+
+        raise ValueError(
+            "retention_cutoff_required"
+        )
+
+
+    cutoff = min(
+        cutoffs
+    )
+
+
+    result = {
+        "scanned": 0,
+        "eligible": 0,
+        "deleted": 0,
+        "failed": 0,
+        "dry_run":
+            bool(
+                dry_run
+            ),
+        "cutoff_epoch":
+            cutoff,
+    }
+
+
+    if not EVENT_ROOT.exists():
+
+        return result
+
+
+    EVENT_LOCK.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+
+    with FileLock(
+        str(EVENT_LOCK),
+        timeout=30,
+    ):
+
+        for path in list(
+            EVENT_ROOT.glob(
+                "*.json"
+            )
+        ):
+
+            if not path.is_file():
+                continue
+
+
+            result[
+                "scanned"
+            ] += 1
+
+
+            try:
+
+                stat = path.stat()
+
+            except OSError:
+
+                result[
+                    "failed"
+                ] += 1
+
+                continue
+
+
+            if stat.st_mtime > cutoff:
+
+                continue
+
+
+            result[
+                "eligible"
+            ] += 1
+
+
+            if dry_run:
+
+                continue
+
+
+            try:
+
+                path.unlink()
+
+                result[
+                    "deleted"
+                ] += 1
+
+            except FileNotFoundError:
+
+                continue
+
+            except OSError:
+
+                result[
+                    "failed"
+                ] += 1
+
+
+        if (
+            not dry_run
+            and result[
+                "deleted"
+            ] > 0
+        ):
+
+            fd = os.open(
+                str(
+                    EVENT_ROOT
+                ),
+                os.O_DIRECTORY,
+            )
+
+            try:
+
+                os.fsync(
+                    fd
+                )
+
+            finally:
+
+                os.close(
+                    fd
+                )
+
+
+    return result
