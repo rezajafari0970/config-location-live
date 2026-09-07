@@ -1,0 +1,47 @@
+CONFIG LOCATION — PHASE 2A-2 SETTINGS ENGINE HARDENING
+
+generated_utc=2026-09-07T13:30:37Z
+
+status=PASS
+
+SF2-01_unknown_key_fail_closed=PASS
+SF2-02_corruption_quarantine_recovery_contract=PASS
+SF2-03_optimistic_revision_CAS=PASS
+SF2-04_bounded_history_retention_api=PASS
+SF2-05_dashboard_settings_status=PASS
+SF2-06_central_settings_source_of_truth=PASS
+SF2-07_runtime_capability_contract=PASS
+SF2-08_unwired_feature_activation_guard=PASS
+
+production_settings_mutated=NO
+production_feature_toggles_changed=NO
+
+settings_revision_before=11
+settings_revision_after=11
+
+settings_checksum_before=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+settings_checksum_after=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+
+production_fetcher=active
+production_panel=active
+production_health_http=200
+
+central_source_of_truth=YES
+legacy_configuration_role=migration_input_only
+
+feature_health_retest=wired
+
+feature_source_intelligence=scaffold
+feature_config_lifetime=scaffold
+feature_definitive_unhealthy_removal=scaffold
+feature_country_remark=scaffold
+feature_publish_country_routes=scaffold
+feature_fair_rotation=scaffold
+feature_resource_guardian=scaffold
+feature_retention_manager=scaffold
+
+SOURCE_SHA256:
+366e2a6adaa77c0ad64af7dd636d3570e7a407c0dcebd6e7c2519ecafc1fb4f6  /opt/config-location/app/settings/engine.py
+41f338f20cc8cecf5def3209155b367f8a574953194cdbd40a49202970086d58  /opt/config-location/app/settings/migrate.py
+79b939c5309f452ed26b5fbc52b7691c372434231ad38ad098079fb420e76ac3  /opt/config-location/app/settings/selftest.py
+b09d2188b1700a89cec807997bab9ba31b38cea1b8067b1b6f97dbabbc0e86a6  /opt/config-location/app/settings/__init__.py
