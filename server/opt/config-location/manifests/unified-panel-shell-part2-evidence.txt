@@ -1,0 +1,26 @@
+CONFIG LOCATION — UNIFIED PANEL SHELL PART 2/3
+generated_utc=2026-09-07T19:40:19Z
+status=PASS
+UPS2-01_baseline=PASS
+UPS2-02_backup=PASS
+UPS2-03_migration=PASS
+UPS2-04_static_validation=PASS
+UPS2-05_isolated_render=PASS
+UPS2-06_settings_immutable=PASS
+UPS2-07_atomic_install=PASS
+UPS2-08_readiness=PASS
+UPS2-09_regression=PASS
+UPS2-10_evidence=PASS
+settings_revision_before=11
+settings_revision_after=11
+settings_checksum_before=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+settings_checksum_after=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+panel_service=active
+fetcher_service=active
+panel_health_http=200
+country_ui=shared_shell
+publish_ui=shared_shell
+config_detail_ui=shared_shell
+settings_ui=shared_shell_preserved
+control_plane_freeze_v2=preserved
+next_phase=UNIFIED-PANEL-SHELL-PART3
