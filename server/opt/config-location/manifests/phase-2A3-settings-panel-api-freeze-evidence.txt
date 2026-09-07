@@ -1,0 +1,40 @@
+CONFIG LOCATION — PHASE 2A-3 SETTINGS PANEL/API + FREEZE V2
+
+generated_utc=2026-09-07T13:56:05Z
+
+status=PASS
+
+phase_2A_1_audit=PASS
+phase_2A_2_engine_hardening=PASS
+phase_2A_3_panel_api=PASS
+
+SETAPI-01_settings_read_api=PASS
+SETAPI-02_settings_status_api=PASS
+SETAPI-03_settings_capabilities_api=PASS
+SETAPI-04_history_preview_api=PASS
+SETAPI-05_revision_CAS_update_api=PASS
+SETAPI-06_auth_aware_settings_page_contract=PASS
+SETAPI-07_revision_conflict_contract=PASS
+SETAPI-08_unwired_feature_guard=PASS
+SETAPI-09_settings_form_CAS=PASS
+SETAPI-10_wired_scaffold_visibility=PASS
+SETAPI-11_settings_store_visibility=PASS
+SETAPI-12_panel_route_registration=PASS
+
+api_auth_mode=AUTH-PROTECTED
+
+settings_revision_before=11
+settings_revision_after=11
+
+settings_checksum_before=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+settings_checksum_after=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+
+production_settings_mutated=NO
+production_feature_toggles_changed=NO
+
+panel_service=active
+panel_health_http=200
+
+SOURCE_SHA256:
+366e2a6adaa77c0ad64af7dd636d3570e7a407c0dcebd6e7c2519ecafc1fb4f6  /opt/config-location/app/settings/engine.py
+bd06566ab8259deccaf25da7580a344c8beaaa5d6c21347e531bba7336b8e457  /opt/config-location/app/panel/settings_ui.py
