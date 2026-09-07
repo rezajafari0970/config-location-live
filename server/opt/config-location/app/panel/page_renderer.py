@@ -254,6 +254,40 @@ th {{ background:var(--orange-soft); color:#9a3412; }}
     .grid {{ grid-template-columns:1fr; }}
     .shell-brand-subtitle {{ display:none; }}
 }}
+
+/* UNIFIED_PANEL_SHELL_V1_MIGRATION_COMPAT */
+.metric-name,.metric-title{{color:var(--muted);font-size:12px;margin-bottom:7px}}
+.metric-value{{font-size:24px;font-weight:800;line-height:1.2;overflow-wrap:anywhere}}
+.metric-sub,.muted,.status-line{{color:var(--muted);font-size:12px}}
+.section{{margin-top:14px}}
+.section-title,.section h2{{margin:0 0 12px;font-size:16px}}
+.detail-grid,.summary-grid,.link-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.summary-grid{{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.filters{{display:grid;grid-template-columns:2fr repeat(4,minmax(140px,1fr)) auto;gap:8px}}
+.btn{{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 12px;border:0;border-radius:9px;background:var(--orange);color:#fff;text-decoration:none;cursor:pointer}}
+.btn:hover{{opacity:.92}}
+.small-btn{{min-height:34px;padding:5px 9px}}
+.top-actions,.pager,.pager-actions{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}
+.sub-link{{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px;border:1px solid var(--border);border-radius:10px;background:#fff}}
+.sub-link code{{direction:ltr;text-align:left;overflow:auto;word-break:break-all}}
+.kv-list{{display:flex;flex-direction:column;gap:7px}}
+.kv{{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--border);padding:6px 0}}
+.kv .key,.kv span{{color:var(--muted)}}
+.mono,code,pre{{direction:ltr;text-align:left;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}}
+pre{{margin:0;padding:12px;max-height:520px;overflow:auto;white-space:pre-wrap;word-break:break-word;background:#f8fafc;border:1px solid var(--border);border-radius:10px;font-size:12px;line-height:1.5}}
+.badge{{display:inline-flex;align-items:center;min-height:25px;padding:3px 8px;border-radius:999px;border:1px solid var(--border);font-size:11px}}
+.good,.green{{color:var(--green)!important}}
+.metric-value.green,.metric-value.yellow,.metric-value.blue,.metric-value.violet{{background:transparent!important}}
+.bad,.red-text{{color:var(--red)!important}}
+.warn,.yellow{{color:var(--yellow)!important}}
+.info,.blue{{color:var(--blue)!important}}
+.violet{{color:#7c3aed!important}}
+.error-box{{display:none;margin-bottom:12px;padding:10px 12px;border:1px solid #fecaca;background:#fef2f2;border-radius:10px;color:#991b1b}}
+.loading{{opacity:.55;pointer-events:none}}
+.empty{{text-align:center;padding:32px!important;color:var(--muted)}}
+@media(max-width:1100px){{.filters{{grid-template-columns:repeat(2,minmax(0,1fr))}}.summary-grid{{grid-template-columns:1fr}}}}
+@media(max-width:720px){{.detail-grid,.link-grid{{grid-template-columns:1fr}}.filters{{grid-template-columns:1fr}}.metric-value{{font-size:20px}}}}
+
 </style>
 </head>
 <body data-shell="unified-panel-v1">
