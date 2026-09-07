@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import tempfile
 
 from datetime import datetime, timezone
@@ -9,9 +10,91 @@ from pathlib import Path
 
 from filelock import FileLock
 
-from app.integrity.referential_guard import (
-    archive_latest_before_config_delete,
+def archive_latest_before_config_delete(
+    config_id: str,
+    *,
+    reason: str,
+):
+    """
+    Lazy, fail-closed adapter.
+
+    Core imports independently of Integrity, but a real
+    Config deletion still requires Referential Guard.
+    """
+
+    try:
+        from app.integrity.referential_guard import (
+            archive_latest_before_config_delete
+            as integrity_archive_latest,
+        )
+
+    except Exception as exc:
+        raise RuntimeError(
+            "integrity_guard_unavailable:"
+            + type(exc).__name__
+        ) from exc
+
+    return integrity_archive_latest(
+        config_id,
+        reason=reason,
+    )
+
+
+_FINGERPRINT_RE = re.compile(
+    r"^[0-9A-Fa-f]{64}$"
 )
+
+_SOURCE_ID_RE = re.compile(
+    r"^[A-Za-z0-9]"
+    r"[A-Za-z0-9._:-]{0,127}$"
+)
+
+
+def _validate_fingerprint(
+    fingerprint,
+):
+    value = str(
+        fingerprint
+        or ""
+    ).strip()
+
+    if not _FINGERPRINT_RE.fullmatch(
+        value
+    ):
+        raise ValueError(
+            "invalid_fingerprint"
+        )
+
+    return value
+
+
+def _validate_source_id(
+    source_id,
+):
+    value = str(
+        source_id
+        or ""
+    ).strip()
+
+    if not _SOURCE_ID_RE.fullmatch(
+        value
+    ):
+        raise ValueError(
+            "invalid_source_id"
+        )
+
+    return value
+
+
+def _validate_fingerprint_set(
+    values,
+):
+    return {
+        _validate_fingerprint(
+            value
+        )
+        for value in values
+    }
 
 
 DATA = Path(
@@ -176,6 +259,10 @@ def _config_record_is_valid(
 def _source_tombstone_path(
     source_id: str
 ):
+    source_id = _validate_source_id(
+        source_id
+    )
+
     return (
         SOURCE_TOMBSTONE_DIR
         / f"{source_id}.json"
@@ -253,6 +340,10 @@ def now_iso():
 def _path(
     fingerprint: str
 ):
+    fingerprint = _validate_fingerprint(
+        fingerprint
+    )
+
     return (
         CONFIG_DIR
         / f"{fingerprint}.json"
@@ -262,6 +353,10 @@ def _path(
 def _lock(
     fingerprint: str
 ):
+    fingerprint = _validate_fingerprint(
+        fingerprint
+    )
+
     return FileLock(
         str(
             LOCK_DIR
@@ -333,9 +428,15 @@ def upsert_config(
     item: dict,
     source_id: str,
 ):
-    fingerprint = item[
-        "fingerprint"
-    ]
+    fingerprint = _validate_fingerprint(
+        item[
+            "fingerprint"
+        ]
+    )
+
+    source_id = _validate_source_id(
+        source_id
+    )
 
     path = _path(
         fingerprint
@@ -758,9 +859,9 @@ def detach_sources_from_configs(source_ids):
 def _source_snapshot_path(
     source_id: str
 ):
-    source_id = str(
+    source_id = _validate_source_id(
         source_id
-    ).strip()
+    )
 
     return (
         SOURCE_SNAPSHOT_DIR
@@ -771,9 +872,9 @@ def _source_snapshot_path(
 def _source_snapshot_lock(
     source_id: str
 ):
-    source_id = str(
+    source_id = _validate_source_id(
         source_id
-    ).strip()
+    )
 
     return FileLock(
         str(
@@ -820,11 +921,15 @@ def _read_source_snapshot_unlocked(
     ):
         return None
 
-    return {
-        str(x).strip()
-        for x in values
-        if str(x).strip()
-    }
+    try:
+        return _validate_fingerprint_set(
+            values
+        )
+
+    except ValueError:
+        # Invalid snapshot cannot be trusted as an
+        # authoritative deletion baseline.
+        return None
 
 
 def read_source_snapshot(
@@ -849,11 +954,11 @@ def _write_source_snapshot_unlocked(
     source_id: str,
     fingerprints,
 ):
-    values = sorted({
-        str(x).strip()
-        for x in fingerprints
-        if str(x).strip()
-    })
+    values = sorted(
+        _validate_fingerprint_set(
+            fingerprints
+        )
+    )
 
     data = {
         "source_id": source_id,
@@ -1008,11 +1113,13 @@ def sync_source_snapshot(
         source_id or ""
     ).strip()
 
-    current = {
-        str(x).strip()
-        for x in current_fingerprints
-        if str(x).strip()
-    }
+    source_id = _validate_source_id(
+        source_id
+    )
+
+    current = _validate_fingerprint_set(
+        current_fingerprints
+    )
 
     result = {
         "source_id": source_id,
