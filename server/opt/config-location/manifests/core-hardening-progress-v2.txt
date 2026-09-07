@@ -1,0 +1,14 @@
+CONFIG LOCATION — CORE HARDENING FINAL PASS
+
+part_A=PASS
+
+A-01_source_registry_fail_closed=PASS
+A-02_source_registry_quarantine=PASS
+A-03_shared_identifier_contract=PASS
+A-04_source_runtime_validation=PASS
+A-05_canonical_lowercase_fingerprint=PASS
+A-06_delete_directory_fsync=PASS
+
+next_part=PART-B-RACE-DELETION-CANONICAL-API
+
+generated_utc=2026-09-07T05:28:11Z
