@@ -1,0 +1,26 @@
+CONFIG LOCATION — CORE FREEZE V1
+
+generated_utc=2026-09-07T05:07:57Z
+
+status=PASS
+core_regression=10/10
+
+CORE-01=PASS
+CORE-02=PASS
+CORE-03=PASS
+CORE-04=PASS
+CORE-05=PASS
+CORE-06=PASS
+CORE-07=PASS
+CORE-08=PASS
+CORE-09=PASS
+CORE-10=PASS
+
+source_manager_sha256=0b87a1946be5f2b0afc2c2b5397bff87f6bb04af62631baf507e3ed6c84097d8
+config_store_sha256=eacb16cd9a8ba250d408471c6b6b9b718267ce7f8841641e66e29e07caf16506
+source_runtime_sha256=527479f0ea3ecbb4ecb284c6e2a7b04255c23d66e2ffc0b1ec74479e593258f5
+storage_sha256=df80a662b18b9015bb78068cedd0a7361df4f81612610f9663ca9eb3b442fff1
+
+fetcher_service=active
+panel_service=active
+panel_health_http=200
