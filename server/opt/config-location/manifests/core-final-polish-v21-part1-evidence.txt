@@ -1,0 +1,27 @@
+CONFIG LOCATION — CORE FINAL POLISH V2.1 — PART 1
+
+generated_utc=2026-09-07T06:25:23Z
+
+status=PASS
+
+resumed_from=/root/3333/core-final-polish-v21-part1-20260907-062216
+
+previous_tests=PASS
+previous_failure=installer_shell_syntax
+tested_staging_reused=YES
+installed_bytes_match_tested_staging=YES
+
+P1-01_source_registry_identity_uniqueness=PASS
+P1-02_canonical_config_reader=PASS
+P1-03_snapshot_corruption_quarantine=PASS
+P1-04_runtime_corruption_evidence=PASS
+P1-05_deletion_journal_read_consistency=PASS
+
+production_fetcher=active
+production_panel=active
+production_health_http=200
+
+SOURCE_SHA256:
+c2d22cdd1deed6ba651dcebad7b694629a6912a89d154887ad47135b846547e3  /opt/config-location/app/core/config_store.py
+078515999eea8726ecb4873d2cbed4eb379f6cfa281ced870eb1c9638916282d  /opt/config-location/app/core/source_manager.py
+d5208f4f9c78b777d7537ac9fcc97bb1861ec564e305d15edf3e96e69bdcec47  /opt/config-location/app/core/source_runtime.py
