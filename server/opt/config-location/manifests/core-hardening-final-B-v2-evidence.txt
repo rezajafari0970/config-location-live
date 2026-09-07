@@ -1,0 +1,25 @@
+CONFIG LOCATION — CORE HARDENING FINAL PASS — PART B V2
+
+generated_utc=2026-09-07T05:40:59Z
+
+execution_directory=/root/3333/core-hardening-final-B-v2-20260907-053925
+execution_marker=PASS
+live_verdict=PASS
+
+B-01_config_lock_tombstone_recheck=PASS
+B-02_snapshot_lock_tombstone_recheck=PASS
+B-03_deletion_journal_fail_closed=PASS
+B-04_crash_safe_source_deletion=PASS
+B-05_canonical_config_delete_api=PASS
+B-06_existing_delete_paths_canonicalized=PASS
+
+fetcher_service=active
+panel_service=active
+panel_health_http=200
+
+SOURCE_SHA256:
+c73b673cefed32a512679d3443d2fb3d68bbfc8249972fabcb70999a602530d4  /opt/config-location/app/core/identifiers.py
+d8d5eb5d9f4c90d7ed2928e9ae10f84ba22ae7aaa66177a62d9cc53f7033a516  /opt/config-location/app/core/storage.py
+f76afd46ab69d19da2b9b779a3515991075a36c3b919818fca2265d7a829a882  /opt/config-location/app/core/source_runtime.py
+abe3b5875fc95a4b34ad5cf9d730f8d3c5108fed0a27e94f835906aed4181bbd  /opt/config-location/app/core/source_manager.py
+94b7ffd9a1f2947b58e88e18d44d5b3edbf882debcb2ddbb84b53b5a7843db88  /opt/config-location/app/core/config_store.py
