@@ -9,7 +9,14 @@ from urllib.parse import urlsplit, urlunsplit
 
 from filelock import FileLock
 
-from .storage import read_json, atomic_write_json
+from .storage import (
+    read_json,
+    read_json_strict,
+    atomic_write_json,
+    quarantine_file,
+    JsonCorruptError,
+    JsonReadError,
+)
 
 
 from app.core.config_store import (
@@ -33,6 +40,89 @@ SOURCE_DELETE_JOURNAL = Path(
     "/var/lib/config-location/state/"
     "pending-source-deletion.json"
 )
+
+SOURCE_REGISTRY_QUARANTINE_DIR = Path(
+    "/var/lib/config-location/quarantine/"
+    "source-registry"
+)
+
+SOURCE_REGISTRY_BLOCK_MARKER = Path(
+    "/var/lib/config-location/state/"
+    "source-registry-blocked.json"
+)
+
+
+class SourceRegistryCorruptError(
+    RuntimeError
+):
+    pass
+
+
+def _validate_source_registry(
+    data,
+):
+    if not isinstance(
+        data,
+        dict
+    ):
+        return False
+
+    sources = data.get(
+        "sources"
+    )
+
+    if not isinstance(
+        sources,
+        list
+    ):
+        return False
+
+    for source in sources:
+
+        if not isinstance(
+            source,
+            dict
+        ):
+            return False
+
+        if not str(
+            source.get(
+                "id",
+                ""
+            )
+        ).strip():
+            return False
+
+    return True
+
+
+def _quarantine_source_registry(
+    reason: str,
+):
+    target = quarantine_file(
+        SOURCE_FILE,
+        SOURCE_REGISTRY_QUARANTINE_DIR,
+        reason=reason,
+        metadata={
+            "component":
+                "source-registry",
+        },
+    )
+
+    atomic_write_json(
+        SOURCE_REGISTRY_BLOCK_MARKER,
+        {
+            "blocked": True,
+            "reason": str(reason),
+            "quarantine_path":
+                str(target)
+                if target
+                else None,
+            "blocked_at": now_iso(),
+        },
+    )
+
+    return target
 
 
 def _write_delete_journal(
@@ -261,13 +351,62 @@ def normalize_url(url: str) -> str:
 
 
 def _load():
-    data = read_json(SOURCE_FILE, {"version": 1, "sources": []})
 
-    if not isinstance(data, dict):
-        data = {"version": 1, "sources": []}
+    if SOURCE_REGISTRY_BLOCK_MARKER.exists():
 
-    if not isinstance(data.get("sources"), list):
-        data["sources"] = []
+        raise SourceRegistryCorruptError(
+            "source_registry_blocked"
+        )
+
+
+    default = {
+        "version": 1,
+        "sources": [],
+    }
+
+
+    try:
+
+        data = read_json_strict(
+            SOURCE_FILE,
+            default,
+        )
+
+
+    except JsonCorruptError as exc:
+
+        target = _quarantine_source_registry(
+            "json_decode_error"
+        )
+
+        raise SourceRegistryCorruptError(
+            "source_registry_corrupt:"
+            + str(target)
+        ) from exc
+
+
+    except JsonReadError as exc:
+
+        # Filesystem failures are not treated as an
+        # empty registry and are not overwritten.
+        raise SourceRegistryCorruptError(
+            "source_registry_read_failed"
+        ) from exc
+
+
+    if not _validate_source_registry(
+        data
+    ):
+
+        target = _quarantine_source_registry(
+            "invalid_registry_schema"
+        )
+
+        raise SourceRegistryCorruptError(
+            "source_registry_invalid_schema:"
+            + str(target)
+        )
+
 
     return data
 
