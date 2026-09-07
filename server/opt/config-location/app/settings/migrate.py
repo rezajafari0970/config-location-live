@@ -153,15 +153,44 @@ def build_initial() -> dict:
 
 def main() -> None:
 
-    initial = build_initial()
+    # Central Settings is authoritative once created.
+    # Legacy files are migration INPUT only and are never
+    # re-applied over an existing central store.
+    if STORE.path.exists():
 
-    obj = STORE.initialize(
-        initial
-    )
+        obj = STORE.read()
 
-    print(
-        "CENTRAL_SETTINGS_READY"
-    )
+        print(
+            "CENTRAL_SETTINGS_READY"
+        )
+
+        print(
+            "source=central-existing"
+        )
+
+        print(
+            "legacy_inputs_used=NO"
+        )
+
+    else:
+
+        initial = build_initial()
+
+        obj = STORE.initialize(
+            initial
+        )
+
+        print(
+            "CENTRAL_SETTINGS_READY"
+        )
+
+        print(
+            "source=legacy-bootstrap"
+        )
+
+        print(
+            "legacy_inputs_used=YES"
+        )
 
     print(
         "schema_version=",
