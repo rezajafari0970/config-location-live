@@ -1,0 +1,16 @@
+CLASSIFICATION_V1
+compile=PASS
+health_gate_required=YES
+country_before_cdn=YES
+cdn_only_for_healthy=YES
+cloudflare_worker=ENABLED
+cloudflare_cdn=ENABLED
+other_cdn=ENABLED
+non_cdn=ENABLED
+unknown_fail_safe=ENABLED
+dns_ip_evidence=ENABLED
+cloudflare_network_evidence=ENABLED
+raw_mutation=NO
+classification_metadata_separate=YES
+fetcher=active
+status=PASS
