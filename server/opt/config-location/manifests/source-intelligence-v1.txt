@@ -1,0 +1,11 @@
+SOURCE_INTELLIGENCE_V1
+compile=PASS
+found_stats=ENFORCED
+healthy_stats=ENFORCED
+failed_health_stats=ENFORCED
+last_success_semantics=REAL_HEALTHY
+last_healthy_at=ENFORCED
+healthy_window_source=source_intelligence.healthy_window_hours
+source_warning=ENFORCED
+fetcher=active
+status=PASS
