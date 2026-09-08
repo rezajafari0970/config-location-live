@@ -62,7 +62,7 @@ ee4b36887724f201e862feb0e4664354e0905c245ad110c280eae91b8cd3e6df  server/opt/con
 4a48d4d10864b9f00972c562d56e4df96a36a521ac1a69df6e8387bcf022ce9b  server/opt/config-location/app/country/worker.py
 8ea92cb5a1c580ba5f5dd36a563f935f9879ab032204d09f0e62ad5a3d4183b0  server/opt/config-location/app/devlog/endpoint.py
 0bc47b04e4222c822a5cb96bbf859e12251c5cc230ff0f41920d636c1e62db6f  server/opt/config-location/app/devlog/__init__.py
-7c56bfde93255b5311e9bd00f5da8a4e94c6d60032f8ddb0ba84d3160dc9ecce  server/opt/config-location/app/fetcher/engine.py
+95b27682fffe571cf5c3ee25e6b0358841c0d16b073ebf9c4a11ca60593284fa  server/opt/config-location/app/fetcher/engine.py
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  server/opt/config-location/app/fetcher/__init__.py
 63aed27c1bef09c9b33732451f40709f90e2d70b764fbf48fa505165731110ec  server/opt/config-location/app/health/core/adaptive_controller.py
 dd782ef977326991cb2cf4b010987b6eb7d63a97657454a31384f606376ff3b0  server/opt/config-location/app/health/core/adaptive_live_queue.py
