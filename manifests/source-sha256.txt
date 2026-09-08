@@ -118,7 +118,7 @@ b8aa24deb9c268e4c40fbeabd49ea772922edfb417b8cfc7712ab75400814ae8  server/opt/con
 66492b01e9ee2aa0c811ee52678851a196d06288d9d229b8a5b944c362c62a2e  server/opt/config-location/app/health/retest/eligibility.py
 20542ce4e8ad3d39f1704a217b06c5e7422a048daf415e10a07fdae9cefdff91  server/opt/config-location/app/health/retest/__init__.py
 05b37d97983dc43c7f31356da1405c95955c6cee1f7986384a2e025c3a4fb0aa  server/opt/config-location/app/health/retest/privileged_plan.py
-c63302981196c0853023ae9bb546966e829b3bc4c8fb02bf583a001b9d59da4f  server/opt/config-location/app/health/retest/worker.py
+b0ede735dd431612ee684b458109d58ccb87ab830e856b4c53c29cedc084cd52  server/opt/config-location/app/health/retest/worker.py
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  server/opt/config-location/app/health/runtime/builders/__init__.py
 de1798c27618f7dd4130461c4da42dd09fb9c7a8ec37c0bab58fa920de30f15a  server/opt/config-location/app/health/runtime/builders/selftest_xray_json.py
 cb01c0898485858bd9622a68c96d0e0836184327c9843d61c6c1c674dbee756b  server/opt/config-location/app/health/runtime/builders/tls_policy.py
@@ -15605,6 +15605,7 @@ fceffd6e6f1d4a5227f4727b887011ae45a9a88574279e517b9c573f8015338a  server/opt/con
 934ffeffe48ab353f0bc68ab624d0b12b2b1c3acec44611a54967e926c88b5c7  server/opt/config-location/manifests/core-pipeline-health-gate-v1-install.txt
 c87589a0945a71fc53a36f3b87cc36d6d62f468672252c7a695b7d082bedb7ff  server/opt/config-location/manifests/core-pipeline-health-gate-v1.txt
 67a895c8a32d7cc7ab34d614c726deb3761e51e603c54f80604b1d744dfca060  server/opt/config-location/manifests/core-pipeline-realignment-v1-preflight.txt
+f0a2c8d8bbe0f9c5cf02ea4bfa7e345ee68d33640910b3aeaf6d68dc797179a8  server/opt/config-location/manifests/lifecycle-enforcement-v1-install.txt
 b2a30dcf3cb70b0ff6dc9b161b6222a4c7375827eee7aeb14b72f91332b36478  server/opt/config-location/manifests/lifecycle-enforcement-v1-stage.txt
 84f37bd4a65e7a284cdc41de44c93eb627fdf2f85cd3324a6beb4c8b54fa5407  server/opt/config-location/manifests/phase-2A2-settings-engine-hardening-evidence.txt
 9d31a701006e25879fec5d4e411e97f3bb4bea0d485cf8ea8b45860145233199  server/opt/config-location/manifests/phase-2A3-settings-panel-api-freeze-evidence.txt
