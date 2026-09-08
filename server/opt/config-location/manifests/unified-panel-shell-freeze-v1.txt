@@ -1,0 +1,22 @@
+CONFIG LOCATION — UNIFIED PANEL SHELL FREEZE V1
+generated_utc=2026-09-08T22:51:17Z
+status=PASS
+
+part1=PASS
+part2=PASS
+part3_navigation_cleanup=PASS
+
+operations_ui_removed=YES
+lifecycle_ui_removed=YES
+operations_api_preserved=YES
+lifecycle_api_preserved=YES
+
+settings_revision=11
+settings_checksum=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+settings_mutated=NO
+
+panel_service=active
+fetcher_service=active
+panel_health_http=200
+
+freeze=UNIFIED-PANEL-SHELL-V1
