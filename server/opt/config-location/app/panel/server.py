@@ -5176,11 +5176,6 @@ def create_app():
     )
 
     app.router.add_get(
-        "/operations",
-        operations_page
-    )
-
-    app.router.add_get(
         "/api/operations/summary",
         api_operations_summary
     )
