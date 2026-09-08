@@ -1,0 +1,19 @@
+CONFIG LOCATION — UNIFIED PANEL SHELL PART 3 EVIDENCE
+generated_utc=2026-09-08T22:51:17Z
+status=PASS
+
+navigation_cleanup=PASS
+operations_ui_route=ABSENT
+lifecycle_ui_route=ABSENT
+operations_summary_api=PRESERVED
+lifecycle_status_api=PRESERVED
+
+settings_revision=11
+settings_checksum=d216a3db0b8e9bcd5f46e56e2a5f3c2fe1ee6a90c11f82777aef9d2db07a7b4d
+settings_mutated=NO
+
+panel_service=active
+fetcher_service=active
+panel_health_http=200
+
+service_regression=PASS
