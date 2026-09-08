@@ -647,6 +647,18 @@ async def run_source_once(
 
                     healthy_count += 1
 
+                    # Durable metadata only after REAL health.
+                    item["health_metadata"] = {
+                        "country": health.metadata.get(
+                            "same_runtime_country",
+                            {}
+                        ),
+                        "cdn": health.metadata.get(
+                            "cdn",
+                            {}
+                        ),
+                    }
+
                     _, created = upsert_config(
                         item,
                         source_id,
