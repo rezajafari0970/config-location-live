@@ -1060,10 +1060,6 @@ def install_lifecycle_observability_routes(
     ] = True
 
 
-    app.router.add_get(
-        "/lifecycle",
-        lifecycle_page,
-    )
 
 
     app.router.add_get(
