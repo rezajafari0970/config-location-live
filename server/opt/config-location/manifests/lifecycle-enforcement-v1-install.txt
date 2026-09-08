@@ -1,0 +1,7 @@
+LIFECYCLE_ENFORCEMENT_V1_INSTALL
+compile=PASS
+atomic_install=PASS
+retest=config-location-retest.service:active
+unhealthy_retest_delete=ENFORCED
+raw_mutation=NO
+status=PASS
