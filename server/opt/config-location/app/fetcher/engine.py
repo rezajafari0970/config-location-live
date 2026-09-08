@@ -11,6 +11,8 @@ from pathlib import Path
 
 import httpx
 
+from app.settings.engine import get_settings
+
 from app.core.source_manager import (
     list_sources,
     get_source,
@@ -503,6 +505,10 @@ async def run_source_once(
     new_count = 0
     found_count = 0
 
+    # SOURCE_INTELLIGENCE_V1
+    healthy_count = 0
+    failed_health_count = 0
+
     duplicate_streak = 0
     empty_streak = 0
 
@@ -636,7 +642,10 @@ async def run_source_once(
                     )
 
                     if not health.healthy:
+                        failed_health_count += 1
                         continue
+
+                    healthy_count += 1
 
                     _, created = upsert_config(
                         item,
@@ -809,6 +818,52 @@ async def run_source_once(
                         )[:450],
                 }
 
+        # SOURCE HEALTHY-WINDOW
+        settings = get_settings()
+        source_cfg = settings.get("source_intelligence", {})
+
+        try:
+            healthy_window_hours = float(
+                source_cfg.get("healthy_window_hours", 12)
+            )
+        except (TypeError, ValueError):
+            healthy_window_hours = 12.0
+
+        last_healthy_at = (
+            finished
+            if healthy_count > 0
+            else previous.get("last_healthy_at")
+        )
+
+        source_warning = False
+        healthy_silence_hours = None
+
+        if healthy_count <= 0:
+            reference = last_healthy_at or previous.get(
+                "first_fetch_at"
+            ) or previous.get(
+                "last_fetch_started_at"
+            ) or started
+
+            try:
+                ref_dt = datetime.fromisoformat(
+                    str(reference).replace("Z", "+00:00")
+                )
+                if ref_dt.tzinfo is None:
+                    ref_dt = ref_dt.replace(tzinfo=timezone.utc)
+
+                healthy_silence_hours = (
+                    datetime.now(timezone.utc)
+                    - ref_dt.astimezone(timezone.utc)
+                ).total_seconds() / 3600.0
+
+                source_warning = (
+                    healthy_window_hours > 0
+                    and healthy_silence_hours >= healthy_window_hours
+                )
+            except Exception:
+                pass
+
         update_runtime(
             source_id,
 
@@ -818,13 +873,30 @@ async def run_source_once(
             last_fetch_at=finished,
             last_fetch_finished_at=finished,
 
+            # Success now means at least one REAL healthy config.
             last_success_at=(
                 finished
-                if seen_this_session
-                else previous.get(
-                    "last_success_at"
-                )
+                if healthy_count > 0
+                else previous.get("last_success_at")
             ),
+
+            last_healthy_at=last_healthy_at,
+            healthy_window_hours=healthy_window_hours,
+            healthy_silence_hours=(
+                round(healthy_silence_hours, 3)
+                if healthy_silence_hours is not None
+                else None
+            ),
+            source_warning=source_warning,
+            warning_code=(
+                "no_healthy_config_in_window"
+                if source_warning
+                else None
+            ),
+
+            found_last_cycle=found_count,
+            healthy_last_cycle=healthy_count,
+            failed_health_last_cycle=failed_health_count,
 
             last_error=None,
 
@@ -836,8 +908,6 @@ async def run_source_once(
             configs_last_cycle=len(
                 seen_this_session
             ),
-
-            found_last_cycle=found_count,
 
             new_configs_last_cycle=new_count,
 
