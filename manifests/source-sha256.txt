@@ -15578,6 +15578,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
 a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
 da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+600e10e94a234e521ccc232eeb893ed448c481ea165062265a3db546caf9352f  server/opt/config-location/manifests/cdn-classification-v2.txt
 d618bd2e971caa6eebca38a0d2e9f57cb0005e171318932ca16f6f3584e82955  server/opt/config-location/manifests/classification-v1.txt
 fa04081171e8262a25af39b332cc1a5e4f5db186fc8f2994f7eb6ada6882e594  server/opt/config-location/manifests/control-plane-freeze-v2.txt
 45fb04e3c745d6325b45c42f9779bcb90fa39ea08f251ad31728810f2c2c0a92  server/opt/config-location/manifests/control-plane-v2-part1-evidence.txt
