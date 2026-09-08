@@ -15607,6 +15607,7 @@ c87589a0945a71fc53a36f3b87cc36d6d62f468672252c7a695b7d082bedb7ff  server/opt/con
 67a895c8a32d7cc7ab34d614c726deb3761e51e603c54f80604b1d744dfca060  server/opt/config-location/manifests/core-pipeline-realignment-v1-preflight.txt
 f0a2c8d8bbe0f9c5cf02ea4bfa7e345ee68d33640910b3aeaf6d68dc797179a8  server/opt/config-location/manifests/lifecycle-enforcement-v1-install.txt
 b2a30dcf3cb70b0ff6dc9b161b6222a4c7375827eee7aeb14b72f91332b36478  server/opt/config-location/manifests/lifecycle-enforcement-v1-stage.txt
+b259e9e96d6ad1b0015ca47373161c28319cab0131a7cf8259bb00949694118a  server/opt/config-location/manifests/lifecycle-enforcement-v2.txt
 84f37bd4a65e7a284cdc41de44c93eb627fdf2f85cd3324a6beb4c8b54fa5407  server/opt/config-location/manifests/phase-2A2-settings-engine-hardening-evidence.txt
 9d31a701006e25879fec5d4e411e97f3bb4bea0d485cf8ea8b45860145233199  server/opt/config-location/manifests/phase-2A3-settings-panel-api-freeze-evidence.txt
 e81db0c2d1ef65f874649c6b7780748148a8ea4252994bf77e8019554bf32bae  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-audit.txt
