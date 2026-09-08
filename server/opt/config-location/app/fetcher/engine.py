@@ -624,6 +624,20 @@ async def run_source_once(
 
                     found_count += 1
 
+                    # CORE_PIPELINE_HEALTH_GATE_V1
+                    # Candidate MUST prove Xray + download + upload
+                    # before entering the active Config Store.
+                    from app.health.core.engine import run_health_once
+
+                    health = run_health_once(
+                        config_id=item["fingerprint"],
+                        config_type=item.get("type", "unknown"),
+                        source=item.get("raw", ""),
+                    )
+
+                    if not health.healthy:
+                        continue
+
                     _, created = upsert_config(
                         item,
                         source_id,

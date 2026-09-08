@@ -15602,6 +15602,7 @@ c86c1aad98bcdff45e4ddd6cb13336a3e0b373617bf3e8ea5bd94acf762a8898  server/opt/con
 fceffd6e6f1d4a5227f4727b887011ae45a9a88574279e517b9c573f8015338a  server/opt/config-location/manifests/core-hardening-final-B-v2-evidence.txt
 15f4881875bf0aaf201b61d1f4f2a738ec302ac7c6952b3733142dde3b12a4a6  server/opt/config-location/manifests/core-hardening-final-C-v2-evidence.txt
 8759c1e100e2f028ca6fe490dbbe4e8ef1f14a82131a72eafc0e0de689715333  server/opt/config-location/manifests/core-hardening-progress-v2.txt
+c87589a0945a71fc53a36f3b87cc36d6d62f468672252c7a695b7d082bedb7ff  server/opt/config-location/manifests/core-pipeline-health-gate-v1.txt
 67a895c8a32d7cc7ab34d614c726deb3761e51e603c54f80604b1d744dfca060  server/opt/config-location/manifests/core-pipeline-realignment-v1-preflight.txt
 84f37bd4a65e7a284cdc41de44c93eb627fdf2f85cd3324a6beb4c8b54fa5407  server/opt/config-location/manifests/phase-2A2-settings-engine-hardening-evidence.txt
 9d31a701006e25879fec5d4e411e97f3bb4bea0d485cf8ea8b45860145233199  server/opt/config-location/manifests/phase-2A3-settings-panel-api-freeze-evidence.txt
