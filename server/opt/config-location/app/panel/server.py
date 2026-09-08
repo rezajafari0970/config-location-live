@@ -5175,10 +5175,6 @@ def create_app():
         api_config_detail
     )
 
-    app.router.add_get(
-        "/operations",
-        operations_page
-    )
 
     app.router.add_get(
         "/api/operations/summary",
