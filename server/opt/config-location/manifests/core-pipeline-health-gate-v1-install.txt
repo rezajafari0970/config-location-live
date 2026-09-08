@@ -1,0 +1,8 @@
+CORE_PIPELINE_HEALTH_GATE_V1_INSTALL
+atomic_install=PASS
+fetcher=active
+raw_candidate_before_store=PASS
+xray_download_upload_gate=ENFORCED
+unhealthy_candidate_store=DENIED
+healthy_candidate_store=ALLOWED
+status=PASS
