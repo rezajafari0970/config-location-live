@@ -590,6 +590,19 @@ def upsert_config(
                 "source_ids": sorted(
                     sources
                 ),
+                "classification": (
+                    item.get(
+                        "health_metadata",
+                        {}
+                    )
+                    if isinstance(
+                        item.get(
+                            "health_metadata"
+                        ),
+                        dict,
+                    )
+                    else {}
+                ),
             }
         else:
             record[
@@ -601,6 +614,20 @@ def upsert_config(
             ] = sorted(
                 sources
             )
+
+            # Refresh classification metadata only.
+            # Never rewrite original raw payload.
+            health_metadata = item.get(
+                "health_metadata"
+            )
+
+            if isinstance(
+                health_metadata,
+                dict,
+            ):
+                record[
+                    "classification"
+                ] = health_metadata
 
         _atomic_write(
             path,
