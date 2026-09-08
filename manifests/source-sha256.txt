@@ -148,7 +148,7 @@ ae0f5b104986f6d3ec7e22959eeee8843817f3a3b6b3fb15178b6f72234b0f40  server/opt/con
 d97f295691bf4edb1960242b8132dca37ac2e0fcd918f5bd74a0121723c7130a  server/opt/config-location/app/integrity/run_store_health.py
 140db5d9233b11d2ef053728f3fc2367258243d10e135314bd106d5d6c1578b9  server/opt/config-location/app/integrity/selftest_store_health.py
 a1bc5211ce21b891f2e26392094001c668ff238fbb9dc2d33edd3cb796142c63  server/opt/config-location/app/integrity/store_health.py
-65fd4d058b63d90cb4394dfe4f31b01d783a819c5da69bc007a354b6ff9f7635  server/opt/config-location/app/observability/http.py
+aa58921fd5c1c5b682157585fd5333f9421314483a096bd66f9f1bba54ec48c3  server/opt/config-location/app/observability/http.py
 b3009b7d102499226737121168128178128199d4916a362a8f720a3651141a5b  server/opt/config-location/app/observability/__init__.py
 a4d57ef3d85bb80ce7b5cd94759e22c52c0613d6cd5abff609525e9f9a18d5c9  server/opt/config-location/app/observability/lifecycle.py
 3b19060c9a585cc0d4bf47214b603bb1a38e4d749fd4490f51360bda0a728145  server/opt/config-location/app/observability/selftest.py
@@ -161,7 +161,7 @@ f2754a9790fc3341f8fc921be2197c1da1b893c343d0252690dd680176d0dfd0  server/opt/con
 86ffc11d90f938370020502d5f153c6e332b210d8a8bb8885153996f1ab5c4cb  server/opt/config-location/app/panel/publish_read_model.py
 2f6ef1aebfa659ba0e5c545ce6eb3274bdc305a88a3d251d91628d3f2fc7a9fd  server/opt/config-location/app/panel/publish_ui.py
 1caad6c9d82eaa970c76a61884c0d5616965eadb1e931a0eafdce55caaa16f34  server/opt/config-location/app/panel/read_model.py
-dccef2094c7d1247b8c5ed60d954a5fa141e088b2966591a8fe276f54646913a  server/opt/config-location/app/panel/server.py
+3ba7fba7f30725c162ad6e6de374dca036c18db08ca7cb10ba989e4fa82050e8  server/opt/config-location/app/panel/server.py
 b0e47a945078de2f7442df9b24ea27a32e19923234cf6583e52b26cbafbfd71b  server/opt/config-location/app/panel/server.py.bak.20260829-005109
 f1a9b8d281e52f0829198fc71336eac48ae82509704921a8fdc2db607b7f5300  server/opt/config-location/app/panel/server.py.bak.20260829-005549
 111a844c5792d23a79870f60f283e97c8fcdceb3726f0edcd2deb01641091942  server/opt/config-location/app/panel/server.py.bak.20260829-010005
@@ -15607,8 +15607,10 @@ fceffd6e6f1d4a5227f4727b887011ae45a9a88574279e517b9c573f8015338a  server/opt/con
 e81db0c2d1ef65f874649c6b7780748148a8ea4252994bf77e8019554bf32bae  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-audit.txt
 ef0b0b3d8c922df0b15e5fa211dd9bf90b09c5ab07f1f1c509ea6228445fdfd3  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-progress.txt
 40fdea2e2b12a04202a7a4e6ef02930b1a46219f4a4c4018b9933da59ef4aa78  server/opt/config-location/manifests/settings-freeze-v2.txt
+0a05124e945dea7f03627262566b386152d22429308ef2ca1e5e978342b94f26  server/opt/config-location/manifests/unified-panel-shell-freeze-v1.txt
 cf670bfb21c2fd245e30b18abfd26825c82926a391ce67e58ccf2c171b4c5b98  server/opt/config-location/manifests/unified-panel-shell-part1-evidence.txt
 1a271a6e6373624175be8ba25677703a4a8378fda6ae518f6efd7d797a539fd6  server/opt/config-location/manifests/unified-panel-shell-part2-evidence.txt
+7705d07d4b61d088c91cfde7658b1300392ed8400f2ca36b320dcc66be1942c8  server/opt/config-location/manifests/unified-panel-shell-part3-evidence.txt
 ec080f8d42c8d2c198ec419c54426a7e340c5dca07e83a911f0c2f7b339d64e3  server/opt/config-location/manifests/unified-panel-shell-progress.txt
 b485ee8ca5fb02f51ad5aa30546ccefb64cecc7df3316ab27f7ce75ce2305f9e  server/opt/config-location/PROJECT-STATE.md
 2bf4c9aca72203b8a209af450313ebc69a7669f7a15dc19d7fb2bdda08bca56d  server/opt/config-location/requirements-installed.txt
