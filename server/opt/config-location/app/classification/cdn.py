@@ -249,11 +249,70 @@ def _is_cloudflare_ip(value):
         return False
 
 
-def classify_cdn(raw):
+def classify_cdn(raw, runtime_metadata=None):
     hosts = extract_hosts(raw)
 
     evidence = []
     resolved = {}
+
+    runtime_metadata = (
+        runtime_metadata
+        if isinstance(
+            runtime_metadata,
+            dict,
+        )
+        else {}
+    )
+
+    endpoint = runtime_metadata.get(
+        "endpoint",
+        {},
+    )
+
+    runtime_hosts = set()
+
+    if isinstance(endpoint, dict):
+
+        for key in (
+            "address",
+            "host",
+            "sni",
+            "authority",
+        ):
+            value = endpoint.get(key)
+
+            if isinstance(value, str):
+                h = _host(value)
+
+                if h:
+                    runtime_hosts.add(h)
+
+        for key in (
+            "addresses",
+            "hosts",
+            "sni",
+        ):
+            values = endpoint.get(key)
+
+            if isinstance(values, list):
+                for value in values:
+                    h = _host(value)
+
+                    if h:
+                        runtime_hosts.add(h)
+
+    if runtime_hosts:
+        evidence.append(
+            "xray_runtime_endpoint:"
+            + ",".join(
+                sorted(runtime_hosts)
+            )
+        )
+
+    hosts = sorted(
+        set(hosts)
+        | runtime_hosts
+    )
 
     # 1. Explicit Worker hostname = strongest evidence.
     for host in hosts:
@@ -332,11 +391,29 @@ def classify_cdn(raw):
                 )
 
     if cf_hits > 0:
+        runtime_agreement = bool(
+            runtime_hosts
+            and any(
+                host in runtime_hosts
+                for host in hosts
+            )
+        )
+
         confidence = (
-            0.99
-            if total_ips > 0
-            and cf_hits == total_ips
-            else 0.94
+            0.995
+            if (
+                total_ips > 0
+                and cf_hits == total_ips
+                and runtime_agreement
+            )
+            else (
+                0.99
+                if (
+                    total_ips > 0
+                    and cf_hits == total_ips
+                )
+                else 0.94
+            )
         )
 
         return {
