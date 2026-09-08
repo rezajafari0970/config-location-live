@@ -275,7 +275,12 @@ def run_health_once(
                 result.metadata[
                     "cdn"
                 ] = classify_cdn(
-                    source
+                    source,
+                    runtime_metadata=(
+                        runtime.metadata
+                        if runtime is not None
+                        else {}
+                    ),
                 )
 
             except Exception as exc:
