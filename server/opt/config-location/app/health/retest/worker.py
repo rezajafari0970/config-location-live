@@ -875,6 +875,23 @@ def main() -> int:
             )
 
 
+            # LIFECYCLE_ENFORCEMENT_V1
+            # Active Store contains healthy/live configs only.
+            # Failed retest => immediate removal.
+            deleted_unhealthy = 0
+
+            for result in results:
+                if result.healthy:
+                    continue
+
+                config_path = CONFIG_ROOT / (result.config_id + ".json")
+
+                try:
+                    config_path.unlink()
+                    deleted_unhealthy += 1
+                except FileNotFoundError:
+                    pass
+
             cycle_results = []
 
             for result in results:
@@ -936,6 +953,10 @@ def main() -> int:
 
                 cycle_unhealthy=(
                     cycle_unhealthy
+                ),
+
+                deleted_unhealthy=(
+                    deleted_unhealthy
                 ),
 
                 cycle_results=(
