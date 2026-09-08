@@ -442,5 +442,17 @@ class UriXrayRuntimeBuilder(RuntimeBuilderPlugin):
                 "protocol": parsed.protocol,
                 "network": parsed.network,
                 "security": parsed.security,
+
+                # CDN_CLASSIFICATION_V2
+                # Final endpoint semantics used by Xray.
+                "endpoint": {
+                    "address": parsed.host,
+                    "port": parsed.port,
+                    "host": q(parsed, "host"),
+                    "sni": q(parsed, "sni"),
+                    "authority": q(parsed, "authority"),
+                    "path": q(parsed, "path"),
+                    "serviceName": q(parsed, "serviceName"),
+                },
             },
         )
