@@ -182,6 +182,124 @@ def _minimal_runtime(
     }
 
 
+
+
+def _runtime_endpoint_metadata(
+    outbound: dict,
+) -> dict:
+
+    out = {
+        "protocol": str(
+            outbound.get("protocol", "")
+        ).lower(),
+        "addresses": [],
+        "hosts": [],
+        "sni": [],
+        "network": None,
+        "security": None,
+    }
+
+    settings = outbound.get(
+        "settings",
+        {},
+    )
+
+    if isinstance(settings, dict):
+
+        for key in (
+            "vnext",
+            "servers",
+        ):
+            rows = settings.get(key)
+
+            if isinstance(rows, list):
+                for row in rows:
+                    if not isinstance(row, dict):
+                        continue
+
+                    address = row.get("address")
+
+                    if isinstance(address, str):
+                        out["addresses"].append(address)
+
+    stream = outbound.get(
+        "streamSettings",
+        {},
+    )
+
+    if isinstance(stream, dict):
+        out["network"] = stream.get(
+            "network"
+        )
+        out["security"] = stream.get(
+            "security"
+        )
+
+        for sec_key in (
+            "tlsSettings",
+            "realitySettings",
+        ):
+            sec = stream.get(sec_key)
+
+            if isinstance(sec, dict):
+                server_name = sec.get(
+                    "serverName"
+                )
+
+                if isinstance(server_name, str):
+                    out["sni"].append(
+                        server_name
+                    )
+
+        for net_key in (
+            "wsSettings",
+            "httpupgradeSettings",
+            "xhttpSettings",
+            "grpcSettings",
+            "tcpSettings",
+        ):
+            net = stream.get(net_key)
+
+            if not isinstance(net, dict):
+                continue
+
+            for key in (
+                "host",
+                "authority",
+            ):
+                value = net.get(key)
+
+                if isinstance(value, str):
+                    out["hosts"].append(value)
+
+            headers = net.get(
+                "headers"
+            )
+
+            if isinstance(headers, dict):
+                host = headers.get(
+                    "Host"
+                )
+
+                if isinstance(host, str):
+                    out["hosts"].append(host)
+
+    for key in (
+        "addresses",
+        "hosts",
+        "sni",
+    ):
+        out[key] = sorted(
+            {
+                str(x).strip()
+                for x in out[key]
+                if str(x).strip()
+            }
+        )
+
+    return out
+
+
 class XrayJsonRuntimeBuilder(
     RuntimeBuilderPlugin
 ):
@@ -251,6 +369,13 @@ class XrayJsonRuntimeBuilder(
                 "builder": self.plugin_name,
                 "outbound_protocol": (
                     outbound.get("protocol")
+                ),
+
+                # CDN_CLASSIFICATION_V2
+                "endpoint": (
+                    _runtime_endpoint_metadata(
+                        outbound
+                    )
                 ),
             },
         )
