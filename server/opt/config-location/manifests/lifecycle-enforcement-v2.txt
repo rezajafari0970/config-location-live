@@ -1,0 +1,9 @@
+LIFECYCLE_ENFORCEMENT_V2
+compile=PASS
+canonical_unhealthy_delete=ENFORCED
+lifetime_source=config_lifetime.max_age_hours
+lifetime_clock=first_seen_at
+expired_delete=ENFORCED
+raw_mutation=NO
+retest_service=active
+status=PASS
