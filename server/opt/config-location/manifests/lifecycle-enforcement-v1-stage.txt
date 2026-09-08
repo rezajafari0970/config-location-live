@@ -1,0 +1,6 @@
+LIFECYCLE_ENFORCEMENT_V1_STAGE
+compile=PASS
+unhealthy_immediate_delete=STAGED
+raw_mutation=NO
+production_mutated=NO
+status=STAGED_PASS
