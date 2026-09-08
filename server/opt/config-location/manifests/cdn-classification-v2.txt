@@ -1,0 +1,17 @@
+CDN_CLASSIFICATION_V2
+compile=PASS
+healthy_only=YES
+country_before_cdn=YES
+raw_evidence=YES
+xray_runtime_evidence=YES
+uri_runtime_endpoint=YES
+json_runtime_endpoint=YES
+dns_ip_evidence=YES
+cloudflare_ranges=YES
+worker_detection=YES
+provider_detection=YES
+multi_evidence_confidence=YES
+unknown_fail_safe=YES
+raw_mutation=NO
+fetcher=active
+status=PASS
