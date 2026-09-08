@@ -263,6 +263,34 @@ def run_health_once(
             except Exception:
                 pass
 
+            # CLASSIFICATION_V1
+            # CDN classification runs ONLY after:
+            # Xray + Download + Upload = Healthy
+            # and AFTER the Country fast-path attempt.
+            try:
+                from app.classification.cdn import (
+                    classify_cdn,
+                )
+
+                result.metadata[
+                    "cdn"
+                ] = classify_cdn(
+                    source
+                )
+
+            except Exception as exc:
+                result.metadata[
+                    "cdn"
+                ] = {
+                    "cdn_class": "unknown",
+                    "cdn_provider": "unknown",
+                    "cdn_confidence": 0.0,
+                    "cdn_evidence": [
+                        "classifier_error:"
+                        + type(exc).__name__
+                    ],
+                }
+
     except RuntimeLaunchError as exc:
 
         result.xray_started = False
