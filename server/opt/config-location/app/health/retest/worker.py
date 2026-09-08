@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from app.settings.engine import get_settings
+from app.core.config_store import delete_config, list_configs
 
 from app.health.retest import (
     build_privileged_retest_plan,
@@ -603,6 +604,54 @@ def main() -> int:
 
         try:
 
+            # LIFECYCLE_ENFORCEMENT_V2
+            # Lifetime is measured from immutable first_seen_at.
+            settings = get_settings()
+            lifetime_cfg = settings.get("config_lifetime", {})
+            try:
+                max_age_hours = float(lifetime_cfg.get("max_age_hours", 48))
+            except (TypeError, ValueError):
+                max_age_hours = 48.0
+
+            deleted_expired = 0
+            if max_age_hours > 0:
+                now_dt = datetime.now(timezone.utc)
+
+                for record in list_configs():
+                    first_seen = str(record.get("first_seen_at") or "").strip()
+                    if not first_seen:
+                        continue
+
+                    try:
+                        created_dt = datetime.fromisoformat(
+                            first_seen.replace("Z", "+00:00")
+                        )
+                        if created_dt.tzinfo is None:
+                            created_dt = created_dt.replace(tzinfo=timezone.utc)
+                    except (TypeError, ValueError):
+                        continue
+
+                    age_hours = (
+                        now_dt - created_dt.astimezone(timezone.utc)
+                    ).total_seconds() / 3600.0
+
+                    if age_hours < max_age_hours:
+                        continue
+
+                    outcome = delete_config(
+                        str(record["id"]),
+                        reason="config_lifetime_expired",
+                        actor="retest-worker",
+                        metadata={
+                            "first_seen_at": first_seen,
+                            "age_hours": round(age_hours, 6),
+                            "max_age_hours": max_age_hours,
+                        },
+                    )
+
+                    if outcome.get("deleted"):
+                        deleted_expired += 1
+
             # First look at due count
             # with a small plan.
             preview = (
@@ -769,6 +818,8 @@ def main() -> int:
                     )
                 ),
 
+                deleted_expired=deleted_expired,
+                max_age_hours=max_age_hours,
                 last_error=None,
             )
 
@@ -884,13 +935,17 @@ def main() -> int:
                 if result.healthy:
                     continue
 
-                config_path = CONFIG_ROOT / (result.config_id + ".json")
-
-                try:
-                    config_path.unlink()
+                outcome = delete_config(
+                    result.config_id,
+                    reason="health_retest_failed",
+                    actor="retest-worker",
+                    metadata={
+                        "error_code": result.error_code,
+                        "finished_at": result.finished_at,
+                    },
+                )
+                if outcome.get("deleted"):
                     deleted_unhealthy += 1
-                except FileNotFoundError:
-                    pass
 
             cycle_results = []
 
