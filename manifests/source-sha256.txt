@@ -15613,6 +15613,7 @@ b259e9e96d6ad1b0015ca47373161c28319cab0131a7cf8259bb00949694118a  server/opt/con
 e81db0c2d1ef65f874649c6b7780748148a8ea4252994bf77e8019554bf32bae  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-audit.txt
 ef0b0b3d8c922df0b15e5fa211dd9bf90b09c5ab07f1f1c509ea6228445fdfd3  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-progress.txt
 40fdea2e2b12a04202a7a4e6ef02930b1a46219f4a4c4018b9933da59ef4aa78  server/opt/config-location/manifests/settings-freeze-v2.txt
+a4cd757d3cf637cf1c1d6e1691e4bddbab86f808fa67917568c1554740536fd9  server/opt/config-location/manifests/source-intelligence-v1.txt
 0a05124e945dea7f03627262566b386152d22429308ef2ca1e5e978342b94f26  server/opt/config-location/manifests/unified-panel-shell-freeze-v1.txt
 cf670bfb21c2fd245e30b18abfd26825c82926a391ce67e58ccf2c171b4c5b98  server/opt/config-location/manifests/unified-panel-shell-part1-evidence.txt
 1a271a6e6373624175be8ba25677703a4a8378fda6ae518f6efd7d797a539fd6  server/opt/config-location/manifests/unified-panel-shell-part2-evidence.txt
