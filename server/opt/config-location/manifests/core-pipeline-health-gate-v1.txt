@@ -1,0 +1,6 @@
+CORE_PIPELINE_HEALTH_GATE_V1
+stage_compile=PASS
+prehealth_upsert=1
+health_gate_contract=PASS
+production_mutated=NO
+status=STAGED_PASS
