@@ -15582,6 +15582,7 @@ f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/con
 a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
 f545280085571a310e07e013d3f22f317a9630b93c97be6a29a8cfb96a436c20  server/opt/config-location/deploy/nginx/config-location-ip-static-sub.conf
 da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
+88eb0dac218a8695e66265dc0a24d4e9c572a70f5730237ace8c9d40e5e6cadc  server/opt/config-location/manifests/audit-inode-cleanup-final.txt
 600e10e94a234e521ccc232eeb893ed448c481ea165062265a3db546caf9352f  server/opt/config-location/manifests/cdn-classification-v2.txt
 d618bd2e971caa6eebca38a0d2e9f57cb0005e171318932ca16f6f3584e82955  server/opt/config-location/manifests/classification-v1.txt
 fa04081171e8262a25af39b332cc1a5e4f5db186fc8f2994f7eb6ada6882e594  server/opt/config-location/manifests/control-plane-freeze-v2.txt
