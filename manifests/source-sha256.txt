@@ -180,6 +180,8 @@ a7f1fddbe433d801f108f39cd8e303eb1495e46450b5d8027815c27c3838b3c2  server/opt/con
 5e40b1d6b903bed4790954548f47021a2fe60de3224e89bf00587baef88152de  server/opt/config-location/app/parser/detector.py.before-regex-fix-20260829-015912
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  server/opt/config-location/app/parser/__init__.py
 db1b8e37a373d328bf8f2b79f6f4f05dbcb08c65c1e59833bb94d645f788e947  server/opt/config-location/app/parser/universal_json.py
+d5ac3e282f1322513656932e5c9b8b0ec1c3cf4a29b6d933a6e83ac803b8c17a  server/opt/config-location/app/publish/ed_socket.py
+e2a0ecdfa519443887a3d05d0341e7fae768756b64324b399d895d076a1b2ad8  server/opt/config-location/app/publish/file_exporter.py
 060507dd06483d79ccbac12bbc9912c0fb40d84a4028e76425a0e7e1696c1aa4  server/opt/config-location/app/publish/filter.py
 d86f8a7c23fe0033b19af2722ba6922e547563cc59917ec7685e8dfd006c0a78  server/opt/config-location/app/publish/http.py
 c8b03a25c5b6d03a183e2ab6b4145a786208a84e70f73016cc5cbc4ebfd1536a  server/opt/config-location/app/publish/__init__.py
@@ -15578,6 +15580,7 @@ e04c7bc74f386d4e3f38239dcfb84e941b78e8b4653cc6f89025dbe4ddb8e140  server/opt/con
 f470663a30207bb28bed93dee7c4dc5bcf8bbb4f5332f278b2e681b28361e4c4  server/opt/config-location/bin/devrun.before-ht0.2-20260830-232901
 2bfe40d682ab259565ccccfdfba94cebb5d11bd96b6bb6b8085cdb78a354eebe  server/opt/config-location/bin/devrun.before-ht04c-20260831-002813
 a0cc503f309c1de627752d5720e9f546ea3583e69681eeb03edfe0bf8f9fba80  server/opt/config-location/bin/health-adaptive-daemon
+f545280085571a310e07e013d3f22f317a9630b93c97be6a29a8cfb96a436c20  server/opt/config-location/deploy/nginx/config-location-ip-static-sub.conf
 da49cfd0289fca6c2c76dc9298c177234525ec74262654d252db5c77c3dfde59  server/opt/config-location/install-oneclick.sh
 600e10e94a234e521ccc232eeb893ed448c481ea165062265a3db546caf9352f  server/opt/config-location/manifests/cdn-classification-v2.txt
 d618bd2e971caa6eebca38a0d2e9f57cb0005e171318932ca16f6f3584e82955  server/opt/config-location/manifests/classification-v1.txt
