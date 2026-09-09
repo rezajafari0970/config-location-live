@@ -1,0 +1,78 @@
+PORT80_VHOST_TARGET_DISCOVERY
+
+=== TARGET HOST TEST ===
+/sub/all HTTP=404 REDIRECT=
+/sub/cdn/cloudflare-worker HTTP=404 REDIRECT=
+/sub/country/UNKNOWN/cdn HTTP=404 REDIRECT=
+
+=== TARGET SERVER BLOCK ===
+237-
+238-# configuration file /etc/nginx/conf.d/config-location-devlog.conf:
+239-server {
+240-    listen 80;
+241-    listen [::]:80;
+242-
+243:    server_name devlog.85-192-63-181.nip.io;
+244-
+245-    access_log /var/log/nginx/config-location-devlog-access.log;
+246-    error_log  /var/log/nginx/config-location-devlog-error.log warn;
+247-
+248-
+249-    location = /latest {
+250-        alias /var/www/config-location-devlog/latest.log;
+251-
+252-        default_type text/plain;
+253-        charset utf-8;
+254-
+255-        add_header Cache-Control "no-store, no-cache, must-revalidate, max-age=0" always;
+256-        add_header Pragma "no-cache" always;
+257-        add_header X-Content-Type-Options "nosniff" always;
+258-    }
+259-
+260-    location = / {
+261-        default_type text/plain;
+262-        return 404;
+263-    }
+264-
+265-    location /devlog/ {
+266-        proxy_pass http://127.0.0.1:4040;
+267-
+268-        proxy_http_version 1.1;
+269-
+270-        proxy_set_header Host $host;
+271-        proxy_set_header X-Real-IP $remote_addr;
+272-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+273-        proxy_set_header X-Forwarded-Proto $scheme;
+274-
+275-        proxy_connect_timeout 3s;
+276-        proxy_read_timeout 10s;
+277-        proxy_send_timeout 10s;
+278-
+279-        proxy_buffering off;
+280-
+281-        add_header Cache-Control "no-store, no-cache, must-revalidate, max-age=0" always;
+282-        add_header Pragma "no-cache" always;
+283-        add_header X-Content-Type-Options "nosniff" always;
+284-    }
+285-
+286-    location / {
+287-        return 404;
+288-    }
+289-}
+290-
+291-# configuration file /etc/nginx/sites-enabled/tg-config-collector:
+292-server {
+293-    listen 1010 default_server;
+294-    listen [::]:1010 default_server;
+295-
+296-    server_name _;
+297-
+298-    root /opt/tg-config-collector/public;
+299-    index index.php index.html;
+300-
+301-    client_max_body_size 100M;
+302-
+303-    location / {
+
+production_mutated=NO
+status=DISCOVERY_COMPLETE
