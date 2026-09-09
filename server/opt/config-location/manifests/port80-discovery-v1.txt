@@ -1,0 +1,54 @@
+PORT80_DISCOVERY_V1
+
+=== LISTENER ===
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                                                                                                              
+LISTEN 0      511          0.0.0.0:80        0.0.0.0:*    users:(("nginx",pid=1163,fd=9),("nginx",pid=1162,fd=9),("nginx",pid=1161,fd=9),("nginx",pid=1160,fd=9),("nginx",pid=1159,fd=9))     
+LISTEN 0      511             [::]:80           [::]:*    users:(("nginx",pid=1163,fd=10),("nginx",pid=1162,fd=10),("nginx",pid=1161,fd=10),("nginx",pid=1160,fd=10),("nginx",pid=1159,fd=10))
+
+=== LOCAL HTTP ===
+127.0.0.1 -> HTTP=301 SERVER=127.0.0.1
+localhost -> HTTP=301 SERVER=::1
+
+=== WEB SERVICES ===
+nginx      active
+apache2    inactive
+absent
+caddy      inactive
+absent
+haproxy    inactive
+absent
+
+=== NGINX TEST ===
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+=== NGINX PORT80 BLOCKS ===
+25:	# server_names_hash_bucket_size 64;
+26:	# server_name_in_redirect off;
+192:    listen 80;
+193:    listen [::]:80;
+195:    server_name devlog.exirshen.org;
+197:    location ^~ /.well-known/acme-challenge/ {
+203:    location / {
+212:    server_name devlog.exirshen.org;
+222:    location = /latest {
+233:    location / {
+240:    listen 80;
+241:    listen [::]:80;
+243:    server_name devlog.85-192-63-181.nip.io;
+249:    location = /latest {
+260:    location = / {
+265:    location /devlog/ {
+266:        proxy_pass http://127.0.0.1:4040;
+286:    location / {
+296:    server_name _;
+303:    location / {
+307:    location ~ ^/sub/(all|decoded|vless|vmess|trojan|ss|socks5|hy|hy2|wireguard)/?$ {
+318:    location ~ \.php$ {
+323:    location ~ /\. {
+351:fastcgi_param  SERVER_NAME        $server_name;
+397:fastcgi_param  SERVER_NAME        $server_name;
+
+=== CONFIG-LOCATION BACKEND ===
+4040 health -> 200
+4040 sub/all -> 
