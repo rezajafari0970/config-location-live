@@ -51,4 +51,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 === CONFIG-LOCATION BACKEND ===
 4040 health -> 200
-4040 sub/all -> 
+4040 sub/all -> 200
+
+production_mutated=NO
+status=DISCOVERY_COMPLETE
