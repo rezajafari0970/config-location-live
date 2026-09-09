@@ -1,0 +1,147 @@
+ED_SERVICE_FAILURE_DETAIL
+
+=== UNIT ===
+# /etc/systemd/system/config-location-ed.service
+[Unit]
+Description=Config Location ED Selector over Unix Socket
+After=local-fs.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+Environment=PYTHONPATH=/opt/config-location
+RuntimeDirectory=config-location-ed
+RuntimeDirectoryMode=0770
+UMask=0007
+ExecStart=/opt/config-location/venv/bin/python -m app.publish.ed_socket
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
+
+=== STATUS ===
+× config-location-ed.service - Config Location ED Selector over Unix Socket
+     Loaded: loaded (/etc/systemd/system/config-location-ed.service; enabled; preset: enabled)
+     Active: failed (Result: exit-code) since Wed 2026-09-09 00:22:06 UTC; 2min 36s ago
+   Duration: 123ms
+ Invocation: 3c36f3bd5f104d5cb5be4b50162bc063
+    Process: 238747 ExecStart=/opt/config-location/venv/bin/python -m app.publish.ed_socket (code=exited, status=1/FAILURE)
+   Main PID: 238747 (code=exited, status=1/FAILURE)
+   Mem peak: 6.6M
+        CPU: 73ms
+
+Sep 09 00:22:06 serverprojects.ptr.network systemd[1]: config-location-ed.service: Scheduled restart job, restart counter is at 5.
+Sep 09 00:22:06 serverprojects.ptr.network systemd[1]: config-location-ed.service: Start request repeated too quickly.
+Sep 09 00:22:06 serverprojects.ptr.network systemd[1]: config-location-ed.service: Failed with result 'exit-code'.
+Sep 09 00:22:06 serverprojects.ptr.network systemd[1]: Failed to start config-location-ed.service - Config Location ED Selector over Unix Socket.
+
+=== JOURNAL ===
+Started config-location-ed.service - Config Location ED Selector over Unix Socket.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 950, in get_data
+PermissionError: [Errno 13] Permission denied: '/opt/config-location/app/__init__.py'
+config-location-ed.service: Main process exited, code=exited, status=1/FAILURE
+config-location-ed.service: Failed with result 'exit-code'.
+config-location-ed.service: Scheduled restart job, restart counter is at 1.
+Started config-location-ed.service - Config Location ED Selector over Unix Socket.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 950, in get_data
+PermissionError: [Errno 13] Permission denied: '/opt/config-location/app/__init__.py'
+config-location-ed.service: Main process exited, code=exited, status=1/FAILURE
+config-location-ed.service: Failed with result 'exit-code'.
+config-location-ed.service: Scheduled restart job, restart counter is at 2.
+Started config-location-ed.service - Config Location ED Selector over Unix Socket.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 950, in get_data
+PermissionError: [Errno 13] Permission denied: '/opt/config-location/app/__init__.py'
+config-location-ed.service: Main process exited, code=exited, status=1/FAILURE
+config-location-ed.service: Failed with result 'exit-code'.
+config-location-ed.service: Scheduled restart job, restart counter is at 3.
+Started config-location-ed.service - Config Location ED Selector over Unix Socket.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 950, in get_data
+PermissionError: [Errno 13] Permission denied: '/opt/config-location/app/__init__.py'
+config-location-ed.service: Main process exited, code=exited, status=1/FAILURE
+config-location-ed.service: Failed with result 'exit-code'.
+config-location-ed.service: Scheduled restart job, restart counter is at 4.
+Started config-location-ed.service - Config Location ED Selector over Unix Socket.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 950, in get_data
+PermissionError: [Errno 13] Permission denied: '/opt/config-location/app/__init__.py'
+config-location-ed.service: Main process exited, code=exited, status=1/FAILURE
+config-location-ed.service: Failed with result 'exit-code'.
+config-location-ed.service: Scheduled restart job, restart counter is at 5.
+config-location-ed.service: Start request repeated too quickly.
+config-location-ed.service: Failed with result 'exit-code'.
+Failed to start config-location-ed.service - Config Location ED Selector over Unix Socket.
+
+=== DIRECT RUN AS WWW-DATA ===
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 950, in get_data
+PermissionError: [Errno 13] Permission denied: '/opt/config-location/app/__init__.py'
+
+=== PERMISSIONS ===
+f: /opt/config-location/app/publish/ed_socket.py
+drwxr-xr-x root      root      /
+drwxr-xr-x root      root      opt
+drwxr-xr-x configloc configloc config-location
+drwxr-xr-x configloc configloc app
+drwxr-xr-x root      root      publish
+-rw-r--r-- root      root      ed_socket.py
+f: /var/lib/config-location/file-publish/cursors
+drwxr-xr-x root      root      /
+drwxr-xr-x root      root      var
+drwxr-xr-x root      root      lib
+drwxr-x--- configloc configloc config-location
+drwxr-xr-x root      root      file-publish
+drwxrwx--- www-data  www-data  cursors
+f: /run/config-location-ed
+drwxr-xr-x root root /
+drwxr-xr-x root root run
+                      config-location-ed - No such file or directory
+
+status=DIAGNOSTIC_COMPLETE
