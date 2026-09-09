@@ -623,38 +623,31 @@ def install_publish_routes(
     app: web.Application,
 ) -> None:
 
-    if app.get(
-        "_ht18_publish_installed"
-    ):
+    if app.get("_ht18_publish_installed"):
         return
 
+    app["_ht18_publish_installed"] = True
 
-    app[
-        "_ht18_publish_installed"
-    ] = True
+    # Specific routes FIRST.
+    app.router.add_get("/sub/cdn/cloudflare-worker", subscription_cloudflare_worker)
+    app.router.add_get("/sub/cdn/cloudflare", subscription_cloudflare)
+    app.router.add_get("/sub/cdn/other", subscription_other_cdn)
+    app.router.add_get("/sub/cdn/unknown", subscription_unknown_cdn)
 
+    app.router.add_get("/sub/country/{country_code}/cdn/cloudflare-worker", subscription_country_cloudflare_worker)
+    app.router.add_get("/sub/country/{country_code}/cdn/cloudflare", subscription_country_cloudflare)
+    app.router.add_get("/sub/country/{country_code}/cdn/other", subscription_country_other_cdn)
+    app.router.add_get("/sub/country/{country_code}/non-cdn", subscription_country_non_cdn)
+    app.router.add_get("/sub/country/{country_code}/cdn", subscription_country_cdn)
 
-    app.router.add_get(
-        "/sub/all",
-        subscription_all,
-    )
+    app.router.add_get("/sub/cdn", subscription_cdn_all)
+    app.router.add_get("/sub/non-cdn", subscription_non_cdn)
 
-    app.router.add_get(
-        "/sub/country/{country_code}",
-        subscription_country,
-    )
+    app.router.add_get("/sub/all", subscription_all)
+    app.router.add_get("/sub/country/{country_code}", subscription_country)
 
-    app.router.add_get(
-        "/sub/{config_type}",
-        subscription_type,
-    )
+    # Generic type route MUST remain last.
+    app.router.add_get("/sub/{config_type}", subscription_type)
 
-    app.router.add_get(
-        "/api/countries",
-        country_catalog,
-    )
-
-    app.router.add_get(
-        "/api/publish/status",
-        publish_status,
-    )
+    app.router.add_get("/api/countries", country_catalog)
+    app.router.add_get("/api/publish/status", publish_status)
