@@ -5,13 +5,12 @@ After=local-fs.target
 [Service]
 Type=simple
 User=configloc
-Group=configloc
+Group=www-data
 Environment=PYTHONPATH=/opt/config-location
 
 RuntimeDirectory=config-location-ed
 RuntimeDirectoryMode=0755
-
-UMask=0022
+UMask=0007
 
 ExecStart=/opt/config-location/venv/bin/python -m app.publish.ed_socket
 
