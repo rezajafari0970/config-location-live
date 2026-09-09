@@ -15616,6 +15616,7 @@ c87589a0945a71fc53a36f3b87cc36d6d62f468672252c7a695b7d082bedb7ff  server/opt/con
 80759e1c217fa2b925b63b255f724791c9db3f93c35389b60409253f57fc2c7b  server/opt/config-location/manifests/ed-service-failure-detail.txt
 7ed536a09bef8b2d2f5bcef0e6a269161496ca1c7f66efadb20cb64be59d736d  server/opt/config-location/manifests/file-publisher-after-ed-fix.txt
 745314927448df52c209eeaa0ab4ab832fe3e1335ec5672863b2e3c58b3ea895  server/opt/config-location/manifests/file-publisher-v1-diagnostic.txt
+a321d3faa8ecc493f31a0bbdf1574ef84eba7c133c5e1ef56362349411d117f5  server/opt/config-location/manifests/file-publisher-v2-diagnostic.txt
 f0a2c8d8bbe0f9c5cf02ea4bfa7e345ee68d33640910b3aeaf6d68dc797179a8  server/opt/config-location/manifests/lifecycle-enforcement-v1-install.txt
 b2a30dcf3cb70b0ff6dc9b161b6222a4c7375827eee7aeb14b72f91332b36478  server/opt/config-location/manifests/lifecycle-enforcement-v1-stage.txt
 b259e9e96d6ad1b0015ca47373161c28319cab0131a7cf8259bb00949694118a  server/opt/config-location/manifests/lifecycle-enforcement-v2.txt
