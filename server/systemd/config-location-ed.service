@@ -1,0 +1,18 @@
+[Unit]
+Description=Config Location ED Selector over Unix Socket
+After=local-fs.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+Environment=PYTHONPATH=/opt/config-location
+RuntimeDirectory=config-location-ed
+RuntimeDirectoryMode=0770
+UMask=0007
+ExecStart=/opt/config-location/venv/bin/python -m app.publish.ed_socket
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
