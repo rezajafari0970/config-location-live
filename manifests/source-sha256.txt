@@ -15613,6 +15613,7 @@ fceffd6e6f1d4a5227f4727b887011ae45a9a88574279e517b9c573f8015338a  server/opt/con
 934ffeffe48ab353f0bc68ab624d0b12b2b1c3acec44611a54967e926c88b5c7  server/opt/config-location/manifests/core-pipeline-health-gate-v1-install.txt
 c87589a0945a71fc53a36f3b87cc36d6d62f468672252c7a695b7d082bedb7ff  server/opt/config-location/manifests/core-pipeline-health-gate-v1.txt
 67a895c8a32d7cc7ab34d614c726deb3761e51e603c54f80604b1d744dfca060  server/opt/config-location/manifests/core-pipeline-realignment-v1-preflight.txt
+80759e1c217fa2b925b63b255f724791c9db3f93c35389b60409253f57fc2c7b  server/opt/config-location/manifests/ed-service-failure-detail.txt
 745314927448df52c209eeaa0ab4ab832fe3e1335ec5672863b2e3c58b3ea895  server/opt/config-location/manifests/file-publisher-v1-diagnostic.txt
 f0a2c8d8bbe0f9c5cf02ea4bfa7e345ee68d33640910b3aeaf6d68dc797179a8  server/opt/config-location/manifests/lifecycle-enforcement-v1-install.txt
 b2a30dcf3cb70b0ff6dc9b161b6222a4c7375827eee7aeb14b72f91332b36478  server/opt/config-location/manifests/lifecycle-enforcement-v1-stage.txt
