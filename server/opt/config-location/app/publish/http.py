@@ -14,6 +14,12 @@ from app.country.catalog import (
     build_country_catalog,
 )
 
+from .matrix import (
+    install_publish_matrix_routes,
+    matrix_subscription_response,
+    ed_enabled,
+)
+
 
 def _subscription_text(
     config_type: str | None = None,
@@ -84,6 +90,11 @@ def _subscription_text(
 async def subscription_all(
     request: web.Request,
 ):
+
+    if ed_enabled(request):
+        return await matrix_subscription_response(
+            request
+        )
 
     text, metadata = (
         _subscription_text()
@@ -546,6 +557,14 @@ async def subscription_country(
         raise web.HTTPNotFound()
 
 
+    if ed_enabled(request):
+
+        return await matrix_subscription_response(
+            request,
+            country=country_code,
+        )
+
+
     try:
 
         (
@@ -642,6 +661,12 @@ def install_publish_routes(
     app.router.add_get(
         "/sub/country/{country_code}",
         subscription_country,
+    )
+
+    # Dedicated CDN matrix routes.
+    # Must be registered before generic /sub/{config_type}.
+    install_publish_matrix_routes(
+        app
     )
 
     app.router.add_get(
