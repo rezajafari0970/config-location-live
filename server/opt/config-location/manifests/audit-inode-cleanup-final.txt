@@ -1,0 +1,22 @@
+AUDIT_INODE_CLEANUP
+start=2026-09-09T13:20:46Z
+end=2026-09-09T13:21:11Z
+
+=== DISK ===
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda2       118G   45G   68G  41% /
+
+=== INODES ===
+Filesystem     Inodes IUsed IFree IUse% Mounted on
+/dev/vda2        7.5M  6.0M  1.6M   80% /
+
+=== ROOT_OUT ===
+4.0K	/root/out
+
+=== PRODUCTION ===
+project_root=PASS
+production_data=PASS
+
+deleted_scope=/root/out
+production_deleted=NO
+status=COMPLETE
