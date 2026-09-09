@@ -1,0 +1,10 @@
+[Unit]
+Description=Watch Config Location data for static publish refresh
+
+[Path]
+PathChanged=/var/lib/config-location/configs
+PathChanged=/var/lib/config-location/country
+Unit=config-location-file-publisher.service
+
+[Install]
+WantedBy=multi-user.target
