@@ -27,11 +27,13 @@ ROOT = Path(
     "/var/lib/config-location/file-publish"
 )
 
-RELEASES = ROOT / "releases"
-
 PUBLIC = Path(
     "/var/www/config-location-sub"
 )
+
+# FILE_PUBLISHER_V3
+# Public publish artifacts live entirely under /var/www.
+RELEASES = PUBLIC / "releases"
 
 CURRENT = PUBLIC / "current"
 
@@ -161,6 +163,13 @@ def _write_atomic(
         os.replace(
             tmp,
             path,
+        )
+
+        # Public publish artifact:
+        # readable by nginx/configloc, writable only by owner.
+        os.chmod(
+            path,
+            0o644,
         )
 
     finally:
