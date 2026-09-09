@@ -1,0 +1,11 @@
+[Unit]
+Description=Config Location Static Publisher fallback refresh
+
+[Timer]
+OnBootSec=3s
+OnUnitActiveSec=5s
+AccuracySec=1s
+Unit=config-location-file-publisher.service
+
+[Install]
+WantedBy=timers.target
