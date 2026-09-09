@@ -1,0 +1,11 @@
+[Unit]
+Description=Config Location Static File Publisher
+After=local-fs.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+Environment=PYTHONPATH=/opt/config-location
+ExecStart=/opt/config-location/venv/bin/python -m app.publish.file_exporter
+Nice=10
