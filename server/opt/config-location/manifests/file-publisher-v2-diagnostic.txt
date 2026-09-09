@@ -1,0 +1,32 @@
+FILE_PUBLISHER_V2_DIAGNOSTIC
+
+=== CURRENT TARGET ===
+/var/lib/config-location/file-publish/releases/20260909T002941Z-254593
+f: /var/www/config-location-sub/current/all.txt
+drwxr-xr-x root      root      /
+drwxr-xr-x root      root      var
+drwxr-xr-x root      root      www
+drwxr-xr-x root      root      config-location-sub
+lrwxrwxrwx root      root      current -> /var/lib/config-location/file-publish/releases/20260909T002941Z-254593
+drwxr-xr-x root      root        /
+drwxr-xr-x root      root        var
+drwxr-xr-x root      root        lib
+drwxr-x--- configloc configloc   config-location
+drwxr-xr-x root      root        file-publish
+drwxr-xr-x root      root        releases
+drwxr-xr-x root      root        20260909T002941Z-254593
+-rw------- root      root      all.txt
+
+=== ED ===
+active
+srwxrwx--- 1 configloc www-data 0 Sep  9 00:28 /run/config-location-ed/ed.sock
+
+=== DIRECT UDS ===
+/sub/all.txt?ed=1 -> 503
+503: Service Unavailable
+/sub/de.txt?ed=1 -> 503
+503: Service Unavailable
+
+=== NGINX TEST ===
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
