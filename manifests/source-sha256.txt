@@ -15617,6 +15617,7 @@ b259e9e96d6ad1b0015ca47373161c28319cab0131a7cf8259bb00949694118a  server/opt/con
 9d31a701006e25879fec5d4e411e97f3bb4bea0d485cf8ea8b45860145233199  server/opt/config-location/manifests/phase-2A3-settings-panel-api-freeze-evidence.txt
 e81db0c2d1ef65f874649c6b7780748148a8ea4252994bf77e8019554bf32bae  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-audit.txt
 ef0b0b3d8c922df0b15e5fa211dd9bf90b09c5ab07f1f1c509ea6228445fdfd3  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-progress.txt
+a6098f1287e6b5a5a65b3d625a0262b8b4702bb080d5a477b99e04b6636ea3fd  server/opt/config-location/manifests/port80-discovery-v1.txt
 33c071ce7261e097304814ef8010b5e7079f377b31d54476f59a4c39c2f52514  server/opt/config-location/manifests/publish-matrix-v2.txt
 40fdea2e2b12a04202a7a4e6ef02930b1a46219f4a4c4018b9933da59ef4aa78  server/opt/config-location/manifests/settings-freeze-v2.txt
 a4cd757d3cf637cf1c1d6e1691e4bddbab86f808fa67917568c1554740536fd9  server/opt/config-location/manifests/source-intelligence-v1.txt
