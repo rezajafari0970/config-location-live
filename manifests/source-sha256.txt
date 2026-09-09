@@ -181,7 +181,7 @@ a7f1fddbe433d801f108f39cd8e303eb1495e46450b5d8027815c27c3838b3c2  server/opt/con
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  server/opt/config-location/app/parser/__init__.py
 db1b8e37a373d328bf8f2b79f6f4f05dbcb08c65c1e59833bb94d645f788e947  server/opt/config-location/app/parser/universal_json.py
 d5ac3e282f1322513656932e5c9b8b0ec1c3cf4a29b6d933a6e83ac803b8c17a  server/opt/config-location/app/publish/ed_socket.py
-e2a0ecdfa519443887a3d05d0341e7fae768756b64324b399d895d076a1b2ad8  server/opt/config-location/app/publish/file_exporter.py
+54d662270a8a25e3d9c91e645ba66b3f71e7d1e2144e91f86d89505ed9d833d1  server/opt/config-location/app/publish/file_exporter.py
 060507dd06483d79ccbac12bbc9912c0fb40d84a4028e76425a0e7e1696c1aa4  server/opt/config-location/app/publish/filter.py
 d86f8a7c23fe0033b19af2722ba6922e547563cc59917ec7685e8dfd006c0a78  server/opt/config-location/app/publish/http.py
 c8b03a25c5b6d03a183e2ab6b4145a786208a84e70f73016cc5cbc4ebfd1536a  server/opt/config-location/app/publish/__init__.py
@@ -15617,6 +15617,7 @@ c87589a0945a71fc53a36f3b87cc36d6d62f468672252c7a695b7d082bedb7ff  server/opt/con
 7ed536a09bef8b2d2f5bcef0e6a269161496ca1c7f66efadb20cb64be59d736d  server/opt/config-location/manifests/file-publisher-after-ed-fix.txt
 745314927448df52c209eeaa0ab4ab832fe3e1335ec5672863b2e3c58b3ea895  server/opt/config-location/manifests/file-publisher-v1-diagnostic.txt
 a321d3faa8ecc493f31a0bbdf1574ef84eba7c133c5e1ef56362349411d117f5  server/opt/config-location/manifests/file-publisher-v2-diagnostic.txt
+9592a4d49ca616eb0d2f9d143890f9fd6cb093272d919b7ef9e1b18179ac6f42  server/opt/config-location/manifests/file-publisher-v3.txt
 f0a2c8d8bbe0f9c5cf02ea4bfa7e345ee68d33640910b3aeaf6d68dc797179a8  server/opt/config-location/manifests/lifecycle-enforcement-v1-install.txt
 b2a30dcf3cb70b0ff6dc9b161b6222a4c7375827eee7aeb14b72f91332b36478  server/opt/config-location/manifests/lifecycle-enforcement-v1-stage.txt
 b259e9e96d6ad1b0015ca47373161c28319cab0131a7cf8259bb00949694118a  server/opt/config-location/manifests/lifecycle-enforcement-v2.txt
