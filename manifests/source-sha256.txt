@@ -181,8 +181,9 @@ a7f1fddbe433d801f108f39cd8e303eb1495e46450b5d8027815c27c3838b3c2  server/opt/con
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  server/opt/config-location/app/parser/__init__.py
 db1b8e37a373d328bf8f2b79f6f4f05dbcb08c65c1e59833bb94d645f788e947  server/opt/config-location/app/parser/universal_json.py
 060507dd06483d79ccbac12bbc9912c0fb40d84a4028e76425a0e7e1696c1aa4  server/opt/config-location/app/publish/filter.py
-eccb0024b82153ddaaa801398d9a15c7132ed47c11410d93fa84971f4d68a1ae  server/opt/config-location/app/publish/http.py
+d86f8a7c23fe0033b19af2722ba6922e547563cc59917ec7685e8dfd006c0a78  server/opt/config-location/app/publish/http.py
 c8b03a25c5b6d03a183e2ab6b4145a786208a84e70f73016cc5cbc4ebfd1536a  server/opt/config-location/app/publish/__init__.py
+271320fb6ece64d298c0332504f38fb66422ceec052527b2546a187ce70ed83e  server/opt/config-location/app/publish/matrix.py
 06d5f5008fc12e26cbd72cc7bb1548f919c51f5e09585bfa9b24bbfcb16a3b4a  server/opt/config-location/app/publish/selftest.py
 366e2a6adaa77c0ad64af7dd636d3570e7a407c0dcebd6e7c2519ecafc1fb4f6  server/opt/config-location/app/settings/engine.py
 b09d2188b1700a89cec807997bab9ba31b38cea1b8067b1b6f97dbabbc0e86a6  server/opt/config-location/app/settings/__init__.py
@@ -15616,6 +15617,7 @@ b259e9e96d6ad1b0015ca47373161c28319cab0131a7cf8259bb00949694118a  server/opt/con
 9d31a701006e25879fec5d4e411e97f3bb4bea0d485cf8ea8b45860145233199  server/opt/config-location/manifests/phase-2A3-settings-panel-api-freeze-evidence.txt
 e81db0c2d1ef65f874649c6b7780748148a8ea4252994bf77e8019554bf32bae  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-audit.txt
 ef0b0b3d8c922df0b15e5fa211dd9bf90b09c5ab07f1f1c509ea6228445fdfd3  server/opt/config-location/manifests/phase-2A-settings-foundation-v2-progress.txt
+33c071ce7261e097304814ef8010b5e7079f377b31d54476f59a4c39c2f52514  server/opt/config-location/manifests/publish-matrix-v2.txt
 40fdea2e2b12a04202a7a4e6ef02930b1a46219f4a4c4018b9933da59ef4aa78  server/opt/config-location/manifests/settings-freeze-v2.txt
 a4cd757d3cf637cf1c1d6e1691e4bddbab86f808fa67917568c1554740536fd9  server/opt/config-location/manifests/source-intelligence-v1.txt
 0a05124e945dea7f03627262566b386152d22429308ef2ca1e5e978342b94f26  server/opt/config-location/manifests/unified-panel-shell-freeze-v1.txt
