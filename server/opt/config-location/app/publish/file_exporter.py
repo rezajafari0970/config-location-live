@@ -27,11 +27,14 @@ ROOT = Path(
     "/var/lib/config-location/file-publish"
 )
 
-RELEASES = ROOT / "releases"
-
 PUBLIC = Path(
     "/var/www/config-location-sub"
 )
+
+# FILE_PUBLISHER_V2
+# Public releases must live under /var/www so nginx never
+# needs traversal access to /var/lib/config-location.
+RELEASES = PUBLIC / "releases"
 
 CURRENT = PUBLIC / "current"
 
