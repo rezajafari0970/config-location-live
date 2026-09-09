@@ -1,0 +1,26 @@
+FILE_PUBLISHER_AFTER_ED_FIX
+
+=== ED ===
+active
+● config-location-ed.service - Config Location ED Selector over Unix Socket
+     Loaded: loaded (/etc/systemd/system/config-location-ed.service; enabled; preset: enabled)
+     Active: active (running) since Wed 2026-09-09 00:25:45 UTC; 1min 12s ago
+ Invocation: 6f03961f268445059987a76fc329efc3
+   Main PID: 246876 (python)
+      Tasks: 1 (limit: 8077)
+     Memory: 27.2M (peak: 27.3M)
+        CPU: 232ms
+     CGroup: /system.slice/config-location-ed.service
+             └─246876 /opt/config-location/venv/bin/python -m app.publish.ed_socket
+
+Sep 09 00:25:45 serverprojects.ptr.network systemd[1]: Started config-location-ed.service - Config Location ED Selector over Unix Socket.
+
+=== SOCKET ===
+f: /run/config-location-ed/ed.sock
+drwxr-xr-x root      root      /
+drwxr-xr-x root      root      run
+drwxr-xr-x configloc configloc config-location-ed
+srw-rw---- configloc www-data  ed.sock
+srw-rw---- 1 configloc www-data 0 Sep  9 00:25 /run/config-location-ed/ed.sock
+
+=== STATIC EXPORT ===
