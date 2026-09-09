@@ -30,3 +30,41 @@ srwxrwx--- 1 configloc www-data 0 Sep  9 00:28 /run/config-location-ed/ed.sock
 === NGINX TEST ===
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+=== IP HTTP ===
+/sub/all.txt -> 403
+<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx/1.28.3 (Ubuntu)</center>
+</body>
+</html>
+
+/sub/all.txt?ed=1 -> 503
+503: Service Unavailable
+/sub/de.txt -> 403
+<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx/1.28.3 (Ubuntu)</center>
+</body>
+</html>
+
+/sub/de.txt?ed=1 -> 503
+503: Service Unavailable
+
+=== NGINX ERROR LOG ===
+2026/09/09 00:25:51 [error] 246928#246928: *64374 open() "/var/www/config-location-sub/current/all.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/all.txt HTTP/1.1", host: "85.192.63.181"
+2026/09/09 00:27:01 [error] 248886#248886: *64429 open() "/var/www/config-location-sub/current/all.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/all.txt HTTP/1.1", host: "85.192.63.181"
+2026/09/09 00:27:01 [error] 248889#248889: *64430 open() "/var/www/config-location-sub/current/all.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/all.txt HTTP/1.1", host: "85.192.63.181"
+2026/09/09 00:27:01 [error] 248886#248886: *64435 open() "/var/www/config-location-sub/current/de.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/de.txt HTTP/1.1", host: "85.192.63.181"
+2026/09/09 00:27:01 [error] 248886#248886: *64436 open() "/var/www/config-location-sub/current/de.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/de.txt HTTP/1.1", host: "85.192.63.181"
+2026/09/09 00:27:01 [error] 248886#248886: *64441 open() "/var/www/config-location-sub/current/unknown.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/unknown.txt HTTP/1.1", host: "85.192.63.181"
+2026/09/09 00:27:01 [error] 248886#248886: *64442 open() "/var/www/config-location-sub/current/unknown.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/unknown.txt HTTP/1.1", host: "85.192.63.181"
+2026/09/09 00:29:00 [error] 252848#252848: *64524 open() "/var/www/config-location-sub/current/all.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/all.txt HTTP/1.1", host: "85.192.63.181"
+2026/09/09 00:29:48 [error] 254666#254666: *64559 open() "/var/www/config-location-sub/current/all.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/all.txt HTTP/1.1", host: "85.192.63.181"
+2026/09/09 00:29:48 [error] 254667#254667: *64562 open() "/var/www/config-location-sub/current/de.txt" failed (13: Permission denied), client: 127.0.0.1, server: 85.192.63.181, request: "GET /sub/de.txt HTTP/1.1", host: "85.192.63.181"
+
+status=DIAGNOSTIC_COMPLETE
