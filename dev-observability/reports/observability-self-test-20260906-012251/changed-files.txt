@@ -1,2 +1,0 @@
-M	manifests/source-sha256.txt
-M	server/opt/config-location/PROJECT-STATE.md
